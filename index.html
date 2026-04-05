@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>رحلتي الفكرية — عبد الوهاب المسيري</title>
+<meta name="description" content="رحلة فكرية تفاعلية في سيرة الدكتور عبد الوهاب المسيري (1938-2008) — البذور، الجذور، والثمر. ثلاثي اللغة: عربي / English / Français.">
+<meta name="theme-color" content="#faf6ef">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ HAJJ-GUIDE PALETTE ═══ */
+:root{
+  --bg:#faf6ef;--card:#fff;--acc:#f0e9dd;--t1:#2c2417;--t2:#6b5d4d;--t3:#9a8c7a;
+  --gold:#c8a84e;--grn:#2e7d52;--teal:#1a8a7d;--rose:#c45a6b;--blue:#3b7dd8;--brd:#e8dfd2;
+  --sh:0 2px 12px rgba(44,36,23,0.07);--shm:0 6px 24px rgba(44,36,23,0.12);
+  --r:14px;--rr:22px;
+  --ff:'Nunito',sans-serif;--fd:'Amiri',serif;--fu:'Readex Pro',sans-serif;--fa:'Noto Naskh Arabic','Amiri',serif;
+  --isl-pat:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L55 30L30 55L5 30Z' fill='none' stroke='%23c8a84e' stroke-width='.4' opacity='.12'/%3E%3Cpath d='M30 15L45 30L30 45L15 30Z' fill='none' stroke='%23c8a84e' stroke-width='.3' opacity='.08'/%3E%3C/svg%3E");
+}
+[data-theme="dark"]{
+  --bg:#1a1612;--card:#2a241e;--acc:#332c24;--t1:#ede6d8;--t2:#b8a88e;--t3:#8a7a66;
+  --brd:#3d362c;--gold:#d4b45c;--grn:#4fb87a;--teal:#38bfb0;
+  --sh:0 2px 12px rgba(0,0,0,.3);--shm:0 6px 24px rgba(0,0,0,.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--bg);background-image:var(--isl-pat);color:var(--t1);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s;padding-bottom:60px}
+[lang="ar"] body{font-family:var(--fa),var(--ff),sans-serif}
+[lang="ar"] h1,[lang="ar"] h2,[lang="ar"] h3,[lang="ar"] .section-title,[lang="ar"] .card-title-ar,[lang="ar"] .hero-title{font-family:var(--fa),var(--fd),serif}
+::selection{background:rgba(200,168,78,.25);color:var(--t1)}
+
+/* ═══ SPLASH ═══ */
+.splash{position:fixed;inset:0;z-index:10000;background:linear-gradient(135deg,#faf6ef 0%,#f0e9dd 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;transition:opacity .6s;cursor:pointer}
+[data-theme="dark"] .splash{background:linear-gradient(135deg,#1a1612 0%,#2a241e 100%)}
+.splash.hidden{opacity:0;pointer-events:none}
+.splash-orn{font-size:2.5rem;color:var(--gold);opacity:.6;margin-bottom:16px}
+.splash-bismillah{font-family:'Amiri',serif;font-size:2rem;color:var(--gold);margin-bottom:8px}
+.splash-verse{font-family:'Noto Naskh Arabic',serif;font-size:.95rem;color:var(--grn);max-width:560px;margin:8px auto 20px;line-height:1.9;opacity:.8}
+.splash-title{font-family:var(--fa),var(--fd),serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);font-weight:700;margin:16px 0 8px}
+.splash-sub{font-family:var(--fu);font-size:1rem;color:var(--t2);margin-bottom:4px;letter-spacing:.5px}
+.splash-author{font-family:var(--fa),var(--fd),serif;font-size:1.2rem;color:var(--t2);margin-bottom:20px}
+.splash-count{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;font-size:1.6rem;font-weight:700;font-family:var(--fu);box-shadow:0 4px 16px rgba(200,168,78,.35);margin:16px auto;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.splash-hint{font-size:.75rem;color:var(--t3);opacity:.7;margin-top:8px;font-family:var(--fu)}
+
+/* ═══ SACRED BAR ═══ */
+.sacred-bar{text-align:center;padding:6px 16px 4px;background:linear-gradient(135deg,rgba(200,168,78,.08),rgba(46,125,82,.04));border-bottom:1px solid rgba(200,168,78,.12)}
+.sacred-bismillah{font-family:'Amiri',serif;font-size:1.15rem;color:var(--gold);line-height:1.2;direction:rtl}
+.sacred-verse{font-family:'Noto Naskh Arabic',serif;font-size:.65rem;color:var(--grn);direction:rtl;opacity:.55;margin-top:2px}
+
+/* ═══ HEADER ═══ */
+.app-header{background:var(--card);border-bottom:1px solid var(--brd);position:sticky;top:0;z-index:100;box-shadow:var(--sh);backdrop-filter:blur(10px)}
+.header-inner{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{font-size:2rem;filter:drop-shadow(0 2px 4px rgba(200,168,78,.3))}
+.logo h1{font-family:var(--fd);font-size:1.4rem;color:var(--gold);line-height:1.1;letter-spacing:.3px}
+[lang="ar"] .logo h1{font-family:var(--fa),var(--fd),serif;font-size:1.55rem}
+.header-controls{display:flex;gap:8px;align-items:center}
+.lang-switch{display:flex;background:var(--acc);border-radius:18px;padding:2px;border:1px solid var(--brd)}
+.lang-opt{border:none;background:0;padding:5px 9px;border-radius:16px;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;opacity:.5}
+.lang-opt.active{background:var(--gold);box-shadow:0 1px 4px rgba(200,168,78,.3);opacity:1}
+.lang-opt:hover:not(.active){opacity:.8}
+.lang-opt svg{display:block;border-radius:2px}
+.icon-btn{border:none;background:var(--acc);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.3s;border:1px solid var(--brd);color:var(--t1)}
+.icon-btn:hover{transform:scale(1.1);box-shadow:var(--sh)}
+
+/* ═══ HERO ═══ */
+.hero{max-width:1280px;margin:0 auto;padding:28px 20px 18px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,168,78,.08),transparent 70%);pointer-events:none;z-index:-1}
+.hero-orn{font-size:1.8rem;color:var(--gold);opacity:.6;margin-bottom:6px;line-height:1}
+.hero-title{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:700;color:var(--gold);margin-bottom:4px;line-height:1.25}
+.hero-sub{font-family:var(--fu);font-size:.9rem;color:var(--t3);font-weight:500;margin-bottom:10px;letter-spacing:.03em}
+.hero-tag{color:var(--t2);font-size:.95rem;max-width:760px;margin:0 auto;line-height:1.7}
+[lang="ar"] .hero-tag{font-size:1.02rem}
+
+/* ═══ TABS (horizontal pills) ═══ */
+.tabs-bar{position:sticky;top:62px;z-index:90;background:rgba(250,246,239,.92);backdrop-filter:blur(12px) saturate(180%);border-bottom:1px solid var(--brd);padding:10px 0;margin-bottom:18px}
+[data-theme="dark"] .tabs-bar{background:rgba(26,22,18,.92)}
+.tabs-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+@media(max-width:900px){.tabs-inner{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}.tabs-inner::-webkit-scrollbar{display:none}}
+.tab{border:1.5px solid var(--brd);background:var(--card);padding:8px 16px;border-radius:20px;cursor:pointer;font-size:.8rem;color:var(--t2);font-family:var(--fu);font-weight:600;white-space:nowrap;flex-shrink:0;transition:.25s;display:flex;align-items:center;gap:6px}
+.tab:hover{background:var(--acc);color:var(--t1)}
+.tab.active{background:var(--gold);color:#fff;border-color:var(--gold);box-shadow:0 2px 8px rgba(200,168,78,.35)}
+.tab-icon{font-size:1rem}
+
+/* ═══ PANELS ═══ */
+main{max-width:1280px;margin:0 auto;padding:0 20px 40px}
+.panel{display:none;animation:fadein .4s ease}
+.panel.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ HOME / SEEDS ROOTS FRUIT ═══ */
+.metaphor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:20px 0 30px}
+@media(max-width:720px){.metaphor-grid{grid-template-columns:1fr}}
+.metaphor-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:24px;text-align:center;box-shadow:var(--sh);transition:.3s;position:relative;overflow:hidden}
+.metaphor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--grn))}
+.metaphor-card:hover{transform:translateY(-4px);box-shadow:var(--shm)}
+.metaphor-icon{font-size:3rem;margin-bottom:10px;filter:drop-shadow(0 2px 6px rgba(200,168,78,.3))}
+.metaphor-title-ar{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--gold);margin-bottom:4px}
+.metaphor-title-en{font-family:var(--fu);font-size:.8rem;color:var(--t3);margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase}
+.metaphor-desc{font-size:.9rem;color:var(--t2);line-height:1.7}
+
+.home-author{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:24px;margin:24px 0;box-shadow:var(--sh);display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.home-author-emoji{font-size:3.5rem;flex-shrink:0}
+.home-author-body{flex:1;min-width:260px}
+.home-author-name{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--gold);margin-bottom:4px}
+[lang="ar"] .home-author-name{font-family:var(--fa),var(--fd),serif;font-size:1.7rem}
+.home-author-dates{font-size:.85rem;color:var(--t3);margin-bottom:10px;font-family:var(--fu)}
+.home-author-desc{font-size:.92rem;line-height:1.75;color:var(--t2)}
+
+/* ═══ CHAPTERS GRID (cards) ═══ */
+.part-head{display:flex;align-items:center;gap:14px;margin:26px 0 14px;padding:14px 20px;background:var(--card);border-radius:var(--rr);border-left:5px solid var(--gold);box-shadow:var(--sh)}
+[dir="rtl"] .part-head{border-left:none;border-right:5px solid var(--gold)}
+.part-num{background:var(--gold);color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;font-family:var(--fu);flex-shrink:0}
+.part-title{font-family:var(--fd);font-size:1.35rem;font-weight:700;color:var(--gold)}
+[lang="ar"] .part-title{font-size:1.55rem}
+.part-desc{color:var(--t3);font-size:.82rem;margin-top:2px}
+
+.chapters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-bottom:10px}
+.chapter-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:20px;box-shadow:var(--sh);transition:.3s;position:relative;overflow:hidden;cursor:pointer}
+.chapter-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal));transform:scaleX(0);transform-origin:right;transition:transform .3s}
+[dir="ltr"] .chapter-card::before{transform-origin:left}
+.chapter-card:hover{transform:translateY(-3px);box-shadow:var(--shm);border-color:var(--gold)}
+.chapter-card:hover::before{transform:scaleX(1)}
+.chapter-num{position:absolute;top:14px;right:14px;background:var(--acc);color:var(--gold);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;font-family:var(--fu);border:1px solid var(--brd)}
+[dir="rtl"] .chapter-num{right:auto;left:14px}
+.chapter-icon{font-size:2rem;margin-bottom:8px;opacity:.75}
+.chapter-title-ar{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:6px;line-height:1.3;direction:rtl;text-align:right}
+.chapter-title-en{font-family:var(--fu);font-size:.78rem;color:var(--t3);direction:ltr;text-align:left;font-weight:500;margin-bottom:10px;letter-spacing:.02em}
+.chapter-desc{font-size:.87rem;color:var(--t2);line-height:1.65;margin-bottom:12px}
+.chapter-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.chapter-tag{background:var(--acc);color:var(--t2);padding:3px 10px;border-radius:12px;font-size:.68rem;font-family:var(--fu);font-weight:500;border:1px solid var(--brd)}
+
+/* ═══ IDEAS ═══ */
+.ideas-intro{background:var(--card);border:1px solid var(--brd);border-left:5px solid var(--teal);border-radius:var(--rr);padding:20px;margin-bottom:20px;box-shadow:var(--sh)}
+[dir="rtl"] .ideas-intro{border-left:none;border-right:5px solid var(--teal);border-radius:var(--rr)}
+.idea-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:22px;margin-bottom:14px;box-shadow:var(--sh);transition:.3s;position:relative}
+.idea-card:hover{box-shadow:var(--shm);transform:translateY(-2px)}
+.idea-num{display:inline-block;background:var(--teal);color:#fff;padding:4px 12px;border-radius:12px;font-size:.68rem;font-weight:700;font-family:var(--fu);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+.idea-title{font-family:var(--fd);font-size:1.35rem;color:var(--gold);font-weight:700;margin-bottom:6px}
+[lang="ar"] .idea-title{font-size:1.5rem}
+.idea-title-en{font-family:var(--fu);font-size:.85rem;color:var(--t3);margin-bottom:12px;font-weight:500}
+.idea-body{font-size:.92rem;color:var(--t1);line-height:1.8;margin-bottom:12px}
+.idea-footer{background:var(--acc);border-radius:var(--r);padding:10px 14px;font-size:.82rem;color:var(--t2);border-left:3px solid var(--gold);font-style:italic}
+[dir="rtl"] .idea-footer{border-left:none;border-right:3px solid var(--gold)}
+
+/* ═══ TIMELINE ═══ */
+.timeline{position:relative;padding-left:36px;margin:20px 0}
+[dir="rtl"] .timeline{padding-left:0;padding-right:36px}
+.timeline::before{content:'';position:absolute;top:0;bottom:0;left:14px;width:3px;background:linear-gradient(var(--gold),var(--teal),var(--gold));border-radius:3px}
+[dir="rtl"] .timeline::before{left:auto;right:14px}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-dot{position:absolute;left:-30px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;box-shadow:0 0 0 4px var(--bg);z-index:1}
+[dir="rtl"] .tl-dot{left:auto;right:-30px}
+.tl-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:16px 20px;box-shadow:var(--sh);transition:.3s}
+.tl-card:hover{box-shadow:var(--shm)}
+.tl-year{font-family:var(--fu);font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.05em;margin-bottom:4px}
+.tl-title{font-family:var(--fd);font-size:1.1rem;color:var(--t1);font-weight:700;margin-bottom:4px}
+[lang="ar"] .tl-title{font-size:1.2rem}
+.tl-desc{font-size:.85rem;color:var(--t2);line-height:1.65}
+
+/* ═══ QUIZ ═══ */
+.quiz-wrap{max-width:720px;margin:20px auto}
+.quiz-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:24px;box-shadow:var(--sh);margin-bottom:14px}
+.quiz-progress{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.quiz-bar{flex:1;height:10px;background:var(--acc);border-radius:10px;overflow:hidden;border:1px solid var(--brd)}
+.quiz-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:10px;transition:width .5s}
+.quiz-count{font-family:var(--fu);font-weight:600;font-size:.82rem;color:var(--t3)}
+.quiz-q{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--t1);margin-bottom:14px;line-height:1.6}
+[lang="ar"] .quiz-q{font-size:1.3rem}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{padding:14px 18px;background:var(--acc);border:1px solid var(--brd);border-radius:var(--r);cursor:pointer;font-size:.92rem;color:var(--t1);font-family:inherit;text-align:inherit;transition:.25s}
+.quiz-opt:hover{background:var(--card);border-color:var(--gold);transform:translateX(3px)}
+[dir="rtl"] .quiz-opt:hover{transform:translateX(-3px)}
+.quiz-opt.correct{background:rgba(46,125,82,.15);border-color:var(--grn);color:var(--grn);font-weight:600}
+.quiz-opt.wrong{background:rgba(196,90,107,.15);border-color:var(--rose);color:var(--rose)}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:var(--r);font-size:.9rem}
+.quiz-feedback.ok{background:rgba(46,125,82,.08);color:var(--grn);border-left:3px solid var(--grn)}
+.quiz-feedback.bad{background:rgba(196,90,107,.08);color:var(--rose);border-left:3px solid var(--rose)}
+[dir="rtl"] .quiz-feedback.ok,[dir="rtl"] .quiz-feedback.bad{border-left:none;border-right:3px solid}
+[dir="rtl"] .quiz-feedback.ok{border-right-color:var(--grn)}
+[dir="rtl"] .quiz-feedback.bad{border-right-color:var(--rose)}
+.quiz-btn{margin-top:14px;padding:10px 24px;background:var(--gold);color:#fff;border:none;border-radius:20px;font-size:.88rem;font-weight:700;font-family:var(--fu);cursor:pointer;transition:.3s}
+.quiz-btn:hover{background:var(--grn);transform:scale(1.05)}
+.quiz-result{text-align:center;padding:40px 20px}
+.quiz-score{font-family:var(--fd);font-size:3rem;color:var(--gold);font-weight:700;margin:16px 0}
+.quiz-grade{font-size:1.2rem;color:var(--t2);margin-bottom:20px}
+
+/* ═══ ABOUT ═══ */
+.about-box{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:24px;margin-bottom:14px;box-shadow:var(--sh)}
+.about-warn{background:linear-gradient(135deg,rgba(200,168,78,.12),rgba(200,168,78,.03));border-left:4px solid var(--gold);padding:16px 20px;border-radius:0 var(--r) var(--r) 0;margin-bottom:16px;font-size:.85rem;color:var(--t2);line-height:1.7}
+[dir="rtl"] .about-warn{border-left:none;border-right:4px solid var(--gold);border-radius:var(--r) 0 0 var(--r)}
+.about-warn strong{color:var(--gold)}
+.about-title{font-family:var(--fd);font-size:1.25rem;color:var(--gold);font-weight:700;margin-bottom:10px}
+[lang="ar"] .about-title{font-size:1.4rem}
+.about-text{font-size:.9rem;color:var(--t2);line-height:1.8;margin-bottom:10px}
+.about-text strong{color:var(--t1)}
+.book-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:16px 0}
+.book-stat{text-align:center;padding:12px;background:var(--acc);border-radius:var(--r);border:1px solid var(--brd)}
+.book-stat-num{font-family:var(--fd);font-size:1.6rem;color:var(--gold);font-weight:700;line-height:1}
+.book-stat-label{font-family:var(--fu);font-size:.68rem;color:var(--t3);text-transform:uppercase;letter-spacing:.05em;margin-top:4px;font-weight:600}
+
+/* ═══ TICKER ═══ */
+.ticker-bar{background:linear-gradient(135deg,rgba(44,36,23,.96),rgba(30,24,14,.96));border-top:1px solid rgba(200,168,78,.25);border-bottom:1px solid rgba(200,168,78,.15);padding:8px 0;overflow:hidden;position:relative;margin-top:24px}
+[data-theme="dark"] .ticker-bar{background:linear-gradient(135deg,rgba(10,8,5,.95),rgba(20,16,10,.95))}
+.ticker-wrap{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent)}
+.ticker-text{display:inline-flex;white-space:nowrap;color:var(--gold);font-size:.8rem;font-family:var(--fu);opacity:.95;font-weight:500;letter-spacing:.3px}
+.ticker-text .tc{white-space:nowrap;flex-shrink:0;padding-right:32px}
+[lang="ar"] .ticker-text{font-family:var(--fa),serif;font-size:.88rem}
+@keyframes tickerMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══ FOOTER ═══ */
+footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background:var(--card)}
+.powered{display:inline-flex;align-items:center;gap:10px;opacity:.6;transition:.3s;text-decoration:none}
+.powered:hover{opacity:1}
+.powered-logo{width:52px;height:28px;color:var(--gold)}
+.powered-logo svg{width:100%;height:100%;display:block}
+.powered-text{font-family:var(--fu);font-size:.72rem;color:var(--t3);letter-spacing:.03em;font-weight:500}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:720px){
+  .header-inner{gap:8px}
+  .logo h1{font-size:1.2rem}
+  .hero{padding:20px 16px 14px}
+  .chapters-grid{grid-template-columns:1fr}
+  .home-author{flex-direction:column;align-items:center;text-align:center}
+  main{padding:0 14px 30px}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- ═══ SPLASH ═══ -->
+<div class="splash" id="splash" onclick="dismissSplash()">
+  <div class="splash-orn">۞</div>
+  <div class="splash-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="splash-verse">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
+  <div class="splash-title" id="splashTitle">رحلتي الفكرية</div>
+  <div class="splash-sub" id="splashSub">في البذور والجذور والثمر</div>
+  <div class="splash-author" id="splashAuthor">د. عبد الوهاب المسيري</div>
+  <div class="splash-count" id="splashCount">5</div>
+  <div class="splash-hint" id="splashHint">اضغط للتخطي</div>
+</div>
+
+<!-- ═══ SACRED BAR ═══ -->
+<div class="sacred-bar">
+  <div class="sacred-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="sacred-verse">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="app-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🌱</span>
+      <h1 id="logoTitle">رحلتي الفكرية</h1>
+    </div>
+    <nav class="header-controls">
+      <div class="lang-switch">
+        <button class="lang-opt active" data-lang="ar" onclick="setLang('ar')" title="العربية">
+          <svg width="22" height="14" viewBox="0 0 30 20"><rect width="15" height="20" fill="#006233"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="16.5" cy="10" r="5" fill="#D21034"/><circle cx="18" cy="10" r="4" fill="#fff"/><circle cx="17" cy="10" r="4" fill="#006233"/></svg>
+        </button>
+        <button class="lang-opt" data-lang="en" onclick="setLang('en')" title="English">
+          <svg width="22" height="14" viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0,0L30,20M30,0L0,20" stroke="#fff" stroke-width="3"/><path d="M0,0L30,20M30,0L0,20" stroke="#C8102E" stroke-width="1.5"/><rect x="12" width="6" height="20" fill="#fff"/><rect y="7" width="30" height="6" fill="#fff"/><rect x="13" width="4" height="20" fill="#C8102E"/><rect y="8" width="30" height="4" fill="#C8102E"/></svg>
+        </button>
+        <button class="lang-opt" data-lang="fr" onclick="setLang('fr')" title="Français">
+          <svg width="22" height="14" viewBox="0 0 30 20"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+        </button>
+      </div>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Theme">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-orn">۞</div>
+  <h2 class="hero-title" id="heroTitle">رحلتي الفكرية في البذور والجذور والثمر</h2>
+  <div class="hero-sub" id="heroSub">My Intellectual Journey: Seeds, Roots and Fruit</div>
+  <p class="hero-tag" id="heroTag">سيرة فكرية تفاعلية للدكتور عبد الوهاب المسيري (١٩٣٨–٢٠٠٨) — المفكر المصري الذي انتقل من الماركسية إلى الإيمان، ومؤلف موسوعة اليهود واليهودية والصهيونية</p>
+</section>
+
+<!-- ═══ TABS ═══ -->
+<div class="tabs-bar">
+  <div class="tabs-inner" id="tabsInner"></div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+  <!-- HOME -->
+  <section class="panel active" id="panel-home">
+    <div class="metaphor-grid">
+      <div class="metaphor-card">
+        <div class="metaphor-icon">🌱</div>
+        <div class="metaphor-title-ar" id="seedsAr">البذور</div>
+        <div class="metaphor-title-en" id="seedsEn">Seeds</div>
+        <p class="metaphor-desc" id="seedsDesc">البدايات الأولى: الطفولة في دمنهور، الأسرة، والتكوين المبكر الذي زُرع في نفس المفكر</p>
+      </div>
+      <div class="metaphor-card">
+        <div class="metaphor-icon">🌳</div>
+        <div class="metaphor-title-ar" id="rootsAr">الجذور</div>
+        <div class="metaphor-title-en" id="rootsEn">Roots</div>
+        <p class="metaphor-desc" id="rootsDesc">سنوات التكوين: الإسكندرية، ثم كولومبيا ورتغرز في أمريكا، ورحلة التحول من الماركسية إلى الإيمان</p>
+      </div>
+      <div class="metaphor-card">
+        <div class="metaphor-icon">🍇</div>
+        <div class="metaphor-title-ar" id="fruitAr">الثمر</div>
+        <div class="metaphor-title-en" id="fruitEn">Fruit</div>
+        <p class="metaphor-desc" id="fruitDesc">المشروع الفكري: النماذج الإدراكية، فقه التحيّز، موسوعة الصهيونية، والأدب والفن</p>
+      </div>
+    </div>
+
+    <div class="home-author">
+      <div class="home-author-emoji">👨‍🏫</div>
+      <div class="home-author-body">
+        <div class="home-author-name" id="authorName">د. عبد الوهاب المسيري</div>
+        <div class="home-author-dates">١٩٣٨ — ٢٠٠٨ · Damanhour, Egypt</div>
+        <p class="home-author-desc" id="authorDesc">مفكر وأديب مصري، أستاذ الأدب الإنجليزي والمقارن، ومؤلف "موسوعة اليهود واليهودية والصهيونية" في ثماني مجلدات. درس في كلية الآداب بجامعة الإسكندرية، ثم حصل على الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز. يُعدّ من أبرز المفكرين العرب في نقد الحداثة الغربية ودراسات التحيّز. رحلته الفكرية من الماركسية إلى الإيمان الإسلامي مثال على البحث الصادق عن الحقيقة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section class="panel" id="panel-chapters">
+    <div id="chaptersContent"></div>
+  </section>
+
+  <!-- IDEAS -->
+  <section class="panel" id="panel-ideas">
+    <div class="ideas-intro">
+      <h3 class="about-title" id="ideasIntroTitle">المفاهيم المفتاحية في فكر المسيري</h3>
+      <p class="about-text" id="ideasIntroText">المسيري ليس مجرد راوٍ لسيرة شخصية، بل هو صاحب مشروع فكري متكامل. هذه بعض المفاهيم المحورية التي طوّرها عبر مسيرته.</p>
+    </div>
+    <div id="ideasContent"></div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="panel" id="panel-timeline">
+    <div class="timeline" id="timelineContent"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="panel" id="panel-quiz">
+    <div class="quiz-wrap" id="quizWrap"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="panel" id="panel-about">
+    <div class="about-warn" id="aboutWarn">
+      <strong>⚠️ تنبيه:</strong> هذا التطبيق التفاعلي مستوحى من كتاب "رحلتي الفكرية في البذور والجذور والثمر" للدكتور عبد الوهاب المسيري رحمه الله، وليس بديلاً عن قراءة الكتاب الأصلي. المحتوى ملخصات تعليمية مبنية على الخطوط العريضة المعروفة عن فكر المسيري وسيرته.
+    </div>
+    <div class="about-box">
+      <h3 class="about-title" id="aboutBookTitle">عن الكتاب</h3>
+      <p class="about-text" id="aboutBookText">"رحلتي الفكرية في البذور والجذور والثمر" هي السيرة الذاتية الفكرية للدكتور عبد الوهاب المسيري، نشرها دار الشروق. يسرد فيها رحلته من طفولة دمنهور إلى تأليف موسوعته الشهيرة. يستخدم المسيري استعارة "البذور والجذور والثمر" لوصف مراحل نموه الفكري.</p>
+      <div class="book-stats">
+        <div class="book-stat"><div class="book-stat-num">562</div><div class="book-stat-label" id="statPages">Pages</div></div>
+        <div class="book-stat"><div class="book-stat-num">2</div><div class="book-stat-label" id="statParts">Parts</div></div>
+        <div class="book-stat"><div class="book-stat-num">10</div><div class="book-stat-label" id="statChapters">Chapters</div></div>
+        <div class="book-stat"><div class="book-stat-num">8</div><div class="book-stat-label" id="statVolumes">Encyclopedia</div></div>
+      </div>
+    </div>
+    <div class="about-box">
+      <h3 class="about-title" id="aboutAuthorTitle">عن المؤلف</h3>
+      <p class="about-text" id="aboutAuthorText"><strong>د. عبد الوهاب المسيري (1938–2008)</strong> مفكر مصري، ولد في دمنهور بمحافظة البحيرة. تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية عام 1959. نال الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز بالولايات المتحدة عام 1969. درّس في جامعات عديدة من بينها عين شمس والكويت والملك سعود. مشروعه الأكبر: "موسوعة اليهود واليهودية والصهيونية" الصادرة عام 1999 في ثماني مجلدات، وتُعدّ أضخم موسوعة عربية عن هذا الموضوع. تميّز بنقد الحداثة الغربية وتأسيس حقل "دراسات التحيّز" ومنهج "النماذج الإدراكية" في العلوم الإنسانية.</p>
+    </div>
+    <div class="about-box">
+      <h3 class="about-title" id="aboutSourcesTitle">المصادر</h3>
+      <p class="about-text">
+        • «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>
+        • «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>
+        • «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>
+        • «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>
+        • سير ومقالات منشورة عن المسيري في الصحافة العربية
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker-bar">
+  <div class="ticker-wrap"><div class="ticker-text" id="tickerText"></div></div>
+</div>
+
+<footer>
+  <a class="powered" href="https://workshop-diy.org" target="_blank" rel="noopener">
+    <span class="powered-logo" id="poweredLogo"></span>
+    <span class="powered-text">Powered by workshop-diy.org</span>
+  </a>
+</footer>
+
+<script>
+// ═══════════════ WORKSHOP LOGO ═══════════════
+const WORKSHOP_LOGO_SVG = `<svg preserveAspectRatio="xMidYMid meet" role="img" aria-label="Workshop DIY" xmlns="http://www.w3.org/2000/svg" viewBox="77.139885 78.322945 253.991455 136.254120"><path style="stroke:none;fill:currentColor;fill-rule:evenodd" d="M259.791718,157.665863L264.87912,148.034195L272.338226,148.034195L263.03244,163.730896L263.03244,174.991974L256.261322,174.991974L256.261322,164.07489L246.792618,148.034195L254.505173,148.034195L259.791718,157.665863z"/><path style="stroke:none;fill:currentColor;fill-rule:evenodd" d="M240.369812,152.741394L236.495438,152.741394L236.495438,170.284775L240.369812,170.284775L240.369812,174.991974L225.849915,174.991974L225.849915,170.284775L229.724304,170.284775L229.724304,152.741394L225.849915,152.741394L225.849915,148.034195L240.369812,148.034195L240.369812,152.741394z"/></svg>`;
+
+// ═══════════════ DATA ═══════════════
+const CHAPTERS = [
+  // Part 1: Formation
+  {id:1, part:1, icon:'🌱', ar:{t:'البذور الأولى', d:'طفولة دمنهور: الأسرة، الحارة، المدرسة، والأثر الأول لمحيط الدلتا على تكوين الوجدان والهوية. البذور الأولى لحبّ القراءة والبحث عن المعنى.'}, en:{t:'The Early Seeds', d:'Childhood in Damanhour: family, neighborhood, school, and the Delta environment\'s first impact on shaping identity. Early seeds of love for reading and the search for meaning.'}, fr:{t:'Les Premières Graines', d:'Enfance à Damanhour : famille, quartier, école, et la première influence de l\'environnement du Delta sur l\'identité. Graines précoces d\'amour de la lecture et de la recherche du sens.'}, tags:['طفولة','دمنهور','الأسرة']},
+  {id:2, part:1, icon:'🪞', ar:{t:'بدايات الهوية', d:'مرحلة الوعي الأولى: التساؤلات الكبرى، انطلاق الهوية العربية والإسلامية، والمرحلة الجامعية في الإسكندرية حيث تتلمذ على كبار الأساتذة وتفتّح وعيه على عالم الأفكار.'}, en:{t:'Beginnings of Identity', d:'First stage of awareness: the great questions, the awakening of Arab-Islamic identity, and the university years at Alexandria where he studied under major professors and opened up to the world of ideas.'}, fr:{t:'Débuts de l\'Identité', d:'Première étape de la conscience : les grandes questions, l\'éveil de l\'identité arabo-islamique, et les années universitaires à Alexandrie où il a étudié sous de grands professeurs.'}, tags:['هوية','الإسكندرية','جامعة']},
+  {id:3, part:1, icon:'🗽', ar:{t:'في الولايات المتحدة', d:'رحلة الدراسات العليا: الماجستير في جامعة كولومبيا، ثم الدكتوراه في رتغرز (1969). لقاء مع الحضارة الغربية من داخلها، وتأمل نقدي في الحداثة والمجتمع الأمريكي.'}, en:{t:'In the United States', d:'Graduate studies journey: Master\'s at Columbia University, then PhD at Rutgers (1969). Encountering Western civilization from within, and critical reflection on modernity and American society.'}, fr:{t:'Aux États-Unis', d:'Parcours des études supérieures : Master à Columbia, puis Doctorat à Rutgers (1969). Rencontre de la civilisation occidentale de l\'intérieur, et réflexion critique sur la modernité.'}, tags:['أمريكا','كولومبيا','رتغرز']},
+  {id:4, part:1, icon:'🧭', ar:{t:'من المادية إلى الإيمان', d:'التحول الأعمق: من الماركسية والوضعية إلى رحابة الإيمان الإسلامي. ليست ردّة فعل بل رحلة طويلة من البحث الصادق والمراجعة الذاتية، حيث اتسع الأفق من ضيق المادية إلى سعة الإنسانية المؤمنة.'}, en:{t:'From Materialism to Faith', d:'The deepest transformation: from Marxism and positivism to the spaciousness of Islamic faith. Not a reaction but a long journey of honest inquiry and self-revision, where the horizon expanded from materialism\'s narrowness to believing humanity\'s breadth.'}, fr:{t:'Du Matérialisme à la Foi', d:'La transformation la plus profonde : du marxisme et du positivisme à l\'ampleur de la foi islamique. Pas une réaction mais un long parcours de recherche honnête et d\'auto-révision.'}, tags:['تحوّل','ماركسية','إيمان']},
+
+  // Part 2: World of Thought
+  {id:5, part:2, icon:'🔍', ar:{t:'النماذج الإدراكية والتحليلية', d:'منهج المسيري العلمي: النماذج التفسيرية والتحليلية كأداة لفهم الظواهر الإنسانية والاجتماعية. كيف تتحول الأفكار المبعثرة إلى نموذج متكامل يكشف البنية العميقة للواقع.'}, en:{t:'Cognitive and Analytical Models', d:'Al-Messiri\'s scientific methodology: explanatory and analytical models as tools to understand human and social phenomena. How scattered ideas become an integrated model revealing reality\'s deep structure.'}, fr:{t:'Modèles Cognitifs et Analytiques', d:'Méthodologie scientifique de Al-Messiri : modèles explicatifs comme outils pour comprendre les phénomènes humains et sociaux.'}, tags:['منهج','نماذج','تحليل']},
+  {id:6, part:2, icon:'🌾', ar:{t:'بعض الثمرات الأولى', d:'المؤلفات الباكرة ومقالات الجرائد: التحولات في المجتمع العربي، نقد الاستشراق، والبدايات الأولى للمشروع الفكري الذي سيتبلور لاحقاً في الموسوعة وفقه التحيّز.'}, en:{t:'Some First Fruits', d:'Early writings and newspaper articles: transformations in Arab society, critique of Orientalism, and early beginnings of the intellectual project that would later crystallize in the Encyclopedia and fiqh al-tahayyuz.'}, fr:{t:'Quelques Premiers Fruits', d:'Écrits précoces et articles de journaux : transformations dans la société arabe, critique de l\'orientalisme, et les débuts du projet intellectuel.'}, tags:['مؤلفات','مقالات','مشروع']},
+  {id:7, part:2, icon:'✡️', ar:{t:'الصهيونية', d:'الموضوع الذي لازم المسيري عقوداً: دراسة الصهيونية ليس كقضية سياسية فحسب بل كظاهرة فكرية وثقافية ضمن سياق الحداثة الغربية. التمييز الدقيق بين اليهودية (الدين) والصهيونية (الحركة السياسية).'}, en:{t:'Zionism', d:'The subject that accompanied Al-Messiri for decades: studying Zionism not merely as a political issue but as an intellectual and cultural phenomenon within Western modernity. The precise distinction between Judaism (religion) and Zionism (political movement).'}, fr:{t:'Le Sionisme', d:'Le sujet qui a accompagné Al-Messiri pendant des décennies : étudier le sionisme non seulement comme question politique mais comme phénomène intellectuel au sein de la modernité occidentale.'}, tags:['صهيونية','يهودية','حداثة']},
+  {id:8, part:2, icon:'📚', ar:{t:'الموسوعة: تاريخها', d:'رحلة تأليف "موسوعة اليهود واليهودية والصهيونية": خمس وعشرون سنة من البحث والكتابة والمراجعة، الصعوبات والتحديات، والصدور أخيراً عام ١٩٩٩ في ثماني مجلدات عن دار الشروق.'}, en:{t:'The Encyclopedia: Its History', d:'The journey of authoring "The Encyclopedia of Jews, Judaism and Zionism": twenty-five years of research, writing and revision, the difficulties and challenges, and its final publication in 1999 in eight volumes by Dar Al-Shorouk.'}, fr:{t:'L\'Encyclopédie : Son Histoire', d:'Le parcours d\'écriture de l\'"Encyclopédie des Juifs, du Judaïsme et du Sionisme" : vingt-cinq ans de recherche et d\'écriture, publiée en 1999 en huit volumes.'}, tags:['موسوعة','٢٥ سنة','دار الشروق']},
+  {id:9, part:2, icon:'🗂️', ar:{t:'الموسوعة: الموضوعات الأساسية', d:'البنية المفاهيمية للموسوعة: الجماعات اليهودية في التاريخ، الرموز الدينية والفكرية، الحركة الصهيونية ومراحلها، الدولة الصهيونية، والقضية الفلسطينية. خارطة فكرية شاملة لظاهرة مركّبة.'}, en:{t:'The Encyclopedia: Core Themes', d:'The conceptual structure of the Encyclopedia: Jewish communities in history, religious and intellectual symbols, the Zionist movement and its stages, the Zionist state, and the Palestinian cause. A comprehensive intellectual map of a complex phenomenon.'}, fr:{t:'L\'Encyclopédie : Thèmes Fondamentaux', d:'Structure conceptuelle de l\'Encyclopédie : communautés juives, symboles religieux, mouvement sioniste, État sioniste, cause palestinienne.'}, tags:['جماعات','رموز','فلسطين']},
+  {id:10, part:2, icon:'🎨', ar:{t:'في عالم الأدب والفن', d:'الجانب الأدبي من شخصية المسيري: الشعر، الرواية، النقد الأدبي، وأدب الأطفال الذي ألّف فيه كتباً عديدة. الإيمان بأن الأدب والفن يحملان رسالة إنسانية تكمّل المشروع الفكري.'}, en:{t:'In the World of Literature and Art', d:'The literary side of Al-Messiri\'s personality: poetry, fiction, literary criticism, and children\'s literature in which he authored many books. The belief that literature and art carry a humanistic message completing the intellectual project.'}, fr:{t:'Dans le Monde de la Littérature et de l\'Art', d:'Le côté littéraire de Al-Messiri : poésie, fiction, critique, et littérature pour enfants. La conviction que littérature et art portent un message humaniste.'}, tags:['أدب','فن','أطفال']},
+];
+
+const IDEAS = [
+  {num:1, ar:{t:'النماذج الإدراكية',d:'أدوات منهجية لفهم الظواهر المركّبة. بدلاً من التفسير المادي المبسّط أو الوصف السطحي، يقترح المسيري النموذج التفسيري كشبكة من المفاهيم المترابطة التي تكشف البنية العميقة للظاهرة وتربطها بسياقها الحضاري.'}, en:{t:'Cognitive Models',d:'Methodological tools for understanding complex phenomena. Instead of simplistic materialist explanation or surface description, Al-Messiri proposes the explanatory model as a network of interconnected concepts revealing the deep structure of a phenomenon within its civilizational context.'}, fr:{t:'Modèles Cognitifs',d:'Outils méthodologiques pour comprendre les phénomènes complexes. Al-Messiri propose le modèle explicatif comme réseau de concepts interconnectés révélant la structure profonde dans son contexte civilisationnel.'}, note:'العلوم الإنسانية لا تعمل بمنطق العلوم الطبيعية'},
+  {num:2, ar:{t:'فقه التحيّز',d:'كل إنتاج فكري يحمل تحيّزاً ضمنياً: التحيّز للحضارة التي تنتمي إليها، للغتها، لمسلماتها. المسيري يدعو إلى "فقه التحيّز" — وعي نقدي بالتحيّزات المعرفية الغربية السائدة، وتطوير رؤية عربية إسلامية أصيلة ومستقلة.'}, en:{t:'Fiqh al-Tahayyuz (Jurisprudence of Bias)',d:'Every intellectual production carries implicit bias: bias toward its originating civilization, its language, its presuppositions. Al-Messiri calls for "fiqh al-tahayyuz" — critical awareness of prevailing Western epistemological biases, and developing an authentic, independent Arab-Islamic vision.'}, fr:{t:'Fiqh al-Tahayyuz',d:'Chaque production intellectuelle porte un biais implicite. Al-Messiri appelle à la conscience critique des biais épistémologiques occidentaux dominants et au développement d\'une vision arabo-islamique authentique.'}, note:'لا حياد معرفي مطلق — الوعي بالتحيّز هو بداية الاستقلال'},
+  {num:3, ar:{t:'العلمانية الشاملة والجزئية',d:'تمييز نقدي دقيق: العلمانية الجزئية تفصل الدين عن الدولة فحسب، أما العلمانية الشاملة فتنزع المقدس من كل مجالات الحياة وتختزل الإنسان في بُعد مادي نفعي واحد. المسيري يرى أن الغرب انتقل تدريجياً من الأولى إلى الثانية.'}, en:{t:'Partial vs. Comprehensive Secularism',d:'A precise critical distinction: partial secularism only separates religion from state, while comprehensive secularism strips the sacred from all life domains, reducing the human to a single materialist-utilitarian dimension. Al-Messiri argues the West has gradually moved from the former to the latter.'}, fr:{t:'Sécularisme Partiel vs Total',d:'Distinction critique précise : le sécularisme partiel sépare religion et État ; le sécularisme total retire le sacré de tous les domaines. Al-Messiri montre que l\'Occident est passé du premier au second.'}, note:'العلمانية الشاملة تُلغي المعنى الروحي للوجود'},
+  {num:4, ar:{t:'الحداثة الصلبة والسائلة',d:'قراءة المسيري للحداثة الغربية في مرحلتيها: الصلبة (القرن التاسع عشر: الصناعة، الأمة، العقلانية) ثم السائلة (ما بعد الحداثة: التفكك، النسبية، الاستهلاك). كلتا المرحلتين تعاني من تآكل المعنى الإنساني الكلي.'}, en:{t:'Solid and Liquid Modernity',d:'Al-Messiri\'s reading of Western modernity in two stages: solid (19th century: industry, nation, rationality) then liquid (postmodernism: fragmentation, relativism, consumerism). Both stages suffer from erosion of holistic human meaning.'}, fr:{t:'Modernité Solide et Liquide',d:'Lecture par Al-Messiri de la modernité occidentale en deux étapes : solide (19e siècle) puis liquide (postmodernisme). Les deux souffrent d\'érosion du sens humain global.'}, note:'ما بعد الحداثة ليست نقضاً للحداثة بل استمراراً لأزمتها'},
+  {num:5, ar:{t:'الصهيونية كظاهرة غربية',d:'خلافاً للتصور الشائع، المسيري يحاجّ بأن الصهيونية ظاهرة غربية أصلاً، نتاج العقل الاستعماري الأوروبي والحداثة المادية، وليست امتداداً طبيعياً لليهودية الدينية. هذا التمييز مفتاحي لفهم الصراع وللدفاع عن الحقوق الفلسطينية.'}, en:{t:'Zionism as a Western Phenomenon',d:'Contrary to common perception, Al-Messiri argues Zionism is originally a Western phenomenon, a product of European colonial thought and materialist modernity, not a natural extension of religious Judaism. This distinction is key to understanding the conflict and defending Palestinian rights.'}, fr:{t:'Le Sionisme comme Phénomène Occidental',d:'Contrairement à la perception commune, Al-Messiri soutient que le sionisme est à l\'origine un phénomène occidental, produit de la pensée coloniale européenne, non une extension naturelle du judaïsme religieux.'}, note:'التمييز بين اليهودية (الدين) والصهيونية (الحركة السياسية) ضروري'},
+  {num:6, ar:{t:'الإنسان متعدد الأبعاد',d:'بديل المسيري عن "الإنسان الاقتصادي" للماركسية و"الإنسان النفعي" للرأسمالية: إنسان ذو أبعاد متعددة — روحية وأخلاقية وعقلية ووجدانية — لا يمكن اختزاله في بُعد واحد. هذا هو جوهر الرؤية الإيمانية مقابل الرؤى الاختزالية المادية.'}, en:{t:'The Multi-Dimensional Human',d:'Al-Messiri\'s alternative to Marxism\'s "economic man" and capitalism\'s "utilitarian man": a human with multiple dimensions — spiritual, ethical, intellectual, emotional — irreducible to one dimension. This is the essence of the faith-based vision against reductive materialist views.'}, fr:{t:'L\'Humain Multidimensionnel',d:'L\'alternative de Al-Messiri à "l\'homme économique" marxiste et à "l\'homme utilitaire" capitaliste : un humain aux dimensions multiples irréductibles. C\'est l\'essence de la vision de la foi face aux visions matérialistes réductrices.'}, note:'الاختزال المادي هو جوهر أزمة الحداثة'},
+];
+
+const TIMELINE = [
+  {y:'1938', ar:{t:'المولد في دمنهور',d:'وُلد عبد الوهاب المسيري في مدينة دمنهور بمحافظة البحيرة في دلتا مصر.'}, en:{t:'Born in Damanhour',d:'Abdul Wahab Al-Messiri was born in the city of Damanhour, Beheira Governorate, in the Nile Delta of Egypt.'}, fr:{t:'Naissance à Damanhour',d:'Abdul Wahab Al-Messiri est né dans la ville de Damanhour, gouvernorat de Beheira, delta du Nil.'}},
+  {y:'1959', ar:{t:'ليسانس الآداب — الإسكندرية',d:'تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية بامتياز مع مرتبة الشرف.'}, en:{t:'BA Literature — Alexandria',d:'Graduated from the Faculty of Arts, English Department, at Alexandria University with distinction and honors.'}, fr:{t:'Licence de Lettres — Alexandrie',d:'Diplômé de la Faculté des Lettres, Département d\'anglais, à l\'Université d\'Alexandrie avec mention.'}},
+  {y:'1964', ar:{t:'الماجستير — جامعة كولومبيا',d:'نال درجة الماجستير في الأدب الإنجليزي والمقارن من جامعة كولومبيا في نيويورك.'}, en:{t:'MA — Columbia University',d:'Obtained a Master\'s degree in English and Comparative Literature from Columbia University in New York.'}, fr:{t:'Master — Columbia',d:'Master en littérature anglaise et comparée de l\'Université Columbia à New York.'}},
+  {y:'1969', ar:{t:'الدكتوراه — جامعة رتغرز',d:'حصل على درجة الدكتوراه في الأدب الإنجليزي والمقارن من جامعة رتغرز بولاية نيوجيرسي.'}, en:{t:'PhD — Rutgers University',d:'Earned a PhD in English and Comparative Literature from Rutgers University in New Jersey.'}, fr:{t:'Doctorat — Rutgers',d:'Doctorat en littérature anglaise et comparée à l\'Université Rutgers dans le New Jersey.'}},
+  {y:'1970s', ar:{t:'التدريس في الجامعات',d:'درّس في جامعة عين شمس، ثم الملك سعود بالرياض وجامعة الكويت. بدأ مشروعه الفكري الكبير.'}, en:{t:'University Teaching',d:'Taught at Ain Shams University, then King Saud in Riyadh and Kuwait University. Started his major intellectual project.'}, fr:{t:'Enseignement Universitaire',d:'Enseigné à Ain Shams, Roi Saoud (Riyad) et Université du Koweït. Début de son projet intellectuel majeur.'}},
+  {y:'1975', ar:{t:'بداية مشروع الموسوعة',d:'بدأ العمل على "موسوعة اليهود واليهودية والصهيونية" التي ستستغرق أكثر من عشرين عاماً من البحث والكتابة.'}, en:{t:'Encyclopedia Project Begins',d:'Began working on "The Encyclopedia of Jews, Judaism and Zionism" which would take over twenty years of research and writing.'}, fr:{t:'Début du Projet Encyclopédie',d:'Début du travail sur "L\'Encyclopédie des Juifs, du Judaïsme et du Sionisme", qui prendra plus de vingt ans.'}},
+  {y:'1990s', ar:{t:'العلمانية وفقه التحيّز',d:'ألّف "العلمانية الجزئية والعلمانية الشاملة"، وساهم في تأسيس حقل دراسات التحيّز مع المعهد العالمي للفكر الإسلامي.'}, en:{t:'Secularism & Fiqh al-Tahayyuz',d:'Authored "Partial and Comprehensive Secularism," and contributed to founding the field of bias studies with IIIT.'}, fr:{t:'Sécularisme & Fiqh al-Tahayyuz',d:'Auteur de "Sécularisme Partiel et Total", et cofondateur du domaine des études sur les biais avec l\'IIIT.'}},
+  {y:'1999', ar:{t:'صدور الموسوعة',d:'صدرت "موسوعة اليهود واليهودية والصهيونية" في ثماني مجلدات عن دار الشروق — تُعدّ أضخم موسوعة عربية عن الموضوع.'}, en:{t:'Encyclopedia Published',d:'"The Encyclopedia of Jews, Judaism and Zionism" published in 8 volumes by Dar Al-Shorouk — the largest Arabic encyclopedia on the subject.'}, fr:{t:'Publication de l\'Encyclopédie',d:'"L\'Encyclopédie des Juifs, du Judaïsme et du Sionisme" publiée en 8 volumes chez Dar Al-Shorouk.'}},
+  {y:'2000s', ar:{t:'كفاية والنشاط العام',d:'انخرط في الحركة المصرية للتغيير "كفاية" وأصبح المنسق العام لها. نشر مقالات كثيرة في قضايا الإصلاح السياسي.'}, en:{t:'Kefaya Movement',d:'Joined the Egyptian Movement for Change "Kefaya" and became its general coordinator. Published numerous articles on political reform.'}, fr:{t:'Mouvement Kefaya',d:'A rejoint le Mouvement égyptien pour le changement "Kefaya" et en est devenu le coordinateur général.'}},
+  {y:'2006-8', ar:{t:'رحلتي الفكرية',d:'نشر سيرته الذاتية "رحلتي الفكرية في البذور والجذور والثمر" في دار الشروق. تعتبر خلاصة مسيرته الفكرية والحياتية.'}, en:{t:'My Intellectual Journey',d:'Published his autobiography "My Intellectual Journey in Seeds, Roots and Fruit" by Dar Al-Shorouk. Considered the summary of his intellectual and life journey.'}, fr:{t:'Ma Voyage Intellectuel',d:'Publication de son autobiographie "Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits" chez Dar Al-Shorouk.'}},
+  {y:'2008', ar:{t:'الوفاة',d:'توفي الدكتور عبد الوهاب المسيري في الثالث من يوليو 2008 في القاهرة بعد صراع مع المرض، تاركاً تراثاً فكرياً ضخماً.'}, en:{t:'Passing',d:'Dr. Abdul Wahab Al-Messiri passed away on July 3, 2008 in Cairo after a struggle with illness, leaving a vast intellectual legacy.'}, fr:{t:'Décès',d:'Dr Abdul Wahab Al-Messiri est décédé le 3 juillet 2008 au Caire après une lutte contre la maladie, laissant un vaste héritage intellectuel.'}},
+];
+
+const QUIZ = [
+  {q:{ar:'في أي مدينة مصرية وُلد د. عبد الوهاب المسيري؟',en:'In which Egyptian city was Dr. Abdul Wahab Al-Messiri born?',fr:'Dans quelle ville égyptienne est né Dr Abdul Wahab Al-Messiri ?'}, opts:{ar:['القاهرة','الإسكندرية','دمنهور','طنطا'],en:['Cairo','Alexandria','Damanhour','Tanta'],fr:['Le Caire','Alexandrie','Damanhour','Tanta']}, correct:2},
+  {q:{ar:'من أي جامعة أمريكية حصل المسيري على الدكتوراه؟',en:'From which American university did Al-Messiri earn his PhD?',fr:'De quelle université américaine Al-Messiri a-t-il obtenu son doctorat ?'}, opts:{ar:['هارفارد','كولومبيا','رتغرز','برنستون'],en:['Harvard','Columbia','Rutgers','Princeton'],fr:['Harvard','Columbia','Rutgers','Princeton']}, correct:2},
+  {q:{ar:'كم مجلداً تتألف منها موسوعة اليهود واليهودية والصهيونية؟',en:'How many volumes does the Encyclopedia of Jews, Judaism and Zionism consist of?',fr:'Combien de volumes compte l\'Encyclopédie des Juifs, du Judaïsme et du Sionisme ?'}, opts:{ar:['٤','٦','٨','١٠'],en:['4','6','8','10'],fr:['4','6','8','10']}, correct:2},
+  {q:{ar:'ما اسم المنهج الذي طوّره المسيري لنقد المعرفة الغربية؟',en:'What is the name of the method Al-Messiri developed to critique Western knowledge?',fr:'Quel est le nom de la méthode développée par Al-Messiri pour critiquer le savoir occidental ?'}, opts:{ar:['فقه الواقع','فقه التحيّز','فقه السنن','فقه الموازنات'],en:['Fiqh al-Waqi','Fiqh al-Tahayyuz','Fiqh al-Sunan','Fiqh al-Muwazanat'],fr:['Fiqh al-Waqi','Fiqh al-Tahayyuz','Fiqh al-Sunan','Fiqh al-Muwazanat']}, correct:1},
+  {q:{ar:'ما الاستعارة الرئيسية التي استخدمها المسيري لعنوان سيرته الفكرية؟',en:'What is the main metaphor Al-Messiri used for his intellectual autobiography?',fr:'Quelle est la métaphore principale utilisée par Al-Messiri pour son autobiographie ?'}, opts:{ar:['الماء والنبع','البذور والجذور والثمر','الليل والنهار','البداية والنهاية'],en:['Water and Spring','Seeds, Roots and Fruit','Night and Day','Beginning and End'],fr:['Eau et Source','Graines, Racines et Fruits','Nuit et Jour','Début et Fin']}, correct:1},
+  {q:{ar:'من أي توجه فكري انتقل المسيري قبل تبنّي الرؤية الإيمانية؟',en:'From which intellectual orientation did Al-Messiri transition before adopting the faith-based vision?',fr:'De quelle orientation intellectuelle Al-Messiri est-il passé avant d\'adopter la vision basée sur la foi ?'}, opts:{ar:['الليبرالية','الماركسية','القومية','البنيوية'],en:['Liberalism','Marxism','Nationalism','Structuralism'],fr:['Libéralisme','Marxisme','Nationalisme','Structuralisme']}, correct:1},
+  {q:{ar:'ما الحركة السياسية التي تولى المسيري تنسيقها العام؟',en:'Which political movement did Al-Messiri become the general coordinator of?',fr:'De quel mouvement politique Al-Messiri est-il devenu le coordinateur général ?'}, opts:{ar:['الوفد','كفاية','الإخوان','الغد'],en:['Al-Wafd','Kefaya','Ikhwan','Al-Ghad'],fr:['Al-Wafd','Kefaya','Frères','Al-Ghad']}, correct:1},
+  {q:{ar:'ما التمييز المفتاحي الذي يقدمه المسيري بخصوص الصهيونية؟',en:'What key distinction does Al-Messiri present regarding Zionism?',fr:'Quelle distinction clé Al-Messiri présente-t-il concernant le sionisme ?'}, opts:{ar:['صهيونية يهودية وصهيونية مسيحية','اليهودية كدين والصهيونية كحركة سياسية غربية','صهيونية سياسية وصهيونية دينية','صهيونية شرقية وصهيونية غربية'],en:['Jewish and Christian Zionism','Judaism as religion, Zionism as Western political movement','Political and religious Zionism','Eastern and Western Zionism'],fr:['Sionisme juif et chrétien','Judaïsme comme religion, sionisme comme mouvement politique occidental','Sionisme politique et religieux','Sionisme oriental et occidental']}, correct:1},
+];
+
+const LABELS = {
+  ar:{title:'رحلتي الفكرية', heroTitle:'رحلتي الفكرية في البذور والجذور والثمر', heroSub:'سيرة فكرية تفاعلية', heroTag:'سيرة فكرية تفاعلية للدكتور عبد الوهاب المسيري (١٩٣٨–٢٠٠٨) — المفكر المصري الذي انتقل من الماركسية إلى الإيمان، ومؤلف موسوعة اليهود واليهودية والصهيونية', tabHome:'الرئيسية', tabChapters:'الفصول', tabIdeas:'المفاهيم', tabTimeline:'السيرة', tabQuiz:'مسابقة', tabAbout:'الكتاب', splashTitle:'رحلتي الفكرية', splashSub:'في البذور والجذور والثمر', splashAuthor:'د. عبد الوهاب المسيري', splashHint:'اضغط للتخطي', part1:'الجزء الأول: التكوين', part1Desc:'من دمنهور إلى رتغرز — بذور الوعي وبداياته', part2:'الجزء الثاني: عالم الفكر', part2Desc:'من النماذج الإدراكية إلى الموسوعة والأدب', seeds:'البذور', roots:'الجذور', fruit:'الثمر', seedsDesc:'البدايات الأولى: الطفولة في دمنهور، الأسرة، والتكوين المبكر', rootsDesc:'سنوات التكوين: الإسكندرية، كولومبيا ورتغرز، ورحلة التحول', fruitDesc:'المشروع الفكري: النماذج الإدراكية، فقه التحيّز، الموسوعة', pages:'صفحة', parts:'جزءان', chapters:'فصلاً', volumes:'مجلدات', next:'السؤال التالي', retry:'إعادة المسابقة', correct:'أحسنت! إجابة صحيحة 🎉', wrong:'حاول مرة أخرى 💪', score:'نتيجتك'},
+  en:{title:'My Intellectual Journey', heroTitle:'My Intellectual Journey in Seeds, Roots and Fruit', heroSub:'Interactive Intellectual Biography', heroTag:'Interactive intellectual biography of Dr. Abdul Wahab Al-Messiri (1938-2008) — the Egyptian thinker who moved from Marxism to faith, and author of the Encyclopedia of Jews, Judaism and Zionism', tabHome:'Home', tabChapters:'Chapters', tabIdeas:'Key Ideas', tabTimeline:'Timeline', tabQuiz:'Quiz', tabAbout:'Book', splashTitle:'My Journey', splashSub:'Seeds, Roots and Fruit', splashAuthor:'Dr. Abdul Wahab Al-Messiri', splashHint:'tap to skip', part1:'Part 1: Formation', part1Desc:'From Damanhour to Rutgers — seeds of consciousness', part2:'Part 2: World of Thought', part2Desc:'From cognitive models to the Encyclopedia and literature', seeds:'Seeds', roots:'Roots', fruit:'Fruit', seedsDesc:'Early beginnings: childhood in Damanhour, family, early formation', rootsDesc:'Formative years: Alexandria, Columbia and Rutgers, transformation journey', fruitDesc:'Intellectual project: cognitive models, fiqh al-tahayyuz, Encyclopedia', pages:'Pages', parts:'Parts', chapters:'Chapters', volumes:'Volumes', next:'Next Question', retry:'Retry Quiz', correct:'Well done! Correct answer 🎉', wrong:'Try again 💪', score:'Your Score'},
+  fr:{title:'Mon Voyage Intellectuel', heroTitle:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits', heroSub:'Biographie Intellectuelle Interactive', heroTag:'Biographie intellectuelle interactive du Dr Abdul Wahab Al-Messiri (1938-2008) — penseur égyptien passé du marxisme à la foi, auteur de l\'Encyclopédie des Juifs, du Judaïsme et du Sionisme', tabHome:'Accueil', tabChapters:'Chapitres', tabIdeas:'Idées Clés', tabTimeline:'Chronologie', tabQuiz:'Quiz', tabAbout:'Le Livre', splashTitle:'Mon Voyage', splashSub:'Graines, Racines et Fruits', splashAuthor:'Dr Abdul Wahab Al-Messiri', splashHint:'appuyez pour passer', part1:'Partie 1 : Formation', part1Desc:'De Damanhour à Rutgers — graines de conscience', part2:'Partie 2 : Monde de la Pensée', part2Desc:'Des modèles cognitifs à l\'Encyclopédie et la littérature', seeds:'Graines', roots:'Racines', fruit:'Fruits', seedsDesc:'Débuts précoces : enfance à Damanhour, famille, formation précoce', rootsDesc:'Années de formation : Alexandrie, Columbia, Rutgers, voyage de transformation', fruitDesc:'Projet intellectuel : modèles cognitifs, fiqh al-tahayyuz, Encyclopédie', pages:'Pages', parts:'Parties', chapters:'Chapitres', volumes:'Volumes', next:'Question Suivante', retry:'Recommencer', correct:'Bravo ! Bonne réponse 🎉', wrong:'Essayez encore 💪', score:'Votre Score'},
+};
+
+// ═══════════════ STATE ═══════════════
+let currentLang = 'ar';
+let currentTheme = localStorage.getItem('rihlati-theme') || 'light';
+let currentTab = 'home';
+let quizState = {idx:0, score:0, answered:false};
+let splashTimer = null;
+
+// ═══════════════ SPLASH ═══════════════
+function initSplash(){
+  let count = 5;
+  splashTimer = setInterval(()=>{
+    count--;
+    const el = document.getElementById('splashCount');
+    if(el) el.textContent = count;
+    if(count <= 0) dismissSplash();
+  },1000);
+}
+function dismissSplash(){
+  if(splashTimer) clearInterval(splashTimer);
+  const s = document.getElementById('splash');
+  if(s){ s.classList.add('hidden'); setTimeout(()=>s.remove(),700); }
+}
+
+// ═══════════════ TABS ═══════════════
+function renderTabs(){
+  const L = LABELS[currentLang];
+  const tabs = [
+    {id:'home', icon:'🏠', label:L.tabHome},
+    {id:'chapters', icon:'📖', label:L.tabChapters},
+    {id:'ideas', icon:'💡', label:L.tabIdeas},
+    {id:'timeline', icon:'📅', label:L.tabTimeline},
+    {id:'quiz', icon:'🎯', label:L.tabQuiz},
+    {id:'about', icon:'📚', label:L.tabAbout},
+  ];
+  document.getElementById('tabsInner').innerHTML = tabs.map(t =>
+    `<button class="tab ${currentTab===t.id?'active':''}" onclick="switchTab('${t.id}')"><span class="tab-icon">${t.icon}</span><span>${t.label}</span></button>`
+  ).join('');
+}
+function switchTab(id){
+  currentTab = id;
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  const panel = document.getElementById('panel-'+id);
+  if(panel) panel.classList.add('active');
+  renderTabs();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ═══════════════ CHAPTERS ═══════════════
+function renderChapters(){
+  const L = LABELS[currentLang];
+  const part1 = CHAPTERS.filter(c=>c.part===1);
+  const part2 = CHAPTERS.filter(c=>c.part===2);
+  const card = c => {
+    const d = c[currentLang];
+    return `<div class="chapter-card">
+      <div class="chapter-num">${c.id}</div>
+      <div class="chapter-icon">${c.icon}</div>
+      <div class="chapter-title-ar" dir="rtl">${c.ar.t}</div>
+      <div class="chapter-title-en" dir="ltr">${c.en.t}</div>
+      <p class="chapter-desc">${d.d}</p>
+      <div class="chapter-tags">${c.tags.map(t=>`<span class="chapter-tag">${t}</span>`).join('')}</div>
+    </div>`;
+  };
+  document.getElementById('chaptersContent').innerHTML = `
+    <div class="part-head">
+      <div class="part-num">١</div>
+      <div><div class="part-title">${L.part1}</div><div class="part-desc">${L.part1Desc}</div></div>
+    </div>
+    <div class="chapters-grid">${part1.map(card).join('')}</div>
+    <div class="part-head">
+      <div class="part-num">٢</div>
+      <div><div class="part-title">${L.part2}</div><div class="part-desc">${L.part2Desc}</div></div>
+    </div>
+    <div class="chapters-grid">${part2.map(card).join('')}</div>
+  `;
+}
+
+// ═══════════════ IDEAS ═══════════════
+function renderIdeas(){
+  document.getElementById('ideasContent').innerHTML = IDEAS.map(i => {
+    const d = i[currentLang];
+    return `<div class="idea-card">
+      <div class="idea-num">IDEA ${String(i.num).padStart(2,'0')}</div>
+      <div class="idea-title">${i.ar.t}</div>
+      <div class="idea-title-en">${i.en.t}</div>
+      <p class="idea-body">${d.d}</p>
+      ${i.note?`<div class="idea-footer">${i.note}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════ TIMELINE ═══════════════
+function renderTimeline(){
+  document.getElementById('timelineContent').innerHTML = TIMELINE.map((t,i) => {
+    const d = t[currentLang];
+    return `<div class="tl-item">
+      <div class="tl-dot">${i+1}</div>
+      <div class="tl-card">
+        <div class="tl-year">${t.y}</div>
+        <div class="tl-title">${d.t}</div>
+        <div class="tl-desc">${d.d}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════ QUIZ ═══════════════
+function renderQuiz(){
+  const L = LABELS[currentLang];
+  const wrap = document.getElementById('quizWrap');
+  if(quizState.idx >= QUIZ.length){
+    const pct = Math.round((quizState.score/QUIZ.length)*100);
+    let grade = '👍';
+    if(pct===100) grade='🏆';
+    else if(pct>=75) grade='🌟';
+    else if(pct>=50) grade='👍';
+    else grade='📚';
+    wrap.innerHTML = `<div class="quiz-card quiz-result">
+      <div style="font-size:4rem">${grade}</div>
+      <div class="quiz-score">${quizState.score}/${QUIZ.length}</div>
+      <div class="quiz-grade">${L.score}: ${pct}%</div>
+      <button class="quiz-btn" onclick="restartQuiz()">${L.retry}</button>
+    </div>`;
+    return;
+  }
+  const q = QUIZ[quizState.idx];
+  const opts = q.opts[currentLang];
+  const qText = q.q[currentLang];
+  const progress = ((quizState.idx)/QUIZ.length)*100;
+  wrap.innerHTML = `<div class="quiz-card">
+    <div class="quiz-progress">
+      <div class="quiz-bar"><div class="quiz-fill" style="width:${progress}%"></div></div>
+      <span class="quiz-count">${quizState.idx+1}/${QUIZ.length}</span>
+    </div>
+    <div class="quiz-q">${qText}</div>
+    <div class="quiz-opts" id="quizOpts">
+      ${opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})" id="opt-${i}">${o}</button>`).join('')}
+    </div>
+    <div id="quizFeedback"></div>
+  </div>`;
+}
+function answerQuiz(i){
+  if(quizState.answered) return;
+  quizState.answered = true;
+  const q = QUIZ[quizState.idx];
+  const L = LABELS[currentLang];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach((o,idx)=>{
+    o.disabled = true;
+    if(idx === q.correct) o.classList.add('correct');
+    else if(idx === i) o.classList.add('wrong');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if(i === q.correct){
+    quizState.score++;
+    fb.innerHTML = `<div class="quiz-feedback ok">${L.correct}</div>`;
+  } else {
+    fb.innerHTML = `<div class="quiz-feedback bad">${L.wrong}</div>`;
+  }
+  fb.innerHTML += `<button class="quiz-btn" onclick="nextQuiz()">${L.next} →</button>`;
+}
+function nextQuiz(){
+  quizState.idx++;
+  quizState.answered = false;
+  renderQuiz();
+}
+function restartQuiz(){
+  quizState = {idx:0, score:0, answered:false};
+  renderQuiz();
+}
+
+// ═══════════════ LANG ═══════════════
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  applyTexts();
+  renderTabs();
+  renderChapters();
+  renderIdeas();
+  renderTimeline();
+  renderQuiz();
+  startTicker();
+}
+function applyTexts(){
+  const L = LABELS[currentLang];
+  const set = (id,txt) => { const el=document.getElementById(id); if(el) el.textContent = txt; };
+  set('logoTitle', L.title);
+  set('heroTitle', L.heroTitle);
+  set('heroSub', L.heroSub);
+  set('heroTag', L.heroTag);
+  set('splashTitle', L.splashTitle);
+  set('splashSub', L.splashSub);
+  set('splashAuthor', L.splashAuthor);
+  set('splashHint', L.splashHint);
+  set('seedsAr', L.seeds);
+  set('seedsEn', currentLang==='ar'?'Seeds':(currentLang==='en'?'Seeds':'Graines'));
+  set('rootsAr', L.roots);
+  set('rootsEn', currentLang==='ar'?'Roots':(currentLang==='en'?'Roots':'Racines'));
+  set('fruitAr', L.fruit);
+  set('fruitEn', currentLang==='ar'?'Fruit':(currentLang==='en'?'Fruit':'Fruits'));
+  set('seedsDesc', L.seedsDesc);
+  set('rootsDesc', L.rootsDesc);
+  set('fruitDesc', L.fruitDesc);
+  set('statPages', L.pages);
+  set('statParts', L.parts);
+  set('statChapters', L.chapters);
+  set('statVolumes', L.volumes);
+}
+
+// ═══════════════ THEME ═══════════════
+function toggleTheme(){
+  currentTheme = currentTheme==='light' ? 'dark' : 'light';
+  document.documentElement.dataset.theme = currentTheme;
+  document.getElementById('themeBtn').textContent = currentTheme==='light' ? '🌙' : '☀️';
+  localStorage.setItem('rihlati-theme', currentTheme);
+}
+
+// ═══════════════ TICKER ═══════════════
+const TICKER_ITEMS = {
+  ar:[
+    '🌱 رحلتي الفكرية في البذور والجذور والثمر — د. عبد الوهاب المسيري',
+    '📚 موسوعة اليهود واليهودية والصهيونية في ٨ مجلدات',
+    '🧭 "من بساطة المادية إلى رحابة الإنسانية والإيمان"',
+    '🔍 فقه التحيّز: الوعي النقدي بالمسلّمات المعرفية',
+    '🎓 رتغرز ١٩٦٩ — الدكتوراه في الأدب الإنجليزي والمقارن',
+    '✡️ الصهيونية: حركة غربية وليست امتداداً لليهودية',
+    '🌳 البذور · الجذور · الثمر — استعارة النمو الفكري',
+    '💡 النماذج الإدراكية منهجاً لفهم الظواهر المركّبة',
+    '⚖️ العلمانية الجزئية والعلمانية الشاملة',
+    '🌟 ١٩٣٨ — ٢٠٠٨ · دمنهور، مصر',
+  ],
+  en:[
+    '🌱 My Intellectual Journey in Seeds, Roots and Fruit — Dr. Abdul Wahab Al-Messiri',
+    '📚 The Encyclopedia of Jews, Judaism and Zionism in 8 volumes',
+    '🧭 "From the simplicity of materialism to the expansiveness of humanity and faith"',
+    '🔍 Fiqh al-Tahayyuz: critical awareness of epistemological assumptions',
+    '🎓 Rutgers 1969 — PhD in English and Comparative Literature',
+    '✡️ Zionism: a Western movement, not an extension of Judaism',
+    '🌳 Seeds · Roots · Fruit — metaphor of intellectual growth',
+    '💡 Cognitive models as method for understanding complex phenomena',
+    '⚖️ Partial Secularism vs Comprehensive Secularism',
+    '🌟 1938 — 2008 · Damanhour, Egypt',
+  ],
+  fr:[
+    '🌱 Mon Voyage Intellectuel dans les Graines, Racines et Fruits — Dr Abdul Wahab Al-Messiri',
+    '📚 L\'Encyclopédie des Juifs, du Judaïsme et du Sionisme en 8 volumes',
+    '🧭 "De la simplicité du matérialisme à l\'ampleur de l\'humanité et de la foi"',
+    '🔍 Fiqh al-Tahayyuz : conscience critique des présupposés épistémologiques',
+    '🎓 Rutgers 1969 — Doctorat en Littérature Anglaise et Comparée',
+    '✡️ Le sionisme : mouvement occidental, pas extension du judaïsme',
+    '🌳 Graines · Racines · Fruits — métaphore de la croissance intellectuelle',
+    '💡 Modèles cognitifs comme méthode pour comprendre les phénomènes complexes',
+    '⚖️ Sécularisme Partiel vs Sécularisme Total',
+    '🌟 1938 — 2008 · Damanhour, Égypte',
+  ],
+};
+function startTicker(){
+  const el = document.getElementById('tickerText');
+  if(!el) return;
+  const items = TICKER_ITEMS[currentLang] || TICKER_ITEMS.ar;
+  const sep = '        ◆        ';
+  const text = items.join(sep) + sep;
+  el.innerHTML = '<span class="tc">'+text+'</span><span class="tc" aria-hidden="true">'+text+'</span>';
+  el.style.animation = 'none';
+  void el.offsetWidth;
+  const duration = Math.max(60, text.length * 0.12);
+  el.style.animation = 'tickerMarquee '+duration+'s linear infinite';
+}
+
+// ═══════════════ INIT ═══════════════
+if(currentTheme === 'dark'){
+  document.documentElement.dataset.theme = 'dark';
+  document.getElementById('themeBtn').textContent = '☀️';
+}
+document.getElementById('poweredLogo').innerHTML = WORKSHOP_LOGO_SVG;
+initSplash();
+renderTabs();
+renderChapters();
+renderIdeas();
+renderTimeline();
+renderQuiz();
+startTicker();
+</script>
+
+</body>
+</html>
