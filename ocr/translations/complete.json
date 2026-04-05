@@ -1,0 +1,59 @@
+{
+  "_doc": "Missing translations added for V1.4 Reader mode. Every value must be English (en) or French (fr) with zero Arabic characters. Arabic-only keys remain in the main data file; these fill the gaps.",
+
+  "tags": {
+    "ar": ["أدب","أطفال","أمريكا","إيمان","الأسرة","الإسكندرية","الطفولة","الهوية","الوعي","تحوّل","حلولية","دار الشروق","دمنهور","دولة","رتغرز","رموز","شعر","صهيونية","فلسطين","كولومبيا","مؤلفات","مداخل","مشروع","منهج","موسوعة","نقد","نماذج","نموذج","يهودية","٢٥ سنة"],
+    "en": ["literature","children","America","faith","family","Alexandria","childhood","identity","awareness","transformation","hulul","Dar al-Shorouk","Damanhour","state","Rutgers","symbols","poetry","Zionism","Palestine","Columbia","writings","entries","project","method","encyclopedia","critique","models","model","Judaism","25 years"],
+    "fr": ["littérature","enfants","Amérique","foi","famille","Alexandrie","enfance","identité","conscience","transformation","hulul","Dar al-Shorouk","Damanhour","état","Rutgers","symboles","poésie","sionisme","Palestine","Columbia","écrits","entrées","projet","méthode","encyclopédie","critique","modèles","modèle","judaïsme","25 ans"]
+  },
+
+  "quiz_src": [
+    {"en":"\"My life chronologically: Birth in Damanhour (8 October)\"", "fr":"« Ma vie chronologiquement : Naissance à Damanhour (8 octobre) »"},
+    {"en":"\"Rutgers University, New Jersey, where I obtained the PhD\"", "fr":"« Université Rutgers, New Jersey, où j'ai obtenu le doctorat »"},
+    {"en":"\"Publication of the Encyclopedia — eight volumes by Dar al-Shorouk\"", "fr":"« Publication de l'Encyclopédie — huit volumes par Dar al-Shorouk »"},
+    {"en":"\"Fiqh al-Tahayyuz — the long introduction I wrote, in which I defined bias, its causes, its forms, and how to transcend it\"", "fr":"« Fiqh al-Tahayyuz — la longue introduction que j'ai écrite, dans laquelle j'ai défini le biais, ses causes, ses formes et comment le dépasser »"},
+    {"en":"\"My Intellectual Journey in Seeds, Roots and Fruit — the full title of the book\"", "fr":"« Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits — titre complet du livre »"},
+    {"en":"\"My materialist and Marxist experience — sub-heading from Chapter Two\"", "fr":"« Mon expérience matérialiste et marxiste — sous-titre du deuxième chapitre »"},
+    {"en":"\"Move to Kuwait to teach at Kuwait University\"", "fr":"« Déménagement au Koweït pour enseigner à l'Université du Koweït »"},
+    {"en":"\"Studying Zionism through deconstruction and reconstruction, understanding it without reduction\"", "fr":"« Étudier le sionisme par la déconstruction et la reconstruction, le comprendre sans le réduire »"}
+  ],
+
+  "idea_notes": [
+    {"en":"From receptive objectivity to interpretive objectivity", "fr":"De l'objectivité réceptive à l'objectivité interprétative"},
+    {"en":"Everything — every event and movement — has a cultural dimension and expresses a model", "fr":"Toute chose — tout événement et tout mouvement — porte une dimension culturelle et exprime un modèle"},
+    {"en":"A distinction between partial secularism and comprehensive secularism", "fr":"Une distinction entre sécularisme partiel et sécularisme total"},
+    {"en":"Key to Al-Messiri's reading of Western materialist thought", "fr":"Clé de la lecture que fait Al-Messiri de la pensée matérialiste occidentale"},
+    {"en":"Al-Messiri's alternative to the reductive materialist human", "fr":"L'alternative de Al-Messiri à l'humain matérialiste réductif"},
+    {"en":"The project that took more than twenty-five years", "fr":"Le projet qui a pris plus de vingt-cinq ans"}
+  ],
+
+  "reader_ui": {
+    "en": {
+      "modeSource": "Source",
+      "modeReader": "Reader",
+      "chipText": "Reader mode — viewing unofficial translation",
+      "chipSwitch": "click 📖 to see the original Arabic",
+      "trFooter": "— translation, not the author's own words",
+      "aboutReaderTitle": "Two ways to read",
+      "aboutReaderBody": "Source mode shows the book's Arabic exactly as Al-Messiri wrote it, with an optional translation fold-out. Reader mode replaces the Arabic with an unofficial English or French translation so non-Arabic readers can follow the thread end-to-end. Sacred text (Bismillah, the Quranic verse, the Islamic calligraphy) stays Arabic in both modes."
+    },
+    "fr": {
+      "modeSource": "Source",
+      "modeReader": "Lecture",
+      "chipText": "Mode lecture — traduction non officielle",
+      "chipSwitch": "cliquez sur 📖 pour voir l'original arabe",
+      "trFooter": "— traduction, ce ne sont pas les mots de l'auteur",
+      "aboutReaderTitle": "Deux façons de lire",
+      "aboutReaderBody": "Le mode Source affiche l'arabe du livre exactement tel qu'Al-Messiri l'a écrit, avec une traduction dépliante optionnelle. Le mode Lecture remplace l'arabe par une traduction non officielle en anglais ou en français afin que les lecteurs non arabophones puissent suivre le fil du début à la fin. Le texte sacré (Bismillah, le verset coranique, la calligraphie islamique) reste en arabe dans les deux modes."
+    },
+    "ar": {
+      "modeSource": "المصدر",
+      "modeReader": "قراءة",
+      "chipText": "",
+      "chipSwitch": "",
+      "trFooter": "",
+      "aboutReaderTitle": "",
+      "aboutReaderBody": ""
+    }
+  }
+}

@@ -66,6 +66,29 @@ body{font-family:var(--ff);background:var(--bg);background-image:var(--isl-pat);
 .icon-btn{border:none;background:var(--acc);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.3s;border:1px solid var(--brd);color:var(--t1)}
 .icon-btn:hover{transform:scale(1.1);box-shadow:var(--sh)}
 
+/* ═══ MODE SWITCH (Source / Reader) ═══ */
+.mode-switch{display:flex;background:var(--acc);border-radius:18px;padding:2px;border:1px solid var(--brd);gap:0}
+.mode-opt{border:none;background:transparent;padding:5px 10px;cursor:pointer;font-family:var(--fu);font-size:.72rem;font-weight:600;color:var(--t2);border-radius:14px;transition:.2s;display:flex;align-items:center;gap:4px}
+.mode-opt:hover:not(:disabled){background:rgba(200,168,78,.12)}
+.mode-opt.active{background:var(--gold);color:#fff;box-shadow:0 2px 6px rgba(200,168,78,.35)}
+.mode-opt:disabled{opacity:.35;cursor:not-allowed}
+.mode-opt .mode-label{display:inline-block}
+@media (max-width:520px){ .mode-opt .mode-label{display:none} .mode-opt{padding:5px 8px} }
+
+/* ═══ READER CHIP (visible when mode=reader) ═══ */
+.reader-chip{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 16px;background:linear-gradient(135deg,rgba(26,138,125,.12),rgba(200,168,78,.08));border-bottom:1px solid rgba(26,138,125,.25);font-family:'Nunito','Readex Pro',sans-serif;font-size:.78rem;color:var(--teal);text-align:center}
+.reader-chip-icon{font-size:1rem}
+.reader-chip-text{font-weight:700}
+.reader-chip-switch{background:none;border:1px dashed rgba(26,138,125,.45);color:var(--teal);padding:3px 10px;border-radius:12px;cursor:pointer;font-family:inherit;font-size:.72rem;font-weight:600;transition:.2s}
+.reader-chip-switch:hover{background:rgba(26,138,125,.15)}
+body.dark .reader-chip{background:linear-gradient(135deg,rgba(26,138,125,.18),rgba(200,168,78,.12))}
+
+/* ═══ READER FOOTER (italic disclaimer under translated blocks) ═══ */
+.reader-footer{margin-top:8px;font-family:'Nunito',sans-serif;font-size:.7rem;font-style:italic;color:var(--t3);opacity:.75;text-align:inherit;padding:0 2px}
+.reader-framing-footer{text-align:center;max-width:720px;margin:6px auto 0}
+.chapter-excerpt.reader{background:linear-gradient(135deg,rgba(26,138,125,.06),rgba(200,168,78,.04));border-color:rgba(26,138,125,.25)}
+body.dark .chapter-excerpt.reader{background:linear-gradient(135deg,rgba(26,138,125,.12),rgba(200,168,78,.06))}
+
 /* ═══ HERO ═══ */
 .hero{max-width:1280px;margin:0 auto;padding:28px 20px 18px;text-align:center;position:relative}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,168,78,.08),transparent 70%);pointer-events:none;z-index:-1}
@@ -275,9 +298,9 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 
 <!-- ═══ SPLASH ═══ -->
 <div class="splash" id="splash" onclick="dismissSplash()">
-  <div class="splash-orn">۞</div>
-  <div class="splash-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-  <div class="splash-verse">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
+  <div class="splash-orn sacred" aria-hidden="true">۞</div>
+  <div class="splash-bismillah sacred" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="splash-verse sacred" dir="rtl" lang="ar">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
   <div class="splash-title" id="splashTitle">رحلتي الفكرية</div>
   <div class="splash-sub" id="splashSub">في البذور والجذور والثمر</div>
   <div class="splash-author" id="splashAuthor">د. عبد الوهاب المسيري</div>
@@ -286,9 +309,16 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 </div>
 
 <!-- ═══ SACRED BAR ═══ -->
-<div class="sacred-bar">
-  <div class="sacred-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-  <div class="sacred-verse">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
+<div class="sacred-bar sacred">
+  <div class="sacred-bismillah" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="sacred-verse" dir="rtl" lang="ar">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ</div>
+</div>
+
+<!-- ═══ READER MODE CHIP ═══ -->
+<div class="reader-chip" id="readerChip" style="display:none">
+  <span class="reader-chip-icon">🌐</span>
+  <span class="reader-chip-text" id="readerChipText">Reader mode — viewing unofficial translation</span>
+  <button class="reader-chip-switch" onclick="setMode('source')" id="readerChipSwitch">click 📖 to see the original Arabic</button>
 </div>
 
 <!-- ═══ HEADER ═══ -->
@@ -310,6 +340,10 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
           <svg width="22" height="14" viewBox="0 0 30 20"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
         </button>
       </div>
+      <div class="mode-switch" role="group" aria-label="View mode">
+        <button class="mode-opt active" data-mode="source" onclick="setMode('source')" title="Source (verbatim Arabic)"><span>📖</span><span class="mode-label" id="modeLabelSource">Source</span></button>
+        <button class="mode-opt" data-mode="reader" onclick="setMode('reader')" title="Reader (translation)"><span>🌐</span><span class="mode-label" id="modeLabelReader">Reader</span></button>
+      </div>
       <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Theme">🌙</button>
     </nav>
   </div>
@@ -317,7 +351,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-orn">۞</div>
+  <div class="hero-orn sacred" aria-hidden="true">۞</div>
   <h2 class="hero-title" id="heroTitle">رحلتي الفكرية في البذور والجذور والثمر</h2>
   <div class="hero-sub" id="heroSub">My Intellectual Journey: Seeds, Roots and Fruit</div>
   <p class="hero-tag" id="heroTag">رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة</p>
@@ -357,7 +391,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
       <div class="home-author-emoji">👨‍🏫</div>
       <div class="home-author-body">
         <div class="home-author-name" id="authorName">د. عبد الوهاب المسيري</div>
-        <div class="home-author-dates">١٩٣٨ — ٢٠٠٨ · Damanhour, Egypt</div>
+        <div class="home-author-dates" id="authorDates">١٩٣٨ — ٢٠٠٨ · دمنهور، مصر</div>
         <p class="home-author-desc" id="authorDesc">مفكر وأديب مصري، أستاذ الأدب الإنجليزي والمقارن، ومؤلف "موسوعة اليهود واليهودية والصهيونية" في ثماني مجلدات. درس في كلية الآداب بجامعة الإسكندرية، ثم حصل على الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز. يُعدّ من أبرز المفكرين العرب في نقد الحداثة الغربية ودراسات التحيّز. رحلته الفكرية من الماركسية إلى الإيمان الإسلامي مثال على البحث الصادق عن الحقيقة.</p>
       </div>
     </div>
@@ -398,9 +432,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 
   <!-- ABOUT -->
   <section class="panel" id="panel-about">
-    <div class="about-warn" id="aboutWarn">
-      <strong>📖 ملاحظة:</strong> المقتطفات والاقتباسات في هذا التطبيق مأخوذة حرفيًا من نص كتاب "رحلتي الفكرية في البذور والجذور والثمر" للدكتور عبد الوهاب المسيري رحمه الله — عبر طبقة التعرف الضوئي على النصوص المتاحة على archive.org. الكتاب الأصلي من منشورات دار الشروق، وهذا التطبيق ليس بديلاً عنه بل دعوة لقراءته كاملًا.
-    </div>
+    <div class="about-warn" id="aboutWarn"><strong id="aboutWarnLabel">📖 ملاحظة:</strong> <span id="aboutWarnText">المقتطفات والاقتباسات في هذا التطبيق مأخوذة حرفيًا من نص كتاب "رحلتي الفكرية في البذور والجذور والثمر" للدكتور عبد الوهاب المسيري رحمه الله — عبر طبقة التعرف الضوئي على النصوص المتاحة على archive.org. الكتاب الأصلي من منشورات دار الشروق، وهذا التطبيق ليس بديلاً عنه بل دعوة لقراءته كاملًا.</span></div>
     <div class="about-box">
       <h3 class="about-title" id="aboutBookTitle">من كلمات المؤلف</h3>
       <p class="about-text" id="aboutBookText" dir="rtl" lang="ar">«أي أنني استبعدت كل الوقائع والتفاصيل التي ليس لها علاقة مباشرة أو غير مباشرة بتطوري الفكري... وحينما كنت أذكر إحدى الوقائع في حياتي كنت كثيرا ما أستبعد الأسماء الحقيقية لأبطالها حتى لا أسبب حرجا لأحد منهم، وحتى يركز القارئ على مغزى الواقعة لا على تفاصيلها»</p>
@@ -413,17 +445,11 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
     </div>
     <div class="about-box">
       <h3 class="about-title" id="aboutAuthorTitle">عن المؤلف</h3>
-      <p class="about-text" id="aboutAuthorText"><strong>د. عبد الوهاب المسيري (1938–2008)</strong> مفكر مصري، ولد في دمنهور بمحافظة البحيرة. تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية عام 1959. نال الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز بالولايات المتحدة عام 1969. درّس في جامعات عديدة من بينها عين شمس والكويت والملك سعود. مشروعه الأكبر: "موسوعة اليهود واليهودية والصهيونية" الصادرة عام 1999 في ثماني مجلدات، وتُعدّ أضخم موسوعة عربية عن هذا الموضوع. تميّز بنقد الحداثة الغربية وتأسيس حقل "دراسات التحيّز" ومنهج "النماذج الإدراكية" في العلوم الإنسانية.</p>
+      <p class="about-text" id="aboutAuthorText">مفكر مصري، ولد في دمنهور بمحافظة البحيرة. تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية عام 1959. نال الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز بالولايات المتحدة عام 1969. درّس في جامعات عديدة من بينها عين شمس والكويت والملك سعود. مشروعه الأكبر: "موسوعة اليهود واليهودية والصهيونية" الصادرة عام 1999 في ثماني مجلدات، وتُعدّ أضخم موسوعة عربية عن هذا الموضوع. تميّز بنقد الحداثة الغربية وتأسيس حقل "دراسات التحيّز" ومنهج "النماذج الإدراكية" في العلوم الإنسانية.</p>
     </div>
     <div class="about-box">
       <h3 class="about-title" id="aboutSourcesTitle">المصادر</h3>
-      <p class="about-text">
-        • «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>
-        • «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>
-        • «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>
-        • «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>
-        • سير ومقالات منشورة عن المسيري في الصحافة العربية
-      </p>
+      <p class="about-text" id="aboutSourcesText">• «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>• «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>• «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>• «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>• سير ومقالات منشورة عن المسيري في الصحافة العربية</p>
     </div>
   </section>
 </main>
@@ -446,25 +472,25 @@ const WORKSHOP_LOGO_SVG = `<svg preserveAspectRatio="xMidYMid meet" role="img" a
 
 // ═══════════════ DATA ═══════════════
 const CHAPTERS = [
-  {id:1, part:1, icon:'🌱', ar:{t:'البذور الأولى', d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, en:{t:`The Early Seeds`, d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, fr:{t:`Les Premières Graines`, d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, excerpt:`دمنهور هو الذي جعل أمي غير قادرة على استيعاب الحساسية الجديدة التي بدأت تظهر: الرغبة في المتعة في حد ذاتها بدون هدف أخلاقي أو عملي. ولذا كانت تحب شجرة الخوخ الكبيرة لأنها تعطينا ثمراتها. أما الورد فكان يسبب لها مشكلة. إذ كنا نحاول تزيين المنزل به وكانت لا تمانع. ولكنها كانت تطالب أن نصنع من بعضه مربى الورد ! وكانت ترى أن ذهابنا إلى السينما مضيعة للوقت. فكنا نختلق الحجج التقليدية حتى يمكننا الإفلات من قبضة هذه الرؤية. فعلى سبيل المثال أذكر أنني عشقت مسلسل زورو.`, tr:{en:`Damanhour is what made my mother unable to grasp the new sensibility that was beginning to appear: the desire for pleasure in itself, without any moral or practical aim. That is why she loved the great peach tree — because it gave us its fruit. But roses were a problem for her. We would try to decorate the house with them, and she did not object — but she would insist that we make rose jam from part of them. She considered our going to the cinema a waste of time, so we would invent the usual excuses to slip out of her grasp. For example, I remember I adored the Zorro series.`, fr:`C'est Damanhour qui rendait ma mère incapable de saisir la nouvelle sensibilité qui commençait à émerger : le désir du plaisir en lui-même, sans aucun but moral ou pratique. Voilà pourquoi elle aimait le grand pêcher — parce qu'il nous donnait ses fruits. Mais les roses lui posaient un problème. Nous essayions de décorer la maison avec, et elle ne s'y opposait pas — mais elle exigeait qu'on en fasse de la confiture de roses. Elle voyait notre sortie au cinéma comme une perte de temps, alors nous inventions les excuses habituelles pour échapper à son emprise. Par exemple, je me souviens que j'adorais le feuilleton de Zorro.`}, tags:['دمنهور','الطفولة','الأسرة']},
-  {id:2, part:1, icon:'🪞', ar:{t:'بدايات الهوية', d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, en:{t:`Beginnings of Identity`, d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, fr:{t:`Débuts de l'Identité`, d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, excerpt:`بدايات الهوية حلقات الانفصال أخبرتني أمي أنني حين كنت طفلاً في الثالثة أو الرابعة وجدوني أسير بمفردي فى الشرفة المطلة على حديقة منزلناء وقد ومعت إطانظارة قدجاك وريس ورف برط في فمي على هيئة سيجارة : أمسكت السيجارة بيد ووضعت الأخرى خلف ظهري وأخذت أذرع الشرفة دايا وإيانا بدي ولعي. وحينما سألوني عما أفعل أخبرتهم أنني ل رأيت الدكتور كامل يسى طبيب العائلة في الليلة السابقة ورأيت الأسرة كلها تستمع لنصائحه وإرشاداته). ولعل هذه هي أول مرة قمت فيها بطقوس الانفصال عن بيئتي التجارية تعبيرا عن رغبتي في أن أصبح شيئًا آخر.`, tr:{en:`Beginnings of Identity — Episodes of Separation. My mother told me that when I was a child of three or four, they found me walking alone on the balcony overlooking the garden of our house, having picked up a stick and placed it in my mouth as though it were a cigarette. I held the cigarette in one hand and put the other behind my back, and began pacing the length of the balcony back and forth, lost in thought. When they asked me what I was doing, I told them: 'I saw Dr. Kamil, the family physician, last night, and I saw the whole family listening to his advice and instructions.' This may have been the first time I performed rituals of separation from my commercial environment, expressing my desire to become something else.`, fr:`Débuts de l'identité — Épisodes de séparation. Ma mère m'a raconté que, lorsque j'étais un enfant de trois ou quatre ans, ils me trouvèrent marchant seul sur le balcon donnant sur le jardin de notre maison, ayant saisi un bâton que j'avais mis à la bouche en forme de cigarette. Je tenais la cigarette d'une main et mettais l'autre derrière mon dos, arpentant le balcon de long en large, perdu dans mes pensées. Quand ils m'ont demandé ce que je faisais, j'ai répondu : « J'ai vu hier soir le Dr Kamil, le médecin de famille, et j'ai vu toute la famille écouter ses conseils et ses instructions. » C'est peut-être la première fois que j'ai accompli des rituels de séparation de mon milieu commerçant, exprimant mon désir de devenir autre chose.`}, tags:['الإسكندرية','الوعي','الهوية']},
-  {id:3, part:1, icon:'🗽', ar:{t:'في الولايات المتحدة', d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, en:{t:`In the United States`, d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, fr:{t:`Aux États-Unis`, d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, excerpt:`جامعة كولومبيا والتحقت بقسم الدراسات العليا وجدت أن مستواى أعلى من مستوى كثير من الطلبة هناك. في تلك اللحظة فهمت معاناتي في قسم اللغة الإنجليزية بجامعة الإسكندرية وما كنا نحمله من أعباء دراسية ثقيلة. ورئيسة القسمء الدكتورة نور شريف. إنسانة على قدر كبير من الثقافة والحكمة. كانت محاضراتها عن تشارلز ديكنز 5عءلء21 2165© أو عن شعر أواخر القرن الثامن عشر (بما في ذلك شعر وليام بليك علة81 0:ة1!ة/18) أو عن حضارة القرن التاسع عشر متعة حقيقية.`, tr:{en:`At Columbia University I enrolled in the graduate studies department and found that my level was higher than that of many students there. In that moment I understood my suffering in the English Department at Alexandria University and the heavy academic load we used to carry. The department chair, Dr Nour Sharif, was a person of great culture and wisdom; her lectures on Charles Dickens, or on late-eighteenth-century poetry including William Blake, or on nineteenth-century civilization, were a real pleasure.`, fr:`À l'Université Columbia, je me suis inscrit au département des études supérieures et j'ai trouvé que mon niveau était supérieur à celui de nombreux étudiants là-bas. À ce moment-là, j'ai compris ma souffrance au département d'anglais de l'Université d'Alexandrie et la lourde charge académique que nous portions. La directrice du département, Dr Nour Sharif, était une personne d'une grande culture et sagesse ; ses conférences sur Charles Dickens, ou sur la poésie de la fin du XVIIIᵉ siècle y compris William Blake, ou sur la civilisation du XIXᵉ siècle, étaient un vrai plaisir.`}, tags:['كولومبيا','رتغرز','أمريكا']},
-  {id:4, part:1, icon:'🧭', ar:{t:'من بساطة المادية إلى رحابة الإنسانية والإيمان', d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, en:{t:`From Materialism's Simplicity to the Spaciousness of Humanity & Faith`, d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, fr:{t:`Du Matérialisme à la Spaciosité de la Foi`, d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, excerpt:`رحابة الإنسانية والإيمان. كنت أقف على العتبات أتأمل وأتفكر بلا توقف ولا هوادة وكان علي أن أنتظر بضع سنوات أخرى قبل أن أقيم الصلاة. يكيان وحينما فعلت كنت أفعل ذلك في بداية الأمر لأعطي ابني حرية الاختيار بين الشك والإيمان (فقد قرأت أن الشاعر وليام بتلر بيتس كندعلآ ,16)نا8 دمهذ1!ة/ةا كان ساخطًا على أبيه الملحد لأنه حرمه من المقدرة على الإيمان وجعله بديلاً غير مطروح.`, tr:{en:`The Spaciousness of Humanity and Faith. I stood at the thresholds, contemplating and reflecting endlessly, without pause. I had to wait a few more years before I established prayer. When I did, I did it at first to give my son freedom of choice between doubt and faith — for I had read that the poet William Butler Yeats was furious with his atheist father for having deprived him of the capacity for faith and made it a non-option for him. And so, when he began to feel the need to believe in something beyond the material world — a natural human feeling — he drowned in the occult, such as summoning spirits, and ended up founding an entire mythical world that resembled religion in many ways.`, fr:`La spaciosité de l'humanité et de la foi. Je me tenais sur les seuils, contemplant et réfléchissant sans relâche ni repos. Il me fallut attendre encore quelques années avant d'établir la prière. Quand je l'ai fait, ce fut d'abord pour donner à mon fils la liberté de choix entre le doute et la foi — car j'avais lu que le poète William Butler Yeats en voulait à son père athée de l'avoir privé de la capacité de croire, en faisant de celle-ci une option écartée. Ainsi, lorsqu'il commença à ressentir le besoin de croire en quelque chose au-delà du monde matériel — un sentiment humain naturel — il sombra dans l'occulte, comme les séances spirites, et finit par fonder tout un monde mythique qui ressemblait à la religion à bien des égards.`}, tags:['تحوّل','إيمان','نموذج']},
-  {id:5, part:2, icon:'🔍', ar:{t:'النماذج الإدراكية والتحليلية', d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, en:{t:`Cognitive and Analytical Models`, d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, fr:{t:`Modèles Cognitifs et Analytiques`, d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, excerpt:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`, tr:{en:`Cognitive and Analytical Models — From Receptive Objectivity to Interpretive Objectivity. The transition from materialism to humanism and faith was neither easy nor simple. Many of my friends did not believe at first what had happened; some cut me off, and my relationship with others faded. Because my writings are rational — even though their ultimate reference is faith-based: belief in God, and in the human being as a non-material creature deriving his composition from being a divine rather than a natural being — some continued to count me as materialist, since they linked rationality with materialism. This is a link that has no basis in reality: Robespierre was a pure materialist, declared the worship of reason, yet at the same time…`, fr:`Modèles cognitifs et analytiques — de l'objectivité réceptive à l'objectivité interprétative. Le passage du matérialisme à l'humanisme et à la foi n'a été ni simple ni aisé. Beaucoup de mes amis ne crurent pas d'abord ce qui s'était passé ; certains m'ont coupé, et ma relation avec d'autres s'est estompée. Parce que mes écrits sont rationnels — bien que leur référence ultime soit de foi : croyance en Dieu, et en l'être humain comme créature non-matérielle qui tire sa composition du fait d'être un être divin et non pas naturel — certains ont continué à me considérer comme matérialiste, car ils associaient la rationalité au matérialisme. Ce lien n'a aucun fondement dans la réalité : Robespierre était un pur matérialiste, déclarait le culte de la raison, et en même temps…`}, tags:['منهج','نماذج','حلولية']},
-  {id:6, part:2, icon:'🌾', ar:{t:'بعض الثمرات الأولى', d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, en:{t:`Some First Fruits`, d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, fr:{t:`Quelques Premiers Fruits`, d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, excerpt:`ثمراته إن نحن أمعنا النظر. وفي إطار هذا التصور أصبح من الحتمي أن أنظر إلى مصر لا بحسبانها مثلاً (ساكنًا) لهذه أو تلك الصفة وإنا بحُسبانها لحظة في متتالية نفاذجية تتابع حلقاتهاء بحيث أستخدم ما أرى في الغرب على تقدير أنه من المحتمل أن يتكرر حدوثه انذكنا عندنا هناء فنفس المقدمات والظروف الاجتماعية قد تؤدي إلى نفس النتائج أو شيء قريب منهاء كما أنها ولا شك تصلح كمؤشر على ما يمكن أن يحدث في المستقبل.`, tr:{en:`…its fruits, if we look carefully. Within this conception, it became imperative for me to look at Egypt not as a (static) example of this or that trait, but as a moment in a paradigmatic sequence whose episodes follow one another — so that I use what I see in the West on the assumption that it may well recur here among us, for the same premises and social conditions…`, fr:`…ses fruits, si nous y regardons de près. Dans ce cadre, il me devint impératif de considérer l'Égypte non comme un exemple (statique) de telle ou telle caractéristique, mais comme un moment dans une séquence paradigmatique dont les épisodes se succèdent — de sorte que j'utilise ce que je vois en Occident dans l'hypothèse qu'il pourrait bien se reproduire ici chez nous, car les mêmes prémisses et conditions sociales…`}, tags:['مؤلفات','مشروع','نقد']},
-  {id:7, part:2, icon:'✡️', ar:{t:'الصهيونية', d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, en:{t:`Zionism`, d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, fr:{t:`Le Sionisme`, d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, excerpt:`الصهيونية تفكيكنًا وتركيباء وفهمها دون اختزالها. وهناك مئات الموضوعات التي لم تتم دراستها بهذه الطريقة الجديدة ! بل إنه قال إن معظم الموسوعة تقل من الموسوعات اليهودية. فطلبت منه أن يقارن مدخل الدياسبورا في | الجودايكا (الموسوعة اليهودية الإنحليزية) وفى الموسوعة اليهودية (العبرية). وعرضت عليه أن أوفر له المادة المطلوبة لعله من خلال الدراسة المقارنة أن يرى الفرق بين الأطر التحليلية فلم ينعل. وقد علّق أحد طلبتي على هذا الموقف بقوله: إن الأستاذ المذكور معلوماتي موضوعي متلق. يبحث عن المعلومة والمعلومة بطبيعة الحال تتكرر.`, tr:{en:`…Zionism — deconstructing and reconstructing it, and understanding it without reduction. There are hundreds of topics that have not been studied in this 'new' way. He even said that most of the Encyclopedia surpassed the existing Jewish encyclopedias. I asked him to compare the Diaspora entry in the Judaica (the English Jewish encyclopedia) with the one in the Hebrew Jewish Encyclopedia. And I offered him…`, fr:`…le sionisme — en le déconstruisant et en le reconstruisant, en le comprenant sans le réduire. Il existe des centaines de sujets qui n'ont pas été étudiés de cette manière « nouvelle ». Il a même dit que la plus grande partie de l'Encyclopédie surpassait les encyclopédies juives existantes. Je lui ai demandé de comparer l'entrée Diaspora dans la Judaica (l'encyclopédie juive anglaise) avec celle de l'Encyclopédie juive hébraïque. Et je lui ai proposé…`}, tags:['صهيونية','يهودية','فلسطين']},
-  {id:8, part:2, icon:'📚', ar:{t:'الموسوعة: تاريخها', d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, en:{t:`The Encyclopedia: Its History`, d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, fr:{t:`L'Encyclopédie : Son Histoire`, d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, excerpt:`الموسوعة, لابد من توضيح نقطة مهمة. وهي أن اهتمامي بالسياسة كان بالدرجة الأولى اهتمامًا معرفيًا فلسفيّاء وأن اهتمامي بالأحداث السياسية اليومية ظل اهتمامًا ثانويًا وهامشيا متجاهلاً الصحف اليومية والهستريا الجماعية! فعلى سبيل المثال كنت في الولايات المنحدة عام 14317: حينما وقعت النكسة وقد احتفل الإعلام الأمريكي احتفالاً هستيريا بالانتصار الإسرائيلي ومع هذا بدأت رسالتي للدكتوراه بعد الحرب مباشرةً متجاهلاً الصحف اليومية والتليفزيون والهستريا الإعلامية. ثم نشبت حرب سنة 191/7 وكنت مشغولاً بكتابة موسوعة 141/6., والتصقت زوجتي_مثل معظم المصريين`, tr:{en:`Regarding the Encyclopedia, I must clarify an important point: my interest in politics was primarily a philosophical-epistemic interest, and my interest in daily political events remained secondary and marginal — ignoring the daily newspapers and the collective hysteria. For example, I was in the United States in 1967 when the Naksa occurred, and the media celebrated…`, fr:`Concernant l'Encyclopédie, il me faut clarifier un point important : mon intérêt pour la politique était avant tout un intérêt philosophico-épistémique, et mon intérêt pour les événements politiques quotidiens est resté secondaire et marginal — ignorant les journaux quotidiens et l'hystérie collective. Par exemple, j'étais aux États-Unis en 1967 quand la Naksa est survenue, et les médias célébraient…`}, tags:['موسوعة','٢٥ سنة','دار الشروق']},
-  {id:9, part:2, icon:'🗂️', ar:{t:'الموسوعة: الموضوعات الأساسية', d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, en:{t:`The Encyclopedia: Core Themes`, d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, fr:{t:`L'Encyclopédie : Thèmes Fondamentaux`, d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, excerpt:`الموضوعات الأساسية في فكري. وكانت محاضراتى عن الأدب الإنجليزي والأمريكي تدور حول نفس هذه الموضوعات. وفكدا مت ةعنام +145.يرهم وجره اجدة بجعي والحدة فإ دزانة الصهبوي: أصبحت هي العنصر الرئيسي. ثم بدأت أيضا نشاطي العملي ضد الصهيونية فكتبت مذكرة للسفير المصري آنذاك (د. أشرف غربال) أقترح عليه طرقًا أكثر تركيبية للحركة ضد العدو الصهيوني وأخبرته 3 عن جماعات اليسار الجديد التي كان ثلث أعضائها من اليهود ومع هذا كانت معادية للصهيونية ولإسرائيل. ودعاني إلى مكتبه ودعا بعض موظفي السفارة لأحدثهم عن يهود الولايات المتحدة واليسار الجديد.`, tr:{en:`The fundamental themes in my thought — my lectures on English and American literature revolved around these same themes. [In modern universities] the study of Zionism became the principal element. Then I also began my practical activity against Zionism: I wrote a memorandum to the Egyptian ambassador at the time (Dr Ashraf Ghorbal) proposing more structured ways to act against the Zionist enemy, and I told him about the New Left groups, a third of whose members were Jews yet anti-Zionist and anti-Israel.`, fr:`Les thèmes fondamentaux de ma pensée — mes conférences sur la littérature anglaise et américaine tournaient autour de ces mêmes thèmes. Dans les universités modernes, l'étude du sionisme est devenue l'élément principal. Ensuite, j'ai aussi commencé mon activité pratique contre le sionisme : j'ai écrit un mémorandum à l'ambassadeur égyptien de l'époque (Dr Ashraf Ghorbal) en lui proposant des moyens d'action plus structurés contre l'ennemi sioniste, et je lui ai parlé des groupes de la Nouvelle Gauche dont un tiers des membres étaient juifs mais antisionistes et anti-israéliens.`}, tags:['مداخل','رموز','دولة']},
-  {id:10, part:2, icon:'🎨', ar:{t:'في عالم الأدب والفن', d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, en:{t:`In the World of Literature and Art`, d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, fr:{t:`Dans le Monde de la Littérature`, d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, excerpt:`عالم الأدب والمن حياتي في الجامعة برغم أن حياتي في الجامعة تشكل مهنتي الأساسية (إذ لم أستقل من التدريس إلا عام 4) فإنني مع هذا أجدني في سيرة فكرية كهذه لا أفيض في الحديث عنهاء بل ويندر من الناس من يعرف أنني كنت حتى تاريخ استقالتي أشغل وظيفة أستاذ النظرية النقدية والشعر الإنجليزي في القرن التاسع عشر. وهذا يعود ولا شك إلى أن معظم مؤلفاتي منذ أن حصلت على الدكتوراه تدور حول موضوع الصهيونية. كما أن له أسبابًا أخرى. ولا يمكنني أن أنكر استفادتي الإنسانية من تجربتي في قسم اللغة الإنجليزية وآدابها في كلية البنات جامعة عين شمس.`, tr:{en:`In the world of literature and art — my life at the university. Although my life at the university constituted my basic 'profession' (I did not resign from teaching until 2004), yet I find myself in an intellectual biography of this kind not expanding at length about it. Few people know that until the date of my resignation I held the position of Professor of Critical Theory and Nineteenth-Century English Poetry…`, fr:`Dans le monde de la littérature et de l'art — ma vie à l'université. Bien que ma vie à l'université constituât ma « profession » principale (je n'ai démissionné de l'enseignement qu'en 2004), je me trouve pourtant, dans une biographie intellectuelle de ce genre, ne pas en parler longuement. Peu de gens savent qu'à la date de ma démission, j'occupais le poste de professeur de théorie critique et de poésie anglaise du XIXᵉ siècle…`}, tags:['أدب','شعر','أطفال']},
+  {id:1, part:1, icon:'🌱', ar:{t:'البذور الأولى', d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, en:{t:`The Early Seeds`, d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, fr:{t:`Les Premières Graines`, d:`دمنهور: المجتمع التقليدي والإحساس بالتاريخ — رمضان في دمنهور — الأناشيد والألعاب — من التراحم إلى التعاقد`}, excerpt:`دمنهور هو الذي جعل أمي غير قادرة على استيعاب الحساسية الجديدة التي بدأت تظهر: الرغبة في المتعة في حد ذاتها بدون هدف أخلاقي أو عملي. ولذا كانت تحب شجرة الخوخ الكبيرة لأنها تعطينا ثمراتها. أما الورد فكان يسبب لها مشكلة. إذ كنا نحاول تزيين المنزل به وكانت لا تمانع. ولكنها كانت تطالب أن نصنع من بعضه مربى الورد ! وكانت ترى أن ذهابنا إلى السينما مضيعة للوقت. فكنا نختلق الحجج التقليدية حتى يمكننا الإفلات من قبضة هذه الرؤية. فعلى سبيل المثال أذكر أنني عشقت مسلسل زورو.`, tr:{en:`Damanhour is what made my mother unable to grasp the new sensibility that was beginning to appear: the desire for pleasure in itself, without any moral or practical aim. That is why she loved the great peach tree — because it gave us its fruit. But roses were a problem for her. We would try to decorate the house with them, and she did not object — but she would insist that we make rose jam from part of them. She considered our going to the cinema a waste of time, so we would invent the usual excuses to slip out of her grasp. For example, I remember I adored the Zorro series.`, fr:`C'est Damanhour qui rendait ma mère incapable de saisir la nouvelle sensibilité qui commençait à émerger : le désir du plaisir en lui-même, sans aucun but moral ou pratique. Voilà pourquoi elle aimait le grand pêcher — parce qu'il nous donnait ses fruits. Mais les roses lui posaient un problème. Nous essayions de décorer la maison avec, et elle ne s'y opposait pas — mais elle exigeait qu'on en fasse de la confiture de roses. Elle voyait notre sortie au cinéma comme une perte de temps, alors nous inventions les excuses habituelles pour échapper à son emprise. Par exemple, je me souviens que j'adorais le feuilleton de Zorro.`}, tags:['دمنهور','الطفولة','الأسرة'], tags_en:['Damanhour','childhood','family'], tags_fr:['Damanhour','enfance','famille']},
+  {id:2, part:1, icon:'🪞', ar:{t:'بدايات الهوية', d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, en:{t:`Beginnings of Identity`, d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, fr:{t:`Débuts de l'Identité`, d:`الرموز والطقوس وذاء التأمل — جامعة الإسكندرية: تجربتي المادية والماركسية`}, excerpt:`بدايات الهوية حلقات الانفصال أخبرتني أمي أنني حين كنت طفلاً في الثالثة أو الرابعة وجدوني أسير بمفردي فى الشرفة المطلة على حديقة منزلناء وقد ومعت إطانظارة قدجاك وريس ورف برط في فمي على هيئة سيجارة : أمسكت السيجارة بيد ووضعت الأخرى خلف ظهري وأخذت أذرع الشرفة دايا وإيانا بدي ولعي. وحينما سألوني عما أفعل أخبرتهم أنني ل رأيت الدكتور كامل يسى طبيب العائلة في الليلة السابقة ورأيت الأسرة كلها تستمع لنصائحه وإرشاداته). ولعل هذه هي أول مرة قمت فيها بطقوس الانفصال عن بيئتي التجارية تعبيرا عن رغبتي في أن أصبح شيئًا آخر.`, tr:{en:`Beginnings of Identity — Episodes of Separation. My mother told me that when I was a child of three or four, they found me walking alone on the balcony overlooking the garden of our house, having picked up a stick and placed it in my mouth as though it were a cigarette. I held the cigarette in one hand and put the other behind my back, and began pacing the length of the balcony back and forth, lost in thought. When they asked me what I was doing, I told them: 'I saw Dr. Kamil, the family physician, last night, and I saw the whole family listening to his advice and instructions.' This may have been the first time I performed rituals of separation from my commercial environment, expressing my desire to become something else.`, fr:`Débuts de l'identité — Épisodes de séparation. Ma mère m'a raconté que, lorsque j'étais un enfant de trois ou quatre ans, ils me trouvèrent marchant seul sur le balcon donnant sur le jardin de notre maison, ayant saisi un bâton que j'avais mis à la bouche en forme de cigarette. Je tenais la cigarette d'une main et mettais l'autre derrière mon dos, arpentant le balcon de long en large, perdu dans mes pensées. Quand ils m'ont demandé ce que je faisais, j'ai répondu : « J'ai vu hier soir le Dr Kamil, le médecin de famille, et j'ai vu toute la famille écouter ses conseils et ses instructions. » C'est peut-être la première fois que j'ai accompli des rituels de séparation de mon milieu commerçant, exprimant mon désir de devenir autre chose.`}, tags:['الإسكندرية','الوعي','الهوية'], tags_en:['Alexandria','awareness','identity'], tags_fr:['Alexandrie','conscience','identité']},
+  {id:3, part:1, icon:'🗽', ar:{t:'في الولايات المتحدة', d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, en:{t:`In the United States`, d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, fr:{t:`Aux États-Unis`, d:`مواجهة فكرية أولى — جامعة كولومبيا — بعض من عرفت في الولايات المتحدة — الثورة في أمريكا — العودة لمصر والذئاب الثلاثة`}, excerpt:`جامعة كولومبيا والتحقت بقسم الدراسات العليا وجدت أن مستواى أعلى من مستوى كثير من الطلبة هناك. في تلك اللحظة فهمت معاناتي في قسم اللغة الإنجليزية بجامعة الإسكندرية وما كنا نحمله من أعباء دراسية ثقيلة. ورئيسة القسمء الدكتورة نور شريف. إنسانة على قدر كبير من الثقافة والحكمة. كانت محاضراتها عن تشارلز ديكنز 5عءلء21 2165© أو عن شعر أواخر القرن الثامن عشر (بما في ذلك شعر وليام بليك علة81 0:ة1!ة/18) أو عن حضارة القرن التاسع عشر متعة حقيقية.`, tr:{en:`At Columbia University I enrolled in the graduate studies department and found that my level was higher than that of many students there. In that moment I understood my suffering in the English Department at Alexandria University and the heavy academic load we used to carry. The department chair, Dr Nour Sharif, was a person of great culture and wisdom; her lectures on Charles Dickens, or on late-eighteenth-century poetry including William Blake, or on nineteenth-century civilization, were a real pleasure.`, fr:`À l'Université Columbia, je me suis inscrit au département des études supérieures et j'ai trouvé que mon niveau était supérieur à celui de nombreux étudiants là-bas. À ce moment-là, j'ai compris ma souffrance au département d'anglais de l'Université d'Alexandrie et la lourde charge académique que nous portions. La directrice du département, Dr Nour Sharif, était une personne d'une grande culture et sagesse ; ses conférences sur Charles Dickens, ou sur la poésie de la fin du XVIIIᵉ siècle y compris William Blake, ou sur la civilisation du XIXᵉ siècle, étaient un vrai plaisir.`}, tags:['كولومبيا','رتغرز','أمريكا'], tags_en:['Columbia','Rutgers','America'], tags_fr:['Columbia','Rutgers','Amérique']},
+  {id:4, part:1, icon:'🧭', ar:{t:'من بساطة المادية إلى رحابة الإنسانية والإيمان', d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, en:{t:`From Materialism's Simplicity to the Spaciousness of Humanity & Faith`, d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, fr:{t:`Du Matérialisme à la Spaciosité de la Foi`, d:`تآكل النموذج المادي — الدين والهوية — العقلانية المادية — الإمبريالية والعنصرية — الاستهلاكية والإمبريالية النفسية — الروحي والمادي — بدايات الانتقال — الإيمان ومقولة الإنسان`}, excerpt:`رحابة الإنسانية والإيمان. كنت أقف على العتبات أتأمل وأتفكر بلا توقف ولا هوادة وكان علي أن أنتظر بضع سنوات أخرى قبل أن أقيم الصلاة. يكيان وحينما فعلت كنت أفعل ذلك في بداية الأمر لأعطي ابني حرية الاختيار بين الشك والإيمان (فقد قرأت أن الشاعر وليام بتلر بيتس كندعلآ ,16)نا8 دمهذ1!ة/ةا كان ساخطًا على أبيه الملحد لأنه حرمه من المقدرة على الإيمان وجعله بديلاً غير مطروح.`, tr:{en:`The Spaciousness of Humanity and Faith. I stood at the thresholds, contemplating and reflecting endlessly, without pause. I had to wait a few more years before I established prayer. When I did, I did it at first to give my son freedom of choice between doubt and faith — for I had read that the poet William Butler Yeats was furious with his atheist father for having deprived him of the capacity for faith and made it a non-option for him. And so, when he began to feel the need to believe in something beyond the material world — a natural human feeling — he drowned in the occult, such as summoning spirits, and ended up founding an entire mythical world that resembled religion in many ways.`, fr:`La spaciosité de l'humanité et de la foi. Je me tenais sur les seuils, contemplant et réfléchissant sans relâche ni repos. Il me fallut attendre encore quelques années avant d'établir la prière. Quand je l'ai fait, ce fut d'abord pour donner à mon fils la liberté de choix entre le doute et la foi — car j'avais lu que le poète William Butler Yeats en voulait à son père athée de l'avoir privé de la capacité de croire, en faisant de celle-ci une option écartée. Ainsi, lorsqu'il commença à ressentir le besoin de croire en quelque chose au-delà du monde matériel — un sentiment humain naturel — il sombra dans l'occulte, comme les séances spirites, et finit par fonder tout un monde mythique qui ressemblait à la religion à bien des égards.`}, tags:['تحوّل','إيمان','نموذج'], tags_en:['transformation','faith','model'], tags_fr:['transformation','foi','modèle']},
+  {id:5, part:2, icon:'🔍', ar:{t:'النماذج الإدراكية والتحليلية', d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, en:{t:`Cognitive and Analytical Models`, d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, fr:{t:`Modèles Cognitifs et Analytiques`, d:`من الموضوعية المتلقية إلى الموضوعية الاجتهادية — العقل التوليدي — تشومسكي في القاهرة — النماذج كأداة تحليلية — الحلولية — العلمانية الشاملة`}, excerpt:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`, tr:{en:`Cognitive and Analytical Models — From Receptive Objectivity to Interpretive Objectivity. The transition from materialism to humanism and faith was neither easy nor simple. Many of my friends did not believe at first what had happened; some cut me off, and my relationship with others faded. Because my writings are rational — even though their ultimate reference is faith-based: belief in God, and in the human being as a non-material creature deriving his composition from being a divine rather than a natural being — some continued to count me as materialist, since they linked rationality with materialism. This is a link that has no basis in reality: Robespierre was a pure materialist, declared the worship of reason, yet at the same time…`, fr:`Modèles cognitifs et analytiques — de l'objectivité réceptive à l'objectivité interprétative. Le passage du matérialisme à l'humanisme et à la foi n'a été ni simple ni aisé. Beaucoup de mes amis ne crurent pas d'abord ce qui s'était passé ; certains m'ont coupé, et ma relation avec d'autres s'est estompée. Parce que mes écrits sont rationnels — bien que leur référence ultime soit de foi : croyance en Dieu, et en l'être humain comme créature non-matérielle qui tire sa composition du fait d'être un être divin et non pas naturel — certains ont continué à me considérer comme matérialiste, car ils associaient la rationalité au matérialisme. Ce lien n'a aucun fondement dans la réalité : Robespierre était un pur matérialiste, déclarait le culte de la raison, et en même temps…`}, tags:['منهج','نماذج','حلولية'], tags_en:['method','models','hulul'], tags_fr:['méthode','modèles','hulul']},
+  {id:6, part:2, icon:'🌾', ar:{t:'بعض الثمرات الأولى', d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, en:{t:`Some First Fruits`, d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, fr:{t:`Quelques Premiers Fruits`, d:`بعض الكتابات الأولى — مقدمة لدراسة بنية الفكر الصهيوني — بدايات المشروع`}, excerpt:`ثمراته إن نحن أمعنا النظر. وفي إطار هذا التصور أصبح من الحتمي أن أنظر إلى مصر لا بحسبانها مثلاً (ساكنًا) لهذه أو تلك الصفة وإنا بحُسبانها لحظة في متتالية نفاذجية تتابع حلقاتهاء بحيث أستخدم ما أرى في الغرب على تقدير أنه من المحتمل أن يتكرر حدوثه انذكنا عندنا هناء فنفس المقدمات والظروف الاجتماعية قد تؤدي إلى نفس النتائج أو شيء قريب منهاء كما أنها ولا شك تصلح كمؤشر على ما يمكن أن يحدث في المستقبل.`, tr:{en:`…its fruits, if we look carefully. Within this conception, it became imperative for me to look at Egypt not as a (static) example of this or that trait, but as a moment in a paradigmatic sequence whose episodes follow one another — so that I use what I see in the West on the assumption that it may well recur here among us, for the same premises and social conditions…`, fr:`…ses fruits, si nous y regardons de près. Dans ce cadre, il me devint impératif de considérer l'Égypte non comme un exemple (statique) de telle ou telle caractéristique, mais comme un moment dans une séquence paradigmatique dont les épisodes se succèdent — de sorte que j'utilise ce que je vois en Occident dans l'hypothèse qu'il pourrait bien se reproduire ici chez nous, car les mêmes prémisses et conditions sociales…`}, tags:['مؤلفات','مشروع','نقد'], tags_en:['writings','project','critique'], tags_fr:['écrits','projet','critique']},
+  {id:7, part:2, icon:'✡️', ar:{t:'الصهيونية', d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, en:{t:`Zionism`, d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, fr:{t:`Le Sionisme`, d:`الصهيونية: تفكيكًا وتركيبًا — اليهودية والصهيونية — الجماعات اليهودية في التاريخ`}, excerpt:`الصهيونية تفكيكنًا وتركيباء وفهمها دون اختزالها. وهناك مئات الموضوعات التي لم تتم دراستها بهذه الطريقة الجديدة ! بل إنه قال إن معظم الموسوعة تقل من الموسوعات اليهودية. فطلبت منه أن يقارن مدخل الدياسبورا في | الجودايكا (الموسوعة اليهودية الإنحليزية) وفى الموسوعة اليهودية (العبرية). وعرضت عليه أن أوفر له المادة المطلوبة لعله من خلال الدراسة المقارنة أن يرى الفرق بين الأطر التحليلية فلم ينعل. وقد علّق أحد طلبتي على هذا الموقف بقوله: إن الأستاذ المذكور معلوماتي موضوعي متلق. يبحث عن المعلومة والمعلومة بطبيعة الحال تتكرر.`, tr:{en:`…Zionism — deconstructing and reconstructing it, and understanding it without reduction. There are hundreds of topics that have not been studied in this 'new' way. He even said that most of the Encyclopedia surpassed the existing Jewish encyclopedias. I asked him to compare the Diaspora entry in the Judaica (the English Jewish encyclopedia) with the one in the Hebrew Jewish Encyclopedia. And I offered him…`, fr:`…le sionisme — en le déconstruisant et en le reconstruisant, en le comprenant sans le réduire. Il existe des centaines de sujets qui n'ont pas été étudiés de cette manière « nouvelle ». Il a même dit que la plus grande partie de l'Encyclopédie surpassait les encyclopédies juives existantes. Je lui ai demandé de comparer l'entrée Diaspora dans la Judaica (l'encyclopédie juive anglaise) avec celle de l'Encyclopédie juive hébraïque. Et je lui ai proposé…`}, tags:['صهيونية','يهودية','فلسطين'], tags_en:['Zionism','Judaism','Palestine'], tags_fr:['sionisme','judaïsme','Palestine']},
+  {id:8, part:2, icon:'📚', ar:{t:'الموسوعة: تاريخها', d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, en:{t:`The Encyclopedia: Its History`, d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, fr:{t:`L'Encyclopédie : Son Histoire`, d:`الموسوعة: تاريخها — من موسوعة المفاهيم والمصطلحات ١٩٧٥ إلى موسوعة اليهود واليهودية والصهيونية ١٩٩٩`}, excerpt:`الموسوعة, لابد من توضيح نقطة مهمة. وهي أن اهتمامي بالسياسة كان بالدرجة الأولى اهتمامًا معرفيًا فلسفيّاء وأن اهتمامي بالأحداث السياسية اليومية ظل اهتمامًا ثانويًا وهامشيا متجاهلاً الصحف اليومية والهستريا الجماعية! فعلى سبيل المثال كنت في الولايات المنحدة عام 14317: حينما وقعت النكسة وقد احتفل الإعلام الأمريكي احتفالاً هستيريا بالانتصار الإسرائيلي ومع هذا بدأت رسالتي للدكتوراه بعد الحرب مباشرةً متجاهلاً الصحف اليومية والتليفزيون والهستريا الإعلامية. ثم نشبت حرب سنة 191/7 وكنت مشغولاً بكتابة موسوعة 141/6., والتصقت زوجتي_مثل معظم المصريين`, tr:{en:`Regarding the Encyclopedia, I must clarify an important point: my interest in politics was primarily a philosophical-epistemic interest, and my interest in daily political events remained secondary and marginal — ignoring the daily newspapers and the collective hysteria. For example, I was in the United States in 1967 when the Naksa occurred, and the media celebrated…`, fr:`Concernant l'Encyclopédie, il me faut clarifier un point important : mon intérêt pour la politique était avant tout un intérêt philosophico-épistémique, et mon intérêt pour les événements politiques quotidiens est resté secondaire et marginal — ignorant les journaux quotidiens et l'hystérie collective. Par exemple, j'étais aux États-Unis en 1967 quand la Naksa est survenue, et les médias célébraient…`}, tags:['موسوعة','٢٥ سنة','دار الشروق'], tags_en:['encyclopedia','25 years','Dar al-Shorouk'], tags_fr:['encyclopédie','25 ans','Dar al-Shorouk']},
+  {id:9, part:2, icon:'🗂️', ar:{t:'الموسوعة: الموضوعات الأساسية', d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, en:{t:`The Encyclopedia: Core Themes`, d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, fr:{t:`L'Encyclopédie : Thèmes Fondamentaux`, d:`الموسوعة: الموضوعات الأساسية — الجماعات اليهودية، الرموز، الحركة الصهيونية، الدولة الصهيونية، القضية الفلسطينية`}, excerpt:`الموضوعات الأساسية في فكري. وكانت محاضراتى عن الأدب الإنجليزي والأمريكي تدور حول نفس هذه الموضوعات. وفكدا مت ةعنام +145.يرهم وجره اجدة بجعي والحدة فإ دزانة الصهبوي: أصبحت هي العنصر الرئيسي. ثم بدأت أيضا نشاطي العملي ضد الصهيونية فكتبت مذكرة للسفير المصري آنذاك (د. أشرف غربال) أقترح عليه طرقًا أكثر تركيبية للحركة ضد العدو الصهيوني وأخبرته 3 عن جماعات اليسار الجديد التي كان ثلث أعضائها من اليهود ومع هذا كانت معادية للصهيونية ولإسرائيل. ودعاني إلى مكتبه ودعا بعض موظفي السفارة لأحدثهم عن يهود الولايات المتحدة واليسار الجديد.`, tr:{en:`The fundamental themes in my thought — my lectures on English and American literature revolved around these same themes. [In modern universities] the study of Zionism became the principal element. Then I also began my practical activity against Zionism: I wrote a memorandum to the Egyptian ambassador at the time (Dr Ashraf Ghorbal) proposing more structured ways to act against the Zionist enemy, and I told him about the New Left groups, a third of whose members were Jews yet anti-Zionist and anti-Israel.`, fr:`Les thèmes fondamentaux de ma pensée — mes conférences sur la littérature anglaise et américaine tournaient autour de ces mêmes thèmes. Dans les universités modernes, l'étude du sionisme est devenue l'élément principal. Ensuite, j'ai aussi commencé mon activité pratique contre le sionisme : j'ai écrit un mémorandum à l'ambassadeur égyptien de l'époque (Dr Ashraf Ghorbal) en lui proposant des moyens d'action plus structurés contre l'ennemi sioniste, et je lui ai parlé des groupes de la Nouvelle Gauche dont un tiers des membres étaient juifs mais antisionistes et anti-israéliens.`}, tags:['مداخل','رموز','دولة'], tags_en:['entries','symbols','state'], tags_fr:['entrées','symboles','état']},
+  {id:10, part:2, icon:'🎨', ar:{t:'في عالم الأدب والفن', d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, en:{t:`In the World of Literature and Art`, d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, fr:{t:`Dans le Monde de la Littérature`, d:`في عالم الأدب والفن — الشعر والرواية والنقد — أدب الأطفال`}, excerpt:`عالم الأدب والمن حياتي في الجامعة برغم أن حياتي في الجامعة تشكل مهنتي الأساسية (إذ لم أستقل من التدريس إلا عام 4) فإنني مع هذا أجدني في سيرة فكرية كهذه لا أفيض في الحديث عنهاء بل ويندر من الناس من يعرف أنني كنت حتى تاريخ استقالتي أشغل وظيفة أستاذ النظرية النقدية والشعر الإنجليزي في القرن التاسع عشر. وهذا يعود ولا شك إلى أن معظم مؤلفاتي منذ أن حصلت على الدكتوراه تدور حول موضوع الصهيونية. كما أن له أسبابًا أخرى. ولا يمكنني أن أنكر استفادتي الإنسانية من تجربتي في قسم اللغة الإنجليزية وآدابها في كلية البنات جامعة عين شمس.`, tr:{en:`In the world of literature and art — my life at the university. Although my life at the university constituted my basic 'profession' (I did not resign from teaching until 2004), yet I find myself in an intellectual biography of this kind not expanding at length about it. Few people know that until the date of my resignation I held the position of Professor of Critical Theory and Nineteenth-Century English Poetry…`, fr:`Dans le monde de la littérature et de l'art — ma vie à l'université. Bien que ma vie à l'université constituât ma « profession » principale (je n'ai démissionné de l'enseignement qu'en 2004), je me trouve pourtant, dans une biographie intellectuelle de ce genre, ne pas en parler longuement. Peu de gens savent qu'à la date de ma démission, j'occupais le poste de professeur de théorie critique et de poésie anglaise du XIXᵉ siècle…`}, tags:['أدب','شعر','أطفال'], tags_en:['literature','poetry','children'], tags_fr:['littérature','poésie','enfants']},
 ];
 
 const IDEAS = [
-  {num:1, ar:{t:`النماذج الإدراكية والتحليلية`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, en:{t:`Cognitive and Analytical Models`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, fr:{t:`Modèles Cognitifs et Analytiques`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, tr:{en:`Cognitive and Analytical Models — from receptive objectivity to interpretive objectivity. The transition from materialism to humanism and faith was neither easy nor simple. Many of my friends did not believe at first what had happened, and some cut me off. Because my writings are rational — though their ultimate reference is faith-based: belief in God, and in the human as a non-material being whose composition derives from being divine rather than natural — some continued to count me as materialist, having linked rationality with materialism. That link has no basis in reality.`, fr:`Modèles cognitifs et analytiques — de l'objectivité réceptive à l'objectivité interprétative. Le passage du matérialisme à l'humanisme et à la foi n'a été ni simple ni facile. Beaucoup de mes amis n'ont pas cru d'abord ce qui s'était passé, et certains m'ont coupé. Parce que mes écrits sont rationnels — bien que leur référence ultime soit de foi : croyance en Dieu et en l'être humain comme non-matériel tirant sa composition de son caractère divin et non naturel — certains m'ont tenu pour matérialiste, ayant lié la rationalité au matérialisme. Ce lien n'a aucun fondement réel.`}, note:`الانتقال من الموضوعية المتلقية إلى الموضوعية الاجتهادية`},
-  {num:2, ar:{t:`فقه التحيّز`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, en:{t:`Fiqh al-Tahayyuz (Jurisprudence of Bias)`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, fr:{t:`Fiqh al-Tahayyuz (Jurisprudence du Biais)`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, tr:{en:`[Fiqh al-Tahayyuz] — the long introduction I wrote in which I defined bias, its causes, its forms, and how to transcend it. I pointed out in Fiqh al-Tahayyuz that everything — every event and movement — has a cultural dimension and expresses a model. Bias cannot be transcended absolutely; what is ultimate is the shared humanity (and the ethical values) that precede every difference and every bias. I then pointed to the hegemony of the Western civilizational model over all Arab intellectual currents — liberal, Marxist, Islamic — and tried to define some of its essential features. I showed that this model is a materialist, immanentist, monist model.`, fr:`[Fiqh al-Tahayyuz] — la longue introduction que j'ai écrite et dans laquelle j'ai défini le biais, ses causes, ses formes et comment le dépasser. J'ai indiqué dans Fiqh al-Tahayyuz que toute chose — tout événement et tout mouvement — possède une dimension culturelle et exprime un modèle. Le biais ne peut être dépassé absolument ; ce qui est ultime, c'est l'humanité partagée (et les valeurs éthiques) qui précèdent toute différence et tout biais. J'ai ensuite montré l'hégémonie du modèle civilisationnel occidental sur tous les courants intellectuels arabes — libéral, marxiste, islamique — et j'ai tenté d'en définir certaines caractéristiques essentielles. J'ai montré que ce modèle est un modèle matérialiste, immanentiste, moniste.`}, note:`كل شيء، كل واقعة وحركة، لها بعد ثقافي وتعبّر عن نموذج`},
-  {num:3, ar:{t:`العلمانية الشاملة`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, en:{t:`Comprehensive Secularism`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, fr:{t:`Sécularisme Total`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, tr:{en:`Comprehensive secularism and the functional community as analytical models — models that have kept widening, until the Encyclopedia itself became merely a case study, an application of three models onto Jews, Judaism, and Zionism. Yet the models remain broader and more comprehensive than the case to which they are applied. The model of hulul (monistic immanence), for instance, can be used to study Batiniyya, Gnosticism, and Asian religions, especially Shinto — and even the premises of secularism and the rise of capitalism (and the comparative study of religions).`, fr:`Le sécularisme total et la communauté fonctionnelle comme modèles analytiques — des modèles qui n'ont cessé de s'élargir, au point que l'Encyclopédie elle-même est devenue une simple étude de cas, l'application de trois modèles aux Juifs, au Judaïsme et au Sionisme. Mais les modèles restent plus vastes et plus englobants que le cas auquel ils sont appliqués. Le modèle de hulul (immanence moniste), par exemple, peut être utilisé pour étudier la Batiniyya, le gnosticisme et les religions asiatiques, en particulier le shintoïsme — et même les prémisses du sécularisme et l'émergence du capitalisme (et la religion comparée).`}, note:`تمييز بين العلمانية الجزئية والعلمانية الشاملة`},
-  {num:4, ar:{t:`الحلولية`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, en:{t:`Hulul (Monistic Immanence)`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, fr:{t:`Hulul (Immanence Moniste)`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, tr:{en:`Hulul (monistic immanence) — which dissolves the individual into the collective and the part into the whole. These are cults without clear ethical systems; their ethics tend to become mere protocols. Thus they are a fertile soil for generating the one-dimensional human, perfectly suited to Western modernity with its rationalism and its material monism. I wrote a social-literary essay on this matter entitled 'The Spirit-Strange Boys.' The article began with the structure of the literary work (the model latent within it) and then treated several short stories, including al-Tayyib Salih's 'The Doum Tree of Wad Hamid.'`, fr:`Hulul (immanence moniste) — qui dissout l'individu dans le collectif et la partie dans le tout. Ce sont des cultes sans systèmes éthiques clairs ; leurs éthiques tendent à devenir de simples protocoles. Ils constituent ainsi un terreau fertile pour engendrer l'humain à une seule dimension, parfaitement adapté à la modernité occidentale avec son rationalisme et son monisme matériel. J'ai écrit un essai socio-littéraire sur cette question intitulé « Les garçons étranges à l'esprit ». L'article commençait par la structure de l'œuvre littéraire (le modèle qui y est latent) puis traitait plusieurs nouvelles, dont « Le doum de Wad Hamid » de Tayeb Salih.`}, note:`مفتاح قراءة المسيري للفكر المادي الغربي`},
-  {num:5, ar:{t:`الإنسان الرباني`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, en:{t:`The Divinely-Oriented Human`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, fr:{t:`L'Humain Orienté vers le Divin`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, tr:{en:`The divinely-oriented human (al-insan al-rabbani) — or what I previously called 'the secret human' — is a being whose totality only God fully knows, because he is not an indivisible part of the material natural world. He is only partially divisible from it, for there is a part of him oriented toward what transcends matter. Hence the tragic/comic existence of the human: a being who lives inside his (material) body, part of him moving by laws of gravity and biological and instinctual drives, yet at the same time his soul longs for the world of ideals, permanence, and spirit — a being whose feet are sunk in the mud and whose eyes gaze at the stars.`, fr:`L'humain orienté vers le divin (al-insan al-rabbani) — ou ce que j'ai auparavant nommé « l'humain-secret » — est un être dont Dieu seul connaît la totalité, car il n'est pas une partie indivisible du monde naturel matériel. Il n'en est que partiellement divisible, car une part de lui est orientée vers ce qui dépasse la matière. De là vient l'existence tragique/comique de l'humain : un être qui vit à l'intérieur de son corps (matériel), une partie de lui se mouvant selon les lois de la gravité et des pulsions biologiques et instinctuelles, tandis qu'en même temps son âme aspire au monde des idéaux, de la permanence et de l'esprit — un être dont les pieds sont enfoncés dans la boue et dont les yeux regardent les étoiles.`}, note:`بديل المسيري عن الإنسان المادي الاختزالي`},
-  {num:6, ar:{t:`الموسوعة`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, en:{t:`The Encyclopedia`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, fr:{t:`L'Encyclopédie`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, tr:{en:`The Encyclopedia — in defining the model as an analytical tool, and hulul, comprehensive secularism, and the functional community as analytical models. These are models that have kept widening, so that the Encyclopedia became merely a case study, an application of three models onto Jews, Judaism, and Zionism. Yet the models remain broader and more comprehensive than the case to which they are applied. The hulul model can be used to study Batiniyya, Gnosticism, Asian religions (especially Shinto), and even the premises of secularism and the rise of capitalism.`, fr:`L'Encyclopédie — dans la définition du modèle comme outil analytique, et de hulul, du sécularisme total et de la communauté fonctionnelle comme modèles analytiques. Ce sont des modèles qui n'ont cessé de s'élargir, si bien que l'Encyclopédie est devenue une simple étude de cas, l'application de trois modèles aux Juifs, au Judaïsme et au Sionisme. Mais les modèles restent plus vastes et plus englobants que le cas auquel ils sont appliqués. Le modèle de hulul peut servir à étudier la Batiniyya, le gnosticisme, les religions asiatiques (notamment le shintoïsme), et même les prémisses du sécularisme et l'essor du capitalisme.`}, note:`المشروع الذي استغرق أكثر من خمس وعشرين سنة`},
+  {num:1, ar:{t:`النماذج الإدراكية والتحليلية`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, en:{t:`Cognitive and Analytical Models`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, fr:{t:`Modèles Cognitifs et Analytiques`, d:`النماذج الإدراكية والتحليلية من الموضوعية المتلقية إلى الموضوعية الاجتهادية لم تكن عملية الانتقال من المادية إلى الإنسانية والإيمان مسألة هينة أو يسيرة ولم يصدق كثير من أصدقائي ما حدث في بادئ الأمرء وقاطعني بعضهم. وضمرت علاقتي بالبعض الآخر. ولأن كتاباتي عقلانية (برغم أن مرجعيتها النهائية إيمانية : الإيمان بالله والإنسان باعتباره كائنا غير مادي يكتسب تركيبيته من كونه كائنا ربانيا لا طبيعيًا)ء فقد ظل البعض يَمُدَنِي ماديا لأنهم ربطوا العقلانية بالمادية وهي عملية ريط لا أساس لها في الواقع.`}, tr:{en:`Cognitive and Analytical Models — from receptive objectivity to interpretive objectivity. The transition from materialism to humanism and faith was neither easy nor simple. Many of my friends did not believe at first what had happened, and some cut me off. Because my writings are rational — though their ultimate reference is faith-based: belief in God, and in the human as a non-material being whose composition derives from being divine rather than natural — some continued to count me as materialist, having linked rationality with materialism. That link has no basis in reality.`, fr:`Modèles cognitifs et analytiques — de l'objectivité réceptive à l'objectivité interprétative. Le passage du matérialisme à l'humanisme et à la foi n'a été ni simple ni facile. Beaucoup de mes amis n'ont pas cru d'abord ce qui s'était passé, et certains m'ont coupé. Parce que mes écrits sont rationnels — bien que leur référence ultime soit de foi : croyance en Dieu et en l'être humain comme non-matériel tirant sa composition de son caractère divin et non naturel — certains m'ont tenu pour matérialiste, ayant lié la rationalité au matérialisme. Ce lien n'a aucun fondement réel.`}, note:`الانتقال من الموضوعية المتلقية إلى الموضوعية الاجتهادية`, note_en:`From receptive objectivity to interpretive objectivity`, note_fr:`De l'objectivité réceptive à l'objectivité interprétative`},
+  {num:2, ar:{t:`فقه التحيّز`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, en:{t:`Fiqh al-Tahayyuz (Jurisprudence of Bias)`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, fr:{t:`Fiqh al-Tahayyuz (Jurisprudence du Biais)`, d:`هو المقدمة الطويلة التي كتبتها وعرفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه (دون وقد أشرت في فقه التحيز إلى أن كل شيء كل واقعة وحركة، لها بعد ثقافي وتعبر عن تموذج وأن التحيز لا يمكن تجاوزه ولكنه ليس نهائياء فالنهائي هو الإنسانية المشتركة (والقيم الأخلاقية) التي تسبق كل تنوع وأي تحيز. ثم أشرت إلى هيمنة النموذج الحضاري الغربي على كل الاتجاهات الفكرية العربية (ليبرالية ‏ ماركسية ‏ إسلامية) وحاولت تعريف بعض سماته الأساسية. فبينت أن هذا النموذج نموذج مادي حلولي واحدي.`}, tr:{en:`[Fiqh al-Tahayyuz] — the long introduction I wrote in which I defined bias, its causes, its forms, and how to transcend it. I pointed out in Fiqh al-Tahayyuz that everything — every event and movement — has a cultural dimension and expresses a model. Bias cannot be transcended absolutely; what is ultimate is the shared humanity (and the ethical values) that precede every difference and every bias. I then pointed to the hegemony of the Western civilizational model over all Arab intellectual currents — liberal, Marxist, Islamic — and tried to define some of its essential features. I showed that this model is a materialist, immanentist, monist model.`, fr:`[Fiqh al-Tahayyuz] — la longue introduction que j'ai écrite et dans laquelle j'ai défini le biais, ses causes, ses formes et comment le dépasser. J'ai indiqué dans Fiqh al-Tahayyuz que toute chose — tout événement et tout mouvement — possède une dimension culturelle et exprime un modèle. Le biais ne peut être dépassé absolument ; ce qui est ultime, c'est l'humanité partagée (et les valeurs éthiques) qui précèdent toute différence et tout biais. J'ai ensuite montré l'hégémonie du modèle civilisationnel occidental sur tous les courants intellectuels arabes — libéral, marxiste, islamique — et j'ai tenté d'en définir certaines caractéristiques essentielles. J'ai montré que ce modèle est un modèle matérialiste, immanentiste, moniste.`}, note:`كل شيء، كل واقعة وحركة، لها بعد ثقافي وتعبّر عن نموذج`, note_en:`Everything — every event and movement — has a cultural dimension and expresses a model`, note_fr:`Toute chose — tout événement et tout mouvement — porte une dimension culturelle et exprime un modèle`},
+  {num:3, ar:{t:`العلمانية الشاملة`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, en:{t:`Comprehensive Secularism`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, fr:{t:`Sécularisme Total`, d:`العلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, tr:{en:`Comprehensive secularism and the functional community as analytical models — models that have kept widening, until the Encyclopedia itself became merely a case study, an application of three models onto Jews, Judaism, and Zionism. Yet the models remain broader and more comprehensive than the case to which they are applied. The model of hulul (monistic immanence), for instance, can be used to study Batiniyya, Gnosticism, and Asian religions, especially Shinto — and even the premises of secularism and the rise of capitalism (and the comparative study of religions).`, fr:`Le sécularisme total et la communauté fonctionnelle comme modèles analytiques — des modèles qui n'ont cessé de s'élargir, au point que l'Encyclopédie elle-même est devenue une simple étude de cas, l'application de trois modèles aux Juifs, au Judaïsme et au Sionisme. Mais les modèles restent plus vastes et plus englobants que le cas auquel ils sont appliqués. Le modèle de hulul (immanence moniste), par exemple, peut être utilisé pour étudier la Batiniyya, le gnosticisme et les religions asiatiques, en particulier le shintoïsme — et même les prémisses du sécularisme et l'émergence du capitalisme (et la religion comparée).`}, note:`تمييز بين العلمانية الجزئية والعلمانية الشاملة`, note_en:`A distinction between partial secularism and comprehensive secularism`, note_fr:`Une distinction entre sécularisme partiel et sécularisme total`},
+  {num:4, ar:{t:`الحلولية`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, en:{t:`Hulul (Monistic Immanence)`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, fr:{t:`Hulul (Immanence Moniste)`, d:`الحلولية التي تذيب الفرد في المجموع والجزء في الكل وهي عبادات ليس لها منظومات أخلاقية واضحة وتميل الأخلاق فيها إلى أن تصبح بروتوكولات. ولذا فهي تربة صالحة لأن تولّد الإنسان ذا البعد الواحدء الملائم تمامًا للحداثة الغربية بعقلانيتها وواحديتها المادية). وقد كتبت مقالاً أدبا اجتماعيًا عن هذه القضية عنوانه الفتيان الغرباء الروح. وقد تناول المقال في بدايته بنية العمل الأدبي (أي النموذج الكامن فيه) ثم تناول عدة قصص خض قصيرة من بينها قصة الطيب الصالح دومة ود حامد.`}, tr:{en:`Hulul (monistic immanence) — which dissolves the individual into the collective and the part into the whole. These are cults without clear ethical systems; their ethics tend to become mere protocols. Thus they are a fertile soil for generating the one-dimensional human, perfectly suited to Western modernity with its rationalism and its material monism. I wrote a social-literary essay on this matter entitled 'The Spirit-Strange Boys.' The article began with the structure of the literary work (the model latent within it) and then treated several short stories, including al-Tayyib Salih's 'The Doum Tree of Wad Hamid.'`, fr:`Hulul (immanence moniste) — qui dissout l'individu dans le collectif et la partie dans le tout. Ce sont des cultes sans systèmes éthiques clairs ; leurs éthiques tendent à devenir de simples protocoles. Ils constituent ainsi un terreau fertile pour engendrer l'humain à une seule dimension, parfaitement adapté à la modernité occidentale avec son rationalisme et son monisme matériel. J'ai écrit un essai socio-littéraire sur cette question intitulé « Les garçons étranges à l'esprit ». L'article commençait par la structure de l'œuvre littéraire (le modèle qui y est latent) puis traitait plusieurs nouvelles, dont « Le doum de Wad Hamid » de Tayeb Salih.`}, note:`مفتاح قراءة المسيري للفكر المادي الغربي`, note_en:`Key to Al-Messiri's reading of Western materialist thought`, note_fr:`Clé de la lecture que fait Al-Messiri de la pensée matérialiste occidentale`},
+  {num:5, ar:{t:`الإنسان الرباني`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, en:{t:`The Divinely-Oriented Human`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, fr:{t:`L'Humain Orienté vers le Divin`, d:`الإنسان الرباني أو الإنسان السر في السابق) كائن لا يعلمه في كليته إلا الله. لأنه ليس جزءا لا يتجزأ من العالم الطبيعي المادي. وإغاهو جزء يتجزأ منه وحسب. إذ إن هناك جزءا منه يتتجه نحو ما هو متجاوز للمادة. ومن هنا وجود الإنسان المأساوي/ الملهاوي : كائن يعيش داخل جسده (المادي). في الطبيعة المادية يتتحرك جزء منه حسب قوانين الجاذبية والدوافع البيولوجية والغريزية ولكنه في الوقت ذاته تتوق روحه إلى عالم المثل والثبات والروح كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم.`}, tr:{en:`The divinely-oriented human (al-insan al-rabbani) — or what I previously called 'the secret human' — is a being whose totality only God fully knows, because he is not an indivisible part of the material natural world. He is only partially divisible from it, for there is a part of him oriented toward what transcends matter. Hence the tragic/comic existence of the human: a being who lives inside his (material) body, part of him moving by laws of gravity and biological and instinctual drives, yet at the same time his soul longs for the world of ideals, permanence, and spirit — a being whose feet are sunk in the mud and whose eyes gaze at the stars.`, fr:`L'humain orienté vers le divin (al-insan al-rabbani) — ou ce que j'ai auparavant nommé « l'humain-secret » — est un être dont Dieu seul connaît la totalité, car il n'est pas une partie indivisible du monde naturel matériel. Il n'en est que partiellement divisible, car une part de lui est orientée vers ce qui dépasse la matière. De là vient l'existence tragique/comique de l'humain : un être qui vit à l'intérieur de son corps (matériel), une partie de lui se mouvant selon les lois de la gravité et des pulsions biologiques et instinctuelles, tandis qu'en même temps son âme aspire au monde des idéaux, de la permanence et de l'esprit — un être dont les pieds sont enfoncés dans la boue et dont les yeux regardent les étoiles.`}, note:`بديل المسيري عن الإنسان المادي الاختزالي`, note_en:`Al-Messiri's alternative to the reductive materialist human`, note_fr:`L'alternative de Al-Messiri à l'humain matérialiste réductif`},
+  {num:6, ar:{t:`الموسوعة`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, en:{t:`The Encyclopedia`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, fr:{t:`L'Encyclopédie`, d:`الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها نماذج تحليلية. وهي نماذج أخذت في الاتساع حتى إن الموسوعة أصبحت مجرد دراسة حالة وتطبيق لنماذج ثلاثة على اليهود واليهودية والصهيونية. ولكن تظل النماذج أكثر اتساعا وشمولاً من الحالة التي طبقت عليها. فنموذج الحلولية يمكن استخدامه في دراسة الباطنية والغنوصية والديانات الآسيوية وبخاصة الشنتو. بل ومقدمات العلمانية ونشوء الرأسمالية (وعلم مقارنة الأديان).`}, tr:{en:`The Encyclopedia — in defining the model as an analytical tool, and hulul, comprehensive secularism, and the functional community as analytical models. These are models that have kept widening, so that the Encyclopedia became merely a case study, an application of three models onto Jews, Judaism, and Zionism. Yet the models remain broader and more comprehensive than the case to which they are applied. The hulul model can be used to study Batiniyya, Gnosticism, Asian religions (especially Shinto), and even the premises of secularism and the rise of capitalism.`, fr:`L'Encyclopédie — dans la définition du modèle comme outil analytique, et de hulul, du sécularisme total et de la communauté fonctionnelle comme modèles analytiques. Ce sont des modèles qui n'ont cessé de s'élargir, si bien que l'Encyclopédie est devenue une simple étude de cas, l'application de trois modèles aux Juifs, au Judaïsme et au Sionisme. Mais les modèles restent plus vastes et plus englobants que le cas auquel ils sont appliqués. Le modèle de hulul peut servir à étudier la Batiniyya, le gnosticisme, les religions asiatiques (notamment le shintoïsme), et même les prémisses du sécularisme et l'essor du capitalisme.`}, note:`المشروع الذي استغرق أكثر من خمس وعشرين سنة`, note_en:`The project that took more than twenty-five years`, note_fr:`Le projet qui a pris plus de vingt-cinq ans`},
 ];
 
 const TIMELINE = [
@@ -509,14 +535,14 @@ const QUOTES = [
 ];
 
 const QUIZ = [
-  {q:{ar:`في أي مدينة مصرية وُلد المسيري؟`,en:`In which Egyptian city was Al-Messiri born?`,fr:`Dans quelle ville est né Al-Messiri ?`}, opts:{ar:["القاهرة", "الإسكندرية", "دمنهور", "طنطا"],en:["Cairo", "Alexandria", "Damanhour", "Tanta"],fr:["Le Caire", "Alexandrie", "Damanhour", "Tanta"]}, correct:2, src:`حياتي الزمنية: الميلاد في دمنهور (٨ من أكتوبر)`},
-  {q:{ar:`من أي جامعة أمريكية حصل على الدكتوراه؟`,en:`From which US university did he earn his PhD?`,fr:`De quelle université américaine a-t-il obtenu son doctorat ?`}, opts:{ar:["هارفارد", "كولومبيا", "رتغرز", "برنستون"],en:["Harvard", "Columbia", "Rutgers", "Princeton"],fr:["Harvard", "Columbia", "Rutgers", "Princeton"]}, correct:2, src:`جامعة رتجرز في ولاية نيوجرسي حيث حصلت على الدكتوراه`},
-  {q:{ar:`كم مجلداً تتألف منها موسوعة اليهود واليهودية والصهيونية؟`,en:`How many volumes is the Encyclopedia?`,fr:`Combien de volumes compte l'Encyclopédie ?`}, opts:{ar:["٤", "٦", "٨", "١٠"],en:["4", "6", "8", "10"],fr:["4", "6", "8", "10"]}, correct:2, src:`صدور الموسوعة — ثماني مجلدات عن دار الشروق`},
-  {q:{ar:`ما اسم المقدمة الطويلة التي عرّف فيها المسيري التحيّز وأسبابه وأشكاله؟`,en:`What is the name of the long introduction in which he defined bias, its causes and forms?`,fr:`Quel est le nom de sa longue introduction définissant le biais ?`}, opts:{ar:["فقه السنن", "فقه التحيّز", "فقه الواقع", "فقه الموازنات"],en:["Fiqh al-Sunan", "Fiqh al-Tahayyuz", "Fiqh al-Waqi", "Fiqh al-Muwazanat"],fr:["Fiqh al-Sunan", "Fiqh al-Tahayyuz", "Fiqh al-Waqi", "Fiqh al-Muwazanat"]}, correct:1, src:`فقه التحيز، وهو المقدمة الطويلة التي كتبتها وعرّفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه`},
-  {q:{ar:`ما الاستعارة الرئيسية لعنوان سيرته؟`,en:`What is the main metaphor of his biography's title?`,fr:`Quelle est la métaphore principale du titre de sa biographie ?`}, opts:{ar:["الماء والنبع", "البذور والجذور والثمر", "الليل والنهار", "البداية والنهاية"],en:["Water and Spring", "Seeds, Roots and Fruit", "Night and Day", "Beginning and End"],fr:["Eau et Source", "Graines, Racines et Fruits", "Nuit et Jour", "Début et Fin"]}, correct:1, src:`رحلتي الفكرية في البذور والجذور والثمر — العنوان الكامل للكتاب`},
-  {q:{ar:`من أي توجه فكري انتقل قبل تبني الرؤية الإيمانية؟`,en:`From which intellectual orientation did he move before adopting faith?`,fr:`De quelle orientation intellectuelle est-il passé avant la foi ?`}, opts:{ar:["الليبرالية", "الماركسية", "القومية", "البنيوية"],en:["Liberalism", "Marxism", "Nationalism", "Structuralism"],fr:["Libéralisme", "Marxisme", "Nationalisme", "Structuralisme"]}, correct:1, src:`تجربتي المادية والماركسية — عنوان فرعي من الفصل الثاني`},
-  {q:{ar:`في أي جامعة درّس بعد الرياض وقبل عودته النهائية إلى مصر؟`,en:`In which university did he teach after Riyadh?`,fr:`Dans quelle université a-t-il enseigné après Riyad ?`}, opts:{ar:["جامعة الملك عبد العزيز", "جامعة الكويت", "الجامعة الأمريكية", "جامعة قطر"],en:["King Abdulaziz", "Kuwait University", "AUC", "Qatar University"],fr:["Roi Abdulaziz", "Université du Koweït", "AUC", "Université du Qatar"]}, correct:1, src:`الانتقال إلى الكويت للتدريس في جامعة الكويت`},
-  {q:{ar:`ما التمييز المفتاحي الذي يقدمه المسيري بخصوص الصهيونية؟`,en:`What key distinction does he make about Zionism?`,fr:`Quelle distinction clé fait-il sur le sionisme ?`}, opts:{ar:["صهيونية يهودية وصهيونية مسيحية", "اليهودية كدين والصهيونية كحركة سياسية غربية", "صهيونية سياسية ودينية", "صهيونية شرقية وغربية"],en:["Jewish and Christian Zionism", "Judaism as religion, Zionism as Western political movement", "Political and religious Zionism", "Eastern and Western Zionism"],fr:["Sionisme juif et chrétien", "Judaïsme comme religion, sionisme comme mouvement politique occidental", "Sionisme politique et religieux", "Sionisme oriental et occidental"]}, correct:1, src:`دراسة الصهيونية تفكيكًا وتركيبًا وفهمها دون اختزالها`},
+  {q:{ar:`في أي مدينة مصرية وُلد المسيري؟`,en:`In which Egyptian city was Al-Messiri born?`,fr:`Dans quelle ville est né Al-Messiri ?`}, opts:{ar:["القاهرة", "الإسكندرية", "دمنهور", "طنطا"],en:["Cairo", "Alexandria", "Damanhour", "Tanta"],fr:["Le Caire", "Alexandrie", "Damanhour", "Tanta"]}, correct:2, src:`حياتي الزمنية: الميلاد في دمنهور (٨ من أكتوبر)`, src_en:`"My life chronologically: Birth in Damanhour (8 October)"`, src_fr:`« Ma vie chronologiquement : Naissance à Damanhour (8 octobre) »`},
+  {q:{ar:`من أي جامعة أمريكية حصل على الدكتوراه؟`,en:`From which US university did he earn his PhD?`,fr:`De quelle université américaine a-t-il obtenu son doctorat ?`}, opts:{ar:["هارفارد", "كولومبيا", "رتغرز", "برنستون"],en:["Harvard", "Columbia", "Rutgers", "Princeton"],fr:["Harvard", "Columbia", "Rutgers", "Princeton"]}, correct:2, src:`جامعة رتجرز في ولاية نيوجرسي حيث حصلت على الدكتوراه`, src_en:`"Rutgers University, New Jersey, where I obtained the PhD"`, src_fr:`« Université Rutgers, New Jersey, où j'ai obtenu le doctorat »`},
+  {q:{ar:`كم مجلداً تتألف منها موسوعة اليهود واليهودية والصهيونية؟`,en:`How many volumes is the Encyclopedia?`,fr:`Combien de volumes compte l'Encyclopédie ?`}, opts:{ar:["٤", "٦", "٨", "١٠"],en:["4", "6", "8", "10"],fr:["4", "6", "8", "10"]}, correct:2, src:`صدور الموسوعة — ثماني مجلدات عن دار الشروق`, src_en:`"Publication of the Encyclopedia — eight volumes by Dar al-Shorouk"`, src_fr:`« Publication de l'Encyclopédie — huit volumes par Dar al-Shorouk »`},
+  {q:{ar:`ما اسم المقدمة الطويلة التي عرّف فيها المسيري التحيّز وأسبابه وأشكاله؟`,en:`What is the name of the long introduction in which he defined bias, its causes and forms?`,fr:`Quel est le nom de sa longue introduction définissant le biais ?`}, opts:{ar:["فقه السنن", "فقه التحيّز", "فقه الواقع", "فقه الموازنات"],en:["Fiqh al-Sunan", "Fiqh al-Tahayyuz", "Fiqh al-Waqi", "Fiqh al-Muwazanat"],fr:["Fiqh al-Sunan", "Fiqh al-Tahayyuz", "Fiqh al-Waqi", "Fiqh al-Muwazanat"]}, correct:1, src:`فقه التحيز، وهو المقدمة الطويلة التي كتبتها وعرّفت فيها التحيز وأسبابه وأشكاله وكيفية تجاوزه`, src_en:`"Fiqh al-Tahayyuz — the long introduction I wrote, in which I defined bias, its causes, its forms, and how to transcend it"`, src_fr:`« Fiqh al-Tahayyuz — la longue introduction que j'ai écrite, dans laquelle j'ai défini le biais, ses causes, ses formes et comment le dépasser »`},
+  {q:{ar:`ما الاستعارة الرئيسية لعنوان سيرته؟`,en:`What is the main metaphor of his biography's title?`,fr:`Quelle est la métaphore principale du titre de sa biographie ?`}, opts:{ar:["الماء والنبع", "البذور والجذور والثمر", "الليل والنهار", "البداية والنهاية"],en:["Water and Spring", "Seeds, Roots and Fruit", "Night and Day", "Beginning and End"],fr:["Eau et Source", "Graines, Racines et Fruits", "Nuit et Jour", "Début et Fin"]}, correct:1, src:`رحلتي الفكرية في البذور والجذور والثمر — العنوان الكامل للكتاب`, src_en:`"My Intellectual Journey in Seeds, Roots and Fruit — the full title of the book"`, src_fr:`« Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits — titre complet du livre »`},
+  {q:{ar:`من أي توجه فكري انتقل قبل تبني الرؤية الإيمانية؟`,en:`From which intellectual orientation did he move before adopting faith?`,fr:`De quelle orientation intellectuelle est-il passé avant la foi ?`}, opts:{ar:["الليبرالية", "الماركسية", "القومية", "البنيوية"],en:["Liberalism", "Marxism", "Nationalism", "Structuralism"],fr:["Libéralisme", "Marxisme", "Nationalisme", "Structuralisme"]}, correct:1, src:`تجربتي المادية والماركسية — عنوان فرعي من الفصل الثاني`, src_en:`"My materialist and Marxist experience — sub-heading from Chapter Two"`, src_fr:`« Mon expérience matérialiste et marxiste — sous-titre du deuxième chapitre »`},
+  {q:{ar:`في أي جامعة درّس بعد الرياض وقبل عودته النهائية إلى مصر؟`,en:`In which university did he teach after Riyadh?`,fr:`Dans quelle université a-t-il enseigné après Riyad ?`}, opts:{ar:["جامعة الملك عبد العزيز", "جامعة الكويت", "الجامعة الأمريكية", "جامعة قطر"],en:["King Abdulaziz", "Kuwait University", "AUC", "Qatar University"],fr:["Roi Abdulaziz", "Université du Koweït", "AUC", "Université du Qatar"]}, correct:1, src:`الانتقال إلى الكويت للتدريس في جامعة الكويت`, src_en:`"Move to Kuwait to teach at Kuwait University"`, src_fr:`« Déménagement au Koweït pour enseigner à l'Université du Koweït »`},
+  {q:{ar:`ما التمييز المفتاحي الذي يقدمه المسيري بخصوص الصهيونية؟`,en:`What key distinction does he make about Zionism?`,fr:`Quelle distinction clé fait-il sur le sionisme ?`}, opts:{ar:["صهيونية يهودية وصهيونية مسيحية", "اليهودية كدين والصهيونية كحركة سياسية غربية", "صهيونية سياسية ودينية", "صهيونية شرقية وغربية"],en:["Jewish and Christian Zionism", "Judaism as religion, Zionism as Western political movement", "Political and religious Zionism", "Eastern and Western Zionism"],fr:["Sionisme juif et chrétien", "Judaïsme comme religion, sionisme comme mouvement politique occidental", "Sionisme politique et religieux", "Sionisme oriental et occidental"]}, correct:1, src:`دراسة الصهيونية تفكيكًا وتركيبًا وفهمها دون اختزالها`, src_en:`"Studying Zionism through deconstruction and reconstruction, understanding it without reduction"`, src_fr:`« Étudier le sionisme par la déconstruction et la reconstruction, le comprendre sans le réduire »`},
 ];
 
 const LABELS = {
@@ -526,11 +552,49 @@ const LABELS = {
 };
 
 // ═══════════════ STATE ═══════════════
-let currentLang = 'ar';
+// Auto-detect language + mode on first visit.
+// Browser Arabic → ar + source. Any other browser → en/fr + reader.
+function detectInitialLang(){
+  const saved = localStorage.getItem('rihlati-lang');
+  if(saved) return saved;
+  const n = (navigator.language || 'en').toLowerCase();
+  if(n.startsWith('ar')) return 'ar';
+  if(n.startsWith('fr')) return 'fr';
+  return 'en';
+}
+function detectInitialMode(lang){
+  const saved = localStorage.getItem('rihlati-view-mode');
+  if(saved) return saved;
+  return lang === 'ar' ? 'source' : 'reader';
+}
+let currentLang = detectInitialLang();
+let currentMode = detectInitialMode(currentLang);
 let currentTheme = localStorage.getItem('rihlati-theme') || 'light';
 let currentTab = 'home';
 let quizState = {idx:0, score:0, answered:false};
 let splashTimer = null;
+
+// Mode switch — always re-render and persist
+function setMode(mode){
+  if(currentLang === 'ar') mode = 'source'; // AR pinned to source
+  currentMode = mode;
+  localStorage.setItem('rihlati-view-mode', mode);
+  document.body.dataset.mode = mode;
+  const chip = document.getElementById('readerChip');
+  if(chip) chip.style.display = mode === 'reader' ? 'flex' : 'none';
+  // Re-render everything
+  applyTexts();
+  renderChapters();
+  renderIdeas();
+  renderTimeline();
+  renderQuotes();
+  renderQuiz();
+  // Update toggle visual
+  document.querySelectorAll('.mode-opt').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === mode);
+    b.disabled = (currentLang === 'ar');
+  });
+}
 
 // ═══════════════ SPLASH ═══════════════
 function initSplash(){
@@ -574,44 +638,75 @@ function switchTab(id){
 }
 
 // ═══════════════ CHAPTERS ═══════════════
-// Translation toggle helper
+// Translation fold-out helper (Source mode only).
+// In Reader mode this returns empty because the translation is already the primary content.
 function trBlock(tr, key){
   if(currentLang === 'ar') return '';
+  if(currentMode === 'reader') return '';
   if(!tr) return '';
   const trText = tr[currentLang];
   if(!trText) return '';
   const LT = LABELS_TR[currentLang];
-  return `<details class="tr-block" lang="${currentLang}" dir="${currentLang==='ar'?'rtl':'ltr'}">
+  return `<details class="tr-block" lang="${currentLang}" dir="ltr">
     <summary class="tr-summary" data-show="🌐 ${LT.showTr}" data-hide="🌐 ${LT.hideTr}"></summary>
     <div class="tr-body"><div class="tr-label">${LT.trLabel}</div><p>${trText}</p></div>
   </details>`;
+}
+
+// Reader-mode italic footer under each translated block
+function readerFooter(){
+  if(currentLang === 'ar' || currentMode !== 'reader') return '';
+  return `<div class="reader-footer">${READER_UI[currentLang].trFooter}</div>`;
 }
 
 function renderChapters(){
   const L = LABELS[currentLang];
   const part1 = CHAPTERS.filter(c=>c.part===1);
   const part2 = CHAPTERS.filter(c=>c.part===2);
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
   const card = c => {
     const d = c[currentLang];
+    // Tags: reader mode → translated; source/AR → Arabic
+    const tags = reader ? (currentLang==='en' ? c.tags_en : c.tags_fr) : c.tags;
+    // Excerpt block: source mode → verbatim Arabic quote; reader → translated inline
+    let excerptBlock = '';
+    if(reader) {
+      excerptBlock = `<div class="chapter-excerpt reader" dir="ltr" lang="${currentLang}">
+        <div class="excerpt-label">${L.fromBook}</div>
+        <p>"${c.tr[currentLang]}"</p>
+        ${readerFooter()}
+      </div>`;
+    } else if(c.excerpt) {
+      excerptBlock = `<div class="chapter-excerpt" dir="rtl" lang="ar"><div class="excerpt-label">${L.fromBook}</div><p>«${c.excerpt}»</p></div>${trBlock(c.tr,'ch'+c.id)}`;
+    }
+    // Description: source → Arabic verbatim TOC; reader → translated title fallback (we use the d of current lang which is Arabic, so in reader mode use the English/French title or the translation)
+    const descText = reader ? c.tr[currentLang].split('.')[0] + '.' : d.d;
     return `<div class="chapter-card">
       <div class="chapter-num">${c.id}</div>
       <div class="chapter-icon">${c.icon}</div>
-      <div class="chapter-title-ar" dir="rtl">${c.ar.t}</div>
-      <div class="chapter-title-en" dir="ltr">${c.en.t}</div>
-      <p class="chapter-desc">${d.d}</p>
-      ${c.excerpt ? `<div class="chapter-excerpt" dir="rtl" lang="ar"><div class="excerpt-label">${L.fromBook}</div><p>«${c.excerpt}»</p></div>${trBlock(c.tr,'ch'+c.id)}` : ''}
-      <div class="chapter-tags">${c.tags.map(t=>`<span class="chapter-tag">${t}</span>`).join('')}</div>
+      ${reader ? '' : `<div class="chapter-title-ar" dir="rtl">${c.ar.t}</div>`}
+      <div class="chapter-title-en" dir="${reader?'ltr':'ltr'}">${c[currentLang].t}</div>
+      ${reader ? '' : `<p class="chapter-desc">${d.d}</p>`}
+      ${excerptBlock}
+      <div class="chapter-tags">${tags.map(t=>`<span class="chapter-tag">${t}</span>`).join('')}</div>
     </div>`;
   };
+  const num1 = reader ? '1' : '١';
+  const num2 = reader ? '2' : '٢';
+  const LT = (currentLang !== 'ar') ? LABELS_TR[currentLang] : null;
+  const part1Desc = reader ? LT.part1Desc : L.part1Desc;
+  const part2Desc = reader ? LT.part2Desc : L.part2Desc;
+  const descDir = reader ? 'ltr' : 'rtl';
+  const descLang = reader ? currentLang : 'ar';
   document.getElementById('chaptersContent').innerHTML = `
     <div class="part-head">
-      <div class="part-num">١</div>
-      <div><div class="part-title">${L.part1}</div><div class="part-desc">${L.part1Desc}</div></div>
+      <div class="part-num">${num1}</div>
+      <div><div class="part-title">${L.part1}</div><div class="part-desc" dir="${descDir}" lang="${descLang}">${part1Desc}</div></div>
     </div>
     <div class="chapters-grid">${part1.map(card).join('')}</div>
     <div class="part-head">
-      <div class="part-num">٢</div>
-      <div><div class="part-title">${L.part2}</div><div class="part-desc">${L.part2Desc}</div></div>
+      <div class="part-num">${num2}</div>
+      <div><div class="part-title">${L.part2}</div><div class="part-desc" dir="${descDir}" lang="${descLang}">${part2Desc}</div></div>
     </div>
     <div class="chapters-grid">${part2.map(card).join('')}</div>
   `;
@@ -619,15 +714,20 @@ function renderChapters(){
 
 // ═══════════════ IDEAS ═══════════════
 function renderIdeas(){
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
   document.getElementById('ideasContent').innerHTML = IDEAS.map(i => {
     const d = i[currentLang];
+    const body = reader ? i.tr[currentLang] : d.d;
+    const bodyDir = reader ? 'ltr' : 'rtl';
+    const bodyLang = reader ? currentLang : 'ar';
+    const note = reader ? (currentLang==='en' ? i.note_en : i.note_fr) : i.note;
     return `<div class="idea-card">
       <div class="idea-num">IDEA ${String(i.num).padStart(2,'0')}</div>
-      <div class="idea-title">${i.ar.t}</div>
-      <div class="idea-title-en">${i.en.t}</div>
-      <p class="idea-body" dir="rtl" lang="ar">${d.d}</p>
-      ${trBlock(i.tr,'idea'+i.num)}
-      ${i.note?`<div class="idea-footer">${i.note}</div>`:''}
+      ${reader ? '' : `<div class="idea-title">${i.ar.t}</div>`}
+      <div class="idea-title-en">${i[currentLang].t}</div>
+      <p class="idea-body" dir="${bodyDir}" lang="${bodyLang}">${body}</p>
+      ${reader ? readerFooter() : trBlock(i.tr,'idea'+i.num)}
+      ${note?`<div class="idea-footer" dir="${bodyDir}">${note}</div>`:''}
     </div>`;
   }).join('');
 }
@@ -639,30 +739,41 @@ function renderQuotes(){
   const sub = document.getElementById('quotesSub');
   if(title) title.textContent = L.quotesTitle;
   if(sub) sub.textContent = L.quotesSub;
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
   document.getElementById('quotesContent').innerHTML = QUOTES.map((q,i) => {
     const trObj = {en:q.tr_en, fr:q.tr_fr};
+    const bodyText = reader ? (currentLang==='en' ? q.tr_en : q.tr_fr) : q.text;
+    const bodyDir = reader ? 'ltr' : 'rtl';
+    const bodyLang = reader ? currentLang : 'ar';
+    const bookRef = reader ? (currentLang==='en'?'My Intellectual Journey':'Mon Voyage Intellectuel') : 'رحلتي الفكرية';
+    const openQ = reader ? '"' : '«';
+    const closeQ = reader ? '"' : '»';
     return `<figure class="quote-card">
       <div class="quote-num">${String(i+1).padStart(2,'0')}</div>
       <div class="quote-theme">${q[currentLang]}</div>
-      <blockquote class="quote-body" dir="rtl" lang="ar">«${q.text}»</blockquote>
-      ${trBlock(trObj,'q'+i)}
-      <figcaption class="quote-src">${L.fromBook} — رحلتي الفكرية</figcaption>
+      <blockquote class="quote-body" dir="${bodyDir}" lang="${bodyLang}">${openQ}${bodyText}${closeQ}</blockquote>
+      ${reader ? readerFooter() : trBlock(trObj,'q'+i)}
+      <figcaption class="quote-src">${L.fromBook} — ${bookRef}</figcaption>
     </figure>`;
   }).join('');
 }
 
 // ═══════════════ TIMELINE ═══════════════
 function renderTimeline(){
-  // Timeline cards intentionally have no tr fold-out: the title already
-  // carries the EN/FR translation, and the verbatim Arabic is in .tl-desc.
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
   document.getElementById('timelineContent').innerHTML = TIMELINE.map((t,i) => {
     const d = t[currentLang];
+    // Reader: description uses the translated chronology quote
+    const desc = reader ? t.tr[currentLang] : d.d;
+    const descDir = reader ? 'ltr' : 'rtl';
+    const descLang = reader ? currentLang : 'ar';
     return `<div class="tl-item">
       <div class="tl-dot">${i+1}</div>
       <div class="tl-card">
         <div class="tl-year">${t.y}</div>
         <div class="tl-title">${d.t}</div>
-        <div class="tl-desc" dir="rtl" lang="ar">${d.d}</div>
+        <div class="tl-desc" dir="${descDir}" lang="${descLang}">${desc}</div>
+        ${reader ? readerFooter() : ''}
       </div>
     </div>`;
   }).join('');
@@ -721,8 +832,14 @@ function answerQuiz(i){
   } else {
     fb.innerHTML = `<div class="quiz-feedback bad">${L.wrong}</div>`;
   }
-  if(q.src){
-    fb.innerHTML += `<div class="quiz-src" dir="rtl" lang="ar"><span class="quiz-src-label">${L.quizSrc}:</span> «${q.src}»</div>`;
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
+  const srcText = reader ? (currentLang==='en' ? q.src_en : q.src_fr) : q.src;
+  const srcDir = reader ? 'ltr' : 'rtl';
+  const srcLang = reader ? currentLang : 'ar';
+  const openQ = reader ? '' : '«';
+  const closeQ = reader ? '' : '»';
+  if(srcText){
+    fb.innerHTML += `<div class="quiz-src" dir="${srcDir}" lang="${srcLang}"><span class="quiz-src-label">${L.quizSrc}:</span> ${openQ}${srcText}${closeQ}</div>`;
   }
   fb.innerHTML += `<button class="quiz-btn" onclick="nextQuiz()">${L.next} →</button>`;
 }
@@ -739,9 +856,25 @@ function restartQuiz(){
 // ═══════════════ LANG ═══════════════
 function setLang(lang){
   currentLang = lang;
+  localStorage.setItem('rihlati-lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  // AR pinned to source; any other lang honours saved mode or defaults reader
+  if(lang === 'ar') {
+    currentMode = 'source';
+    document.body.dataset.mode = 'source';
+  } else {
+    const saved = localStorage.getItem('rihlati-view-mode');
+    currentMode = saved || 'reader';
+    document.body.dataset.mode = currentMode;
+  }
+  const chip = document.getElementById('readerChip');
+  if(chip) chip.style.display = currentMode === 'reader' ? 'flex' : 'none';
+  document.querySelectorAll('.mode-opt').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === currentMode);
+    b.disabled = (lang === 'ar');
+  });
   applyTexts();
   renderTabs();
   renderChapters();
@@ -753,11 +886,14 @@ function setLang(lang){
 }
 function applyTexts(){
   const L = LABELS[currentLang];
+  const reader = currentMode === 'reader' && currentLang !== 'ar';
+  const LT = currentLang !== 'ar' ? LABELS_TR[currentLang] : null;
   const set = (id,txt) => { const el=document.getElementById(id); if(el) el.textContent = txt; };
   set('logoTitle', L.title);
   set('heroTitle', L.heroTitle);
   set('heroSub', L.heroSub);
-  set('heroTag', L.heroTag);
+  // Reader mode → framing uses translated strings; Source mode → Arabic verbatim
+  set('heroTag', reader ? LT.heroTag : L.heroTag);
   set('splashTitle', L.splashTitle);
   set('splashSub', L.splashSub);
   set('splashAuthor', L.splashAuthor);
@@ -768,41 +904,143 @@ function applyTexts(){
   set('rootsEn', currentLang==='ar'?'Roots':(currentLang==='en'?'Roots':'Racines'));
   set('fruitAr', L.fruit);
   set('fruitEn', currentLang==='ar'?'Fruit':(currentLang==='en'?'Fruit':'Fruits'));
-  set('seedsDesc', L.seedsDesc);
-  set('rootsDesc', L.rootsDesc);
-  set('fruitDesc', L.fruitDesc);
+  set('seedsDesc', reader ? LT.seedsDesc : L.seedsDesc);
+  set('rootsDesc', reader ? LT.rootsDesc : L.rootsDesc);
+  set('fruitDesc', reader ? LT.fruitDesc : L.fruitDesc);
   set('statPages', L.pages);
   set('statParts', L.parts);
   set('statChapters', L.chapters);
   set('statVolumes', L.volumes);
 
-  // Append translation blocks for framing elements (EN/FR modes only)
-  const applyFramingTr = (parentId, trKey) => {
-    const host = document.getElementById(parentId);
-    if(!host) return;
-    const sibling = host.parentElement;
-    if(!sibling) return;
-    // remove previous translation sibling if present
-    const prev = sibling.querySelector('.tr-framing[data-for="'+parentId+'"]');
-    if(prev) prev.remove();
-    if(currentLang === 'ar') return;
-    const LT = LABELS_TR[currentLang];
-    const text = LT[trKey];
-    if(!text) return;
-    const d = document.createElement('details');
-    d.className = 'tr-framing tr-block';
-    d.dataset.for = parentId;
-    d.dir = 'ltr';
-    d.lang = currentLang;
-    d.innerHTML = '<summary class="tr-summary" data-show="🌐 '+LT.showTr+'" data-hide="🌐 '+LT.hideTr+'"></summary>'+
-                  '<div class="tr-body"><div class="tr-label">'+LT.trLabel+'</div><p>'+text+'</p></div>';
-    host.insertAdjacentElement('afterend', d);
+  // About box: reader → translated; source → Arabic verbatim
+  const aboutEl = document.getElementById('aboutBookText');
+  if(aboutEl){
+    if(reader){
+      aboutEl.textContent = LT.about;
+      aboutEl.dir = 'ltr'; aboutEl.lang = currentLang;
+    } else {
+      aboutEl.textContent = `«أي أنني استبعدت كل الوقائع والتفاصيل التي ليس لها علاقة مباشرة أو غير مباشرة بتطوري الفكري... وحينما كنت أذكر إحدى الوقائع في حياتي كنت كثيرا ما أستبعد الأسماء الحقيقية لأبطالها حتى لا أسبب حرجا لأحد منهم، وحتى يركز القارئ على مغزى الواقعة لا على تفاصيلها»`;
+      aboutEl.dir = 'rtl'; aboutEl.lang = 'ar';
+    }
+  }
+
+  // Clean up any previously injected framing fold-outs or reader footers
+  document.querySelectorAll('.tr-framing[data-injected]').forEach(e=>e.remove());
+  document.querySelectorAll('.reader-framing-footer[data-injected]').forEach(e=>e.remove());
+
+  // Set dir on framing arabic elements based on mode
+  ['heroTag','seedsDesc','rootsDesc','fruitDesc'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      el.dir = reader ? 'ltr' : 'rtl';
+      el.lang = reader ? currentLang : 'ar';
+    }
+  });
+
+  // Source mode: inject fold-outs under each verbatim framing element
+  if(currentLang !== 'ar' && currentMode === 'source'){
+    const applyFramingTr = (parentId, trKey) => {
+      const host = document.getElementById(parentId);
+      if(!host) return;
+      const d = document.createElement('details');
+      d.className = 'tr-framing tr-block';
+      d.dataset.for = parentId;
+      d.dataset.injected = '1';
+      d.dir = 'ltr';
+      d.lang = currentLang;
+      d.innerHTML = '<summary class="tr-summary" data-show="🌐 '+LT.showTr+'" data-hide="🌐 '+LT.hideTr+'"></summary>'+
+                    '<div class="tr-body"><div class="tr-label">'+LT.trLabel+'</div><p>'+LT[trKey]+'</p></div>';
+      host.insertAdjacentElement('afterend', d);
+    };
+    applyFramingTr('heroTag','heroTag');
+    applyFramingTr('seedsDesc','seedsDesc');
+    applyFramingTr('rootsDesc','rootsDesc');
+    applyFramingTr('fruitDesc','fruitDesc');
+    applyFramingTr('aboutBookText','about');
+  }
+
+  // Reader mode: inject italic footers under framing translated elements
+  if(reader){
+    const RU = READER_UI[currentLang];
+    ['heroTag','seedsDesc','rootsDesc','fruitDesc','aboutBookText'].forEach(id => {
+      const host = document.getElementById(id);
+      if(!host) return;
+      const f = document.createElement('div');
+      f.className = 'reader-footer reader-framing-footer';
+      f.dataset.injected = '1';
+      f.textContent = RU.trFooter;
+      host.insertAdjacentElement('afterend', f);
+    });
+  }
+
+  // Mode switch labels
+  if(currentLang !== 'ar'){
+    const RU = READER_UI[currentLang];
+    set('modeLabelSource', RU.modeSource);
+    set('modeLabelReader', RU.modeReader);
+  } else {
+    set('modeLabelSource', READER_UI.ar.modeSource);
+    set('modeLabelReader', READER_UI.ar.modeReader);
+  }
+
+  // Reader chip text
+  if(currentLang !== 'ar'){
+    const RU = READER_UI[currentLang];
+    set('readerChipText', RU.chipText);
+    set('readerChipSwitch', RU.chipSwitch);
+  }
+
+  // ─── Static content: home author card, ideas intro, about page ───
+  // Default (source mode or AR lang): Arabic verbatim. Reader mode: translated.
+  const arAuthorName = 'د. عبد الوهاب المسيري';
+  const arAuthorDates = '١٩٣٨ — ٢٠٠٨ · دمنهور، مصر';
+  const arAuthorDesc = `مفكر وأديب مصري، أستاذ الأدب الإنجليزي والمقارن، ومؤلف "موسوعة اليهود واليهودية والصهيونية" في ثماني مجلدات. درس في كلية الآداب بجامعة الإسكندرية، ثم حصل على الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز. يُعدّ من أبرز المفكرين العرب في نقد الحداثة الغربية ودراسات التحيّز. رحلته الفكرية من الماركسية إلى الإيمان الإسلامي مثال على البحث الصادق عن الحقيقة.`;
+  const arIdeasIntroTitle = 'المفاهيم المفتاحية في فكر المسيري';
+  const arIdeasIntroText = 'المسيري ليس مجرد راوٍ لسيرة شخصية، بل هو صاحب مشروع فكري متكامل. هذه بعض المفاهيم المحورية التي طوّرها عبر مسيرته.';
+  const arQuotesTitle = 'من كلمات المسيري';
+  const arQuotesSub = 'مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع';
+  const arAboutWarnLabel = '📖 ملاحظة:';
+  const arAboutWarnText = 'المقتطفات والاقتباسات في هذا التطبيق مأخوذة حرفيًا من نص كتاب "رحلتي الفكرية في البذور والجذور والثمر" للدكتور عبد الوهاب المسيري رحمه الله — عبر طبقة التعرف الضوئي على النصوص المتاحة على archive.org. الكتاب الأصلي من منشورات دار الشروق، وهذا التطبيق ليس بديلاً عنه بل دعوة لقراءته كاملًا.';
+  const arAboutBookTitle = 'من كلمات المؤلف';
+  const arAboutAuthorTitle = 'عن المؤلف';
+  const arAboutAuthorText = `مفكر مصري، ولد في دمنهور بمحافظة البحيرة. تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية عام 1959. نال الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز بالولايات المتحدة عام 1969. درّس في جامعات عديدة من بينها عين شمس والكويت والملك سعود. مشروعه الأكبر: "موسوعة اليهود واليهودية والصهيونية" الصادرة عام 1999 في ثماني مجلدات، وتُعدّ أضخم موسوعة عربية عن هذا الموضوع. تميّز بنقد الحداثة الغربية وتأسيس حقل "دراسات التحيّز" ومنهج "النماذج الإدراكية" في العلوم الإنسانية.`;
+  const arAboutSourcesTitle = 'المصادر';
+  const arAboutSourcesHTML = `• «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>• «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>• «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>• «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>• سير ومقالات منشورة عن المسيري في الصحافة العربية`;
+
+  const RU = (currentLang !== 'ar') ? READER_UI[currentLang] : null;
+  const staticDir = reader ? 'ltr' : 'rtl';
+  const staticLang = reader ? currentLang : 'ar';
+  const setStatic = (id, ar, tr, isHtml=false) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(reader && tr){
+      if(isHtml) el.innerHTML = tr; else el.textContent = tr;
+    } else {
+      if(isHtml) el.innerHTML = ar; else el.textContent = ar;
+    }
+    el.dir = staticDir; el.lang = staticLang;
   };
-  applyFramingTr('heroTag','heroTag');
-  applyFramingTr('seedsDesc','seedsDesc');
-  applyFramingTr('rootsDesc','rootsDesc');
-  applyFramingTr('fruitDesc','fruitDesc');
-  applyFramingTr('aboutBookText','about');
+  setStatic('authorName', arAuthorName, RU?.authorName);
+  setStatic('authorDates', arAuthorDates, RU?.authorDates);
+  setStatic('authorDesc', arAuthorDesc, RU?.authorDesc);
+  setStatic('ideasIntroTitle', arIdeasIntroTitle, RU?.ideasIntroTitle);
+  setStatic('ideasIntroText', arIdeasIntroText, RU?.ideasIntroText);
+  setStatic('quotesTitle', arQuotesTitle, RU?.quotesTitleRd);
+  setStatic('quotesSub', arQuotesSub, RU?.quotesSubRd);
+  setStatic('aboutWarnLabel', arAboutWarnLabel, RU?.aboutWarnLabel);
+  setStatic('aboutWarnText', arAboutWarnText, RU?.aboutWarnText);
+  setStatic('aboutBookTitle', arAboutBookTitle, reader ? RU.aboutBookTitleRd : null);
+  // aboutBookText is set above via the existing reader/source branch
+  setStatic('aboutAuthorTitle', arAboutAuthorTitle, RU?.aboutAuthorTitleRd);
+  setStatic('aboutAuthorText', arAboutAuthorText, RU?.aboutAuthorTextRd);
+  setStatic('aboutSourcesTitle', arAboutSourcesTitle, RU?.aboutSourcesTitleRd);
+  setStatic('aboutSourcesText', arAboutSourcesHTML, RU?.aboutSourcesTextRd, true);
+
+  // Override aboutBookText in reader mode (it was handled earlier with Arabic passage; here swap to EN/FR)
+  if(reader){
+    const ab = document.getElementById('aboutBookText');
+    if(ab) { ab.textContent = RU.aboutBookTextRd; ab.dir='ltr'; ab.lang=currentLang; }
+  }
 }
 
 // ═══════════════ THEME ═══════════════
@@ -845,6 +1083,70 @@ const LABELS_TR = {
   }
 };
 
+// ═══ Reader-mode UI strings ═══
+const READER_UI = {
+  en:{
+    modeSource:'Source',
+    modeReader:'Reader',
+    chipText:'Reader mode — viewing unofficial translation',
+    chipSwitch:'click 📖 to see the original Arabic',
+    trFooter:`— translation, not the author's own words`,
+    aboutReaderTitle:'Two ways to read',
+    aboutReaderBody:`Source mode shows the book's Arabic exactly as Al-Messiri wrote it, with an optional translation fold-out. Reader mode replaces the Arabic with an unofficial English or French translation so non-Arabic readers can follow the thread end-to-end. Sacred text (Bismillah, the Quranic verse, the Islamic calligraphy) stays Arabic in both modes.`,
+    authorName:'Dr. Abdul Wahab Al-Messiri',
+    authorDates:'1938 — 2008 · Damanhour, Egypt',
+    authorDesc:`Egyptian thinker and writer, Professor of English and Comparative Literature, and author of the eight-volume "Encyclopedia of Jews, Judaism and Zionism." He studied at the Faculty of Arts at Alexandria University, then obtained his MA from Columbia University and his PhD from Rutgers University. He is considered one of the foremost Arab thinkers in the critique of Western modernity and in bias studies. His intellectual journey from Marxism to Islamic faith is an example of a sincere search for truth.`,
+    ideasIntroTitle:`Key concepts in Al-Messiri's thought`,
+    ideasIntroText:`Al-Messiri is not merely the narrator of a personal biography; he is the author of a fully integrated intellectual project. These are some of the central concepts he developed across his career.`,
+    quotesTitleRd:`In Al-Messiri's own words`,
+    quotesSubRd:`Passages from the book, translated into English, arranged by theme`,
+    aboutWarnLabel:'📖 Note:',
+    aboutWarnText:`The excerpts and quotations in this app are taken verbatim from the text of "My Intellectual Journey in Seeds, Roots and Fruit" by Dr. Abdul Wahab Al-Messiri — via the OCR layer made available on archive.org. The original book is published by Dar al-Shorouk; this app is not a substitute for it but an invitation to read it in full.`,
+    aboutBookTitleRd:`In the author's own words`,
+    aboutBookTextRd:`"That is to say, I have excluded every fact and detail that has no direct or indirect relation to my intellectual development... Whenever I mentioned an incident in my life, I often left out the real names of its actors so as not to embarrass anyone, and so that the reader would focus on the meaning of the incident rather than on its details."`,
+    aboutAuthorTitleRd:'About the author',
+    aboutAuthorTextRd:`Egyptian thinker, born in Damanhour in the Beheira Governorate. Graduated from the Faculty of Arts, English Department, at Alexandria University in 1959. He obtained his MA from Columbia University and his PhD from Rutgers University in the United States in 1969. He taught at several universities including Ain Shams, Kuwait, and King Saud. His greatest project was the "Encyclopedia of Jews, Judaism and Zionism," published in 1999 in eight volumes, considered the largest Arabic encyclopedia on the subject. He is distinguished by his critique of Western modernity and by founding the field of "bias studies" and the method of "cognitive models" in the human sciences.`,
+    aboutSourcesTitleRd:'Sources',
+    aboutSourcesTextRd:`• "My Intellectual Journey in Seeds, Roots and Fruit" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• "The Encyclopedia of Jews, Judaism and Zionism" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• "Fiqh al-Tahayyuz (The Jurisprudence of Bias)" — International Institute of Islamic Thought<br>• "Partial Secularism and Comprehensive Secularism" — Dar al-Shorouk<br>• Biographies and articles about Al-Messiri published in the Arabic press`,
+    quotesBook:'My Intellectual Journey',
+    partOne:'Part 1',
+    partTwo:'Part 2'
+  },
+  fr:{
+    modeSource:'Source',
+    modeReader:'Lecture',
+    chipText:'Mode lecture — traduction non officielle',
+    chipSwitch:`cliquez sur 📖 pour voir l'original arabe`,
+    trFooter:`— traduction, ce ne sont pas les mots de l'auteur`,
+    aboutReaderTitle:'Deux façons de lire',
+    aboutReaderBody:`Le mode Source affiche l'arabe du livre exactement tel qu'Al-Messiri l'a écrit, avec une traduction dépliante optionnelle. Le mode Lecture remplace l'arabe par une traduction non officielle en anglais ou en français afin que les lecteurs non arabophones puissent suivre le fil du début à la fin. Le texte sacré (Bismillah, le verset coranique, la calligraphie islamique) reste en arabe dans les deux modes.`,
+    authorName:'Dr Abdul Wahab Al-Messiri',
+    authorDates:'1938 — 2008 · Damanhour, Égypte',
+    authorDesc:`Penseur et écrivain égyptien, professeur de littérature anglaise et comparée, auteur de « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » en huit volumes. Il a étudié à la Faculté des Lettres de l'Université d'Alexandrie, puis a obtenu son master à Columbia et son doctorat à Rutgers. Il est considéré comme l'un des principaux penseurs arabes dans la critique de la modernité occidentale et dans les études sur les biais. Son voyage intellectuel du marxisme à la foi islamique est un exemple de recherche sincère de la vérité.`,
+    ideasIntroTitle:`Concepts clés dans la pensée d'Al-Messiri`,
+    ideasIntroText:`Al-Messiri n'est pas un simple narrateur d'une biographie personnelle ; il est l'auteur d'un projet intellectuel pleinement intégré. Voici quelques-uns des concepts centraux qu'il a développés tout au long de sa carrière.`,
+    quotesTitleRd:`Dans les mots d'Al-Messiri`,
+    quotesSubRd:`Passages du livre, traduits en français, classés par thème`,
+    aboutWarnLabel:'📖 Note :',
+    aboutWarnText:`Les extraits et citations de cette application sont tirés verbatim du texte de « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » du Dr Abdul Wahab Al-Messiri — via la couche OCR mise à disposition sur archive.org. Le livre original est publié par Dar al-Shorouk ; cette application ne le remplace pas, elle invite à le lire en entier.`,
+    aboutBookTitleRd:`Dans les mots de l'auteur`,
+    aboutBookTextRd:`« C'est-à-dire que j'ai exclu tout fait et tout détail qui n'a aucun rapport, direct ou indirect, avec mon développement intellectuel... Chaque fois que je mentionnais un incident de ma vie, j'omettais souvent les vrais noms de ses acteurs pour ne mettre personne dans l'embarras, et afin que le lecteur se concentre sur le sens de l'incident plutôt que sur ses détails. »`,
+    aboutAuthorTitleRd:`À propos de l'auteur`,
+    aboutAuthorTextRd:`Penseur égyptien, né à Damanhour dans le gouvernorat de Beheira. Diplômé de la Faculté des Lettres, département d'anglais, à l'Université d'Alexandrie en 1959. Il a obtenu son master à l'Université Columbia et son doctorat à l'Université Rutgers aux États-Unis en 1969. Il a enseigné dans plusieurs universités, dont Ain Shams, le Koweït et King Saud. Son plus grand projet : « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme », publiée en 1999 en huit volumes, considérée comme la plus grande encyclopédie arabe sur le sujet. Il s'est distingué par sa critique de la modernité occidentale et par la fondation du champ des « études sur les biais » et de la méthode des « modèles cognitifs » dans les sciences humaines.`,
+    aboutSourcesTitleRd:'Sources',
+    aboutSourcesTextRd:`• « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• « Fiqh al-Tahayyuz (La jurisprudence du biais) » — Institut International de la Pensée Islamique<br>• « Sécularisme partiel et sécularisme total » — Dar al-Shorouk<br>• Biographies et articles sur Al-Messiri publiés dans la presse arabe`,
+    quotesBook:'Mon Voyage Intellectuel',
+    partOne:'Partie 1',
+    partTwo:'Partie 2'
+  },
+  ar:{
+    modeSource:'المصدر', modeReader:'قراءة', chipText:'', chipSwitch:'', trFooter:'', aboutReaderTitle:'', aboutReaderBody:'',
+    authorName:'', authorDates:'', authorDesc:'', ideasIntroTitle:'', ideasIntroText:'', quotesTitleRd:'', quotesSubRd:'',
+    aboutWarnLabel:'', aboutWarnText:'', aboutBookTitleRd:'', aboutBookTextRd:'', aboutAuthorTitleRd:'', aboutAuthorTextRd:'',
+    aboutSourcesTitleRd:'', aboutSourcesTextRd:'', quotesBook:'', partOne:'', partTwo:''
+  }
+};
+
 // ═══ Ticker: verbatim sentences from the book (all languages show the same Arabic original) ═══
 const TICKER_VERBATIM = [
   '🌱 رحلة فكرية يُسردها من خلال موضوعات لا من خلال مراحل متتابعة',
@@ -877,8 +1179,20 @@ if(currentTheme === 'dark'){
   document.documentElement.dataset.theme = 'dark';
   document.getElementById('themeBtn').textContent = '☀️';
 }
+// Boot: apply detected language + mode
+document.documentElement.lang = currentLang;
+document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+document.body.dataset.mode = currentMode;
+document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('active', b.dataset.lang===currentLang));
+document.querySelectorAll('.mode-opt').forEach(b=>{
+  b.classList.toggle('active', b.dataset.mode===currentMode);
+  b.disabled = (currentLang === 'ar');
+});
+const _chip = document.getElementById('readerChip');
+if(_chip) _chip.style.display = currentMode === 'reader' ? 'flex' : 'none';
 document.getElementById('poweredLogo').innerHTML = WORKSHOP_LOGO_SVG;
 initSplash();
+applyTexts();
 renderTabs();
 renderChapters();
 renderIdeas();
