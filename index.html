@@ -213,6 +213,8 @@ body.dark .quote-body{color:#d9c89a}
 .tr-block[open]{background:rgba(26,138,125,.04);border-color:rgba(26,138,125,.3)}
 .tr-summary{font-family:'Nunito','Readex Pro',sans-serif;font-size:.78rem;font-weight:600;color:var(--teal);padding:8px 14px;cursor:pointer;list-style:none;user-select:none;transition:.2s}
 .tr-summary::-webkit-details-marker{display:none}
+.tr-summary::before{content:attr(data-show)}
+.tr-block[open] .tr-summary::before{content:attr(data-hide)}
 .tr-summary:hover{background:rgba(26,138,125,.08)}
 .tr-block[open] .tr-summary{border-bottom:1px dashed rgba(26,138,125,.25)}
 .tr-body{padding:12px 16px 14px;font-family:'Nunito','Readex Pro',sans-serif;font-size:.9rem;line-height:1.7;color:var(--t2)}
@@ -579,9 +581,8 @@ function trBlock(tr, key){
   const trText = tr[currentLang];
   if(!trText) return '';
   const LT = LABELS_TR[currentLang];
-  const id = 'tr_' + key + '_' + Math.random().toString(36).slice(2,8);
   return `<details class="tr-block" lang="${currentLang}" dir="${currentLang==='ar'?'rtl':'ltr'}">
-    <summary class="tr-summary">🌐 ${LT.showTr}</summary>
+    <summary class="tr-summary" data-show="🌐 ${LT.showTr}" data-hide="🌐 ${LT.hideTr}"></summary>
     <div class="tr-body"><div class="tr-label">${LT.trLabel}</div><p>${trText}</p></div>
   </details>`;
 }
@@ -652,6 +653,8 @@ function renderQuotes(){
 
 // ═══════════════ TIMELINE ═══════════════
 function renderTimeline(){
+  // Timeline cards intentionally have no tr fold-out: the title already
+  // carries the EN/FR translation, and the verbatim Arabic is in .tl-desc.
   document.getElementById('timelineContent').innerHTML = TIMELINE.map((t,i) => {
     const d = t[currentLang];
     return `<div class="tl-item">
@@ -660,7 +663,6 @@ function renderTimeline(){
         <div class="tl-year">${t.y}</div>
         <div class="tl-title">${d.t}</div>
         <div class="tl-desc" dir="rtl" lang="ar">${d.d}</div>
-        ${trBlock(t.tr,'tl'+t.y)}
       </div>
     </div>`;
   }).join('');
@@ -792,7 +794,7 @@ function applyTexts(){
     d.dataset.for = parentId;
     d.dir = 'ltr';
     d.lang = currentLang;
-    d.innerHTML = '<summary class="tr-summary">🌐 '+LT.showTr+'</summary>'+
+    d.innerHTML = '<summary class="tr-summary" data-show="🌐 '+LT.showTr+'" data-hide="🌐 '+LT.hideTr+'"></summary>'+
                   '<div class="tr-body"><div class="tr-label">'+LT.trLabel+'</div><p>'+text+'</p></div>';
     host.insertAdjacentElement('afterend', d);
   };
