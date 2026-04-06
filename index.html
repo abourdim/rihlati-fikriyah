@@ -310,6 +310,20 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 [dir="ltr"] .read-passage-counter{right:auto;left:12px}
 .read-separator{text-align:center;color:var(--gold);opacity:.6;font-size:1.2rem;margin:18px 0;letter-spacing:8px;user-select:none}
 
+/* ═══ READ ENHANCEMENTS ═══ */
+.read-content{transition:opacity .25s ease}
+.read-para{margin:0 0 14px;text-indent:1.5em}
+.read-para:first-of-type{text-indent:0}
+.read-para-key{border-left:3px solid var(--gold);padding-left:14px;text-indent:0;background:rgba(200,168,78,.03);border-radius:0 4px 4px 0;padding:8px 14px;margin:16px 0}
+[dir="rtl"] .read-para-key{border-left:none;border-right:3px solid var(--gold);padding-left:0;padding-right:14px;border-radius:4px 0 0 4px}
+.read-pullquote{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.25rem;line-height:1.9;color:var(--gold);text-align:center;margin:24px auto;padding:20px 28px;max-width:85%;border-top:2px solid rgba(200,168,78,.2);border-bottom:2px solid rgba(200,168,78,.2);font-style:italic;position:relative}
+.read-pullquote::before{content:'\201C';font-size:3rem;color:var(--gold);opacity:.25;position:absolute;top:-10px;left:8px;font-family:'Amiri',serif;line-height:1}
+[dir="rtl"] .read-pullquote::before{content:'\00AB';left:auto;right:8px}
+body.dark .read-pullquote{color:#d4a74e}
+body.dark .read-para-key{background:rgba(200,168,78,.06)}
+.read-chapter-icon{text-align:center;font-size:3rem;margin-bottom:12px;filter:drop-shadow(0 3px 8px rgba(200,168,78,.3));animation:iconFloat 3s ease-in-out infinite}
+@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
 /* ═══ CONCEPT ANNOTATIONS ═══ */
 .concept-link{border-bottom:1px dotted var(--gold);cursor:help;color:inherit;transition:.2s}
 .concept-link:hover{background:rgba(200,168,78,.12)}
@@ -1172,10 +1186,50 @@ function readShowPage(){
   const idx = readState.currentPage;
   const rawText = readState.pages[idx] || '';
   const safeText = rawText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const annotated = annotateText(safeText);
+
+  // ── Split into paragraphs (every 3-4 sentences) ──
+  const sentences = safeText.split(/(?<=[.؟!،])\s+/);
+  const paragraphs = [];
+  for(let i=0; i<sentences.length; i+=3){
+    paragraphs.push(sentences.slice(i, i+3).join(' '));
+  }
+
+  // ── Extract pull-quote: longest sentence with a key term ──
+  const keyTerms = ['\u0627\u0644\u0625\u0646\u0633\u0627\u0646','\u0627\u0644\u0646\u0645\u0648\u0630\u062c','\u0627\u0644\u0625\u064a\u0645\u0627\u0646','\u0627\u0644\u0645\u0627\u062f\u064a\u0629','\u0627\u0644\u062d\u062f\u0627\u062b\u0629','human','model','faith','modernity','materialism','mod\u00e8le','humanit\u00e9'];
+  let pullQuote = '';
+  const candidates = sentences.filter(s => s.length > 40 && s.length < 200 && keyTerms.some(k => s.includes(k)));
+  if(candidates.length > 0) pullQuote = candidates[Math.floor(candidates.length/2)];
+
+  // ── Chapter icon (first page only) ──
+  const ch = CHAPTERS.find(c => c.id === readState.chapterId);
+  const chapterIcon = (idx === 0 && ch) ? '<div class="read-chapter-icon">' + ch.icon + '</div>' : '';
+
+  // ── Build HTML ──
   const counter = '<span class="read-passage-counter">' + (idx+1) + '/' + total + '</span>';
-  const sep = idx < total - 1 ? '<div class="read-separator">\u25C6</div>' : '';
-  content.innerHTML = '<div class="read-passage">' + counter + annotated + '</div>' + sep;
+  let body = paragraphs.map(p => {
+    const annotated = annotateText(p);
+    // Highlight key sentences with gold left border
+    const hasKey = keyTerms.some(k => p.includes(k));
+    return hasKey
+      ? '<p class="read-para read-para-key">' + annotated + '</p>'
+      : '<p class="read-para">' + annotated + '</p>';
+  }).join('');
+
+  // Insert pull-quote after the 2nd paragraph if available
+  if(pullQuote && paragraphs.length > 2){
+    const pullHtml = '<blockquote class="read-pullquote">' + pullQuote.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</blockquote>';
+    const parts = body.split('</p>');
+    if(parts.length > 2){
+      parts.splice(2, 0, pullHtml);
+      body = parts.join('</p>');
+    }
+  }
+
+  // ── Fade transition ──
+  content.style.opacity = '0';
+  content.innerHTML = '<div class="read-passage">' + chapterIcon + counter + body + '</div>';
+  requestAnimationFrame(() => { content.style.opacity = '1'; });
+
   document.getElementById('readPageNum').textContent = (idx+1) + ' / ' + total;
   document.getElementById('readPageInfo').textContent = (idx+1) + '/' + total;
   var btns = document.querySelectorAll('.read-nav-btn');
@@ -1183,7 +1237,6 @@ function readShowPage(){
   if(btns[1]) btns[1].disabled = idx >= total - 1;
   updateReadVine();
   updateBookmarkBtn();
-  // Stargazing easter egg
   if(readState.chapterId === 10 && idx >= total - 1 && currentTheme === 'dark' && !readState.stargazed){
     readState.stargazed = true;
     triggerStargazing();
