@@ -275,8 +275,54 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 .read-back:hover{border-color:var(--gold);color:var(--gold)}
 .read-chapter-name{font-family:'Amiri',serif;font-weight:700;color:var(--gold);font-size:1.1rem;flex:1}
 .read-page-info{font-size:.75rem;color:var(--t3);font-family:var(--fu)}
-.read-content{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.15rem;line-height:2.1;color:var(--t1);text-align:justify;min-height:300px;padding:10px 0;white-space:pre-wrap}
-[dir="ltr"] .read-content{font-family:'Nunito','Readex Pro',sans-serif;font-size:1rem;line-height:1.85}
+.read-content{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.15rem;line-height:2.3;color:var(--t1);text-align:justify;min-height:300px;padding:10px 0;max-width:680px;margin:0 auto;position:relative;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  border:2px solid rgba(200,168,78,.2);border-radius:var(--rr);padding:24px 20px}
+[data-theme="dark"] .read-content{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");border-color:rgba(212,180,92,.15)}
+.read-content::before,.read-content::after{content:'';position:absolute;width:28px;height:28px;background:radial-gradient(circle,var(--gold) 3px,transparent 3px),radial-gradient(circle at 8px 0,rgba(200,168,78,.3) 2px,transparent 2px),radial-gradient(circle at 0 8px,rgba(200,168,78,.3) 2px,transparent 2px);opacity:.4;pointer-events:none}
+.read-content::before{top:8px;right:8px}
+.read-content::after{bottom:8px;left:8px}
+[dir="ltr"] .read-content{font-family:'Nunito','Readex Pro',sans-serif;font-size:1rem;line-height:1.95}
+.read-passage{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:28px 32px;box-shadow:0 2px 10px rgba(44,36,23,.05);position:relative;margin-bottom:0}
+[dir="rtl"] .read-passage::first-letter{float:right;font-size:3.2em;line-height:1;padding-left:12px;color:var(--gold);font-family:'Amiri',serif}
+[dir="ltr"] .read-passage::first-letter{float:left;font-size:3.2em;line-height:1;padding-right:12px;color:var(--gold);font-family:'Amiri',serif}
+.read-passage-counter{position:absolute;top:10px;right:12px;font-family:var(--fu);font-size:.65rem;color:var(--t3);background:var(--acc);padding:2px 8px;border-radius:10px}
+[dir="ltr"] .read-passage-counter{right:auto;left:12px}
+.read-separator{text-align:center;color:var(--gold);opacity:.6;font-size:1.2rem;margin:18px 0;letter-spacing:8px;user-select:none}
+
+/* ═══ CONCEPT ANNOTATIONS ═══ */
+.concept-link{border-bottom:1px dotted var(--gold);cursor:help;color:inherit;transition:.2s}
+.concept-link:hover{background:rgba(200,168,78,.12)}
+.concept-popup{position:fixed;z-index:10000;max-width:380px;background:var(--card);border:2px solid var(--gold);border-radius:12px;padding:16px 20px;box-shadow:0 8px 30px rgba(0,0,0,.25);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")}
+.concept-popup-title{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold);margin-bottom:8px;font-weight:700}
+.concept-popup-body{font-size:.88rem;line-height:1.7;color:var(--t2)}
+.concept-popup-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--t3)}
+
+/* ═══ READING PROGRESS VINE ═══ */
+.read-vine{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;align-items:center;gap:0}
+.vine-line{width:2px;height:20px;background:var(--brd)}
+.vine-dot{width:12px;height:12px;border-radius:50%;background:var(--brd);transition:.3s;cursor:pointer;position:relative}
+.vine-dot.current{background:var(--gold);box-shadow:0 0 8px rgba(200,168,78,.5);animation:vinePulse 2s infinite}
+.vine-dot.read{background:var(--grn)}
+.vine-dot-label{position:absolute;right:20px;white-space:nowrap;font-size:.65rem;color:var(--t3);opacity:0;transition:.2s;pointer-events:none}
+[dir="ltr"] .vine-dot-label{right:auto;left:20px}
+.vine-dot:hover .vine-dot-label{opacity:1}
+.vine-emoji{font-size:.85rem;line-height:1}
+@keyframes vinePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@media(max-width:768px){.read-vine{display:none}}
+
+/* ═══ STARGAZING EASTER EGG ═══ */
+.stargazing{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:0;animation:twinkle ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0}50%{opacity:.8}}
+.stargazing-quote{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-family:'Amiri',serif;font-size:1.1rem;color:rgba(255,255,255,.7);direction:rtl;pointer-events:none;animation:fadeInQuote 3s ease-in forwards;opacity:0}
+@keyframes fadeInQuote{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ AMBIENT SOUND BUTTON ═══ */
+.read-ambient-btn{background:none;border:1px solid var(--brd);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:.9rem;transition:.2s;display:flex;align-items:center;justify-content:center}
+.read-ambient-btn.active{background:var(--gold);border-color:var(--gold)}
+.read-ambient-btn:hover{border-color:var(--gold)}
+
 .read-nav-bottom{display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0;border-top:1px solid var(--brd);margin-top:16px}
 .read-nav-btn{background:var(--gold);color:#fff;border:none;border-radius:20px;padding:8px 24px;cursor:pointer;font-size:1rem;font-weight:700;transition:.2s}
 .read-nav-btn:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,168,78,.3)}
@@ -448,13 +494,15 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
         <button class="read-back" onclick="readBack()">← </button>
         <span class="read-chapter-name" id="readChapterName"></span>
         <span class="read-page-info" id="readPageInfo"></span>
+        <button class="read-ambient-btn" id="readAmbientBtn" onclick="toggleAmbient()" title="Ambient">&#127925;</button>
       </div>
       <div class="read-content" id="readContent" dir="rtl" lang="ar"></div>
       <div class="read-nav-bottom">
-        <button class="read-nav-btn" onclick="readPrevPage()">⟵</button>
+        <button class="read-nav-btn" onclick="readPrevPage()">&#10229;</button>
         <span class="read-page-num" id="readPageNum"></span>
-        <button class="read-nav-btn" onclick="readNextPage()">⟶</button>
+        <button class="read-nav-btn" onclick="readNextPage()">&#10230;</button>
       </div>
+      <div class="read-vine hidden" id="readVine"></div>
     </div>
   </section>
 
@@ -764,6 +812,7 @@ function switchTab(id){
   const panel = document.getElementById('panel-'+id);
   if(panel) panel.classList.add('active');
   renderTabs();
+  if(id !== 'read' && typeof stopAmbient === 'function') stopAmbient();
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -881,7 +930,7 @@ const READ_META = [
   {id:5, pages:8}, {id:6, pages:104}, {id:7, pages:88}, {id:8, pages:41},
   {id:9, pages:195}, {id:10, pages:121}
 ];
-let readState = {chapterId:0, pages:[], currentPage:0, cache:{}};
+let readState = {chapterId:0, pages:[], currentPage:0, cache:{}, visited:new Set(), stargazed:false};
 
 function renderReadChapterList(){
   const L = LABELS[currentLang];
@@ -953,6 +1002,9 @@ async function readOpenChapter(id){
   readState.chapterId = id;
   readState.pages = readState.cache[id + '_' + currentLang];
   readState.currentPage = 0;
+  readState.visited.add(id);
+  renderReadVine();
+  document.getElementById('readVine').classList.remove('hidden');
   readShowPage();
 }
 
@@ -962,17 +1014,144 @@ function readShowPage(){
   content.lang = currentLang;
   const total = readState.pages.length;
   const idx = readState.currentPage;
-  content.textContent = readState.pages[idx] || '';
-  document.getElementById('readPageNum').textContent = `${idx+1} / ${total}`;
-  document.getElementById('readPageInfo').textContent = `${idx+1}/${total}`;
-
-  // Enable/disable nav buttons
-  const btns = document.querySelectorAll('.read-nav-btn');
+  const rawText = readState.pages[idx] || '';
+  const safeText = rawText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const annotated = annotateText(safeText);
+  const counter = '<span class="read-passage-counter">' + (idx+1) + '/' + total + '</span>';
+  const sep = idx < total - 1 ? '<div class="read-separator">\u25C6</div>' : '';
+  content.innerHTML = '<div class="read-passage">' + counter + annotated + '</div>' + sep;
+  document.getElementById('readPageNum').textContent = (idx+1) + ' / ' + total;
+  document.getElementById('readPageInfo').textContent = (idx+1) + '/' + total;
+  var btns = document.querySelectorAll('.read-nav-btn');
   if(btns[0]) btns[0].disabled = idx === 0;
   if(btns[1]) btns[1].disabled = idx >= total - 1;
-
-  // Scroll to top of reader
+  updateReadVine();
+  // Stargazing easter egg
+  if(readState.chapterId === 10 && idx >= total - 1 && currentTheme === 'dark' && !readState.stargazed){
+    readState.stargazed = true;
+    triggerStargazing();
+  }
   document.getElementById('readViewer').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ═══ CONCEPT ANNOTATIONS ═══ */
+var CONCEPT_TERMS = [
+  {patterns:['\u0627\u0644\u0646\u0645\u0627\u0630\u062c \u0627\u0644\u0625\u062f\u0631\u0627\u0643\u064a\u0629','cognitive models','mod\u00e8les cognitifs'], idx:0},
+  {patterns:['\u0641\u0642\u0647 \u0627\u0644\u062a\u062d\u064a\u0632','fiqh al-tahayyuz'], idx:1},
+  {patterns:['\u0627\u0644\u0639\u0644\u0645\u0627\u0646\u064a\u0629 \u0627\u0644\u0634\u0627\u0645\u0644\u0629','comprehensive secularism','s\u00e9cularisme total'], idx:2},
+  {patterns:['\u0627\u0644\u062d\u0644\u0648\u0644\u064a\u0629','hulul'], idx:3},
+  {patterns:['\u0627\u0644\u0625\u0646\u0633\u0627\u0646 \u0627\u0644\u0631\u0628\u0627\u0646\u064a','divinely-oriented human'], idx:4},
+  {patterns:['\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629','the Encyclopedia','l\'Encyclop\u00e9die'], idx:5}
+];
+function annotateText(html){
+  CONCEPT_TERMS.forEach(function(ct){
+    ct.patterns.forEach(function(p){
+      if(html.indexOf(p) !== -1){
+        var re = new RegExp('(' + p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')','gi');
+        html = html.replace(re, '<span class="concept-link" data-concept="' + ct.idx + '" onclick="showConceptPopup(event,' + ct.idx + ')">$1</span>');
+      }
+    });
+  });
+  return html;
+}
+function showConceptPopup(ev, idx){
+  closeConceptPopup();
+  var idea = IDEAS[idx];
+  if(!idea) return;
+  var title = idea[currentLang] ? idea[currentLang].t : idea.ar.t;
+  var body = idea[currentLang] ? idea[currentLang].d : idea.ar.d;
+  if(body && body.length > 300) body = body.slice(0,300) + '\u2026';
+  var popup = document.createElement('div');
+  popup.className = 'concept-popup';
+  popup.id = 'conceptPopup';
+  popup.innerHTML = '<button class="concept-popup-close" onclick="closeConceptPopup()">\u00d7</button>' +
+    '<div class="concept-popup-title">' + title + '</div>' +
+    '<div class="concept-popup-body">' + body + '</div>';
+  document.body.appendChild(popup);
+  var rect = popup.getBoundingClientRect();
+  var x = Math.min(ev.clientX, window.innerWidth - rect.width - 10);
+  var y = Math.min(ev.clientY + 10, window.innerHeight - rect.height - 10);
+  if(x < 10) x = 10;
+  if(y < 10) y = 10;
+  popup.style.left = x + 'px';
+  popup.style.top = y + 'px';
+}
+function closeConceptPopup(){
+  var old = document.getElementById('conceptPopup');
+  if(old) old.remove();
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.concept-link') && !e.target.closest('.concept-popup')) closeConceptPopup();
+});
+
+/* ═══ READING PROGRESS VINE ═══ */
+function renderReadVine(){
+  var vine = document.getElementById('readVine');
+  if(!vine) return;
+  var html = '<div class="vine-emoji">\uD83C\uDF31</div>';
+  for(var i = 1; i <= 10; i++){
+    html += '<div class="vine-line"></div>';
+    var cls = 'vine-dot';
+    if(i === readState.chapterId) cls += ' current';
+    else if(readState.visited.has(i)) cls += ' read';
+    var ch = CHAPTERS.find(function(c){return c.id===i});
+    var lbl = ch ? ch[currentLang].t : 'Ch ' + i;
+    html += '<div class="' + cls + '" onclick="readOpenChapter(' + i + ')" title="' + lbl + '"><span class="vine-dot-label">' + lbl + '</span></div>';
+  }
+  html += '<div class="vine-line"></div><div class="vine-emoji">\uD83C\uDF47</div>';
+  vine.innerHTML = html;
+}
+function updateReadVine(){
+  var dots = document.querySelectorAll('.vine-dot');
+  dots.forEach(function(d, i){
+    var chId = i + 1;
+    d.classList.remove('current','read');
+    if(chId === readState.chapterId) d.classList.add('current');
+    else if(readState.visited.has(chId)) d.classList.add('read');
+  });
+}
+
+/* ═══ STARGAZING EASTER EGG ═══ */
+function triggerStargazing(){
+  var canvas = document.createElement('div');
+  canvas.className = 'stargazing';
+  var stars = '';
+  for(var i = 0; i < 60; i++){
+    var x = Math.random()*100, y = Math.random()*100;
+    var delay = Math.random()*5, dur = 2+Math.random()*3;
+    var size = 1+Math.random()*2;
+    stars += '<div class="star" style="left:'+x+'%;top:'+y+'%;width:'+size+'px;height:'+size+'px;animation-delay:'+delay+'s;animation-duration:'+dur+'s"></div>';
+  }
+  canvas.innerHTML = stars + '<div class="stargazing-quote">\u0643\u0627\u0626\u0646 \u0623\u0642\u062f\u0627\u0645\u0647 \u0645\u063a\u0631\u0648\u0633\u0629 \u0641\u064a \u0627\u0644\u0648\u062d\u0644 \u0648\u0639\u064a\u0648\u0646\u0647 \u0634\u0627\u062e\u0635\u0629 \u0644\u0644\u0646\u062c\u0648\u0645</div>';
+  document.getElementById('readViewer').appendChild(canvas);
+}
+
+/* ═══ AMBIENT SOUND ═══ */
+var ambientCtx = null, ambientGain = null, ambientPlaying = false;
+function toggleAmbient(){
+  if(!ambientCtx){
+    ambientCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var osc1 = ambientCtx.createOscillator();
+    var osc2 = ambientCtx.createOscillator();
+    ambientGain = ambientCtx.createGain();
+    osc1.type = 'sine'; osc1.frequency.value = 110;
+    osc2.type = 'sine'; osc2.frequency.value = 165;
+    ambientGain.gain.value = 0;
+    osc1.connect(ambientGain); osc2.connect(ambientGain);
+    ambientGain.connect(ambientCtx.destination);
+    osc1.start(); osc2.start();
+  }
+  ambientPlaying = !ambientPlaying;
+  ambientGain.gain.linearRampToValueAtTime(ambientPlaying ? 0.03 : 0, ambientCtx.currentTime + 1);
+  document.getElementById('readAmbientBtn').classList.toggle('active', ambientPlaying);
+}
+function stopAmbient(){
+  if(ambientPlaying && ambientGain && ambientCtx){
+    ambientPlaying = false;
+    ambientGain.gain.linearRampToValueAtTime(0, ambientCtx.currentTime + 1);
+    var btn = document.getElementById('readAmbientBtn');
+    if(btn) btn.classList.remove('active');
+  }
 }
 
 function readPrevPage(){
@@ -983,6 +1162,11 @@ function readNextPage(){
 }
 function readBack(){
   readState.chapterId = 0;
+  stopAmbient();
+  var vine = document.getElementById('readVine');
+  if(vine) vine.classList.add('hidden');
+  var sg = document.querySelector('.stargazing');
+  if(sg) sg.remove();
   renderReadChapterList();
 }
 
