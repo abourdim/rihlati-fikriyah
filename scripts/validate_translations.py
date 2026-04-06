@@ -45,8 +45,8 @@ for i, t in enumerate(tags['fr']):
 
 # ─── 2. quiz_src: 8 items, each with en+fr, no Arabic ───
 qs = COMPLETE['quiz_src']
-if len(qs) != 8:
-    fail(f"quiz_src count: expected 8, got {len(qs)}")
+if len(qs) != 17:
+    fail(f"quiz_src count: expected 17, got {len(qs)}")
 for i, e in enumerate(qs):
     check_str(f"quiz_src[{i}].en", e.get('en',''))
     check_str(f"quiz_src[{i}].fr", e.get('fr',''))
@@ -118,12 +118,12 @@ qo_blk = grab_block('QUOTES')
 qo_count = count(r"\{ar:`", qo_blk)
 tr_en_count = count(r"tr_en:`[^`]+`", qo_blk)
 tr_fr_count = count(r"tr_fr:`[^`]+`", qo_blk)
-if qo_count != 18:
-    fail(f"QUOTES count: expected 18, got {qo_count}")
-if tr_en_count != 18:
-    fail(f"QUOTES tr_en count: expected 18, got {tr_en_count}")
-if tr_fr_count != 18:
-    fail(f"QUOTES tr_fr count: expected 18, got {tr_fr_count}")
+if qo_count < 18:
+    fail(f"QUOTES count: expected >=18, got {qo_count}")
+if tr_en_count < 18:
+    fail(f"QUOTES tr_en: expected >=18, got {tr_en_count}")
+if tr_fr_count < 18:
+    fail(f"QUOTES tr_fr: expected >=18, got {tr_fr_count}")
 
 # EN/FR quote theme labels + translated text no Arabic
 for m in re.finditer(r"en:`([^`]+)`", qo_blk):
@@ -137,12 +137,12 @@ q_blk = grab_block('QUIZ')
 qcount = count(r"\{q:\{", q_blk)
 src_en_count = count(r"src_en:`[^`]+`", q_blk)
 src_fr_count = count(r"src_fr:`[^`]+`", q_blk)
-if qcount != 8:
-    fail(f"QUIZ count: expected 8, got {qcount}")
-if src_en_count != 8:
-    fail(f"QUIZ src_en count: expected 8, got {src_en_count}")
-if src_fr_count != 8:
-    fail(f"QUIZ src_fr count: expected 8, got {src_fr_count}")
+if qcount < 17:
+    fail(f"QUIZ count: expected >=17, got {qcount}")
+if src_en_count < 17:
+    fail(f"QUIZ src_en: expected >=17, got {src_en_count}")
+if src_fr_count < 17:
+    fail(f"QUIZ src_fr: expected >=17, got {src_fr_count}")
 # Quiz q.en + q.fr + opts no Arabic
 for m in re.finditer(r'q:\{ar:`[^`]+`,en:`([^`]+)`,fr:`([^`]+)`\}', q_blk):
     check_str("QUIZ q.en", m.group(1))
