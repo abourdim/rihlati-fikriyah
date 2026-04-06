@@ -257,6 +257,45 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
   main{padding:0 14px 30px}
 }
 .hidden{display:none!important}
+
+/* ═══ NARRATOR ═══ */
+.narrator-btn{border:none;background:rgba(200,168,78,.12);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:.3s;border:1px solid var(--brd);color:var(--t1)}
+.narrator-btn:hover,.narrator-btn.active{background:var(--gold);transform:scale(1.1)}
+.narrator-btn.active{animation:narratorPulse 2s ease-in-out infinite}
+@keyframes narratorPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,168,78,.4)}50%{box-shadow:0 0 0 8px rgba(200,168,78,0)}}
+.narrator-panel{position:fixed!important;bottom:70px!important;left:50%!important;transform:translateX(-50%)!important;z-index:10001!important;background:#1a1a2e!important;color:#eee!important;border-radius:16px;width:92%;max-width:420px;max-height:calc(100vh - 140px);overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.5);border:2px solid rgba(200,168,78,.3);direction:ltr}
+[dir="rtl"] .narrator-panel{direction:rtl}
+.narrator-panel.hidden{display:none}
+.narrator-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(200,168,78,.1);background:rgba(200,168,78,.04);position:sticky;top:0;z-index:1}
+.narrator-title{font-family:var(--ff);font-weight:700;color:var(--gold);font-size:.95rem}
+.narrator-body{padding:12px 16px 16px}
+.narrator-modes{display:flex;gap:8px;margin-bottom:12px}
+.narrator-mode-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border:1px solid rgba(200,168,78,.2);border-radius:10px;background:rgba(200,168,78,.06);cursor:pointer;font-size:.85rem;font-family:var(--ff);color:var(--t1);transition:.2s}
+.narrator-mode-btn:hover{background:rgba(200,168,78,.15);border-color:var(--gold)}
+.narrator-mode-btn:active{transform:scale(.97)}
+.narrator-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.narrator-ctrl{border:none;background:none;font-size:1.4rem;cursor:pointer;padding:6px;border-radius:50%;transition:.2s}
+.narrator-ctrl:hover{background:rgba(200,168,78,.1);transform:scale(1.1)}
+.narrator-ctrl-main{font-size:1.8rem}
+.narrator-progress-wrap{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.narrator-bar-bg{flex:1;height:4px;background:rgba(200,168,78,.12);border-radius:2px;overflow:hidden}
+.narrator-bar-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s;width:0}
+.narrator-progress-text{font-size:.72rem;color:var(--t3);min-width:36px;text-align:center}
+.narrator-settings{border-top:1px solid rgba(200,168,78,.08);padding-top:12px}
+.narrator-setting{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.narrator-setting label{font-size:.78rem;color:var(--t2);min-width:55px;font-family:var(--ff)}
+.narrator-setting input[type=range]{flex:1;accent-color:var(--gold);height:4px}
+.narrator-setting span{font-size:.72rem;color:var(--t3);min-width:28px;text-align:center}
+.narrator-setting select{flex:1;background:var(--bg);color:var(--t1);border:1px solid rgba(200,168,78,.15);border-radius:6px;padding:4px 8px;font-size:.78rem;font-family:var(--ff)}
+.narrator-toggles{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.narrator-toggle{display:flex;align-items:center;gap:4px;font-size:.75rem;color:var(--t2);cursor:pointer;font-family:var(--ff)}
+.narrator-toggle input{accent-color:var(--gold)}
+.narrator-word-highlight{background:rgba(200,168,78,.3);border-radius:2px;padding:0 2px;transition:background .15s}
+.narrator-active-card{outline:2px solid var(--gold);outline-offset:2px;border-radius:var(--rr);transition:outline .3s;box-shadow:0 0 20px rgba(200,168,78,.15)}
+.narrator-speak-btn{position:absolute;top:8px;left:8px;width:28px;height:28px;border:none;background:rgba(200,168,78,.1);border-radius:50%;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;opacity:.4;transition:.2s;z-index:2}
+[dir="rtl"] .narrator-speak-btn{left:auto;right:8px}
+.narrator-speak-btn:hover{opacity:1;background:rgba(200,168,78,.25);transform:scale(1.15)}
+.narrator-panel *{color:#eee!important}.narrator-panel select{background:#1a1a2e!important;color:#eee!important;border-color:rgba(255,255,255,.2)!important}.narrator-panel .narrator-title{color:#ffcc80!important}.narrator-panel .narrator-mode-btn{color:#eee!important;background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.15)!important}.narrator-panel .narrator-mode-btn:hover{background:rgba(255,255,255,.15)!important}.narrator-panel input[type=range]{accent-color:#ffcc80}
 </style>
 </head>
 <body>
@@ -299,6 +338,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
         </button>
       </div>
       <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Theme">🌙</button>
+      <button class="narrator-btn" id="narratorMainBtn" onclick="narratorTogglePanel()" aria-label="Narrator">🎧</button>
     </nav>
   </div>
 </header>
@@ -406,6 +446,75 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
       <p class="about-text" id="aboutSourcesText">• «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>• «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>• «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>• «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>• سير ومقالات منشورة عن المسيري في الصحافة العربية</p>
     </div>
   </section>
+
+<!-- ═══ NARRATOR PANEL ═══ -->
+<div id="narratorPanel" class="narrator-panel hidden">
+  <div class="narrator-header">
+    <span class="narrator-title" id="narratorTitle">🎧 Narrator</span>
+    <button onclick="narratorTogglePanel()" style="border:none;background:none;color:#eee;font-size:1.2rem;cursor:pointer">&#10005;</button>
+  </div>
+  <div class="narrator-body">
+    <div class="narrator-modes">
+      <button class="narrator-mode-btn" onclick="narratorPlayPage()">
+        <span>▶️</span> <span class="narrator-mode-label" data-nr="page">Read this page</span>
+      </button>
+      <button class="narrator-mode-btn" onclick="narratorPlayBook()">
+        <span>📖</span> <span class="narrator-mode-label" data-nr="book">Read as a book</span>
+      </button>
+    </div>
+    <div class="narrator-controls">
+      <button class="narrator-ctrl" onclick="narratorPrev()">⏮️</button>
+      <button class="narrator-ctrl narrator-ctrl-main" id="narratorPlayPause" onclick="narratorPause()">▶️</button>
+      <button class="narrator-ctrl" onclick="narratorNext()">⏭️</button>
+      <button class="narrator-ctrl" onclick="narratorStop()">⏹️</button>
+    </div>
+    <div class="narrator-progress-wrap">
+      <div class="narrator-bar-bg"><div class="narrator-bar-fill" id="narratorBar"></div></div>
+      <span class="narrator-progress-text" id="narratorProgress">0/0</span>
+    </div>
+    <div class="narrator-settings">
+      <div class="narrator-setting">
+        <label data-nr="voice">Voice</label>
+        <select id="narratorVoice" onchange="narratorVoiceChange(this.value)" onfocus="narratorPopulateVoices()"></select>
+      </div>
+      <div class="narrator-setting">
+        <label data-nr="speed">Speed</label>
+        <input type="range" id="narratorSpeed" min="0.5" max="2" step="0.25" value="1" oninput="narratorSpeedChange(this.value)">
+        <span id="narratorSpeedLabel">1x</span>
+      </div>
+      <div class="narrator-setting">
+        <label data-nr="pitch">Pitch</label>
+        <input type="range" id="narratorPitch" min="0.5" max="1.5" step="0.1" value="1" oninput="narratorPitchChange(this.value)">
+        <span id="narratorPitchLabel">1.0</span>
+      </div>
+      <div class="narrator-setting">
+        <label data-nr="loop">Loop card</label>
+        <select id="narratorLoop" onchange="narratorLoopChange(this.value)">
+          <option value="0" data-nr="off">Off</option>
+          <option value="2">2x</option>
+          <option value="3">3x</option>
+          <option value="5">5x</option>
+          <option value="10">10x</option>
+        </select>
+      </div>
+      <div class="narrator-setting">
+        <label data-nr="sleep">Sleep timer</label>
+        <select id="narratorSleep" onchange="narratorSleepChange(this.value)">
+          <option value="0" data-nr="off">Off</option>
+          <option value="5">5 min</option>
+          <option value="15">15 min</option>
+          <option value="30">30 min</option>
+        </select>
+      </div>
+      <div class="narrator-toggles">
+        <label class="narrator-toggle"><input type="checkbox" checked onchange="narratorKaraokeToggle(this.checked)"> <span data-nr="karaoke">Karaoke</span></label>
+        <label class="narrator-toggle"><input type="checkbox" checked onchange="narratorAutoScrollToggle(this.checked)"> <span data-nr="autoscroll">Auto-scroll</span></label>
+        <label class="narrator-toggle"><input type="checkbox" onchange="narratorDuoToggle(this.checked)"> <span data-nr="duo">Duo (AR+EN)</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ═══ TICKER ═══ -->
@@ -885,6 +994,806 @@ renderTimeline();
 renderQuotes();
 renderQuiz();
 startTicker();
+</script>
+
+<!-- ═══ TOAST ═══ -->
+<script>
+function showToast(msg){var t=document.createElement('div');t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:20px;z-index:99999;font-size:.85rem;opacity:0;transition:opacity .3s';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.style.opacity='1'});setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},400)},2500)}
+</script>
+
+<!-- ═══ NARRATOR ═══ -->
+<script>
+(function() {
+  'use strict';
+
+  if (!('speechSynthesis' in window)) {
+    window.narratorTogglePanel = function() {
+      if (typeof showToast === 'function') {
+        var l = (typeof currentLang !== 'undefined') ? currentLang : 'ar';
+        var msg = l === 'ar' ? 'الراوي غير مدعوم في هذا المتصفح' : l === 'fr' ? 'Narrateur non support\u00e9 dans ce navigateur' : 'Narrator not supported in this browser';
+        showToast(msg);
+      }
+    };
+    window.narratorPlayPage = window.narratorPlayBook = window.narratorPause = function() {};
+    window.narratorStop = window.narratorNext = window.narratorPrev = function() {};
+    window.narratorSpeedChange = window.narratorPitchChange = function() {};
+    window.narratorLoopChange = window.narratorSleepChange = function() {};
+    window.narratorKaraokeToggle = window.narratorAutoScrollToggle = function() {};
+    window.narratorDuoToggle = window.narratorVoiceChange = function() {};
+    window.narratorPopulateVoices = function() {};
+    return;
+  }
+
+  // ═══ I18N ═══
+  var NR_T = {
+    ar: {
+      title: '🎧 الراوي', page: 'اقرأ هذه الصفحة', book: 'اقرأ ككتاب',
+      voice: 'الصوت', speed: 'السرعة', pitch: 'النبرة',
+      loop: 'تكرار البطاقة', sleep: 'مؤقت النوم',
+      karaoke: 'كاريوكي', autoScroll: 'تمرير تلقائي',
+      duo: 'ثنائي (عربي+إنجليزي)', off: 'إيقاف', min: 'دقيقة',
+      bookDone: 'تم الانتهاء من الكتاب', sleepDone: 'انتهى مؤقت النوم', sleepSet: 'مؤقت النوم:'
+    },
+    en: {
+      title: '🎧 Narrator', page: 'Read this page', book: 'Read as a book',
+      voice: 'Voice', speed: 'Speed', pitch: 'Pitch',
+      loop: 'Loop card', sleep: 'Sleep timer',
+      karaoke: 'Karaoke', autoScroll: 'Auto-scroll',
+      duo: 'Duo (AR+EN)', off: 'Off', min: 'min',
+      bookDone: 'Book finished', sleepDone: 'Sleep timer ended', sleepSet: 'Sleep:'
+    },
+    fr: {
+      title: '🎧 Narrateur', page: 'Lire cette page', book: 'Lire comme un livre',
+      voice: 'Voix', speed: 'Vitesse', pitch: 'Tonalit\u00e9',
+      loop: 'R\u00e9p\u00e9ter la carte', sleep: 'Minuterie',
+      karaoke: 'Karaok\u00e9', autoScroll: 'D\u00e9filement auto',
+      duo: 'Duo (AR+AN)', off: 'D\u00e9sactiv\u00e9', min: 'min',
+      bookDone: 'Livre termin\u00e9', sleepDone: 'Minuterie termin\u00e9e', sleepSet: 'Minuterie:'
+    }
+  };
+
+  function getLang() {
+    return typeof currentLang !== 'undefined' ? currentLang : 'ar';
+  }
+  function nrT() { return NR_T[getLang()] || NR_T.en; }
+
+  // ═══ STATE ═══
+  var STATE = {
+    playing: false, paused: false,
+    mode: 'page', cardIndex: 0, cards: [],
+    tabOrder: ['home','chapters','ideas','timeline','quotes','about'],
+    tabIndex: 0,
+    loopCount: 0, loopCurrent: 0,
+    sleepTimer: null, sleepMinutes: 0,
+    duoTimeout: null,
+    karaokeEnabled: true, autoScroll: true, duoReading: false,
+    speed: 1, pitch: 1,
+    voiceAR: null, voiceEN: null, voiceFR: null
+  };
+
+  // ═══ VOICE SELECTION ═══
+  function loadVoices() {
+    var voices = speechSynthesis.getVoices();
+    if (!voices.length) return;
+    var arPriority = ['Majed','Maged','Google Arabic','Tarik','Lila'];
+    var enPriority = ['Samantha','Daniel','Google UK English','Google US English'];
+    var frPriority = ['Thomas','Amelie','Google French'];
+    STATE.voiceAR = findBestVoice(voices, arPriority, 'ar');
+    STATE.voiceEN = findBestVoice(voices, enPriority, 'en');
+    STATE.voiceFR = findBestVoice(voices, frPriority, 'fr');
+  }
+
+  function findBestVoice(voices, priority, langCode) {
+    var langVoices = voices.filter(function(v) { return v.lang.startsWith(langCode); });
+    for (var i = 0; i < priority.length; i++) {
+      var match = langVoices.find(function(v) { return v.name.includes(priority[i]); });
+      if (match) return match;
+    }
+    return langVoices[0] || null;
+  }
+
+  function getVoiceForLang(l) {
+    if (l === 'ar') return STATE.voiceAR;
+    if (l === 'fr') return STATE.voiceFR;
+    return STATE.voiceEN;
+  }
+
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  // ═══ CARD EXTRACTION ═══
+  function getActivePanel() { return document.querySelector('.panel.active'); }
+  function getActiveTabName() {
+    var btn = document.querySelector('.tab.active');
+    return btn ? btn.dataset.tab : 'home';
+  }
+
+  function extractCards(panel) {
+    if (!panel) return [];
+    var cards = [];
+    var tabName = panel.id.replace('panel-', '');
+
+    if (tabName === 'home') {
+      panel.querySelectorAll('.metaphor-card, .home-author').forEach(function(el) {
+        var text = cleanText(el.textContent);
+        if (text) cards.push({ el: el, text: text, type: 'home' });
+      });
+    } else if (tabName === 'chapters') {
+      panel.querySelectorAll('.chapter-card').forEach(function(el) {
+        var excerpt = el.querySelector('.chapter-excerpt');
+        var desc = el.querySelector('.chapter-desc');
+        var title = el.querySelector('.chapter-title-ar');
+        var text = '';
+        if (title) text += title.textContent + '. ';
+        if (desc) text += desc.textContent + '. ';
+        if (excerpt) text += excerpt.textContent;
+        cards.push({ el: el, text: cleanText(text), type: 'chapter' });
+      });
+    } else if (tabName === 'ideas') {
+      panel.querySelectorAll('.idea-card').forEach(function(el) {
+        var body = el.querySelector('.idea-body');
+        var title = el.querySelector('.idea-title');
+        var text = '';
+        if (title) text += title.textContent + '. ';
+        if (body) text += body.textContent;
+        cards.push({ el: el, text: cleanText(text), type: 'idea' });
+      });
+    } else if (tabName === 'timeline') {
+      panel.querySelectorAll('.tl-card').forEach(function(el) {
+        var t = el.querySelector('.tl-title');
+        var d = el.querySelector('.tl-desc');
+        var text = '';
+        if (t) text += t.textContent + '. ';
+        if (d) text += d.textContent;
+        cards.push({ el: el, text: cleanText(text), type: 'timeline' });
+      });
+    } else if (tabName === 'quotes') {
+      panel.querySelectorAll('.quote-card').forEach(function(el) {
+        var body = el.querySelector('.quote-body');
+        var text = body ? body.textContent : el.textContent;
+        cards.push({ el: el, text: cleanText(text), type: 'quote' });
+      });
+    } else if (tabName === 'quiz') {
+      panel.querySelectorAll('.quiz-card').forEach(function(el) {
+        var q = el.querySelector('.quiz-q');
+        var text = q ? q.textContent : el.textContent;
+        cards.push({ el: el, text: cleanText(text), type: 'quiz' });
+      });
+    } else if (tabName === 'about') {
+      panel.querySelectorAll('.about-box, .about-warn').forEach(function(el) {
+        var text = cleanText(el.textContent);
+        if (text) cards.push({ el: el, text: text, type: 'about' });
+      });
+    }
+    return cards;
+  }
+
+  function cleanText(text) {
+    var clean = text.replace(/\s+/g, ' ').replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1F9FF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}\u{2190}-\u{21FF}\u2191\u2193\u2190\u2192\u2713]/gu, '').trim();
+    clean = clean.replace(/[\u00AB\u00BB\u201C\u201D()[\]{}—\u2013\u2022\u25CF\u25C6\u25A0\u25AA]/g, ' ').replace(/\s+/g, ' ');
+    clean = clean.replace(/:\s/g, ':, ').replace(/;\s/g, ';, ').replace(/\s—\s/g, ', ').replace(/\.\.\./g, ', ').replace(/\s*\n\s*/g, '. ');
+
+    var l = getLang();
+
+    if (l === 'fr') {
+      clean = clean
+        .replace(/al-Messiri/gi, 'al M\u00e9ssiri')
+        .replace(/Messiri/gi, 'M\u00e9ssiri')
+        .replace(/Damanhour/gi, 'Damanhour')
+        .replace(/fiqh al-tahayyuz/gi, 'fiqh al-tahayyouz')
+        .replace(/\bet\b/g, ', et')
+        .replace(/\bmais\b/g, ', mais')
+        .replace(/\bou\b/g, ', ou')
+        .replace(/\bcar\b/g, ', car')
+        .replace(/\bdonc\b/g, ', donc');
+    }
+
+    if (l === 'en') {
+      clean = clean
+        .replace(/al-Messiri/gi, 'al Mess-ee-ree')
+        .replace(/Messiri/gi, 'Mess-ee-ree')
+        .replace(/Damanhour/gi, 'Daman-hoor')
+        .replace(/fiqh al-tahayyuz/gi, 'fick al-tah-hi-yuz')
+        .replace(/\band\b/g, ', and')
+        .replace(/\bbut\b/g, ', but')
+        .replace(/\bor\b/g, ', or')
+        .replace(/\bhowever\b/gi, ', however,');
+    }
+
+    if (l === 'ar') {
+      clean = clean
+        .replace(/GitHub/gi, '\u063A\u064A\u062A \u0647\u0627\u0628')
+        .replace(/https?:\/\/[^\s]+/g, '')
+        .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '')
+        .replace(/workshop-diy\.org/gi, '')
+        .replace(/[a-zA-Z]{4,}/g, '')
+        .replace(/\u0648\b/g, '\u060C \u0648')
+        .replace(/\u0644\u0643\u0646\b/g, '\u060C \u0644\u0643\u0646')
+        .replace(/\u0623\u0648\b/g, '\u060C \u0623\u0648')
+        .replace(/\u062B\u0645\b/g, '\u060C \u062B\u0645')
+        .replace(/\u0628\u0644\b/g, '\u060C \u0628\u0644');
+    }
+
+    return clean.replace(/,\s*,/g, ',').replace(/\s+/g, ' ').trim();
+  }
+
+  // ═══ SPEECH ENGINE ═══
+  var speakGen = 0;
+
+  function speak(text, onEnd) {
+    speakGen++;
+    var myGen = speakGen;
+    speechSynthesis.cancel();
+    if (!text || !text.trim()) { if (onEnd) onEnd(); return; }
+
+    var l = getLang();
+    var utt = new SpeechSynthesisUtterance(text);
+    var selectedVoice = getVoiceForLang(l);
+    if (selectedVoice) utt.voice = selectedVoice;
+    utt.lang = l === 'ar' ? 'ar-SA' : l === 'fr' ? 'fr-FR' : 'en-US';
+    utt.rate = (l === 'ar') ? STATE.speed * 0.9 : STATE.speed;
+    utt.pitch = STATE.pitch;
+
+    if (STATE.karaokeEnabled) {
+      utt.onboundary = function(e) {
+        if (myGen !== speakGen) return;
+        if (e.name === 'word' && e.charLength > 0 && STATE.cards[STATE.cardIndex]) {
+          highlightWord(STATE.cards[STATE.cardIndex].el, e.charIndex, e.charLength, text);
+        }
+      };
+    }
+
+    var done = false;
+    function finish() {
+      if (done) return; done = true;
+      clearHighlights();
+      if (myGen !== speakGen) return;
+      if (onEnd) onEnd();
+    }
+    utt.onend = finish;
+    utt.onerror = finish;
+    speechSynthesis.speak(utt);
+
+    var pollStarted = false;
+    var pollInterval = setInterval(function() {
+      if (done || myGen !== speakGen) { clearInterval(pollInterval); return; }
+      if (speechSynthesis.speaking) pollStarted = true;
+      if (pollStarted && speechSynthesis.paused && !STATE.paused) speechSynthesis.resume();
+      if (pollStarted && !speechSynthesis.speaking && !speechSynthesis.pending) {
+        clearInterval(pollInterval); finish();
+      }
+    }, 500);
+
+    var maxWait = Math.max(5000, (text.length / 3) * (1000 / STATE.speed)) + 3000;
+    setTimeout(function() {
+      if (!done && myGen === speakGen) { clearInterval(pollInterval); finish(); }
+    }, maxWait);
+  }
+
+  // ═══ KARAOKE ═══
+  function highlightWord(el, charIndex, charLength, fullText) {
+    if (!el || !charLength) return;
+    var word = fullText.slice(charIndex, charIndex + charLength);
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    var node;
+    while (node = walker.nextNode()) {
+      var idx = node.textContent.indexOf(word);
+      if (idx !== -1) {
+        clearHighlights();
+        var range = document.createRange();
+        range.setStart(node, idx);
+        range.setEnd(node, Math.min(idx + word.length, node.textContent.length));
+        var span = document.createElement('span');
+        span.className = 'narrator-word-highlight';
+        try { range.surroundContents(span); } catch(e) {}
+        return;
+      }
+    }
+  }
+
+  function clearHighlights() {
+    document.querySelectorAll('.narrator-word-highlight').forEach(function(el) {
+      var parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
+  }
+
+  function highlightCard(el) {
+    document.querySelectorAll('.narrator-active-card').forEach(function(e) { e.classList.remove('narrator-active-card'); });
+    if (el) {
+      el.classList.add('narrator-active-card');
+      if (STATE.autoScroll) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // ═══ PLAYBACK ═══
+  function readCurrentCard() {
+    if (STATE.cardIndex >= STATE.cards.length) {
+      if (STATE.mode === 'book') { nextTab(); } else { stopNarrator(); }
+      return;
+    }
+    var card = STATE.cards[STATE.cardIndex];
+    highlightCard(card.el);
+    updateProgress();
+
+    speak(card.text, function() {
+      if (!STATE.playing) return;
+      if (STATE.duoReading && getLang() === 'ar') {
+        readDuoTranslation(card, function() { afterCardDone(); });
+        return;
+      }
+      afterCardDone();
+    });
+  }
+
+  function afterCardDone() {
+    if (!STATE.playing) return;
+    if (STATE.loopCount > 0) {
+      STATE.loopCurrent++;
+      if (STATE.loopCurrent < STATE.loopCount) {
+        setTimeout(function() { if (STATE.playing) readCurrentCard(); }, 300);
+        return;
+      }
+      STATE.loopCurrent = 0;
+    }
+    var justRead = STATE.cards[STATE.cardIndex];
+    var delay = 1200;
+    if (justRead) {
+      if (justRead.type === 'title') delay = 2500;
+      else if (justRead.text && justRead.text.length > 150) delay = 2000;
+    }
+    STATE.cardIndex++;
+    if (!STATE.playing) return;
+    document.querySelectorAll('.narrator-active-card').forEach(function(e) { e.classList.remove('narrator-active-card'); });
+    setTimeout(function() { if (STATE.playing) readCurrentCard(); }, delay);
+  }
+
+  // ═══ DUO READING (AR then EN) ═══
+  function readDuoTranslation(card, onEnd) {
+    var duoLang = 'en';
+    var duoVoice = getVoiceForLang(duoLang);
+    var duoText = '';
+
+    // Try structured data for chapters
+    if (card.type === 'chapter' && typeof CHAPTERS !== 'undefined') {
+      var chCards = Array.from(document.querySelectorAll('#panel-chapters .chapter-card'));
+      var chIdx = chCards.indexOf(card.el);
+      if (chIdx >= 0 && CHAPTERS[chIdx] && CHAPTERS[chIdx].tr && CHAPTERS[chIdx].tr.en) {
+        duoText = CHAPTERS[chIdx].tr.en;
+      }
+    }
+
+    // Try ideas data
+    if (!duoText && card.type === 'idea' && typeof IDEAS !== 'undefined') {
+      var ideaCards = Array.from(document.querySelectorAll('#panel-ideas .idea-card'));
+      var ideaIdx = ideaCards.indexOf(card.el);
+      if (ideaIdx >= 0 && IDEAS[ideaIdx] && IDEAS[ideaIdx].tr && IDEAS[ideaIdx].tr.en) {
+        duoText = IDEAS[ideaIdx].tr.en;
+      }
+    }
+
+    // Try timeline data
+    if (!duoText && card.type === 'timeline' && typeof TIMELINE !== 'undefined') {
+      var tlCards = Array.from(document.querySelectorAll('#panel-timeline .tl-card'));
+      var tlIdx = tlCards.indexOf(card.el);
+      if (tlIdx >= 0 && TIMELINE[tlIdx] && TIMELINE[tlIdx].tr && TIMELINE[tlIdx].tr.en) {
+        duoText = TIMELINE[tlIdx].tr.en;
+      }
+    }
+
+    // Try quotes data
+    if (!duoText && card.type === 'quote' && typeof QUOTES !== 'undefined') {
+      var qCards = Array.from(document.querySelectorAll('#panel-quotes .quote-card'));
+      var qIdx = qCards.indexOf(card.el);
+      if (qIdx >= 0 && QUOTES[qIdx] && QUOTES[qIdx].tr_en) {
+        duoText = QUOTES[qIdx].tr_en;
+      }
+    }
+
+    if (!duoText) { if (onEnd) onEnd(); return; }
+
+    var duoCalled = false;
+    function duoDone() { if (!duoCalled) { duoCalled = true; STATE.duoTimeout = null; if (onEnd) onEnd(); } }
+    var utt = new SpeechSynthesisUtterance(cleanText(duoText));
+    utt.voice = duoVoice;
+    utt.lang = 'en-US';
+    utt.rate = STATE.speed;
+    utt.pitch = STATE.pitch;
+    utt.onend = duoDone;
+    utt.onerror = duoDone;
+    STATE.duoTimeout = setTimeout(function() { if (STATE.playing) speechSynthesis.speak(utt); else duoDone(); }, 300);
+  }
+
+  // ═══ BOOK MODE ═══
+  function nextTab() {
+    STATE.tabIndex++;
+    if (STATE.tabIndex >= STATE.tabOrder.length) {
+      stopNarrator(); showToast(nrT().bookDone); return;
+    }
+    switchToTab(STATE.tabOrder[STATE.tabIndex]);
+  }
+
+  function switchToTab(tabName) {
+    var tabBtn = document.querySelector('.tab[data-tab="' + tabName + '"]');
+    if (tabBtn) {
+      tabBtn.click();
+      setTimeout(function() {
+        if (!STATE.playing) return;
+        STATE.cards = extractCards(getActivePanel());
+        STATE.cardIndex = 0;
+        readCurrentCard();
+      }, 400);
+    }
+  }
+
+  // ═══ PUBLIC CONTROLS ═══
+  function playPage() {
+    STATE.mode = 'page';
+    STATE.cards = extractCards(getActivePanel());
+    STATE.cardIndex = 0;
+    STATE.playing = true; STATE.paused = false;
+    closePanel(); updateUI(); setupMediaSession();
+    showToast(nrT().page);
+    readCurrentCard();
+  }
+
+  function playBook() {
+    STATE.mode = 'book';
+    STATE.tabIndex = 0;
+    STATE.playing = true; STATE.paused = false;
+    closePanel(); updateUI(); setupMediaSession();
+    showToast(nrT().book);
+    switchToTab(STATE.tabOrder[0]);
+  }
+
+  function closePanel() {
+    var panel = document.getElementById('narratorPanel');
+    if (panel && !panel.classList.contains('hidden')) panel.classList.add('hidden');
+  }
+
+  function pauseNarrator() {
+    if (STATE.playing && !STATE.paused) {
+      speechSynthesis.pause(); STATE.paused = true;
+      if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'paused';
+      updateUI();
+    } else if (STATE.paused) {
+      speechSynthesis.resume(); STATE.paused = false;
+      if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'playing';
+      updateUI();
+    }
+  }
+
+  function cancelDuo() {
+    if (STATE.duoTimeout) { clearTimeout(STATE.duoTimeout); STATE.duoTimeout = null; }
+  }
+
+  function stopNarrator() {
+    speakGen++; cancelDuo(); speechSynthesis.cancel();
+    STATE.playing = false; STATE.paused = false; STATE.cardIndex = 0;
+    clearHighlights();
+    document.querySelectorAll('.narrator-active-card').forEach(function(e) { e.classList.remove('narrator-active-card'); });
+    if (STATE.sleepTimer) { clearTimeout(STATE.sleepTimer); STATE.sleepTimer = null; }
+    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'none';
+    updateUI();
+  }
+
+  function nextCard() {
+    if (!STATE.playing) return;
+    speakGen++; cancelDuo(); speechSynthesis.cancel(); clearHighlights();
+    STATE.loopCurrent = 0; STATE.cardIndex++;
+    if (STATE.cardIndex >= STATE.cards.length) {
+      if (STATE.mode === 'book') { nextTab(); } else { stopNarrator(); }
+      return;
+    }
+    readCurrentCard();
+  }
+
+  function prevCard() {
+    if (!STATE.playing) return;
+    speakGen++; cancelDuo(); speechSynthesis.cancel(); clearHighlights();
+    STATE.loopCurrent = 0;
+    STATE.cardIndex = Math.max(0, STATE.cardIndex - 1);
+    readCurrentCard();
+  }
+
+  // ═══ SLEEP TIMER ═══
+  function setSleepTimer(minutes) {
+    if (STATE.sleepTimer) clearTimeout(STATE.sleepTimer);
+    STATE.sleepMinutes = minutes;
+    if (minutes > 0) {
+      STATE.sleepTimer = setTimeout(function() { stopNarrator(); showToast(nrT().sleepDone); }, minutes * 60000);
+    }
+  }
+
+  // ═══ MEDIA SESSION ═══
+  function setupMediaSession() {
+    if (!('mediaSession' in navigator)) return;
+    var l = getLang();
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: l === 'ar' ? '\u0631\u062D\u0644\u062A\u064A \u0627\u0644\u0641\u0643\u0631\u064A\u0629' : l === 'fr' ? 'Mon Voyage Intellectuel' : 'My Intellectual Journey',
+      artist: l === 'ar' ? '\u062F. \u0639\u0628\u062F \u0627\u0644\u0648\u0647\u0627\u0628 \u0627\u0644\u0645\u0633\u064A\u0631\u064A' : 'Dr. Abdul Wahab Al-Messiri',
+      album: STATE.mode === 'book' ? (l === 'ar' ? '\u0627\u0644\u0643\u062A\u0627\u0628 \u0643\u0627\u0645\u0644\u0627\u064B' : l === 'fr' ? 'Livre complet' : 'Full Book') : getActiveTabName()
+    });
+    navigator.mediaSession.playbackState = 'playing';
+    navigator.mediaSession.setActionHandler('play', pauseNarrator);
+    navigator.mediaSession.setActionHandler('pause', pauseNarrator);
+    navigator.mediaSession.setActionHandler('nexttrack', nextCard);
+    navigator.mediaSession.setActionHandler('previoustrack', prevCard);
+    navigator.mediaSession.setActionHandler('stop', stopNarrator);
+  }
+
+  // ═══ PROGRESS ═══
+  function updateProgress() {
+    var total = STATE.cards.length;
+    var current = STATE.cardIndex + 1;
+    var el = document.getElementById('narratorProgress');
+    if (el) el.textContent = current + '/' + total;
+    var bar = document.getElementById('narratorBar');
+    if (bar) bar.style.width = (current / total * 100) + '%';
+  }
+
+  // ═══ UI ═══
+  function updateUI() {
+    var btn = document.getElementById('narratorMainBtn');
+    var playBtn = document.getElementById('narratorPlayPause');
+    if (btn) btn.classList.toggle('active', STATE.playing);
+    if (playBtn) playBtn.textContent = STATE.playing && !STATE.paused ? '\u23F8\uFE0F' : '\u25B6\uFE0F';
+    var speedEl = document.getElementById('narratorSpeed');
+    if (speedEl) speedEl.value = STATE.speed;
+    var speedLabel = document.getElementById('narratorSpeedLabel');
+    if (speedLabel) speedLabel.textContent = STATE.speed + 'x';
+  }
+
+  function updateLabels() {
+    var t = nrT();
+    var set = function(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; };
+    set('narratorTitle', t.title);
+    document.querySelectorAll('[data-nr="page"]').forEach(function(el) { el.textContent = t.page; });
+    document.querySelectorAll('[data-nr="book"]').forEach(function(el) { el.textContent = t.book; });
+    document.querySelectorAll('[data-nr="voice"]').forEach(function(el) { el.textContent = t.voice; });
+    document.querySelectorAll('[data-nr="speed"]').forEach(function(el) { el.textContent = t.speed; });
+    document.querySelectorAll('[data-nr="pitch"]').forEach(function(el) { el.textContent = t.pitch; });
+    document.querySelectorAll('[data-nr="loop"]').forEach(function(el) { el.textContent = t.loop; });
+    document.querySelectorAll('[data-nr="sleep"]').forEach(function(el) { el.textContent = t.sleep; });
+    document.querySelectorAll('[data-nr="karaoke"]').forEach(function(el) { el.textContent = t.karaoke; });
+    document.querySelectorAll('[data-nr="autoscroll"]').forEach(function(el) { el.textContent = t.autoScroll; });
+    document.querySelectorAll('[data-nr="duo"]').forEach(function(el) { el.textContent = t.duo; });
+    document.querySelectorAll('[data-nr="off"]').forEach(function(el) { el.textContent = t.off; });
+  }
+
+  // ═══ PANEL TOGGLE ═══
+  function toggleNarratorPanel() {
+    var panel = document.getElementById('narratorPanel');
+    if (!panel) return;
+    panel.classList.toggle('hidden');
+    if (!panel.classList.contains('hidden')) {
+      updateLabels(); populateVoiceSelect(); syncCheckboxes();
+    }
+  }
+
+  function syncCheckboxes() {
+    var panel = document.getElementById('narratorPanel');
+    if (!panel) return;
+    var toggles = panel.querySelectorAll('.narrator-toggle input[type=checkbox]');
+    if (toggles[0]) toggles[0].checked = STATE.karaokeEnabled;
+    if (toggles[1]) toggles[1].checked = STATE.autoScroll;
+    if (toggles[2]) toggles[2].checked = STATE.duoReading;
+    var speedEl = document.getElementById('narratorSpeed');
+    if (speedEl) speedEl.value = STATE.speed;
+    var speedLabel = document.getElementById('narratorSpeedLabel');
+    if (speedLabel) speedLabel.textContent = STATE.speed + 'x';
+    var pitchEl = document.getElementById('narratorPitch');
+    if (pitchEl) pitchEl.value = STATE.pitch;
+    var pitchLabel = document.getElementById('narratorPitchLabel');
+    if (pitchLabel) pitchLabel.textContent = STATE.pitch.toFixed(1);
+  }
+
+  // ═══ SETTINGS ═══
+  function onSpeedChange(val) {
+    STATE.speed = parseFloat(val);
+    var label = document.getElementById('narratorSpeedLabel');
+    if (label) label.textContent = STATE.speed + 'x';
+    localStorage.setItem('rihlati-narrator-speed', STATE.speed);
+  }
+  function onPitchChange(val) {
+    STATE.pitch = parseFloat(val);
+    var label = document.getElementById('narratorPitchLabel');
+    if (label) label.textContent = STATE.pitch.toFixed(1);
+    localStorage.setItem('rihlati-narrator-pitch', STATE.pitch);
+  }
+  function onLoopChange(val) { STATE.loopCount = parseInt(val); }
+  function onSleepChange(val) {
+    setSleepTimer(parseInt(val));
+    if (parseInt(val) > 0) showToast(nrT().sleepSet + ' ' + val + ' ' + nrT().min);
+  }
+  function onKaraokeToggle(checked) { STATE.karaokeEnabled = checked; localStorage.setItem('rihlati-narrator-karaoke', checked); }
+  function onAutoScrollToggle(checked) { STATE.autoScroll = checked; localStorage.setItem('rihlati-narrator-autoscroll', checked); }
+  function onDuoToggle(checked) { STATE.duoReading = checked; localStorage.setItem('rihlati-narrator-duo', checked); }
+
+  // ═══ VOICE PICKER ═══
+  function populateVoiceSelect() {
+    var select = document.getElementById('narratorVoice');
+    if (!select) return;
+    var voices = speechSynthesis.getVoices();
+    var l = getLang();
+    var langCode = l === 'ar' ? 'ar' : l === 'fr' ? 'fr' : 'en';
+    select.innerHTML = '';
+    var filtered = [];
+    voices.forEach(function(v, realIdx) {
+      if (v.lang.startsWith(langCode)) filtered.push({ voice: v, idx: realIdx });
+    });
+    if (filtered.length === 0) {
+      voices.forEach(function(v, realIdx) { filtered.push({ voice: v, idx: realIdx }); });
+    }
+    var currentVoice = getVoiceForLang(l);
+    filtered.forEach(function(item) {
+      var opt = document.createElement('option');
+      opt.value = item.idx;
+      opt.textContent = item.voice.name + ' (' + item.voice.lang + ')';
+      if (currentVoice && item.voice.name === currentVoice.name) opt.selected = true;
+      select.appendChild(opt);
+    });
+  }
+
+  function onVoiceChange(val) {
+    var voices = speechSynthesis.getVoices();
+    var voice = voices[parseInt(val)];
+    if (!voice) return;
+    var l = getLang();
+    if (l === 'ar') STATE.voiceAR = voice;
+    else if (l === 'fr') STATE.voiceFR = voice;
+    else STATE.voiceEN = voice;
+  }
+
+  // ═══ LOAD SETTINGS ═══
+  function loadSettings() {
+    STATE.speed = parseFloat(localStorage.getItem('rihlati-narrator-speed')) || 1;
+    STATE.pitch = parseFloat(localStorage.getItem('rihlati-narrator-pitch')) || 1;
+    STATE.karaokeEnabled = localStorage.getItem('rihlati-narrator-karaoke') !== 'false';
+    STATE.autoScroll = localStorage.getItem('rihlati-narrator-autoscroll') !== 'false';
+    STATE.duoReading = localStorage.getItem('rihlati-narrator-duo') === 'true';
+  }
+
+  // ═══ ESCAPE KEY ═══
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var panel = document.getElementById('narratorPanel');
+      if (panel && !panel.classList.contains('hidden')) { panel.classList.add('hidden'); e.stopPropagation(); }
+    }
+  });
+
+  // ═══ CLEANUP ═══
+  window.addEventListener('beforeunload', function() { speechSynthesis.cancel(); });
+
+  // ═══ SPEAK SINGLE SECTION ═══
+  var sectionSpeaking = false;
+
+  function speakSection(el) {
+    if (STATE.playing) stopNarrator();
+    speakGen++; speechSynthesis.cancel();
+    var text = cleanText(el.textContent || '');
+    if (!text) return;
+    sectionSpeaking = true;
+    el.classList.add('narrator-active-card');
+
+    var l = getLang();
+    var utt = new SpeechSynthesisUtterance(text);
+    var selectedVoice = getVoiceForLang(l);
+    if (selectedVoice) utt.voice = selectedVoice;
+    utt.lang = l === 'ar' ? 'ar-SA' : l === 'fr' ? 'fr-FR' : 'en-US';
+    utt.rate = (l === 'ar') ? STATE.speed * 0.9 : STATE.speed;
+    utt.pitch = STATE.pitch;
+
+    var done = false;
+    function finish() {
+      if (done) return; done = true;
+      sectionSpeaking = false;
+      el.classList.remove('narrator-active-card');
+      clearHighlights();
+    }
+    utt.onend = finish;
+    utt.onerror = finish;
+    if (STATE.karaokeEnabled) {
+      utt.onboundary = function(e) {
+        if (e.name === 'word' && e.charLength > 0) highlightWord(el, e.charIndex, e.charLength, text);
+      };
+    }
+    speechSynthesis.speak(utt);
+
+    var pollStarted = false;
+    var pollInterval = setInterval(function() {
+      if (done) { clearInterval(pollInterval); return; }
+      if (speechSynthesis.speaking) pollStarted = true;
+      if (pollStarted && speechSynthesis.paused) speechSynthesis.resume();
+      if (pollStarted && !speechSynthesis.speaking && !speechSynthesis.pending) { clearInterval(pollInterval); finish(); }
+    }, 500);
+    setTimeout(function() { if (!done) { clearInterval(pollInterval); finish(); } }, Math.max(5000, (text.length / 3) * (1000 / STATE.speed)) + 3000);
+  }
+
+  function stopSection() {
+    if (sectionSpeaking) {
+      speechSynthesis.cancel(); sectionSpeaking = false;
+      document.querySelectorAll('.narrator-active-card').forEach(function(e) { e.classList.remove('narrator-active-card'); });
+      clearHighlights();
+    }
+  }
+
+  // ═══ INJECT SPEAK BUTTONS ═══
+  function injectSpeakButtons() {
+    document.querySelectorAll('.narrator-speak-btn').forEach(function(b) { b.remove(); });
+    var selectors = ['.chapter-card', '.idea-card', '.tl-card', '.quote-card', '.about-box', '.about-warn'];
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(card) {
+        if (card.querySelector('.narrator-speak-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = 'narrator-speak-btn';
+        btn.textContent = '\uD83D\uDD0A';
+        btn.title = nrT().page;
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          if (sectionSpeaking) stopSection(); else speakSection(card);
+        };
+        card.style.position = 'relative';
+        card.appendChild(btn);
+      });
+    });
+  }
+
+  // ═══ WRAP RENDER FUNCTIONS ═══
+  var origRenderChapters = window.renderChapters;
+  if (origRenderChapters) {
+    window.renderChapters = function() { origRenderChapters(); setTimeout(injectSpeakButtons, 100); };
+  }
+  var origRenderIdeas = window.renderIdeas;
+  if (origRenderIdeas) {
+    window.renderIdeas = function() { origRenderIdeas(); setTimeout(injectSpeakButtons, 100); };
+  }
+  var origRenderTimeline = window.renderTimeline;
+  if (origRenderTimeline) {
+    window.renderTimeline = function() { origRenderTimeline(); setTimeout(injectSpeakButtons, 100); };
+  }
+  var origRenderQuotes = window.renderQuotes;
+  if (origRenderQuotes) {
+    window.renderQuotes = function() { origRenderQuotes(); setTimeout(injectSpeakButtons, 100); };
+  }
+
+  // ═══ EXPOSE GLOBALS ═══
+  window.narratorPlayPage = playPage;
+  window.narratorPlayBook = playBook;
+  window.narratorPause = pauseNarrator;
+  window.narratorStop = stopNarrator;
+  window.narratorNext = nextCard;
+  window.narratorPrev = prevCard;
+  window.narratorTogglePanel = toggleNarratorPanel;
+  window.narratorSpeedChange = onSpeedChange;
+  window.narratorPitchChange = onPitchChange;
+  window.narratorLoopChange = onLoopChange;
+  window.narratorSleepChange = onSleepChange;
+  window.narratorKaraokeToggle = onKaraokeToggle;
+  window.narratorAutoScrollToggle = onAutoScrollToggle;
+  window.narratorDuoToggle = onDuoToggle;
+  window.narratorVoiceChange = onVoiceChange;
+  window.narratorPopulateVoices = populateVoiceSelect;
+
+  // ═══ INIT ═══
+  function initNarrator() {
+    loadSettings();
+    updateLabels();
+    setTimeout(injectSpeakButtons, 500);
+    var lastLang = getLang();
+    new MutationObserver(function() {
+      var newLang = document.documentElement.lang || 'ar';
+      if (newLang !== lastLang) {
+        lastLang = newLang;
+        setTimeout(function() { populateVoiceSelect(); updateLabels(); injectSpeakButtons(); }, 100);
+        if (STATE.playing) stopNarrator();
+      }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  document.addEventListener('DOMContentLoaded', initNarrator);
+})();
 </script>
 
 </body>
