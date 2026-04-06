@@ -892,7 +892,7 @@ function renderReadChapterList(){
   document.getElementById('readChapterList').style.display = '';
 
   const list = document.getElementById('readChapterList');
-  const langNote = isAr ? '' : `<div class="read-lang-note">${currentLang==='en' ? 'Translated excerpts \u2014 not the author\\'s own words' : 'Extraits traduits \u2014 ce ne sont pas les mots de l\\'auteur'}</div>`;
+  const langNote = isAr ? '' : `<div class="read-lang-note">${currentLang==='en' ? 'Translated excerpts — not the author\u2019s own words' : 'Extraits traduits — ce ne sont pas les mots de l\u2019auteur'}</div>`;
   list.innerHTML = langNote + READ_META.map(m => {
     const ch = CHAPTERS.find(c => c.id === m.id);
     if(!ch) return '';
