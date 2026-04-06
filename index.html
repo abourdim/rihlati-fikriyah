@@ -158,20 +158,38 @@ body.dark .chapter-excerpt{background:linear-gradient(135deg,#2a2318 0%,#1f1810 
 .quotes-head{text-align:center;margin:10px 0 24px;padding:0 20px}
 .quotes-head h2{font-family:'Amiri',serif;font-size:1.8rem;color:var(--gold);margin-bottom:6px}
 .quotes-head p{color:var(--t2);font-size:.92rem}
-.quotes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
-.quote-card{background:linear-gradient(135deg,#fff8e7 0%,#fdf4d9 100%);border:1px solid var(--brd);border-radius:var(--rr);padding:22px 22px 18px;box-shadow:var(--sh);position:relative;overflow:hidden;transition:.3s;margin:0}
-.quote-card::before{content:'"';position:absolute;top:-30px;right:10px;font-family:'Amiri',serif;font-size:9rem;color:var(--gold);opacity:.12;line-height:1}
-[dir="ltr"] .quote-card::before{right:auto;left:10px}
+.quotes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
+.quote-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);box-shadow:var(--sh);position:relative;overflow:hidden;transition:.3s;margin:0;border-left:4px solid var(--gold)}
+[dir="rtl"] .quote-card{border-left:1px solid var(--brd);border-right:4px solid var(--gold)}
 .quote-card:hover{transform:translateY(-3px);box-shadow:var(--shm);border-color:var(--gold)}
-.quote-num{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
-.quote-theme{font-family:'Readex Pro',sans-serif;font-size:.95rem;font-weight:600;color:var(--t1);margin-bottom:12px}
-.quote-body{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.05rem;line-height:1.95;color:#3a2f1a;margin:0 0 12px;text-align:justify;border:none;padding:0;position:relative;z-index:1}
-.quote-original{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:.85rem;line-height:1.85;color:var(--t2);opacity:.6;margin:12px 0 0;padding:10px 14px;border-right:3px solid var(--gold);border-left:none;border-radius:4px;background:rgba(200,168,78,.04);text-align:right}
-body.dark .quote-original{background:rgba(200,168,78,.06);opacity:.5}
-.quote-src{font-family:'Nunito',sans-serif;font-size:.72rem;color:var(--t2);text-align:left;font-style:italic;padding-top:10px;border-top:1px solid var(--brd)}
-[dir="rtl"] .quote-src{text-align:right}
-body.dark .quote-card{background:linear-gradient(135deg,#2a2318 0%,#1f1810 100%)}
-body.dark .quote-body{color:#d9c89a}
+.quote-card[data-theme-color="teal"]{border-left-color:var(--teal)}[dir="rtl"] .quote-card[data-theme-color="teal"]{border-right-color:var(--teal)}
+.quote-card[data-theme-color="grn"]{border-left-color:var(--grn)}[dir="rtl"] .quote-card[data-theme-color="grn"]{border-right-color:var(--grn)}
+.quote-card[data-theme-color="rose"]{border-left-color:#c45a6b}[dir="rtl"] .quote-card[data-theme-color="rose"]{border-right-color:#c45a6b}
+.quote-card[data-theme-color="purple"]{border-left-color:#7b5ea7}[dir="rtl"] .quote-card[data-theme-color="purple"]{border-right-color:#7b5ea7}
+.quote-card[data-theme-color="blue"]{border-left-color:#4a7fb5}[dir="rtl"] .quote-card[data-theme-color="blue"]{border-right-color:#4a7fb5}
+.quote-card[data-theme-color="orange"]{border-left-color:#c8864e}[dir="rtl"] .quote-card[data-theme-color="orange"]{border-right-color:#c8864e}
+/* ── Arabic section (top half) ── */
+.quote-ar-section{background:linear-gradient(135deg,#fff8e7 0%,#fdf4d9 100%);padding:20px 22px 16px;position:relative}
+.quote-ar-section::before{content:'"';position:absolute;top:-20px;right:8px;font-family:'Amiri',serif;font-size:7rem;color:var(--gold);opacity:.1;line-height:1}
+[dir="ltr"] .quote-ar-section::before{right:auto;left:8px}
+body.dark .quote-ar-section{background:linear-gradient(135deg,#2a2318 0%,#1f1810 100%)}
+.quote-ar-body{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.08rem;line-height:2;color:#3a2f1a;margin:0;text-align:justify;position:relative;z-index:1;direction:rtl}
+body.dark .quote-ar-body{color:#d9c89a}
+/* ── Gold divider ── */
+.quote-divider{display:flex;align-items:center;gap:10px;padding:0 22px;margin:0}
+.quote-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.quote-divider-gem{color:var(--gold);font-size:.65rem;opacity:.7;flex-shrink:0}
+/* ── Translation section (bottom half) ── */
+.quote-tr-section{padding:16px 22px 18px}
+.quote-header{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0;position:relative;z-index:1}
+.quote-num{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--gold)}
+.quote-theme{font-family:'Readex Pro',sans-serif;font-size:.85rem;font-weight:600;color:var(--t1);text-align:right}
+[dir="ltr"] .quote-theme{text-align:left}
+.quote-tr-body{font-family:'Nunito','Readex Pro',sans-serif;font-size:.92rem;line-height:1.8;color:var(--t2);margin:0;text-align:justify}
+.quote-src{font-family:'Nunito',sans-serif;font-size:.7rem;color:var(--t3);font-style:italic;padding-top:8px}
+/* ── AR-only mode: no split needed ── */
+.quote-card.ar-only .quote-ar-section{padding:20px 22px}
+.quote-card.ar-only .quote-ar-body{font-size:1.12rem;line-height:2.1}
 
 /* ═══ TIMELINE ═══ */
 .timeline{position:relative;padding-left:36px;margin:20px 0}
@@ -902,23 +920,42 @@ function renderIdeas(){
 function renderQuotes(){
   const L = LABELS[currentLang];
   const isAr = currentLang === 'ar';
-  const trNote = isAr ? '' : `<div class="tr-note">${currentLang==='en' ? `— translation, not the author's own words` : `— traduction, ce ne sont pas les mots de l'auteur`}</div>`;
-  // Filter: in EN/FR, skip quotes that have no translation
+  const trNote = isAr ? '' : `<div class="tr-note">${currentLang==='en' ? `\u2014 translation, not the author\u2019s own words` : `\u2014 traduction, ce ne sont pas les mots de l\u2019auteur`}</div>`;
   const filtered = isAr ? QUOTES : QUOTES.filter(q => (currentLang==='en' ? q.tr_en : q.tr_fr));
+  // Theme → color mapping
+  const themeColors = {
+    '\u0627\u0644\u0625\u0646\u0633\u0627\u0646 \u0648\u0627\u0644\u0648\u062c\u0648\u062f':'teal',
+    '\u0627\u0644\u0647\u0648\u064a\u0629 \u0648\u0627\u0644\u062a\u0643\u0648\u064a\u0646':'grn',
+    '\u0627\u0644\u0646\u0645\u0627\u0630\u062c \u0648\u0627\u0644\u0645\u0646\u0647\u062c':'gold',
+    '\u0627\u0644\u0625\u064a\u0645\u0627\u0646 \u0648\u0627\u0644\u0631\u0648\u062d':'grn',
+    '\u0627\u0644\u0645\u0627\u062f\u064a\u0629 \u0648\u0627\u0644\u062d\u062f\u0627\u062b\u0629':'rose',
+    '\u0627\u0644\u0635\u0647\u064a\u0648\u0646\u064a\u0629 \u0648\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629':'blue',
+    '\u0627\u0644\u0623\u062f\u0628 \u0648\u0627\u0644\u062b\u0642\u0627\u0641\u0629':'purple',
+    '\u062f\u0645\u0646\u0647\u0648\u0631 \u0648\u0627\u0644\u0630\u0627\u0643\u0631\u0629':'gold',
+    '\u0627\u0644\u0639\u0644\u0645\u0627\u0646\u064a\u0629 \u0648\u0627\u0644\u062a\u062d\u064a\u0632':'orange',
+    '\u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0648\u0627\u0644\u062c\u0627\u0645\u0639\u0629':'teal',
+  };
+  const bookRef = isAr ? '\u0631\u062d\u0644\u062a\u064a \u0627\u0644\u0641\u0643\u0631\u064a\u0629' : (currentLang==='en' ? 'My Intellectual Journey' : 'Mon Voyage Intellectuel');
   document.getElementById('quotesContent').innerHTML = filtered.map((q,i) => {
-    const bodyText = isAr ? q.text : (currentLang==='en' ? q.tr_en : q.tr_fr);
-    const bodyDir = isAr ? 'rtl' : 'ltr';
-    const bodyLang = isAr ? 'ar' : currentLang;
-    const bookRef = isAr ? 'رحلتي الفكرية' : (currentLang==='en' ? 'My Intellectual Journey' : 'Mon Voyage Intellectuel');
-    const openQ = isAr ? '«' : '"';
-    const closeQ = isAr ? '»' : '"';
-    return `<figure class="quote-card">
-      <div class="quote-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="quote-theme">${q[currentLang]}</div>
-      <blockquote class="quote-body" dir="${bodyDir}" lang="${bodyLang}">${openQ}${bodyText}${closeQ}</blockquote>
-      ${!isAr ? `<blockquote class="quote-original" dir="rtl" lang="ar">«${q.text}»</blockquote>` : ''}
-      ${trNote}
-      <figcaption class="quote-src">${L.fromBook} — ${bookRef}</figcaption>
+    const color = themeColors[q.ar] || 'gold';
+    if(isAr){
+      // AR-only: single section, no split
+      return `<figure class="quote-card ar-only" data-theme-color="${color}">
+        <div class="quote-header"><div class="quote-num">${String(i+1).padStart(2,'0')}</div><div class="quote-theme">${q.ar}</div></div>
+        <div class="quote-ar-section"><blockquote class="quote-ar-body">\u00AB${q.text}\u00BB</blockquote></div>
+        <div class="quote-tr-section"><figcaption class="quote-src">${L.fromBook} \u2014 ${bookRef}</figcaption></div>
+      </figure>`;
+    }
+    const trText = currentLang==='en' ? q.tr_en : q.tr_fr;
+    return `<figure class="quote-card" data-theme-color="${color}">
+      <div class="quote-header"><div class="quote-num">${String(i+1).padStart(2,'0')}</div><div class="quote-theme">${q[currentLang]}</div></div>
+      <div class="quote-ar-section"><blockquote class="quote-ar-body">\u00AB${q.text}\u00BB</blockquote></div>
+      <div class="quote-divider"><div class="quote-divider-line"></div><div class="quote-divider-gem">\u25C6</div><div class="quote-divider-line"></div></div>
+      <div class="quote-tr-section">
+        <blockquote class="quote-tr-body">\u201C${trText}\u201D</blockquote>
+        ${trNote}
+        <figcaption class="quote-src">${L.fromBook} \u2014 ${bookRef}</figcaption>
+      </div>
     </figure>`;
   }).join('');
 }
