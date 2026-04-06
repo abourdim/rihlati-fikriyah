@@ -388,6 +388,75 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 [dir="rtl"] .narrator-speak-btn{left:auto;right:8px}
 .narrator-speak-btn:hover{opacity:1;background:rgba(200,168,78,.25);transform:scale(1.15)}
 .narrator-panel *{color:#eee!important}.narrator-panel select{background:#1a1a2e!important;color:#eee!important;border-color:rgba(255,255,255,.2)!important}.narrator-panel .narrator-title{color:#ffcc80!important}.narrator-panel .narrator-mode-btn{color:#eee!important;background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.15)!important}.narrator-panel .narrator-mode-btn:hover{background:rgba(255,255,255,.15)!important}.narrator-panel input[type=range]{accent-color:#ffcc80}
+
+/* ═══ DAILY QUOTE ═══ */
+.daily-quote-card{background:linear-gradient(135deg,#fff8e7,#fdf4d9);border:1px solid var(--brd);border-left:4px solid var(--gold);border-radius:var(--rr);padding:20px 24px;margin-bottom:24px;position:relative}
+[dir="rtl"] .daily-quote-card{border-left:1px solid var(--brd);border-right:4px solid var(--gold)}
+.daily-quote-label{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.daily-quote-text{font-family:'Amiri',serif;font-size:1.05rem;line-height:2;color:var(--t1)}
+.daily-quote-theme{font-size:.78rem;color:var(--t3);margin-top:8px;font-style:italic}
+[data-theme="dark"] .daily-quote-card{background:linear-gradient(135deg,#2a2318,#1f1810)}
+
+/* ═══ CONTINUE READING ═══ */
+.continue-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:16px 20px;margin-bottom:20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:.3s}
+.continue-card:hover{border-color:var(--gold);box-shadow:var(--shm)}
+.continue-icon{font-size:2rem}
+.continue-info{flex:1}
+.continue-title{font-weight:700;color:var(--gold);font-size:.95rem}
+.continue-meta{font-size:.78rem;color:var(--t3)}
+
+/* ═══ BOOKMARK BTN ═══ */
+.read-bookmark-btn{background:none;border:1px solid var(--brd);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:.9rem;transition:.2s;display:flex;align-items:center;justify-content:center}
+.read-bookmark-btn:hover{border-color:var(--gold)}
+.read-bookmark-btn.active{background:var(--gold);border-color:var(--gold)}
+
+/* ═══ GLOSSARY ═══ */
+.glossary-head{text-align:center;margin:10px 0 16px}
+.glossary-head h2{font-family:'Amiri',serif;font-size:1.6rem;color:var(--gold)}
+.glossary-search{max-width:400px;margin:0 auto 20px}
+.glossary-search input{width:100%;padding:10px 16px;border:1px solid var(--brd);border-radius:20px;font-size:.9rem;font-family:inherit;background:var(--card);color:var(--t1);outline:none;transition:.2s}
+.glossary-search input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,78,.15)}
+.glossary-item{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:18px 22px;margin-bottom:12px;border-left:3px solid var(--teal)}
+[dir="rtl"] .glossary-item{border-left:1px solid var(--brd);border-right:3px solid var(--teal)}
+.glossary-term{font-family:'Amiri',serif;font-size:1.2rem;color:var(--gold);font-weight:700;margin-bottom:2px}
+.glossary-term-tr{font-family:'Nunito',sans-serif;font-size:.82rem;color:var(--t3);margin-bottom:8px}
+.glossary-def{font-size:.9rem;line-height:1.75;color:var(--t2)}
+.glossary-meta{font-size:.72rem;color:var(--t3);margin-top:8px}
+.glossary-meta a{color:var(--teal);cursor:pointer;text-decoration:none}
+.glossary-meta a:hover{text-decoration:underline}
+
+/* ═══ SEARCH ═══ */
+.search-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);display:flex;flex-direction:column;align-items:center;padding:60px 20px 20px}
+.search-overlay.hidden{display:none}
+.search-box{display:flex;gap:8px;width:100%;max-width:600px;margin-bottom:20px}
+.search-box input{flex:1;padding:14px 20px;border:2px solid var(--gold);border-radius:24px;font-size:1rem;background:var(--card);color:var(--t1);outline:none;font-family:inherit}
+.search-box button{background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+.search-results{width:100%;max-width:600px;max-height:60vh;overflow-y:auto}
+.search-result{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:.2s}
+.search-result:hover{border-color:var(--gold);box-shadow:var(--shm)}
+.search-result-type{font-size:.68rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.search-result-text{font-size:.88rem;color:var(--t1);line-height:1.6}
+.search-highlight{background:rgba(200,168,78,.3);border-radius:2px;padding:0 2px}
+
+/* ═══ JOURNEY MAP ═══ */
+.journey-map{margin:0 0 24px;padding:20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);overflow-x:auto;box-shadow:var(--sh)}
+.journey-map svg{display:block;margin:0 auto;min-width:700px;max-width:100%}
+.journey-stop{cursor:default}
+.journey-label{font-family:'Nunito',sans-serif;font-size:10px;fill:var(--t2)}
+.journey-year{font-family:'Nunito',sans-serif;font-size:9px;fill:var(--t3)}
+
+/* ═══ PEOPLE ═══ */
+.people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.person-card{background:var(--acc);border:1px solid var(--brd);border-radius:var(--r);padding:12px 14px;text-align:center;transition:.2s}
+.person-card:hover{border-color:var(--gold)}
+.person-name{font-family:'Amiri',serif;font-weight:700;color:var(--gold);font-size:.95rem;margin-bottom:2px}
+.person-role{font-size:.75rem;color:var(--t3)}
+
+/* ═══ BIBLIOGRAPHY ═══ */
+.biblio-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--brd)}
+.biblio-item:last-child{border-bottom:none}
+.biblio-year{font-family:'Nunito',sans-serif;font-weight:700;color:var(--gold);min-width:45px;font-size:.85rem}
+.biblio-title{font-size:.9rem;color:var(--t1);line-height:1.5}
 </style>
 </head>
 <body>
@@ -430,6 +499,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
         </button>
       </div>
       <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Theme">🌙</button>
+      <button class="icon-btn" id="searchBtn" onclick="toggleSearch()" title="Search">&#128269;</button>
       <button class="narrator-btn" id="narratorMainBtn" onclick="narratorTogglePanel()" aria-label="Narrator">🎧</button>
     </nav>
   </div>
@@ -452,6 +522,8 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 <main>
   <!-- HOME -->
   <section class="panel active" id="panel-home">
+    <div id="continueReading"></div>
+    <div class="daily-quote-card" id="dailyQuote"></div>
     <div class="metaphor-grid">
       <div class="metaphor-card">
         <div class="metaphor-icon">🌱</div>
@@ -499,6 +571,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 
   <!-- TIMELINE -->
   <section class="panel" id="panel-timeline">
+    <div class="journey-map" id="journeyMap"></div>
     <div class="timeline" id="timelineContent"></div>
   </section>
 
@@ -515,6 +588,7 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
         <span class="read-chapter-name" id="readChapterName"></span>
         <span class="read-page-info" id="readPageInfo"></span>
         <button class="read-ambient-btn" id="readAmbientBtn" onclick="toggleAmbient()" title="Ambient">&#127925;</button>
+        <button class="read-bookmark-btn" id="readBookmarkBtn" onclick="toggleBookmark()" title="Bookmark">&#128278;</button>
       </div>
       <div class="read-content" id="readContent" dir="rtl" lang="ar"></div>
       <div class="read-nav-bottom">
@@ -533,6 +607,13 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
       <p id="quotesSub">مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع</p>
     </div>
     <div class="quotes-grid" id="quotesContent"></div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="panel" id="panel-glossary">
+    <div class="glossary-head"><h2 id="glossaryTitle">مسرد المصطلحات</h2><p id="glossarySub" style="color:var(--t2);font-size:.9rem">المفاهيم التي طوّرها المسيري</p></div>
+    <div class="glossary-search"><input type="text" id="glossarySearch" placeholder="..." oninput="filterGlossary(this.value)"></div>
+    <div class="glossary-list" id="glossaryList"></div>
   </section>
 
   <!-- QUIZ -->
@@ -557,11 +638,28 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
       <h3 class="about-title" id="aboutAuthorTitle">عن المؤلف</h3>
       <p class="about-text" id="aboutAuthorText">مفكر مصري، ولد في دمنهور بمحافظة البحيرة. تخرج في كلية الآداب قسم اللغة الإنجليزية بجامعة الإسكندرية عام 1959. نال الماجستير من جامعة كولومبيا والدكتوراه من جامعة رتغرز بالولايات المتحدة عام 1969. درّس في جامعات عديدة من بينها عين شمس والكويت والملك سعود. مشروعه الأكبر: "موسوعة اليهود واليهودية والصهيونية" الصادرة عام 1999 في ثماني مجلدات، وتُعدّ أضخم موسوعة عربية عن هذا الموضوع. تميّز بنقد الحداثة الغربية وتأسيس حقل "دراسات التحيّز" ومنهج "النماذج الإدراكية" في العلوم الإنسانية.</p>
     </div>
+    <div class="about-box" id="peopleBox">
+      <h3 class="about-title" id="peopleTitle">شخصيات</h3>
+      <div class="people-grid" id="peopleGrid"></div>
+    </div>
+    <div class="about-box" id="biblioBox">
+      <h3 class="about-title" id="biblioTitle">مؤلفاته</h3>
+      <div class="biblio-list" id="biblioList"></div>
+    </div>
     <div class="about-box">
       <h3 class="about-title" id="aboutSourcesTitle">المصادر</h3>
       <p class="about-text" id="aboutSourcesText">• «رحلتي الفكرية في البذور والجذور والثمر» — د. عبد الوهاب المسيري — دار الشروق<br>• «موسوعة اليهود واليهودية والصهيونية» — د. عبد الوهاب المسيري — دار الشروق (1999)<br>• «فقه التحيّز» — المعهد العالمي للفكر الإسلامي<br>• «العلمانية الجزئية والعلمانية الشاملة» — دار الشروق<br>• سير ومقالات منشورة عن المسيري في الصحافة العربية</p>
     </div>
   </section>
+
+<!-- ═══ SEARCH OVERLAY ═══ -->
+<div class="search-overlay hidden" id="searchOverlay">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="..." oninput="performSearch(this.value)">
+    <button onclick="toggleSearch()">&#10005;</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
 
 <!-- ═══ NARRATOR PANEL ═══ -->
 <div id="narratorPanel" class="narrator-panel hidden">
@@ -788,9 +886,9 @@ const QUIZ = [
 ];
 
 const LABELS = {
-  ar:{title:'رحلتي الفكرية', heroTitle:'رحلتي الفكرية في البذور والجذور والثمر', heroSub:'سيرة فكرية تفاعلية', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', tabHome:'الرئيسية', tabChapters:'الفصول', tabIdeas:'المفاهيم', tabTimeline:'السيرة', tabQuiz:'مسابقة', tabAbout:'الكتاب', splashTitle:'رحلتي الفكرية', splashSub:'في البذور والجذور والثمر', splashAuthor:'د. عبد الوهاب المسيري', splashHint:'اضغط للتخطي', part1:'الجزء الأول: التكوين', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part2:'الجزء الثاني: عالم الفكر', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', seeds:'البذور', roots:'الجذور', fruit:'الثمر', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', pages:'صفحة', parts:'جزءان', chapters:'فصلاً', volumes:'مجلدات', next:'السؤال التالي', retry:'إعادة المسابقة', correct:'أحسنت! إجابة صحيحة 🎉', wrong:'حاول مرة أخرى 💪', score:'نتيجتك', fromBook:'من الكتاب', tabRead:'اقرأ', readTitle:'اقرأ الكتاب', readSub:'اختر فصلاً للقراءة', tabQuotes:'اقتباسات', quotesTitle:'من كلمات المسيري', quotesSub:'مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع', quizSrc:'من الكتاب'},
-  en:{title:'My Intellectual Journey', heroTitle:'My Intellectual Journey in Seeds, Roots and Fruit', heroSub:'Interactive Intellectual Biography', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`An intellectual journey narrated through themes, not through successive stages`, tabHome:'Home', tabChapters:'Chapters', tabIdeas:'Key Ideas', tabTimeline:'Timeline', tabQuiz:'Quiz', tabAbout:'Book', splashTitle:'My Journey', splashSub:'Seeds, Roots and Fruit', splashAuthor:'Dr. Abdul Wahab Al-Messiri', splashHint:'tap to skip', part1:'Part 1: Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — the roots of the intellectual formation of the journey's author`, part2:'Part 2: World of Thought', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`The world of thought — what I refer to as "the fruit"`, seeds:'Seeds', roots:'Roots', fruit:'Fruit', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Events of my life in Damanhour during my childhood, youth, and part of my early adulthood`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`The events through which I became aware of myself`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Cognitive and analytical models — presenting the methodological transformations that accompanied the intellectual transformations`, aboutTr:`I excluded every fact and detail that has no direct or indirect relation to my intellectual development... Whenever I mentioned an incident in my life, I often left out the real names of its actors so as not to embarrass anyone, and so that the reader would focus on the meaning of the incident rather than on its details.`, pages:'Pages', parts:'Parts', chapters:'Chapters', volumes:'Volumes', next:'Next Question', retry:'Retry Quiz', correct:'Well done! Correct answer 🎉', wrong:'Try again 💪', score:'Your Score', fromBook:'From the book', tabRead:'Read', readTitle:'Read the Book', readSub:'Select a chapter to read', tabQuotes:'Quotes', quotesTitle:'In Al-Messiri\'s Own Words', quotesSub:'Passages from the book, translated into English, arranged by theme', quizSrc:'From the book', authorName:'Dr. Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Egypt', authorDesc:`Egyptian thinker and writer, Professor of English and Comparative Literature, and author of the eight-volume "Encyclopedia of Jews, Judaism and Zionism." He studied at the Faculty of Arts at Alexandria University, then obtained his MA from Columbia University and his PhD from Rutgers University. He is considered one of the foremost Arab thinkers in the critique of Western modernity and in bias studies. His intellectual journey from Marxism to Islamic faith is an example of a sincere search for truth.`, ideasIntroTitle:`Key concepts in Al-Messiri's thought`, ideasIntroText:`Al-Messiri is not merely the narrator of a personal biography; he is the author of a fully integrated intellectual project. These are some of the central concepts he developed across his career.`, aboutWarnLabel:'📖 Note:', aboutWarnText:`The excerpts and quotations in this app are taken verbatim from the text of "My Intellectual Journey in Seeds, Roots and Fruit" by Dr. Abdul Wahab Al-Messiri — via the OCR layer made available on archive.org. The original book is published by Dar al-Shorouk; this app is not a substitute for it but an invitation to read it in full.`, aboutBookTitle:`In the author's own words`, aboutAuthorTitle:'About the author', aboutAuthorText:`Egyptian thinker, born in Damanhour in the Beheira Governorate. Graduated from the Faculty of Arts, English Department, at Alexandria University in 1959. He obtained his MA from Columbia University and his PhD from Rutgers University in the United States in 1969. He taught at several universities including Ain Shams, Kuwait, and King Saud. His greatest project was the "Encyclopedia of Jews, Judaism and Zionism," published in 1999 in eight volumes, considered the largest Arabic encyclopedia on the subject. He is distinguished by his critique of Western modernity and by founding the field of "bias studies" and the method of "cognitive models" in the human sciences.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• "My Intellectual Journey in Seeds, Roots and Fruit" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• "The Encyclopedia of Jews, Judaism and Zionism" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• "Fiqh al-Tahayyuz (The Jurisprudence of Bias)" — International Institute of Islamic Thought<br>• "Partial Secularism and Comprehensive Secularism" — Dar al-Shorouk<br>• Biographies and articles about Al-Messiri published in the Arabic press`},
-  fr:{title:'Mon Voyage Intellectuel', heroTitle:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits', heroSub:'Biographie Intellectuelle Interactive', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`Un voyage intellectuel raconté à travers des thèmes, et non à travers des étapes successives`, tabHome:'Accueil', tabChapters:'Chapitres', tabIdeas:'Idées Clés', tabTimeline:'Chronologie', tabQuiz:'Quiz', tabAbout:'Le Livre', splashTitle:'Mon Voyage', splashSub:'Graines, Racines et Fruits', splashAuthor:'Dr Abdul Wahab Al-Messiri', splashHint:'appuyez pour passer', part1:'Partie 1 : Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — les racines de la formation intellectuelle de l'auteur du voyage`, part2:'Partie 2 : Monde de la Pensée', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`Le monde de la pensée — ce que j'appelle « le fruit »`, seeds:'Graines', roots:'Racines', fruit:'Fruits', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Les événements de ma vie à Damanhour pendant mon enfance, ma jeunesse et une partie de mon début d'âge adulte`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`Les événements par lesquels je suis devenu conscient de moi-même`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Modèles cognitifs et analytiques — présentant les transformations méthodologiques qui ont accompagné les transformations intellectuelles`, aboutTr:`J'ai exclu tout fait et tout détail qui n'a aucun rapport, direct ou indirect, avec mon développement intellectuel... Chaque fois que je mentionnais un incident de ma vie, j'omettais souvent les vrais noms de ses acteurs pour ne mettre personne dans l'embarras, et afin que le lecteur se concentre sur le sens de l'incident plutôt que sur ses détails.`, pages:'Pages', parts:'Parties', chapters:'Chapitres', volumes:'Volumes', next:'Question Suivante', retry:'Recommencer', correct:'Bravo ! Bonne réponse 🎉', wrong:'Essayez encore 💪', score:'Votre Score', fromBook:'Extrait du livre', tabRead:'Lire', readTitle:'Lire le Livre', readSub:'Choisissez un chapitre', tabQuotes:'Citations', quotesTitle:'Dans les mots de Al-Messiri', quotesSub:'Passages du livre, traduits en français, classés par thème', quizSrc:'Tiré du livre', authorName:'Dr Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Égypte', authorDesc:`Penseur et écrivain égyptien, professeur de littérature anglaise et comparée, auteur de « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » en huit volumes. Il a étudié à la Faculté des Lettres de l'Université d'Alexandrie, puis a obtenu son master à Columbia et son doctorat à Rutgers. Il est considéré comme l'un des principaux penseurs arabes dans la critique de la modernité occidentale et dans les études sur les biais. Son voyage intellectuel du marxisme à la foi islamique est un exemple de recherche sincère de la vérité.`, ideasIntroTitle:`Concepts clés dans la pensée d'Al-Messiri`, ideasIntroText:`Al-Messiri n'est pas un simple narrateur d'une biographie personnelle ; il est l'auteur d'un projet intellectuel pleinement intégré. Voici quelques-uns des concepts centraux qu'il a développés tout au long de sa carrière.`, aboutWarnLabel:'📖 Note :', aboutWarnText:`Les extraits et citations de cette application sont tirés verbatim du texte de « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » du Dr Abdul Wahab Al-Messiri — via la couche OCR mise à disposition sur archive.org. Le livre original est publié par Dar al-Shorouk ; cette application ne le remplace pas, elle invite à le lire en entier.`, aboutBookTitle:`Dans les mots de l'auteur`, aboutAuthorTitle:`À propos de l'auteur`, aboutAuthorText:`Penseur égyptien, né à Damanhour dans le gouvernorat de Beheira. Diplômé de la Faculté des Lettres, département d'anglais, à l'Université d'Alexandrie en 1959. Il a obtenu son master à l'Université Columbia et son doctorat à l'Université Rutgers aux États-Unis en 1969. Il a enseigné dans plusieurs universités, dont Ain Shams, le Koweït et King Saud. Son plus grand projet : « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme », publiée en 1999 en huit volumes, considérée comme la plus grande encyclopédie arabe sur le sujet. Il s'est distingué par sa critique de la modernité occidentale et par la fondation du champ des « études sur les biais » et de la méthode des « modèles cognitifs » dans les sciences humaines.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• « Fiqh al-Tahayyuz (La jurisprudence du biais) » — Institut International de la Pensée Islamique<br>• « Sécularisme partiel et sécularisme total » — Dar al-Shorouk<br>• Biographies et articles sur Al-Messiri publiés dans la presse arabe`},
+  ar:{title:'رحلتي الفكرية', heroTitle:'رحلتي الفكرية في البذور والجذور والثمر', heroSub:'سيرة فكرية تفاعلية', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', tabHome:'الرئيسية', tabChapters:'الفصول', tabIdeas:'المفاهيم', tabTimeline:'السيرة', tabQuiz:'مسابقة', tabAbout:'الكتاب', splashTitle:'رحلتي الفكرية', splashSub:'في البذور والجذور والثمر', splashAuthor:'د. عبد الوهاب المسيري', splashHint:'اضغط للتخطي', part1:'الجزء الأول: التكوين', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part2:'الجزء الثاني: عالم الفكر', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', seeds:'البذور', roots:'الجذور', fruit:'الثمر', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', pages:'صفحة', parts:'جزءان', chapters:'فصلاً', volumes:'مجلدات', next:'السؤال التالي', retry:'إعادة المسابقة', correct:'أحسنت! إجابة صحيحة 🎉', wrong:'حاول مرة أخرى 💪', score:'نتيجتك', fromBook:'من الكتاب', tabRead:'اقرأ', readTitle:'اقرأ الكتاب', readSub:'اختر فصلاً للقراءة', tabQuotes:'اقتباسات', quotesTitle:'من كلمات المسيري', quotesSub:'مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع', quizSrc:'من الكتاب', tabGlossary:'المسرد', dailyQuoteLabel:'اقتباس اليوم', continueReading:'أكمل القراءة', glossaryTitle:'مسرد المصطلحات', glossarySub:'المفاهيم التي طوّرها المسيري', glossarySearch:'ابحث عن مصطلح...', glossaryChapter:'الفصل', peopleTitle:'شخصيات مذكورة', biblioTitle:'مؤلفاته', searchPlaceholder:'ابحث في الكتاب...'},
+  en:{title:'My Intellectual Journey', heroTitle:'My Intellectual Journey in Seeds, Roots and Fruit', heroSub:'Interactive Intellectual Biography', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`An intellectual journey narrated through themes, not through successive stages`, tabHome:'Home', tabChapters:'Chapters', tabIdeas:'Key Ideas', tabTimeline:'Timeline', tabQuiz:'Quiz', tabAbout:'Book', splashTitle:'My Journey', splashSub:'Seeds, Roots and Fruit', splashAuthor:'Dr. Abdul Wahab Al-Messiri', splashHint:'tap to skip', part1:'Part 1: Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — the roots of the intellectual formation of the journey's author`, part2:'Part 2: World of Thought', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`The world of thought — what I refer to as "the fruit"`, seeds:'Seeds', roots:'Roots', fruit:'Fruit', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Events of my life in Damanhour during my childhood, youth, and part of my early adulthood`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`The events through which I became aware of myself`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Cognitive and analytical models — presenting the methodological transformations that accompanied the intellectual transformations`, aboutTr:`I excluded every fact and detail that has no direct or indirect relation to my intellectual development... Whenever I mentioned an incident in my life, I often left out the real names of its actors so as not to embarrass anyone, and so that the reader would focus on the meaning of the incident rather than on its details.`, pages:'Pages', parts:'Parts', chapters:'Chapters', volumes:'Volumes', next:'Next Question', retry:'Retry Quiz', correct:'Well done! Correct answer 🎉', wrong:'Try again 💪', score:'Your Score', fromBook:'From the book', tabRead:'Read', readTitle:'Read the Book', readSub:'Select a chapter to read', tabQuotes:'Quotes', quotesTitle:'In Al-Messiri\'s Own Words', quotesSub:'Passages from the book, translated into English, arranged by theme', quizSrc:'From the book', tabGlossary:'Glossary', dailyQuoteLabel:'Quote of the Day', continueReading:'Continue Reading', glossaryTitle:'Glossary of Terms', glossarySub:'Key concepts developed by Al-Messiri', glossarySearch:'Search for a term...', glossaryChapter:'Chapter', peopleTitle:'Key Figures', biblioTitle:'Published Works', searchPlaceholder:'Search the book...', authorName:'Dr. Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Egypt', authorDesc:`Egyptian thinker and writer, Professor of English and Comparative Literature, and author of the eight-volume "Encyclopedia of Jews, Judaism and Zionism." He studied at the Faculty of Arts at Alexandria University, then obtained his MA from Columbia University and his PhD from Rutgers University. He is considered one of the foremost Arab thinkers in the critique of Western modernity and in bias studies. His intellectual journey from Marxism to Islamic faith is an example of a sincere search for truth.`, ideasIntroTitle:`Key concepts in Al-Messiri's thought`, ideasIntroText:`Al-Messiri is not merely the narrator of a personal biography; he is the author of a fully integrated intellectual project. These are some of the central concepts he developed across his career.`, aboutWarnLabel:'📖 Note:', aboutWarnText:`The excerpts and quotations in this app are taken verbatim from the text of "My Intellectual Journey in Seeds, Roots and Fruit" by Dr. Abdul Wahab Al-Messiri — via the OCR layer made available on archive.org. The original book is published by Dar al-Shorouk; this app is not a substitute for it but an invitation to read it in full.`, aboutBookTitle:`In the author's own words`, aboutAuthorTitle:'About the author', aboutAuthorText:`Egyptian thinker, born in Damanhour in the Beheira Governorate. Graduated from the Faculty of Arts, English Department, at Alexandria University in 1959. He obtained his MA from Columbia University and his PhD from Rutgers University in the United States in 1969. He taught at several universities including Ain Shams, Kuwait, and King Saud. His greatest project was the "Encyclopedia of Jews, Judaism and Zionism," published in 1999 in eight volumes, considered the largest Arabic encyclopedia on the subject. He is distinguished by his critique of Western modernity and by founding the field of "bias studies" and the method of "cognitive models" in the human sciences.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• "My Intellectual Journey in Seeds, Roots and Fruit" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• "The Encyclopedia of Jews, Judaism and Zionism" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• "Fiqh al-Tahayyuz (The Jurisprudence of Bias)" — International Institute of Islamic Thought<br>• "Partial Secularism and Comprehensive Secularism" — Dar al-Shorouk<br>• Biographies and articles about Al-Messiri published in the Arabic press`},
+  fr:{title:'Mon Voyage Intellectuel', heroTitle:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits', heroSub:'Biographie Intellectuelle Interactive', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`Un voyage intellectuel raconté à travers des thèmes, et non à travers des étapes successives`, tabHome:'Accueil', tabChapters:'Chapitres', tabIdeas:'Idées Clés', tabTimeline:'Chronologie', tabQuiz:'Quiz', tabAbout:'Le Livre', splashTitle:'Mon Voyage', splashSub:'Graines, Racines et Fruits', splashAuthor:'Dr Abdul Wahab Al-Messiri', splashHint:'appuyez pour passer', part1:'Partie 1 : Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — les racines de la formation intellectuelle de l'auteur du voyage`, part2:'Partie 2 : Monde de la Pensée', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`Le monde de la pensée — ce que j'appelle « le fruit »`, seeds:'Graines', roots:'Racines', fruit:'Fruits', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Les événements de ma vie à Damanhour pendant mon enfance, ma jeunesse et une partie de mon début d'âge adulte`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`Les événements par lesquels je suis devenu conscient de moi-même`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Modèles cognitifs et analytiques — présentant les transformations méthodologiques qui ont accompagné les transformations intellectuelles`, aboutTr:`J'ai exclu tout fait et tout détail qui n'a aucun rapport, direct ou indirect, avec mon développement intellectuel... Chaque fois que je mentionnais un incident de ma vie, j'omettais souvent les vrais noms de ses acteurs pour ne mettre personne dans l'embarras, et afin que le lecteur se concentre sur le sens de l'incident plutôt que sur ses détails.`, pages:'Pages', parts:'Parties', chapters:'Chapitres', volumes:'Volumes', next:'Question Suivante', retry:'Recommencer', correct:'Bravo ! Bonne réponse 🎉', wrong:'Essayez encore 💪', score:'Votre Score', fromBook:'Extrait du livre', tabRead:'Lire', readTitle:'Lire le Livre', readSub:'Choisissez un chapitre', tabQuotes:'Citations', quotesTitle:'Dans les mots de Al-Messiri', quotesSub:'Passages du livre, traduits en français, classés par thème', quizSrc:'Tiré du livre', tabGlossary:'Glossaire', dailyQuoteLabel:'Citation du Jour', continueReading:'Reprendre la Lecture', glossaryTitle:'Glossaire des Termes', glossarySub:'Concepts clés développés par Al-Messiri', glossarySearch:'Rechercher un terme...', glossaryChapter:'Chapitre', peopleTitle:'Personnages Clés', biblioTitle:'Oeuvres Publiées', searchPlaceholder:'Rechercher dans le livre...', authorName:'Dr Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Égypte', authorDesc:`Penseur et écrivain égyptien, professeur de littérature anglaise et comparée, auteur de « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » en huit volumes. Il a étudié à la Faculté des Lettres de l'Université d'Alexandrie, puis a obtenu son master à Columbia et son doctorat à Rutgers. Il est considéré comme l'un des principaux penseurs arabes dans la critique de la modernité occidentale et dans les études sur les biais. Son voyage intellectuel du marxisme à la foi islamique est un exemple de recherche sincère de la vérité.`, ideasIntroTitle:`Concepts clés dans la pensée d'Al-Messiri`, ideasIntroText:`Al-Messiri n'est pas un simple narrateur d'une biographie personnelle ; il est l'auteur d'un projet intellectuel pleinement intégré. Voici quelques-uns des concepts centraux qu'il a développés tout au long de sa carrière.`, aboutWarnLabel:'📖 Note :', aboutWarnText:`Les extraits et citations de cette application sont tirés verbatim du texte de « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » du Dr Abdul Wahab Al-Messiri — via la couche OCR mise à disposition sur archive.org. Le livre original est publié par Dar al-Shorouk ; cette application ne le remplace pas, elle invite à le lire en entier.`, aboutBookTitle:`Dans les mots de l'auteur`, aboutAuthorTitle:`À propos de l'auteur`, aboutAuthorText:`Penseur égyptien, né à Damanhour dans le gouvernorat de Beheira. Diplômé de la Faculté des Lettres, département d'anglais, à l'Université d'Alexandrie en 1959. Il a obtenu son master à l'Université Columbia et son doctorat à l'Université Rutgers aux États-Unis en 1969. Il a enseigné dans plusieurs universités, dont Ain Shams, le Koweït et King Saud. Son plus grand projet : « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme », publiée en 1999 en huit volumes, considérée comme la plus grande encyclopédie arabe sur le sujet. Il s'est distingué par sa critique de la modernité occidentale et par la fondation du champ des « études sur les biais » et de la méthode des « modèles cognitifs » dans les sciences humaines.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• « Fiqh al-Tahayyuz (La jurisprudence du biais) » — Institut International de la Pensée Islamique<br>• « Sécularisme partiel et sécularisme total » — Dar al-Shorouk<br>• Biographies et articles sur Al-Messiri publiés dans la presse arabe`},
 };
 
 // ═══════════════ STATE ═══════════════
@@ -836,6 +934,7 @@ function renderTabs(){
     {id:'timeline', icon:'📅', label:L.tabTimeline},
     {id:'read', icon:'📘', label:L.tabRead},
     {id:'quotes', icon:'💬', label:L.tabQuotes},
+    {id:'glossary', icon:'📖', label:L.tabGlossary},
     {id:'quiz', icon:'🎯', label:L.tabQuiz},
     {id:'about', icon:'📚', label:L.tabAbout},
   ];
@@ -1083,6 +1182,7 @@ function readShowPage(){
   if(btns[0]) btns[0].disabled = idx === 0;
   if(btns[1]) btns[1].disabled = idx >= total - 1;
   updateReadVine();
+  updateBookmarkBtn();
   // Stargazing easter egg
   if(readState.chapterId === 10 && idx >= total - 1 && currentTheme === 'dark' && !readState.stargazed){
     readState.stargazed = true;
@@ -1316,6 +1416,12 @@ function setLang(lang){
   renderReadChapterList();
   renderQuotes();
   renderQuiz();
+  renderDailyQuote();
+  renderContinueReading();
+  renderGlossary();
+  renderJourneyMap();
+  renderPeople();
+  renderBibliography();
   startTicker();
 }
 function applyTexts(){
@@ -1427,6 +1533,306 @@ function startTicker(){
   el.style.animation = 'tickerMarquee '+duration+'s linear infinite';
 }
 
+// ═══════════════ GLOSSARY DATA ═══════════════
+const GLOSSARY = [
+  {term_ar:'الحلولية', term_en:'Hulul (Monistic Immanence)', term_fr:'Hulul (Immanence Moniste)', def_ar:'مصطلح يشير إلى حلول الإله في الطبيعة والإنسان، مما يؤدي إلى تسوية الإنسان بالطبيعة وإلغاء المسافة بين الخالق والمخلوق.', def_en:'A term denoting the immanence of the divine within nature and the human being, which levels the human with nature and abolishes the distance between Creator and creation.', def_fr:'Terme désignant l\'immanence du divin dans la nature et l\'être humain, nivelant l\'humain avec la nature et abolissant la distance entre Créateur et création.', chapter:5, related:['العلمانية الشاملة']},
+  {term_ar:'العلمانية الشاملة', term_en:'Comprehensive Secularism', term_fr:'Sécularisme Total', def_ar:'فصل القيم الأخلاقية والدينية عن كل مجالات الحياة العامة والخاصة، وليس فقط عن الدولة. تختلف عن العلمانية الجزئية.', def_en:'The separation of moral and religious values from all spheres of public and private life, not just from the state. Distinct from partial secularism.', def_fr:'La séparation des valeurs morales et religieuses de toutes les sphères de la vie publique et privée, pas seulement de l\'État. Distincte du sécularisme partiel.', chapter:5, related:['العلمانية الجزئية','الحلولية']},
+  {term_ar:'العلمانية الجزئية', term_en:'Partial Secularism', term_fr:'Sécularisme Partiel', def_ar:'فصل الدين عن الدولة فحسب مع الحفاظ على منظومة القيم الأخلاقية والإنسانية في الحياة العامة.', def_en:'Separation of religion from the state only, while preserving moral and human values in public life.', def_fr:'Séparation de la religion de l\'État uniquement, tout en préservant les valeurs morales et humaines dans la vie publique.', chapter:5, related:['العلمانية الشاملة']},
+  {term_ar:'النماذج الإدراكية', term_en:'Cognitive Models (Paradigms)', term_fr:'Modèles Cognitifs (Paradigmes)', def_ar:'الإطار الفكري الكامن الذي يحدد كيف يُدرك الإنسان الواقع ويفسره، ويقرر ما هو مهم وما هو هامشي من المعلومات.', def_en:'The latent intellectual framework that determines how a person perceives and interprets reality, deciding what information is important and what is marginal.', def_fr:'Le cadre intellectuel latent qui détermine comment une personne perçoit et interprète la réalité, décidant quelles informations sont importantes et lesquelles sont marginales.', chapter:5, related:['النموذج التفسيري']},
+  {term_ar:'فقه التحيّز', term_en:'Fiqh al-Tahayyuz (Jurisprudence of Bias)', term_fr:'Fiqh al-Tahayyuz (Jurisprudence du Biais)', def_ar:'دراسة منهجية للتحيزات الكامنة في المناهج والنظريات الغربية، وكيفية تطوير مناهج بديلة من منظور إسلامي.', def_en:'A systematic study of the biases latent in Western methods and theories, and how to develop alternative approaches from an Islamic perspective.', def_fr:'Une étude systématique des biais latents dans les méthodes et théories occidentales, et comment développer des approches alternatives d\'une perspective islamique.', chapter:6, related:['التحيّز المعرفي']},
+  {term_ar:'الجماعة الوظيفية', term_en:'Functional Community', term_fr:'Communauté Fonctionnelle', def_ar:'جماعة بشرية يتم تعريفها بوظيفتها الاقتصادية أو السياسية لا بهويتها الثقافية أو الدينية الذاتية.', def_en:'A human community defined by its economic or political function rather than its own cultural or religious identity.', def_fr:'Une communauté humaine définie par sa fonction économique ou politique plutôt que par sa propre identité culturelle ou religieuse.', chapter:7, related:[]},
+  {term_ar:'الإنسان الرباني', term_en:'Divinely-Oriented Human', term_fr:'L\'Humain Divinement Orienté', def_ar:'الإنسان الذي يستمد مرجعيته من المتجاوز (الله) لا من المادة، ويرى في الكون غاية تتجاوز اللذة والمنفعة.', def_en:'The human being who derives his reference from the Transcendent (God), not from matter, and sees in existence a purpose beyond pleasure and utility.', def_fr:'L\'être humain qui tire sa référence du Transcendant (Dieu), non de la matière, et voit dans l\'existence un but au-delà du plaisir et de l\'utilité.', chapter:4, related:['الإنسان الاستهلاكي']},
+  {term_ar:'الموضوعية الاجتهادية', term_en:'Interpretive Objectivity', term_fr:'Objectivité Interprétative', def_ar:'موضوعية تعترف بوجود تحيزات وتسعى لتجاوزها عبر الاجتهاد المستمر والوعي بالذات.', def_en:'An objectivity that acknowledges the existence of biases and seeks to transcend them through continuous effort and self-awareness.', def_fr:'Une objectivité qui reconnaît l\'existence de biais et cherche à les transcender par un effort continu et la conscience de soi.', chapter:5, related:['الموضوعية المتلقية']},
+  {term_ar:'الموضوعية المتلقية', term_en:'Receptive Objectivity', term_fr:'Objectivité Réceptive', def_ar:'ادعاء الحياد المطلق وتلقي الواقع كما هو، وهو ما يراه المسيري وهمًا لأنه يخفي تحيزات كامنة.', def_en:'The claim of absolute neutrality and receiving reality as it is, which Al-Messiri sees as an illusion because it conceals latent biases.', def_fr:'La prétention à la neutralité absolue et la réception de la réalité telle quelle, ce qu\'Al-Messiri considère comme une illusion car elle dissimule des biais latents.', chapter:5, related:['الموضوعية الاجتهادية']},
+  {term_ar:'الواحدية المادية', term_en:'Materialist Monism', term_fr:'Monisme Matérialiste', def_ar:'رؤية تختزل الوجود في بُعد واحد هو المادة، وتنكر أي بُعد متجاوز أو روحي للإنسان.', def_en:'A vision that reduces existence to a single dimension — matter — and denies any transcendent or spiritual dimension to the human being.', def_fr:'Une vision qui réduit l\'existence à une seule dimension — la matière — et nie toute dimension transcendante ou spirituelle de l\'être humain.', chapter:4, related:['الحلولية']},
+  {term_ar:'الإمبريالية النفسية', term_en:'Psychological Imperialism', term_fr:'Impérialisme Psychologique', def_ar:'هيمنة النموذج الغربي على العقل والوجدان، بحيث يتبنى المستعمَر رؤية المستعمِر لنفسه وللعالم.', def_en:'The dominance of the Western model over the mind and conscience, such that the colonized adopts the colonizer\'s vision of himself and the world.', def_fr:'La domination du modèle occidental sur l\'esprit et la conscience, de sorte que le colonisé adopte la vision du colonisateur de lui-même et du monde.', chapter:4, related:[]},
+  {term_ar:'الإنسان الاستهلاكي', term_en:'Consumerist Human', term_fr:'L\'Humain Consumériste', def_ar:'الإنسان الذي يجعل من ذاته مرجعيته الوحيدة ويسعى وراء اللذة والاستهلاك، وهو تعبير عن الحلولية.', def_en:'The human being who makes himself his sole reference and pursues pleasure and consumption — an expression of hulul.', def_fr:'L\'être humain qui fait de lui-même sa seule référence et poursuit le plaisir et la consommation — une expression du hulul.', chapter:4, related:['الحلولية','الإنسان الرباني']},
+  {term_ar:'النموذج التفسيري', term_en:'Explanatory Model', term_fr:'Modèle Explicatif', def_ar:'الأداة التحليلية التي تُستخدم لتنظيم المعلومات وتفسيرها. النموذج هو الذي يحدد ما يُبقى وما يُحذف.', def_en:'The analytical tool used to organize and interpret information. The model determines what is kept and what is discarded.', def_fr:'L\'outil analytique utilisé pour organiser et interpréter l\'information. Le modèle détermine ce qui est conservé et ce qui est écarté.', chapter:5, related:['النماذج الإدراكية']},
+  {term_ar:'التحيّز المعرفي', term_en:'Epistemological Bias', term_fr:'Biais Épistémologique', def_ar:'التحيزات الكامنة داخل المنهج المعرفي نفسه والتي تؤثر على نتائج البحث بشكل غير واعٍ.', def_en:'The biases latent within the epistemological method itself, which unconsciously affect research outcomes.', def_fr:'Les biais latents au sein de la méthode épistémologique elle-même, qui affectent inconsciemment les résultats de la recherche.', chapter:6, related:['فقه التحيّز']},
+  {term_ar:'الحداثة الصلبة والسائلة', term_en:'Solid and Liquid Modernity', term_fr:'Modernité Solide et Liquide', def_ar:'الحداثة الصلبة تحتفظ ببعض القيم المطلقة، بينما الحداثة السائلة (ما بعد الحداثة) تذيب كل الثوابت والمرجعيات.', def_en:'Solid modernity retains some absolute values; liquid modernity (postmodernity) dissolves all constants and references.', def_fr:'La modernité solide conserve certaines valeurs absolues ; la modernité liquide (postmodernité) dissout toutes les constantes et les références.', chapter:4, related:['العلمانية الشاملة']},
+  {term_ar:'وحدة الوجود', term_en:'Pantheism / Unity of Existence', term_fr:'Panthéisme / Unité de l\'Existence', def_ar:'فكرة أن الإله والطبيعة شيء واحد، مما يلغي الثنائية بين الخالق والمخلوق ويؤدي إلى المادية.', def_en:'The idea that God and nature are one, abolishing the duality between Creator and creation and leading to materialism.', def_fr:'L\'idée que Dieu et la nature ne font qu\'un, abolissant la dualité entre Créateur et création et menant au matérialisme.', chapter:5, related:['الحلولية']},
+  {term_ar:'السيرة غير الذاتية', term_en:'Non-Autobiographical Biography', term_fr:'Biographie Non-Autobiographique', def_ar:'نهج المسيري في سيرته حيث استبعد التفاصيل الشخصية التي لا تخدم التطور الفكري، فهي سيرة أفكار لا سيرة أحداث.', def_en:'Al-Messiri\'s approach to his biography: excluding personal details that do not serve intellectual development — a biography of ideas, not of events.', def_fr:'L\'approche d\'Al-Messiri pour sa biographie : exclure les détails personnels qui ne servent pas le développement intellectuel — une biographie d\'idées, non d\'événements.', chapter:1, related:[]},
+  {term_ar:'البذور والجذور والثمر', term_en:'Seeds, Roots and Fruit', term_fr:'Graines, Racines et Fruits', def_ar:'الاستعارة المركزية للكتاب: البذور هي أحداث الطفولة، الجذور هي مرحلة الوعي بالذات، والثمر هو النتاج الفكري.', def_en:'The central metaphor of the book: seeds are childhood events, roots are the stage of self-awareness, and fruit is the intellectual output.', def_fr:'La métaphore centrale du livre : les graines sont les événements d\'enfance, les racines sont la phase de conscience de soi, et les fruits sont la production intellectuelle.', chapter:1, related:['السيرة غير الذاتية']},
+];
+
+// ═══════════════ PEOPLE DATA ═══════════════
+const PEOPLE = [
+  {name_ar:'نعوم تشومسكي', name_en:'Noam Chomsky', name_fr:'Noam Chomsky', role_ar:'لغوي ومفكر أمريكي', role_en:'American linguist and thinker', role_fr:'Linguiste et penseur américain', chapter:3},
+  {name_ar:'إدوارد سعيد', name_en:'Edward Said', name_fr:'Edward Said', role_ar:'مفكر فلسطيني-أمريكي', role_en:'Palestinian-American intellectual', role_fr:'Intellectuel palestino-américain', chapter:3},
+  {name_ar:'د. نور شريف', name_en:'Dr. Nour Sharif', name_fr:'Dr Nour Sharif', role_ar:'صديق وزميل في أمريكا', role_en:'Friend and colleague in America', role_fr:'Ami et collègue en Amérique', chapter:3},
+  {name_ar:'ديفيد وايمر', name_en:'David Weimer', name_fr:'David Weimer', role_ar:'باحث أمريكي في الدراسات الصهيونية', role_en:'American researcher in Zionist studies', role_fr:'Chercheur américain en études sionistes', chapter:9},
+  {name_ar:'وليام بتلر ييتس', name_en:'William Butler Yeats', name_fr:'William Butler Yeats', role_ar:'شاعر أيرلندي أثّر في المسيري', role_en:'Irish poet who influenced Al-Messiri', role_fr:'Poète irlandais qui a influencé Al-Messiri', chapter:8},
+  {name_ar:'الطيب صالح', name_en:'Al-Tayyib Salih', name_fr:'Al-Tayyib Salih', role_ar:'روائي سوداني', role_en:'Sudanese novelist', role_fr:'Romancier soudanais', chapter:8},
+  {name_ar:'أمه', name_en:'His Mother', name_fr:'Sa Mère', role_ar:'أثّرت في تكوينه الأخلاقي والإنساني', role_en:'Shaped his moral and human formation', role_fr:'A façonné sa formation morale et humaine', chapter:1},
+  {name_ar:'زوجته', name_en:'His Wife', name_fr:'Son Épouse', role_ar:'شريكة الرحلة الفكرية', role_en:'Partner of the intellectual journey', role_fr:'Partenaire du voyage intellectuel', chapter:2},
+  {name_ar:'د. أشرف غربال', name_en:'Dr. Ashraf Ghorbal', name_fr:'Dr Ashraf Ghorbal', role_ar:'دبلوماسي مصري', role_en:'Egyptian diplomat', role_fr:'Diplomate égyptien', chapter:9},
+  {name_ar:'والت ويتمان', name_en:'Walt Whitman', name_fr:'Walt Whitman', role_ar:'شاعر أمريكي درسه المسيري', role_en:'American poet studied by Al-Messiri', role_fr:'Poète américain étudié par Al-Messiri', chapter:8},
+  {name_ar:'تشارلز ديكنز', name_en:'Charles Dickens', name_fr:'Charles Dickens', role_ar:'روائي إنجليزي أثّر في طفولته', role_en:'English novelist who influenced his childhood', role_fr:'Romancier anglais qui a influencé son enfance', chapter:1},
+  {name_ar:'وليام بليك', name_en:'William Blake', name_fr:'William Blake', role_ar:'شاعر رومانسي إنجليزي', role_en:'English Romantic poet', role_fr:'Poète romantique anglais', chapter:8},
+];
+
+// ═══════════════ BIBLIOGRAPHY DATA ═══════════════
+const BIBLIOGRAPHY = [
+  {year:1972, title_ar:'نهاية التاريخ: مقدمة لدراسة بنية الفكر الصهيوني', title_en:'The End of History: Prolegomenon to the Study of Zionist Thought', title_fr:'La Fin de l\'Histoire : Prolégomènes à l\'étude de la pensée sioniste'},
+  {year:1975, title_ar:'موسوعة المفاهيم والمصطلحات الصهيونية', title_en:'Encyclopedia of Zionist Concepts and Terms', title_fr:'Encyclopédie des concepts et termes sionistes'},
+  {year:1984, title_ar:'اليد الخفية: دراسة في الحركات اليهودية', title_en:'The Hidden Hand: A Study of Jewish Movements', title_fr:'La Main Cachée : étude des mouvements juifs'},
+  {year:1996, title_ar:'إشكالية التحيّز: رؤية معرفية ودعوة للاجتهاد', title_en:'The Problematic of Bias: An Epistemological Vision', title_fr:'La Problématique du Biais : une vision épistémologique'},
+  {year:1997, title_ar:'الصهيونية والنازية ونهاية التاريخ', title_en:'Zionism, Nazism and the End of History', title_fr:'Sionisme, Nazisme et la Fin de l\'Histoire'},
+  {year:1999, title_ar:'موسوعة اليهود واليهودية والصهيونية (٨ مجلدات)', title_en:'Encyclopedia of Jews, Judaism and Zionism (8 volumes)', title_fr:'Encyclopédie des Juifs, du Judaïsme et du Sionisme (8 volumes)'},
+  {year:2002, title_ar:'العلمانية الجزئية والعلمانية الشاملة', title_en:'Partial Secularism and Comprehensive Secularism', title_fr:'Sécularisme Partiel et Sécularisme Total'},
+  {year:2003, title_ar:'الحداثة وما بعد الحداثة', title_en:'Modernity and Postmodernity', title_fr:'Modernité et Postmodernité'},
+  {year:2006, title_ar:'رحلتي الفكرية في البذور والجذور والثمر', title_en:'My Intellectual Journey in Seeds, Roots and Fruit', title_fr:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits'},
+  {year:2007, title_ar:'ديوان: أغاني الخبرة والحيرة والبراءة', title_en:'Divan: Songs of Experience, Bewilderment and Innocence', title_fr:'Divan : Chants d\'Expérience, de Perplexité et d\'Innocence'},
+  {year:0, title_ar:'قصص أطفال (عدة مجموعات)', title_en:'Children\'s Stories (several collections)', title_fr:'Histoires pour Enfants (plusieurs recueils)'},
+];
+
+// ═══════════════ FEATURE 1: DAILY QUOTE ═══════════════
+function renderDailyQuote(){
+  const L = LABELS[currentLang];
+  const el = document.getElementById('dailyQuote');
+  if(!el || !QUOTES.length) return;
+  // Seed from date string
+  var seed = 0;
+  var ds = new Date().toDateString();
+  for(var i=0;i<ds.length;i++) seed = ((seed << 5) - seed) + ds.charCodeAt(i);
+  seed = Math.abs(seed);
+  var q = QUOTES[seed % QUOTES.length];
+  var html = '<div class="daily-quote-label">' + L.dailyQuoteLabel + '</div>';
+  html += '<div class="daily-quote-text" dir="rtl" lang="ar">' + q.text + '</div>';
+  if(currentLang !== 'ar'){
+    var tr = currentLang === 'en' ? q.tr_en : q.tr_fr;
+    if(tr) html += '<div class="daily-quote-text" dir="ltr" lang="' + currentLang + '" style="margin-top:10px;font-family:Nunito,sans-serif;font-size:.92rem;color:var(--t2)">' + tr + '</div>';
+  }
+  var theme = currentLang === 'ar' ? q.ar : (currentLang === 'en' ? q.en : q.fr);
+  html += '<div class="daily-quote-theme">' + theme + '</div>';
+  el.innerHTML = html;
+}
+
+// ═══════════════ FEATURE 2: BOOKMARKS ═══════════════
+function getBookmark(){
+  try { return JSON.parse(localStorage.getItem('rihlati-bookmark')); } catch(e){ return null; }
+}
+function toggleBookmark(){
+  var bm = getBookmark();
+  if(bm && bm.chapterId === readState.chapterId && bm.page === readState.currentPage){
+    localStorage.removeItem('rihlati-bookmark');
+  } else {
+    localStorage.setItem('rihlati-bookmark', JSON.stringify({chapterId: readState.chapterId, page: readState.currentPage, lang: currentLang}));
+  }
+  updateBookmarkBtn();
+  renderContinueReading();
+}
+function updateBookmarkBtn(){
+  var btn = document.getElementById('readBookmarkBtn');
+  if(!btn) return;
+  var bm = getBookmark();
+  var isActive = bm && bm.chapterId === readState.chapterId && bm.page === readState.currentPage;
+  btn.classList.toggle('active', isActive);
+  btn.textContent = isActive ? '\u{1F516}' : '\u{1F517}';
+}
+function renderContinueReading(){
+  var el = document.getElementById('continueReading');
+  if(!el) return;
+  var bm = getBookmark();
+  if(!bm){el.innerHTML=''; return;}
+  var ch = CHAPTERS.find(function(c){return c.id === bm.chapterId;});
+  if(!ch){el.innerHTML=''; return;}
+  var L = LABELS[currentLang];
+  var title = currentLang === 'ar' ? ch.ar.t : ch[currentLang].t;
+  var pageLabel = currentLang === 'ar' ? 'صفحة' : (currentLang === 'en' ? 'Page' : 'Page');
+  el.innerHTML = '<div class="continue-card" onclick="resumeBookmark()"><div class="continue-icon">\u{1F4D6}</div><div class="continue-info"><div class="continue-title">' + L.continueReading + '</div><div class="continue-meta">' + title + ' \u2014 ' + pageLabel + ' ' + (bm.page+1) + '</div></div></div>';
+}
+function resumeBookmark(){
+  var bm = getBookmark();
+  if(!bm) return;
+  switchTab('read');
+  setTimeout(function(){
+    readOpenChapter(bm.chapterId);
+    setTimeout(function(){
+      readState.currentPage = bm.page;
+      readShowPage();
+    }, 200);
+  }, 100);
+}
+
+// ═══════════════ FEATURE 3: GLOSSARY ═══════════════
+function renderGlossary(){
+  var L = LABELS[currentLang];
+  var el = document.getElementById('glossaryList');
+  var titleEl = document.getElementById('glossaryTitle');
+  var subEl = document.getElementById('glossarySub');
+  var searchEl = document.getElementById('glossarySearch');
+  if(titleEl) titleEl.textContent = L.glossaryTitle;
+  if(subEl) subEl.textContent = L.glossarySub;
+  if(searchEl) searchEl.placeholder = L.glossarySearch;
+  if(!el) return;
+  renderGlossaryItems(GLOSSARY);
+}
+function renderGlossaryItems(items){
+  var L = LABELS[currentLang];
+  var isAr = currentLang === 'ar';
+  var el = document.getElementById('glossaryList');
+  if(!el) return;
+  var sorted = items.slice().sort(function(a,b){ return a.term_ar.localeCompare(b.term_ar, 'ar'); });
+  el.innerHTML = sorted.map(function(g){
+    var term = g.term_ar;
+    var termTr = isAr ? '' : '<div class="glossary-term-tr">' + (currentLang==='en'?g.term_en:g.term_fr) + '</div>';
+    var def = isAr ? g.def_ar : (currentLang==='en' ? g.def_en : g.def_fr);
+    var chLabel = L.glossaryChapter + ' ' + g.chapter;
+    return '<div class="glossary-item"><div class="glossary-term">' + term + '</div>' + termTr + '<div class="glossary-def">' + def + '</div><div class="glossary-meta"><a onclick="switchTab(\'chapters\')">' + chLabel + '</a></div></div>';
+  }).join('');
+}
+function filterGlossary(q){
+  if(!q || !q.trim()){renderGlossaryItems(GLOSSARY); return;}
+  q = q.toLowerCase();
+  var filtered = GLOSSARY.filter(function(g){
+    return g.term_ar.includes(q) || g.term_en.toLowerCase().includes(q) || g.term_fr.toLowerCase().includes(q) || g.def_ar.includes(q) || g.def_en.toLowerCase().includes(q) || g.def_fr.toLowerCase().includes(q);
+  });
+  renderGlossaryItems(filtered);
+}
+
+// ═══════════════ FEATURE 4: SEARCH ═══════════════
+function toggleSearch(){
+  var ov = document.getElementById('searchOverlay');
+  if(!ov) return;
+  ov.classList.toggle('hidden');
+  if(!ov.classList.contains('hidden')){
+    var inp = document.getElementById('searchInput');
+    if(inp){inp.placeholder = LABELS[currentLang].searchPlaceholder; inp.value=''; inp.focus();}
+    document.getElementById('searchResults').innerHTML = '';
+  }
+}
+function performSearch(query){
+  var el = document.getElementById('searchResults');
+  if(!el) return;
+  if(!query || query.trim().length < 2){el.innerHTML=''; return;}
+  var q = query.toLowerCase();
+  var results = [];
+  // Search QUOTES
+  QUOTES.forEach(function(qt, i){
+    var fields = [qt.text, qt.tr_en, qt.tr_fr, qt.ar, qt.en, qt.fr];
+    for(var f=0;f<fields.length;f++){
+      if(fields[f] && fields[f].toLowerCase().includes(q)){
+        results.push({type:'quote', text: qt.text.substring(0,120)+'...', tab:'quotes', idx:i});
+        break;
+      }
+    }
+  });
+  // Search CHAPTERS
+  CHAPTERS.forEach(function(ch){
+    var fields = [ch.ar.t, ch.en.t, ch.fr.t, ch.ar.d, ch.en.d, ch.fr.d, ch.excerpt];
+    for(var f=0;f<fields.length;f++){
+      if(fields[f] && fields[f].toLowerCase().includes(q)){
+        results.push({type:'chapter', text: ch.ar.t + ' / ' + ch.en.t, tab:'chapters', idx:ch.id});
+        break;
+      }
+    }
+  });
+  // Search IDEAS
+  IDEAS.forEach(function(idea){
+    var fields = [idea.ar.t, idea.en.t, idea.fr.t, idea.ar.d, idea.en.d, idea.fr.d];
+    for(var f=0;f<fields.length;f++){
+      if(fields[f] && fields[f].toLowerCase().includes(q)){
+        results.push({type:'idea', text: idea.ar.t + ' / ' + idea.en.t, tab:'ideas'});
+        break;
+      }
+    }
+  });
+  // Search TIMELINE
+  TIMELINE.forEach(function(tl){
+    var fields = [tl.ar, tl.en, tl.fr, tl.d_ar, tl.d_en, tl.d_fr];
+    for(var f=0;f<fields.length;f++){
+      if(fields[f] && fields[f].toLowerCase().includes(q)){
+        results.push({type:'timeline', text: tl.year + ' \u2014 ' + tl.ar, tab:'timeline'});
+        break;
+      }
+    }
+  });
+  // Search GLOSSARY
+  GLOSSARY.forEach(function(g){
+    var fields = [g.term_ar, g.term_en, g.term_fr, g.def_ar, g.def_en, g.def_fr];
+    for(var f=0;f<fields.length;f++){
+      if(fields[f] && fields[f].toLowerCase().includes(q)){
+        results.push({type:'glossary', text: g.term_ar + ' / ' + g.term_en, tab:'glossary'});
+        break;
+      }
+    }
+  });
+  var typeLabels = {quote:'Quote', chapter:'Chapter', idea:'Idea', timeline:'Timeline', glossary:'Glossary'};
+  var esc = function(s){return s.replace(/</g,'&lt;');};
+  var highlight = function(txt){
+    var re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')','gi');
+    return esc(txt).replace(re, '<span class="search-highlight">$1</span>');
+  };
+  el.innerHTML = results.slice(0,20).map(function(r){
+    return '<div class="search-result" onclick="toggleSearch();switchTab(\'' + r.tab + '\')"><div class="search-result-type">' + typeLabels[r.type] + '</div><div class="search-result-text">' + highlight(r.text) + '</div></div>';
+  }).join('') || '<div style="text-align:center;color:var(--t3);padding:20px">' + (currentLang==='ar'?'لا نتائج':'No results') + '</div>';
+}
+
+// ═══════════════ FEATURE 5: JOURNEY MAP ═══════════════
+function renderJourneyMap(){
+  var el = document.getElementById('journeyMap');
+  if(!el) return;
+  var isAr = currentLang === 'ar';
+  var stops = [
+    {year:'1938', label_ar:'دمنهور', label_en:'Damanhour', label_fr:'Damanhour'},
+    {year:'1956', label_ar:'الإسكندرية', label_en:'Alexandria', label_fr:'Alexandrie'},
+    {year:'1963', label_ar:'نيويورك / كولومبيا', label_en:'New York / Columbia', label_fr:'New York / Columbia'},
+    {year:'1964', label_ar:'نيو برونزويك / رتغرز', label_en:'New Brunswick / Rutgers', label_fr:'New Brunswick / Rutgers'},
+    {year:'1969', label_ar:'القاهرة / عين شمس', label_en:'Cairo / Ain Shams', label_fr:'Le Caire / Ain Shams'},
+    {year:'1983', label_ar:'الرياض / الملك سعود', label_en:'Riyadh / King Saud', label_fr:'Riyad / King Saud'},
+    {year:'1989', label_ar:'الكويت', label_en:'Kuwait', label_fr:'Koweït'},
+    {year:'1993', label_ar:'القاهرة / الاستقالة', label_en:'Cairo / Resignation', label_fr:'Le Caire / Démission'},
+    {year:'1999', label_ar:'القاهرة / الموسوعة', label_en:'Cairo / Encyclopedia', label_fr:'Le Caire / Encyclopédie'},
+  ];
+  var w = 800, h = 100, pad = 50, y = 40;
+  var spacing = (w - 2*pad) / (stops.length - 1);
+  var svg = '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg">';
+  // Line
+  svg += '<line x1="'+pad+'" y1="'+y+'" x2="'+(w-pad)+'" y2="'+y+'" stroke="var(--gold)" stroke-width="2" opacity=".5"/>';
+  // Stops
+  stops.forEach(function(s, i){
+    var x = pad + i * spacing;
+    svg += '<circle cx="'+x+'" cy="'+y+'" r="6" fill="var(--gold)" stroke="var(--card)" stroke-width="2"/>';
+    var label = isAr ? s.label_ar : (currentLang==='en' ? s.label_en : s.label_fr);
+    var anchor = 'middle';
+    svg += '<text x="'+x+'" y="'+(y+20)+'" text-anchor="'+anchor+'" class="journey-label" style="font-size:8px">'+label+'</text>';
+    svg += '<text x="'+x+'" y="'+(y-14)+'" text-anchor="'+anchor+'" class="journey-year">'+s.year+'</text>';
+  });
+  svg += '</svg>';
+  el.innerHTML = svg;
+}
+
+// ═══════════════ FEATURE 6: PEOPLE ═══════════════
+function renderPeople(){
+  var L = LABELS[currentLang];
+  var el = document.getElementById('peopleGrid');
+  var titleEl = document.getElementById('peopleTitle');
+  if(titleEl) titleEl.textContent = L.peopleTitle;
+  if(!el) return;
+  var isAr = currentLang === 'ar';
+  el.innerHTML = PEOPLE.map(function(p){
+    var name = isAr ? p.name_ar : (currentLang==='en' ? p.name_en : p.name_fr);
+    var role = isAr ? p.role_ar : (currentLang==='en' ? p.role_en : p.role_fr);
+    return '<div class="person-card"><div class="person-name">'+name+'</div><div class="person-role">'+role+'</div></div>';
+  }).join('');
+}
+
+// ═══════════════ FEATURE 7: BIBLIOGRAPHY ═══════════════
+function renderBibliography(){
+  var L = LABELS[currentLang];
+  var el = document.getElementById('biblioList');
+  var titleEl = document.getElementById('biblioTitle');
+  if(titleEl) titleEl.textContent = L.biblioTitle;
+  if(!el) return;
+  var isAr = currentLang === 'ar';
+  el.innerHTML = BIBLIOGRAPHY.map(function(b){
+    var title = isAr ? b.title_ar : (currentLang==='en' ? b.title_en : b.title_fr);
+    var yr = b.year ? b.year : '';
+    return '<div class="biblio-item"><span class="biblio-year">'+yr+'</span><span class="biblio-title">'+title+'</span></div>';
+  }).join('');
+}
+
 // ═══════════════ INIT ═══════════════
 if(currentTheme === 'dark'){
   document.documentElement.dataset.theme = 'dark';
@@ -1446,6 +1852,12 @@ renderTimeline();
 renderReadChapterList();
 renderQuotes();
 renderQuiz();
+renderDailyQuote();
+renderContinueReading();
+renderGlossary();
+renderJourneyMap();
+renderPeople();
+renderBibliography();
 startTicker();
 </script>
 
