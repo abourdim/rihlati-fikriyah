@@ -166,6 +166,8 @@ body.dark .chapter-excerpt{background:linear-gradient(135deg,#2a2318 0%,#1f1810 
 .quote-num{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
 .quote-theme{font-family:'Readex Pro',sans-serif;font-size:.95rem;font-weight:600;color:var(--t1);margin-bottom:12px}
 .quote-body{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.05rem;line-height:1.95;color:#3a2f1a;margin:0 0 12px;text-align:justify;border:none;padding:0;position:relative;z-index:1}
+.quote-original{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:.85rem;line-height:1.85;color:var(--t2);opacity:.6;margin:12px 0 0;padding:10px 14px;border-right:3px solid var(--gold);border-left:none;border-radius:4px;background:rgba(200,168,78,.04);text-align:right}
+body.dark .quote-original{background:rgba(200,168,78,.06);opacity:.5}
 .quote-src{font-family:'Nunito',sans-serif;font-size:.72rem;color:var(--t2);text-align:left;font-style:italic;padding-top:10px;border-top:1px solid var(--brd)}
 [dir="rtl"] .quote-src{text-align:right}
 body.dark .quote-card{background:linear-gradient(135deg,#2a2318 0%,#1f1810 100%)}
@@ -897,6 +899,7 @@ function renderQuotes(){
       <div class="quote-num">${String(i+1).padStart(2,'0')}</div>
       <div class="quote-theme">${q[currentLang]}</div>
       <blockquote class="quote-body" dir="${bodyDir}" lang="${bodyLang}">${openQ}${bodyText}${closeQ}</blockquote>
+      ${!isAr ? `<blockquote class="quote-original" dir="rtl" lang="ar">«${q.text}»</blockquote>` : ''}
       ${trNote}
       <figcaption class="quote-src">${L.fromBook} — ${bookRef}</figcaption>
     </figure>`;
