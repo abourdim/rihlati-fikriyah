@@ -1,0 +1,9 @@
+# OCR working files (large, not needed for the app)
+ocr/*.txt
+ocr/*.gz
+ocr/*.json
+ocr/translations/
+!ocr/translations/complete.json
+
+# Claude working files
+.claude/
