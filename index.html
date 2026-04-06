@@ -258,6 +258,32 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
 }
 .hidden{display:none!important}
 
+/* ═══ READ TAB ═══ */
+.read-header{text-align:center;margin:10px 0 20px}
+.read-title{font-family:'Amiri',serif;font-size:1.8rem;color:var(--gold);margin-bottom:6px}
+.read-sub{color:var(--t2);font-size:.9rem}
+.read-chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.read-ch-btn{background:var(--card);border:1px solid var(--brd);border-radius:var(--rr);padding:16px 20px;cursor:pointer;transition:.3s;text-align:start;display:flex;align-items:center;gap:14px;font-family:inherit}
+.read-ch-btn:hover{border-color:var(--gold);box-shadow:var(--shm);transform:translateY(-2px)}
+.read-ch-num{background:var(--gold);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+.read-ch-info{flex:1;min-width:0}
+.read-ch-title{font-weight:700;color:var(--t1);font-size:.95rem;margin-bottom:2px}
+.read-ch-meta{font-size:.72rem;color:var(--t3)}
+.read-viewer.hidden{display:none}
+.read-nav-top{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--brd);margin-bottom:16px;flex-wrap:wrap}
+.read-back{background:none;border:1px solid var(--brd);border-radius:var(--r);padding:6px 14px;cursor:pointer;font-size:.85rem;color:var(--t1);font-family:inherit;transition:.2s}
+.read-back:hover{border-color:var(--gold);color:var(--gold)}
+.read-chapter-name{font-family:'Amiri',serif;font-weight:700;color:var(--gold);font-size:1.1rem;flex:1}
+.read-page-info{font-size:.75rem;color:var(--t3);font-family:var(--fu)}
+.read-content{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:1.15rem;line-height:2.1;color:var(--t1);text-align:justify;min-height:300px;padding:10px 0;white-space:pre-wrap}
+[dir="ltr"] .read-content{font-family:'Nunito','Readex Pro',sans-serif;font-size:1rem;line-height:1.85}
+.read-nav-bottom{display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0;border-top:1px solid var(--brd);margin-top:16px}
+.read-nav-btn{background:var(--gold);color:#fff;border:none;border-radius:20px;padding:8px 24px;cursor:pointer;font-size:1rem;font-weight:700;transition:.2s}
+.read-nav-btn:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,168,78,.3)}
+.read-nav-btn:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.read-page-num{font-family:var(--fu);font-size:.85rem;color:var(--t2);min-width:60px;text-align:center}
+.read-lang-note{text-align:center;font-size:.8rem;color:var(--t3);margin-bottom:12px;font-style:italic}
+
 /* ═══ NARRATOR ═══ */
 .narrator-btn{border:none;background:rgba(200,168,78,.12);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:.3s;border:1px solid var(--brd);color:var(--t1)}
 .narrator-btn:hover,.narrator-btn.active{background:var(--gold);transform:scale(1.1)}
@@ -408,6 +434,28 @@ footer{text-align:center;padding:20px;border-top:1px solid var(--brd);background
   <!-- TIMELINE -->
   <section class="panel" id="panel-timeline">
     <div class="timeline" id="timelineContent"></div>
+  </section>
+
+  <!-- READ -->
+  <section class="panel" id="panel-read">
+    <div class="read-header">
+      <h2 class="read-title" id="readTitle">اقرأ الكتاب</h2>
+      <p class="read-sub" id="readSub">اختر فصلاً للقراءة</p>
+    </div>
+    <div class="read-chapters" id="readChapterList"></div>
+    <div class="read-viewer hidden" id="readViewer">
+      <div class="read-nav-top">
+        <button class="read-back" onclick="readBack()">← </button>
+        <span class="read-chapter-name" id="readChapterName"></span>
+        <span class="read-page-info" id="readPageInfo"></span>
+      </div>
+      <div class="read-content" id="readContent" dir="rtl" lang="ar"></div>
+      <div class="read-nav-bottom">
+        <button class="read-nav-btn" onclick="readPrevPage()">⟵</button>
+        <span class="read-page-num" id="readPageNum"></span>
+        <button class="read-nav-btn" onclick="readNextPage()">⟶</button>
+      </div>
+    </div>
   </section>
 
   <!-- QUOTES -->
@@ -595,6 +643,41 @@ const QUOTES = [
   {ar:`صدور الموسوعة`, en:`Publication`, fr:`Publication`, text:`صدور الموسوعة. صدور بعض قصص الأطفال‎ ٠ 17 1 صدور بعض أعمالى الأخرىء من أهمها الموسوعة الموجزة وديوان الشعر وبعض الدراسات الأدبية وكتاب العلمانية الجزئية والعلمانية الشاملة وكتاب الحداثة وما بعد الحداثة. ولكن ‏ كما أسلفت ‏ فبرغم وجود هذا الهيكل التاريخي العامء فإن الرحلة الفكرية تم استكشافها أساسا من خلال إشكاليات وموضوعات وقضايا.`, tr_en:`Publication of the Encyclopedia. Publication of some children's stories…`, tr_fr:`Publication de l'Encyclopédie. Publication de quelques contes pour enfants…`},
   {ar:`الكتابة`, en:`On writing`, fr:`Sur l'écriture`, text:`الكتابة لكل أساتذة دراسات الشرق الأوسط في الولايات المنحدة وإنجلترا وأرسلنا بالكتاب للعرض في معرض فرانكفورت الدولي للكتاب, بل أعلنا عنه في المجلات الصهيونية وفي بعض الصحف الإسرائيلية. ونجح الكتاب تجاريًا وشرر في حوالي 79 جامعة أمريكية. وذعيت لإلقاء المحاضرات على الطلبة الذين يدرسون الكتاب.`, tr_en:`Writing — for all Middle Eastern studies professors in the United States and…`, tr_fr:`Écrire — pour tous les professeurs d'études moyen-orientales aux États-Unis et…`},
   {ar:`المشروع الفكري`, en:`The intellectual project`, fr:`Le projet intellectuel`, text:`مشروع يوم السبت. أما يوم الثلاثاء فقد يرى غير ذلك. وهو في كلتا الحالتين على حى وعلى صواب! أقول إنه داخل إطار مثل هذه المادية والنسبية المطلقة. لا يمكن دمغ التجربة النازية (أو الصهيونية أو أية تجربة إمبريالية) أو رفضها أو حتى محاكمتها بحسبانها خطأ أو أمرا يتنافى مع الأخلاق.`, tr_en:`A Saturday project. As for Tuesday, it might see things otherwise. And it is, in any case…`, tr_fr:`Un projet du samedi. Quant au mardi, il pourrait voir les choses autrement. Et il est en tout cas…`},
+
+  // ─── Expanded quotes from full OCR ───
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`وقد طبقت غموذج الحلولية (وحّدة الوجود المادية) والعلمانية الشاملة على الصهيونية وإسرائيل.`, tr_en:``, tr_fr:``},
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`وعلى المستوى الأخلاقي يكون التساؤل: هل هناك مجال للقيم الأخلاقية والروحية بالمعنى العام أو أنه يجب على الإنسان أن يخضع لقانون العرض والطلب؟`, tr_en:``, tr_fr:``},
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`وتعبر الحلولية عن نفسها بشكل أقل عنما في فكرة الإنسان الاستهلاكي الباحث عن لذته وعن مصلحته فهو يجعل من ذاته مرجعيته النهائية والوحيدة (الشذوذ الجنسي بهذا المعنى تعبير متطرف عن هذه الحلولية).`, tr_en:``, tr_fr:``},
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`وأن الإيمان بالأخلاقيات المدنية هو من قبيل الدون كيشوتية التي يمكن أن تودي بالإنسان!).`, tr_en:``, tr_fr:``},
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`ويمكننى أن أقول الشىء نفسه عن النموذجين الأساسيين في كتاباتي : الحلولية (وحدة الوجود) والعلمانية الشاملة.`, tr_en:``, tr_fr:``},
+  {ar:`الإنسان والوجود`, en:`The Human & Existence`, fr:`L\'Humain et l\'existence`, text:`ووحدة الوجود المادية أني سيادة القانون الطبيعي/ المادي على كل من الإنسان والطبيعة هي ذاتها في تصورى - العلمانية الشاملة.`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`وقد استخدمت هذه الطريقة في الموسوعة في تعريف النموذجء كأداة تحليلية والحلولية والعلمانية الشاملة والجماعة الوظيفية بحسبانها غماذج تحليلية.`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`لضا وهناك الكثير من الأمثلة الأخرى من تاريخ الصهيونية وغيرها تبين أن النموذج التحليلي المستخدم هو الذي يقرر ما هو المهم وما هو الهامشي من المعلومات وما يستحق الإبقاء وما يتم حذفه.`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`قد لا أقبل ما أرى ولكني أخضعه دائمًا للتحليل وأستبطن ما أرى أنه خير وبعد مدة طويلة (بعد أن يكتمل النموذج الجديد!) أبدأ في التحول (ألم أنتقل من ضيق المادية إلى رحابة الإيمان في ربع قرن؟`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`وهذا يبين مدى قوة النموذج (ومدى قوة التحيزات الكامنة داخله.`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`حسب ما تعلمناه هو تطبيق النموذج الغربي في التنمية والاستهلاك.`, tr_en:``, tr_fr:``},
+  {ar:`النماذج والمنهج`, en:`Models & Method`, fr:`Modèles et méthode`, text:`فهذه الرحلة/ السيرة هي في واقع الأمر دراسة في عناصر تكوين النموذج.`, tr_en:``, tr_fr:``},
+  {ar:`الإيمان والروح`, en:`Faith & Spirit`, fr:`Foi et esprit`, text:`ولهذا فمعظم كتبي القادمة ‏ بإذن الله ستكون عن موضوعات نظرية عامة مثل العلمانية الشاملة والحلولية وما بعد الحداثة وتتعامل في الوقت ذاته مع نصوص وحالات معينة.`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`صدور بعض قصص الأطفال‎ ٠ 17 1 صدور بعض أعمالى الأخرىء من أهمها الموسوعة الموجزة وديوان الشعر وبعض الدراسات الأدبية وكتاب العلمانية الجزئية والعلمانية الشاملة وكتاب الحداثة وما بعد الحداثة.`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`وتم دمجه في الحضارة الاستهلاكية حتى لم يبق من ماضيه وهويته سوى القشورء وتم قمعه وترشيده من الداخل والخارج: أليس هذا اليهودي مثلاً صارخاً لما يحدث للإنسان في عصر الحداثة والعقلانية واللاعقلانية المادية؟`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`فهي عملية عودة عن الحداثة المادية الغربية المنفصلة عن القيمة.`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`وبعد أن عرضت للرؤية الصهيونية (الأمريكية) المادية الاختزالية للعرب.`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`فكأن ما بعد الحداثة هي حلقة أخيرة في سلسلة التحديث على النمط الغربي في إطار العلمانية الشاملة المنفصلة عن القيمة.`, tr_en:``, tr_fr:``},
+  {ar:`المادية والحداثة`, en:`Materialism & Modernity`, fr:`Matérialisme et modernité`, text:`نجربني المادية والماركسية حينما كنت فى السنة النهائية فى مدرسة دمنهور الثانوية وأنا بعد فى السادسة عشرةء بَنآت بعش الأندلة الأساسة نا عست وبإالحاح شديد.`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`وقد بدأت دراساتي في الحضارة الصهيونية في سن مبكرة للغاية الأمر الذي لم يتح لي فرصة للتسكع والانطلاق كما فعل كثير من أقراني.`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`ويمكن القول بأن علاقتي الحقيقية بالصهيونية بدأت عام 1477 حينما ذهبت إلى جامعة كولومبيا في نيويورك للحصول على الماجستير في الأدب الإنجليزي والمقارن.`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`فريال غزول (الأستاذة بالجامعة الأمريكية) عرضا متميرًا لكتابي الانتفاضة الفلسطينية والأزمة الصهيونية ‏ في مقال لها كتبته بناء على طلب مجلة ميريب اليسارية ثم رفضت المجلة نشره دون إبداء الأسباب.`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`بل وأعضاء الجماعات اليهودية في العالم إلى مادة استعمالية قابلة للتوظيف (تهجير يهود العالم من أوطانهم تهجير الفلسطينيين خارج وطنهم)؛ أقول إن الصهيونية بهذا المعنى إحدى تبديات نموذج العلمانية الشاملة.`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`© العنصرية الصهيونية (سلسلة الموسوعة الصغيرة بغداد ه/81١).`, tr_en:``, tr_fr:``},
+  {ar:`الصهيونية والموسوعة`, en:`Zionism & Encyclopedia`, fr:`Sionisme et encyclopédie`, text:`وفي الأدبيات الصهيونية يوجد إدراك عميق لهذا التلاقي بين الفريقين.`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`أما بقية وقتنا فكنا نقضيه في القراءة والكتابة يومي السبت والأحدء حينما يكون المصنع مغلقاء ونربح فيه بضعة دولارات ننفقها في المتاحف والمسارح.`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`وقد تعرفت في كولومبيا إلى المفكر العربي/ الأمريكي إدوارد سعيد الذي كان يدرس 1١1 في كولومبياء وكان على وشك الحصول على درجة الدكتوراه في الأدب الإنجليزي من جامعة هارفارد.`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`وحينما درست الأدب الأمريكي (وبخاصة شعر وولت ويتمان).`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`واستخدمت غوذج الحلولية الكمونية لتحليل النصوص الأدبية.`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`دراسات في اللغة 000 أصدقاء ومعارف من الأدباء قصص الأطفال.`, tr_en:``, tr_fr:``},
+  {ar:`الأدب والثقافة`, en:`Literature & Culture`, fr:`Littérature et culture`, text:`فالأدب في نهاية الأمر هو تعبير لغوي مكثف شكله اللغوي هو معناه.`, tr_en:``, tr_fr:``},
+  {ar:`العلمانية والتحيز`, en:`Secularism & Bias`, fr:`Sécularisme et biais`, text:`60084 أذكر مرة أن الجامعة العربية طلبت ترشيح أحد المتفقهين في الدين ليحضر حوارا تديره هيئة الأم بين حاخام ورجل دين مسيحي وشيخ.`, tr_en:``, tr_fr:``},
+  {ar:`العلمانية والتحيز`, en:`Secularism & Bias`, fr:`Sécularisme et biais`, text:`ولكن نموذج الحلولية والعلمانية الشاملة يعطينا المفتاح للفهم.`, tr_en:``, tr_fr:``},
 ];
 
 const QUIZ = [
@@ -606,12 +689,23 @@ const QUIZ = [
   {q:{ar:`من أي توجه فكري انتقل قبل تبني الرؤية الإيمانية؟`,en:`From which intellectual orientation did he move before adopting faith?`,fr:`De quelle orientation intellectuelle est-il passé avant la foi ?`}, opts:{ar:["الليبرالية", "الماركسية", "القومية", "البنيوية"],en:["Liberalism", "Marxism", "Nationalism", "Structuralism"],fr:["Libéralisme", "Marxisme", "Nationalisme", "Structuralisme"]}, correct:1, src:`تجربتي المادية والماركسية — عنوان فرعي من الفصل الثاني`, src_en:`"My materialist and Marxist experience — sub-heading from Chapter Two"`, src_fr:`« Mon expérience matérialiste et marxiste — sous-titre du deuxième chapitre »`},
   {q:{ar:`في أي جامعة درّس بعد الرياض وقبل عودته النهائية إلى مصر؟`,en:`In which university did he teach after Riyadh?`,fr:`Dans quelle université a-t-il enseigné après Riyad ?`}, opts:{ar:["جامعة الملك عبد العزيز", "جامعة الكويت", "الجامعة الأمريكية", "جامعة قطر"],en:["King Abdulaziz", "Kuwait University", "AUC", "Qatar University"],fr:["Roi Abdulaziz", "Université du Koweït", "AUC", "Université du Qatar"]}, correct:1, src:`الانتقال إلى الكويت للتدريس في جامعة الكويت`, src_en:`"Move to Kuwait to teach at Kuwait University"`, src_fr:`« Déménagement au Koweït pour enseigner à l'Université du Koweït »`},
   {q:{ar:`ما التمييز المفتاحي الذي يقدمه المسيري بخصوص الصهيونية؟`,en:`What key distinction does he make about Zionism?`,fr:`Quelle distinction clé fait-il sur le sionisme ?`}, opts:{ar:["صهيونية يهودية وصهيونية مسيحية", "اليهودية كدين والصهيونية كحركة سياسية غربية", "صهيونية سياسية ودينية", "صهيونية شرقية وغربية"],en:["Jewish and Christian Zionism", "Judaism as religion, Zionism as Western political movement", "Political and religious Zionism", "Eastern and Western Zionism"],fr:["Sionisme juif et chrétien", "Judaïsme comme religion, sionisme comme mouvement politique occidental", "Sionisme politique et religieux", "Sionisme oriental et occidental"]}, correct:1, src:`دراسة الصهيونية تفكيكًا وتركيبًا وفهمها دون اختزالها`, src_en:`"Studying Zionism through deconstruction and reconstruction, understanding it without reduction"`, src_fr:`« Étudier le sionisme par la déconstruction et la reconstruction, le comprendre sans le réduire »`},
+
+  // ─── Expanded quiz from OCR content ───
+  {q:{ar:`ماذا كانت أمّ المسيري ترفض أن يفعله في طفولته؟`,en:`What did Al-Messiri\'s mother refuse to let him do as a child?`,fr:`Que refusait la mère d\'Al-Messiri qu\'il fasse enfant ?`}, opts:{ar:["القراءة", "الذهاب إلى السينما", "اللعب في الشارع", "زيارة الأصدقاء"],en:["Reading", "Going to the cinema", "Playing in the street", "Visiting friends"],fr:["Lire", "Aller au cinéma", "Jouer dans la rue", "Visiter des amis"]}, correct:1, src:`كانت ترى أن ذهابنا إلى السينما مضيعة للوقت`, src_en:`"She considered our going to the cinema a waste of time"`, src_fr:`« Elle voyait notre sortie au cinéma comme une perte de temps »`},
+  {q:{ar:`ما اسم الشجرة التي كانت أمّه تحبها لأنها تعطي ثمراً؟`,en:`What tree did his mother love because it gave fruit?`,fr:`Quel arbre sa mère aimait-elle parce qu\'il donnait des fruits ?`}, opts:{ar:["شجرة التين", "شجرة الزيتون", "شجرة الخوخ", "شجرة النخيل"],en:["Fig tree", "Olive tree", "Peach tree", "Palm tree"],fr:["Figuier", "Olivier", "Pêcher", "Palmier"]}, correct:2, src:`كانت تحب شجرة الخوخ الكبيرة لأنها تعطينا ثمراتها`, src_en:`"She loved the great peach tree because it gave us its fruit"`, src_fr:`« Elle aimait le grand pêcher parce qu\'il nous donnait ses fruits »`},
+  {q:{ar:`ماذا كان يفعل المسيري عندما تستعصي عليه فكرة؟`,en:`What did Al-Messiri do when an idea was difficult to grasp?`,fr:`Que faisait Al-Messiri quand une idée lui résistait ?`}, opts:{ar:["يمشي في الحديقة", "يأخذ حمامًا ساخنًا", "يقرأ كتابًا", "ينام مبكرًا"],en:["Walk in the garden", "Take a hot shower", "Read a book", "Sleep early"],fr:["Marcher au jardin", "Prendre une douche chaude", "Lire un livre", "Dormir tôt"]}, correct:1, src:`حينما تستعصي علي فكرة ما أذهب لآخذ حمامًا ساخنًا`, src_en:`"When an idea was difficult, I would go take a hot shower"`, src_fr:`« Quand une idée me résistait, j\'allais prendre une douche chaude »`},
+  {q:{ar:`ما المسلسل الذي عشقه المسيري في طفولته؟`,en:`What TV series did Al-Messiri love as a child?`,fr:`Quelle série Al-Messiri adorait-il enfant ?`}, opts:{ar:["طرزان", "زورو", "روبن هود", "سندباد"],en:["Tarzan", "Zorro", "Robin Hood", "Sinbad"],fr:["Tarzan", "Zorro", "Robin des Bois", "Sinbad"]}, correct:1, src:`أذكر أنني عشقت مسلسل زورو`, src_en:`"I remember I adored the Zorro series"`, src_fr:`« Je me souviens que j\'adorais le feuilleton de Zorro »`},
+  {q:{ar:`ما اسم رئيسة قسم اللغة الإنجليزية في جامعة الإسكندرية؟`,en:`Who was the head of the English Department at Alexandria University?`,fr:`Qui dirigeait le département d\'anglais à l\'Université d\'Alexandrie ?`}, opts:{ar:["الدكتورة سعاد", "الدكتورة نور شريف", "الدكتورة فاطمة", "الدكتورة هدى"],en:["Dr Souad", "Dr Nour Sharif", "Dr Fatima", "Dr Houda"],fr:["Dr Souad", "Dr Nour Sharif", "Dr Fatima", "Dr Houda"]}, correct:1, src:`رئيسة القسم، الدكتورة نور شريف، إنسانة على قدر كبير من الثقافة والحكمة`, src_en:`"The department head, Dr Nour Sharif, was a person of great culture and wisdom"`, src_fr:`« La directrice du département, Dr Nour Sharif, était d\'une grande culture et sagesse »`},
+  {q:{ar:`ما الشاعر الذي قرأ المسيري أنه غضب من أبيه الملحد؟`,en:`Which poet did Al-Messiri read was angry at his atheist father?`,fr:`Quel poète Al-Messiri a-t-il lu qui en voulait à son père athée ?`}, opts:{ar:["شكسبير", "وليام بتلر ييتس", "تي إس إليوت", "وردزوورث"],en:["Shakespeare", "W.B. Yeats", "T.S. Eliot", "Wordsworth"],fr:["Shakespeare", "W.B. Yeats", "T.S. Eliot", "Wordsworth"]}, correct:1, src:`قرأت أن الشاعر وليام بتلر بيتس كان ساخطًا على أبيه الملحد`, src_en:`"I read that the poet William Butler Yeats was furious with his atheist father"`, src_fr:`« J\'ai lu que le poète W.B. Yeats en voulait à son père athée »`},
+  {q:{ar:`ما الذي وصفه المسيري بأنه "نموذج مادي حلولي واحدي"؟`,en:`What did Al-Messiri describe as "a materialist, immanentist, monist model"?`,fr:`Que décrivait Al-Messiri comme « un modèle matérialiste, immanentiste, moniste » ?`}, opts:{ar:["النموذج الماركسي", "النموذج الحضاري الغربي", "النموذج الصهيوني", "النموذج العلمي"],en:["The Marxist model", "The Western civilizational model", "The Zionist model", "The scientific model"],fr:["Le modèle marxiste", "Le modèle civilisationnel occidental", "Le modèle sioniste", "Le modèle scientifique"]}, correct:1, src:`هذا النموذج نموذج مادي حلولي واحدي`, src_en:`"This model is a materialist, immanentist, monist model"`, src_fr:`« Ce modèle est un modèle matérialiste, immanentiste, moniste »`},
+  {q:{ar:`كيف وصف المسيري الإنسان الرباني؟`,en:`How did Al-Messiri describe the divinely-oriented human?`,fr:`Comment Al-Messiri décrivait-il l\'humain orienté vers le divin ?`}, opts:{ar:["كائن بسيط", "كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم", "كائن منطقي بحت", "كائن اجتماعي فقط"],en:["A simple being", "A being whose feet are in the mud and eyes gaze at the stars", "A purely logical being", "A merely social being"],fr:["Un être simple", "Un être aux pieds dans la boue et aux yeux vers les étoiles", "Un être purement logique", "Un être simplement social"]}, correct:1, src:`كائن أقدامه مغروسة في الوحل وعيونه شاخصة للنجوم`, src_en:`"A being whose feet are sunk in the mud and whose eyes gaze at the stars"`, src_fr:`« Un être dont les pieds sont enfoncés dans la boue et dont les yeux regardent les étoiles »`},
+  {q:{ar:`متى استقال المسيري من التدريس الجامعي؟`,en:`When did Al-Messiri resign from university teaching?`,fr:`Quand Al-Messiri a-t-il démissionné de l\'enseignement universitaire ?`}, opts:{ar:["١٩٩٠", "١٩٩٩", "٢٠٠٠", "٢٠٠٤"],en:["1990", "1999", "2000", "2004"],fr:["1990", "1999", "2000", "2004"]}, correct:3, src:`لم أستقل من التدريس إلا عام 2004`, src_en:`"I did not resign from teaching until 2004"`, src_fr:`« Je n\'ai démissionné de l\'enseignement qu\'en 2004 »`},
 ];
 
 const LABELS = {
-  ar:{title:'رحلتي الفكرية', heroTitle:'رحلتي الفكرية في البذور والجذور والثمر', heroSub:'سيرة فكرية تفاعلية', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', tabHome:'الرئيسية', tabChapters:'الفصول', tabIdeas:'المفاهيم', tabTimeline:'السيرة', tabQuiz:'مسابقة', tabAbout:'الكتاب', splashTitle:'رحلتي الفكرية', splashSub:'في البذور والجذور والثمر', splashAuthor:'د. عبد الوهاب المسيري', splashHint:'اضغط للتخطي', part1:'الجزء الأول: التكوين', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part2:'الجزء الثاني: عالم الفكر', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', seeds:'البذور', roots:'الجذور', fruit:'الثمر', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', pages:'صفحة', parts:'جزءان', chapters:'فصلاً', volumes:'مجلدات', next:'السؤال التالي', retry:'إعادة المسابقة', correct:'أحسنت! إجابة صحيحة 🎉', wrong:'حاول مرة أخرى 💪', score:'نتيجتك', fromBook:'من الكتاب', tabQuotes:'اقتباسات', quotesTitle:'من كلمات المسيري', quotesSub:'مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع', quizSrc:'من الكتاب'},
-  en:{title:'My Intellectual Journey', heroTitle:'My Intellectual Journey in Seeds, Roots and Fruit', heroSub:'Interactive Intellectual Biography', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`An intellectual journey narrated through themes, not through successive stages`, tabHome:'Home', tabChapters:'Chapters', tabIdeas:'Key Ideas', tabTimeline:'Timeline', tabQuiz:'Quiz', tabAbout:'Book', splashTitle:'My Journey', splashSub:'Seeds, Roots and Fruit', splashAuthor:'Dr. Abdul Wahab Al-Messiri', splashHint:'tap to skip', part1:'Part 1: Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — the roots of the intellectual formation of the journey's author`, part2:'Part 2: World of Thought', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`The world of thought — what I refer to as "the fruit"`, seeds:'Seeds', roots:'Roots', fruit:'Fruit', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Events of my life in Damanhour during my childhood, youth, and part of my early adulthood`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`The events through which I became aware of myself`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Cognitive and analytical models — presenting the methodological transformations that accompanied the intellectual transformations`, aboutTr:`I excluded every fact and detail that has no direct or indirect relation to my intellectual development... Whenever I mentioned an incident in my life, I often left out the real names of its actors so as not to embarrass anyone, and so that the reader would focus on the meaning of the incident rather than on its details.`, pages:'Pages', parts:'Parts', chapters:'Chapters', volumes:'Volumes', next:'Next Question', retry:'Retry Quiz', correct:'Well done! Correct answer 🎉', wrong:'Try again 💪', score:'Your Score', fromBook:'From the book', tabQuotes:'Quotes', quotesTitle:'In Al-Messiri\'s Own Words', quotesSub:'Passages from the book, translated into English, arranged by theme', quizSrc:'From the book', authorName:'Dr. Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Egypt', authorDesc:`Egyptian thinker and writer, Professor of English and Comparative Literature, and author of the eight-volume "Encyclopedia of Jews, Judaism and Zionism." He studied at the Faculty of Arts at Alexandria University, then obtained his MA from Columbia University and his PhD from Rutgers University. He is considered one of the foremost Arab thinkers in the critique of Western modernity and in bias studies. His intellectual journey from Marxism to Islamic faith is an example of a sincere search for truth.`, ideasIntroTitle:`Key concepts in Al-Messiri's thought`, ideasIntroText:`Al-Messiri is not merely the narrator of a personal biography; he is the author of a fully integrated intellectual project. These are some of the central concepts he developed across his career.`, aboutWarnLabel:'📖 Note:', aboutWarnText:`The excerpts and quotations in this app are taken verbatim from the text of "My Intellectual Journey in Seeds, Roots and Fruit" by Dr. Abdul Wahab Al-Messiri — via the OCR layer made available on archive.org. The original book is published by Dar al-Shorouk; this app is not a substitute for it but an invitation to read it in full.`, aboutBookTitle:`In the author's own words`, aboutAuthorTitle:'About the author', aboutAuthorText:`Egyptian thinker, born in Damanhour in the Beheira Governorate. Graduated from the Faculty of Arts, English Department, at Alexandria University in 1959. He obtained his MA from Columbia University and his PhD from Rutgers University in the United States in 1969. He taught at several universities including Ain Shams, Kuwait, and King Saud. His greatest project was the "Encyclopedia of Jews, Judaism and Zionism," published in 1999 in eight volumes, considered the largest Arabic encyclopedia on the subject. He is distinguished by his critique of Western modernity and by founding the field of "bias studies" and the method of "cognitive models" in the human sciences.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• "My Intellectual Journey in Seeds, Roots and Fruit" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• "The Encyclopedia of Jews, Judaism and Zionism" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• "Fiqh al-Tahayyuz (The Jurisprudence of Bias)" — International Institute of Islamic Thought<br>• "Partial Secularism and Comprehensive Secularism" — Dar al-Shorouk<br>• Biographies and articles about Al-Messiri published in the Arabic press`},
-  fr:{title:'Mon Voyage Intellectuel', heroTitle:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits', heroSub:'Biographie Intellectuelle Interactive', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`Un voyage intellectuel raconté à travers des thèmes, et non à travers des étapes successives`, tabHome:'Accueil', tabChapters:'Chapitres', tabIdeas:'Idées Clés', tabTimeline:'Chronologie', tabQuiz:'Quiz', tabAbout:'Le Livre', splashTitle:'Mon Voyage', splashSub:'Graines, Racines et Fruits', splashAuthor:'Dr Abdul Wahab Al-Messiri', splashHint:'appuyez pour passer', part1:'Partie 1 : Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — les racines de la formation intellectuelle de l'auteur du voyage`, part2:'Partie 2 : Monde de la Pensée', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`Le monde de la pensée — ce que j'appelle « le fruit »`, seeds:'Graines', roots:'Racines', fruit:'Fruits', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Les événements de ma vie à Damanhour pendant mon enfance, ma jeunesse et une partie de mon début d'âge adulte`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`Les événements par lesquels je suis devenu conscient de moi-même`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Modèles cognitifs et analytiques — présentant les transformations méthodologiques qui ont accompagné les transformations intellectuelles`, aboutTr:`J'ai exclu tout fait et tout détail qui n'a aucun rapport, direct ou indirect, avec mon développement intellectuel... Chaque fois que je mentionnais un incident de ma vie, j'omettais souvent les vrais noms de ses acteurs pour ne mettre personne dans l'embarras, et afin que le lecteur se concentre sur le sens de l'incident plutôt que sur ses détails.`, pages:'Pages', parts:'Parties', chapters:'Chapitres', volumes:'Volumes', next:'Question Suivante', retry:'Recommencer', correct:'Bravo ! Bonne réponse 🎉', wrong:'Essayez encore 💪', score:'Votre Score', fromBook:'Extrait du livre', tabQuotes:'Citations', quotesTitle:'Dans les mots de Al-Messiri', quotesSub:'Passages du livre, traduits en français, classés par thème', quizSrc:'Tiré du livre', authorName:'Dr Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Égypte', authorDesc:`Penseur et écrivain égyptien, professeur de littérature anglaise et comparée, auteur de « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » en huit volumes. Il a étudié à la Faculté des Lettres de l'Université d'Alexandrie, puis a obtenu son master à Columbia et son doctorat à Rutgers. Il est considéré comme l'un des principaux penseurs arabes dans la critique de la modernité occidentale et dans les études sur les biais. Son voyage intellectuel du marxisme à la foi islamique est un exemple de recherche sincère de la vérité.`, ideasIntroTitle:`Concepts clés dans la pensée d'Al-Messiri`, ideasIntroText:`Al-Messiri n'est pas un simple narrateur d'une biographie personnelle ; il est l'auteur d'un projet intellectuel pleinement intégré. Voici quelques-uns des concepts centraux qu'il a développés tout au long de sa carrière.`, aboutWarnLabel:'📖 Note :', aboutWarnText:`Les extraits et citations de cette application sont tirés verbatim du texte de « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » du Dr Abdul Wahab Al-Messiri — via la couche OCR mise à disposition sur archive.org. Le livre original est publié par Dar al-Shorouk ; cette application ne le remplace pas, elle invite à le lire en entier.`, aboutBookTitle:`Dans les mots de l'auteur`, aboutAuthorTitle:`À propos de l'auteur`, aboutAuthorText:`Penseur égyptien, né à Damanhour dans le gouvernorat de Beheira. Diplômé de la Faculté des Lettres, département d'anglais, à l'Université d'Alexandrie en 1959. Il a obtenu son master à l'Université Columbia et son doctorat à l'Université Rutgers aux États-Unis en 1969. Il a enseigné dans plusieurs universités, dont Ain Shams, le Koweït et King Saud. Son plus grand projet : « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme », publiée en 1999 en huit volumes, considérée comme la plus grande encyclopédie arabe sur le sujet. Il s'est distingué par sa critique de la modernité occidentale et par la fondation du champ des « études sur les biais » et de la méthode des « modèles cognitifs » dans les sciences humaines.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• « Fiqh al-Tahayyuz (La jurisprudence du biais) » — Institut International de la Pensée Islamique<br>• « Sécularisme partiel et sécularisme total » — Dar al-Shorouk<br>• Biographies et articles sur Al-Messiri publiés dans la presse arabe`},
+  ar:{title:'رحلتي الفكرية', heroTitle:'رحلتي الفكرية في البذور والجذور والثمر', heroSub:'سيرة فكرية تفاعلية', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', tabHome:'الرئيسية', tabChapters:'الفصول', tabIdeas:'المفاهيم', tabTimeline:'السيرة', tabQuiz:'مسابقة', tabAbout:'الكتاب', splashTitle:'رحلتي الفكرية', splashSub:'في البذور والجذور والثمر', splashAuthor:'د. عبد الوهاب المسيري', splashHint:'اضغط للتخطي', part1:'الجزء الأول: التكوين', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part2:'الجزء الثاني: عالم الفكر', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', seeds:'البذور', roots:'الجذور', fruit:'الثمر', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', pages:'صفحة', parts:'جزءان', chapters:'فصلاً', volumes:'مجلدات', next:'السؤال التالي', retry:'إعادة المسابقة', correct:'أحسنت! إجابة صحيحة 🎉', wrong:'حاول مرة أخرى 💪', score:'نتيجتك', fromBook:'من الكتاب', tabRead:'اقرأ', readTitle:'اقرأ الكتاب', readSub:'اختر فصلاً للقراءة', tabQuotes:'اقتباسات', quotesTitle:'من كلمات المسيري', quotesSub:'مقتطفات حرفية من الكتاب، مرتّبة حسب الموضوع', quizSrc:'من الكتاب'},
+  en:{title:'My Intellectual Journey', heroTitle:'My Intellectual Journey in Seeds, Roots and Fruit', heroSub:'Interactive Intellectual Biography', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`An intellectual journey narrated through themes, not through successive stages`, tabHome:'Home', tabChapters:'Chapters', tabIdeas:'Key Ideas', tabTimeline:'Timeline', tabQuiz:'Quiz', tabAbout:'Book', splashTitle:'My Journey', splashSub:'Seeds, Roots and Fruit', splashAuthor:'Dr. Abdul Wahab Al-Messiri', splashHint:'tap to skip', part1:'Part 1: Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — the roots of the intellectual formation of the journey's author`, part2:'Part 2: World of Thought', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`The world of thought — what I refer to as "the fruit"`, seeds:'Seeds', roots:'Roots', fruit:'Fruit', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Events of my life in Damanhour during my childhood, youth, and part of my early adulthood`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`The events through which I became aware of myself`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Cognitive and analytical models — presenting the methodological transformations that accompanied the intellectual transformations`, aboutTr:`I excluded every fact and detail that has no direct or indirect relation to my intellectual development... Whenever I mentioned an incident in my life, I often left out the real names of its actors so as not to embarrass anyone, and so that the reader would focus on the meaning of the incident rather than on its details.`, pages:'Pages', parts:'Parts', chapters:'Chapters', volumes:'Volumes', next:'Next Question', retry:'Retry Quiz', correct:'Well done! Correct answer 🎉', wrong:'Try again 💪', score:'Your Score', fromBook:'From the book', tabRead:'Read', readTitle:'Read the Book', readSub:'Select a chapter to read', tabQuotes:'Quotes', quotesTitle:'In Al-Messiri\'s Own Words', quotesSub:'Passages from the book, translated into English, arranged by theme', quizSrc:'From the book', authorName:'Dr. Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Egypt', authorDesc:`Egyptian thinker and writer, Professor of English and Comparative Literature, and author of the eight-volume "Encyclopedia of Jews, Judaism and Zionism." He studied at the Faculty of Arts at Alexandria University, then obtained his MA from Columbia University and his PhD from Rutgers University. He is considered one of the foremost Arab thinkers in the critique of Western modernity and in bias studies. His intellectual journey from Marxism to Islamic faith is an example of a sincere search for truth.`, ideasIntroTitle:`Key concepts in Al-Messiri's thought`, ideasIntroText:`Al-Messiri is not merely the narrator of a personal biography; he is the author of a fully integrated intellectual project. These are some of the central concepts he developed across his career.`, aboutWarnLabel:'📖 Note:', aboutWarnText:`The excerpts and quotations in this app are taken verbatim from the text of "My Intellectual Journey in Seeds, Roots and Fruit" by Dr. Abdul Wahab Al-Messiri — via the OCR layer made available on archive.org. The original book is published by Dar al-Shorouk; this app is not a substitute for it but an invitation to read it in full.`, aboutBookTitle:`In the author's own words`, aboutAuthorTitle:'About the author', aboutAuthorText:`Egyptian thinker, born in Damanhour in the Beheira Governorate. Graduated from the Faculty of Arts, English Department, at Alexandria University in 1959. He obtained his MA from Columbia University and his PhD from Rutgers University in the United States in 1969. He taught at several universities including Ain Shams, Kuwait, and King Saud. His greatest project was the "Encyclopedia of Jews, Judaism and Zionism," published in 1999 in eight volumes, considered the largest Arabic encyclopedia on the subject. He is distinguished by his critique of Western modernity and by founding the field of "bias studies" and the method of "cognitive models" in the human sciences.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• "My Intellectual Journey in Seeds, Roots and Fruit" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• "The Encyclopedia of Jews, Judaism and Zionism" — Dr. Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• "Fiqh al-Tahayyuz (The Jurisprudence of Bias)" — International Institute of Islamic Thought<br>• "Partial Secularism and Comprehensive Secularism" — Dar al-Shorouk<br>• Biographies and articles about Al-Messiri published in the Arabic press`},
+  fr:{title:'Mon Voyage Intellectuel', heroTitle:'Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits', heroSub:'Biographie Intellectuelle Interactive', heroTag:'رحلة فكرية يُسردها المسيري من خلال موضوعات لا من خلال مراحل متتابعة', heroTagTr:`Un voyage intellectuel raconté à travers des thèmes, et non à travers des étapes successives`, tabHome:'Accueil', tabChapters:'Chapitres', tabIdeas:'Idées Clés', tabTimeline:'Chronologie', tabQuiz:'Quiz', tabAbout:'Le Livre', splashTitle:'Mon Voyage', splashSub:'Graines, Racines et Fruits', splashAuthor:'Dr Abdul Wahab Al-Messiri', splashHint:'appuyez pour passer', part1:'Partie 1 : Formation', part1Desc:'التكوين — أي جذور التكوين الفكري لصاحب الرحلة', part1DescTr:`Formation — les racines de la formation intellectuelle de l'auteur du voyage`, part2:'Partie 2 : Monde de la Pensée', part2Desc:'عالم الفكر، والذي أشير إليه بـ الثمر', part2DescTr:`Le monde de la pensée — ce que j'appelle « le fruit »`, seeds:'Graines', roots:'Racines', fruit:'Fruits', seedsDesc:'أحداث حياتي في دمنهور خلال طفولتي وصباي وجزء من شبابي', seedsDescTr:`Les événements de ma vie à Damanhour pendant mon enfance, ma jeunesse et une partie de mon début d'âge adulte`, rootsDesc:'الأحداث التي أصبحت من خلالها واعيًا بذاتي', rootsDescTr:`Les événements par lesquels je suis devenu conscient de moi-même`, fruitDesc:'النماذج الإدراكية والتحليلية — عرض بعض التحولات المنهجية التي واكبت التحولات الفكرية', fruitDescTr:`Modèles cognitifs et analytiques — présentant les transformations méthodologiques qui ont accompagné les transformations intellectuelles`, aboutTr:`J'ai exclu tout fait et tout détail qui n'a aucun rapport, direct ou indirect, avec mon développement intellectuel... Chaque fois que je mentionnais un incident de ma vie, j'omettais souvent les vrais noms de ses acteurs pour ne mettre personne dans l'embarras, et afin que le lecteur se concentre sur le sens de l'incident plutôt que sur ses détails.`, pages:'Pages', parts:'Parties', chapters:'Chapitres', volumes:'Volumes', next:'Question Suivante', retry:'Recommencer', correct:'Bravo ! Bonne réponse 🎉', wrong:'Essayez encore 💪', score:'Votre Score', fromBook:'Extrait du livre', tabRead:'Lire', readTitle:'Lire le Livre', readSub:'Choisissez un chapitre', tabQuotes:'Citations', quotesTitle:'Dans les mots de Al-Messiri', quotesSub:'Passages du livre, traduits en français, classés par thème', quizSrc:'Tiré du livre', authorName:'Dr Abdul Wahab Al-Messiri', authorDates:'1938 — 2008 · Damanhour, Égypte', authorDesc:`Penseur et écrivain égyptien, professeur de littérature anglaise et comparée, auteur de « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » en huit volumes. Il a étudié à la Faculté des Lettres de l'Université d'Alexandrie, puis a obtenu son master à Columbia et son doctorat à Rutgers. Il est considéré comme l'un des principaux penseurs arabes dans la critique de la modernité occidentale et dans les études sur les biais. Son voyage intellectuel du marxisme à la foi islamique est un exemple de recherche sincère de la vérité.`, ideasIntroTitle:`Concepts clés dans la pensée d'Al-Messiri`, ideasIntroText:`Al-Messiri n'est pas un simple narrateur d'une biographie personnelle ; il est l'auteur d'un projet intellectuel pleinement intégré. Voici quelques-uns des concepts centraux qu'il a développés tout au long de sa carrière.`, aboutWarnLabel:'📖 Note :', aboutWarnText:`Les extraits et citations de cette application sont tirés verbatim du texte de « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » du Dr Abdul Wahab Al-Messiri — via la couche OCR mise à disposition sur archive.org. Le livre original est publié par Dar al-Shorouk ; cette application ne le remplace pas, elle invite à le lire en entier.`, aboutBookTitle:`Dans les mots de l'auteur`, aboutAuthorTitle:`À propos de l'auteur`, aboutAuthorText:`Penseur égyptien, né à Damanhour dans le gouvernorat de Beheira. Diplômé de la Faculté des Lettres, département d'anglais, à l'Université d'Alexandrie en 1959. Il a obtenu son master à l'Université Columbia et son doctorat à l'Université Rutgers aux États-Unis en 1969. Il a enseigné dans plusieurs universités, dont Ain Shams, le Koweït et King Saud. Son plus grand projet : « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme », publiée en 1999 en huit volumes, considérée comme la plus grande encyclopédie arabe sur le sujet. Il s'est distingué par sa critique de la modernité occidentale et par la fondation du champ des « études sur les biais » et de la méthode des « modèles cognitifs » dans les sciences humaines.`, aboutSourcesTitle:'Sources', aboutSourcesText:`• « Mon Voyage Intellectuel dans les Graines, les Racines et les Fruits » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk<br>• « L'Encyclopédie des Juifs, du Judaïsme et du Sionisme » — Dr Abdul Wahab Al-Messiri — Dar al-Shorouk (1999)<br>• « Fiqh al-Tahayyuz (La jurisprudence du biais) » — Institut International de la Pensée Islamique<br>• « Sécularisme partiel et sécularisme total » — Dar al-Shorouk<br>• Biographies et articles sur Al-Messiri publiés dans la presse arabe`},
 };
 
 // ═══════════════ STATE ═══════════════
@@ -655,6 +749,7 @@ function renderTabs(){
     {id:'chapters', icon:'📖', label:L.tabChapters},
     {id:'ideas', icon:'💡', label:L.tabIdeas},
     {id:'timeline', icon:'📅', label:L.tabTimeline},
+    {id:'read', icon:'📘', label:L.tabRead},
     {id:'quotes', icon:'💬', label:L.tabQuotes},
     {id:'quiz', icon:'🎯', label:L.tabQuiz},
     {id:'about', icon:'📚', label:L.tabAbout},
@@ -778,6 +873,108 @@ function renderTimeline(){
   }).join('');
 }
 
+// ═══════════════ READ ═══════════════
+const READ_META = [
+  {id:1, pages:103}, {id:2, pages:10}, {id:3, pages:79}, {id:4, pages:179},
+  {id:5, pages:8}, {id:6, pages:104}, {id:7, pages:88}, {id:8, pages:41},
+  {id:9, pages:195}, {id:10, pages:121}
+];
+let readState = {chapterId:0, pages:[], currentPage:0, cache:{}};
+
+function renderReadChapterList(){
+  const L = LABELS[currentLang];
+  const isAr = currentLang === 'ar';
+  document.getElementById('readTitle').textContent = L.readTitle;
+  document.getElementById('readSub').textContent = L.readSub;
+  document.getElementById('readViewer').classList.add('hidden');
+  document.getElementById('readChapterList').style.display = '';
+
+  const list = document.getElementById('readChapterList');
+  const langNote = isAr ? '' : `<div class="read-lang-note">${currentLang==='en' ? 'Original Arabic text \u2014 translation of excerpts available in the Chapters tab.' : 'Texte original en arabe \u2014 traduction d\u2019extraits disponible dans l\u2019onglet Chapitres.'}</div>`;
+  list.innerHTML = langNote + READ_META.map(m => {
+    const ch = CHAPTERS.find(c => c.id === m.id);
+    if(!ch) return '';
+    const title = ch[currentLang].t;
+    const pageLabel = isAr ? '\u0635\u0641\u062d\u0629' : 'pages';
+    return `<button class="read-ch-btn" onclick="readOpenChapter(${m.id})">
+      <div class="read-ch-num">${isAr ? ['\u0661','\u0662','\u0663','\u0664','\u0665','\u0666','\u0667','\u0668','\u0669','\u0661\u0660'][m.id-1] : m.id}</div>
+      <div class="read-ch-info">
+        <div class="read-ch-title">${title}</div>
+        <div class="read-ch-meta">${m.pages} ${pageLabel}</div>
+      </div>
+    </button>`;
+  }).join('');
+}
+
+async function readOpenChapter(id){
+  const L = LABELS[currentLang];
+  document.getElementById('readChapterList').style.display = 'none';
+  document.getElementById('readViewer').classList.remove('hidden');
+
+  const ch = CHAPTERS.find(c => c.id === id);
+  const name = ch ? ch[currentLang].t : 'Chapter ' + id;
+  document.getElementById('readChapterName').textContent = name;
+
+  // Load chapter text
+  if(!readState.cache[id]){
+    document.getElementById('readContent').textContent = currentLang === 'ar' ? '\u062c\u0627\u0631\u064d \u0627\u0644\u062a\u062d\u0645\u064a\u0644\u2026' : currentLang === 'fr' ? 'Chargement\u2026' : 'Loading\u2026';
+    try {
+      const resp = await fetch(`chapters/ch${String(id).padStart(2,'0')}.txt`);
+      const text = await resp.text();
+      // Split into ~1500-char pages
+      const pages = [];
+      let pos = 0;
+      while(pos < text.length){
+        let end = Math.min(pos + 1500, text.length);
+        if(end < text.length){
+          const cut = text.lastIndexOf('.', end);
+          if(cut > pos + 800) end = cut + 1;
+        }
+        const page = text.slice(pos, end).trim();
+        if(page) pages.push(page);
+        pos = end;
+      }
+      readState.cache[id] = pages;
+    } catch(e) {
+      document.getElementById('readContent').textContent = 'Error loading chapter.';
+      return;
+    }
+  }
+
+  readState.chapterId = id;
+  readState.pages = readState.cache[id];
+  readState.currentPage = 0;
+  readShowPage();
+}
+
+function readShowPage(){
+  const content = document.getElementById('readContent');
+  const total = readState.pages.length;
+  const idx = readState.currentPage;
+  content.textContent = readState.pages[idx] || '';
+  document.getElementById('readPageNum').textContent = `${idx+1} / ${total}`;
+  document.getElementById('readPageInfo').textContent = `${idx+1}/${total}`;
+
+  // Enable/disable nav buttons
+  const btns = document.querySelectorAll('.read-nav-btn');
+  if(btns[0]) btns[0].disabled = idx === 0;
+  if(btns[1]) btns[1].disabled = idx >= total - 1;
+
+  // Scroll to top of reader
+  document.getElementById('readViewer').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function readPrevPage(){
+  if(readState.currentPage > 0){ readState.currentPage--; readShowPage(); }
+}
+function readNextPage(){
+  if(readState.currentPage < readState.pages.length - 1){ readState.currentPage++; readShowPage(); }
+}
+function readBack(){
+  readState.chapterId = 0;
+  renderReadChapterList();
+}
+
 // ═══════════════ QUIZ ═══════════════
 function renderQuiz(){
   const L = LABELS[currentLang];
@@ -864,6 +1061,7 @@ function setLang(lang){
   renderChapters();
   renderIdeas();
   renderTimeline();
+  renderReadChapterList();
   renderQuotes();
   renderQuiz();
   startTicker();
@@ -951,6 +1149,8 @@ function applyTexts(){
   setStatic('aboutAuthorText', arAboutAuthorText, L.aboutAuthorText);
   setStatic('aboutSourcesTitle', arAboutSourcesTitle, L.aboutSourcesTitle);
   setStatic('aboutSourcesText', arAboutSourcesHTML, L.aboutSourcesText, true);
+  setStatic('readTitle', 'اقرأ الكتاب', L.readTitle);
+  setStatic('readSub', 'اختر فصلاً للقراءة', L.readSub);
 }
 
 // ═══════════════ THEME ═══════════════
@@ -991,6 +1191,7 @@ renderTabs();
 renderChapters();
 renderIdeas();
 renderTimeline();
+renderReadChapterList();
 renderQuotes();
 renderQuiz();
 startTicker();
@@ -1722,7 +1923,7 @@ function showToast(msg){var t=document.createElement('div');t.style.cssText='pos
   // ═══ INJECT SPEAK BUTTONS ═══
   function injectSpeakButtons() {
     document.querySelectorAll('.narrator-speak-btn').forEach(function(b) { b.remove(); });
-    var selectors = ['.chapter-card', '.idea-card', '.tl-card', '.quote-card', '.about-box', '.about-warn'];
+    var selectors = ['.chapter-card', '.idea-card', '.tl-card', '.quote-card', '.about-box', '.about-warn', '.read-content'];
     selectors.forEach(function(sel) {
       document.querySelectorAll(sel).forEach(function(card) {
         if (card.querySelector('.narrator-speak-btn')) return;
