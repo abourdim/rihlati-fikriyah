@@ -1,7 +1,7 @@
 # Rihlati al-Fikriyah — Statut traduction française
 
 > Document de reprise pour démarrer une nouvelle conversation Claude.
-> Mis à jour : 2026-04-25.
+> Mis à jour : 2026-04-25 (après pause sur ch07).
 
 ---
 
@@ -17,22 +17,23 @@
 
 ---
 
-## 2. Statut par chapitre (10 chapitres, 197k mots arabes ≈ 276k mots fr restants au début)
+## 2. Statut par chapitre (10 chapitres, 197k mots arabes ≈ 276k mots fr au total)
 
 | Ch | Titre AR | Titre FR | Mots AR | Lignes | Statut | Commit |
 |---:|---|---|---:|---:|---|---|
 | 1 | البذور الأولى | Les Premières Graines | 25 781 | 538 | ✅ Pushé | `545d871` |
 | 2 | بدايات الهوية | Débuts de l'identité | 2 369 | 49 | ✅ Pushé | `f1fa90d` |
-| 3 | في الولايات المتحدة | Aux États-Unis | 19 666 | 380 | ⏳ À faire | — |
+| 3 | في الولايات المتحدة | Aux États-Unis | 19 666 | 380 | ✅ Pushé | `32d929b` |
 | 4 | من بساطة المادية إلى رحابة الإنسانية والإيمان | Du matérialisme simple à l'humanisme et à la foi | 42 953 | 896 | ⏳ À faire | — |
 | 5 | النماذج الإدراكية والتحليلية | Modèles cognitifs et analytiques | 1 815 | 36 | ✅ Pushé | `bf8c0cf` |
 | 6 | بعض الثمرات الأولى | Quelques premiers fruits | 24 442 | 538 | ⏳ À faire | — |
-| 7 | الصهيونية | Le sionisme | 21 216 | 424 | ⏳ À faire | — |
-| 8 | الموسوعة: تاريخها | L'Encyclopédie : son histoire | 9 741 | 201 | ⏳ À faire | — |
+| 7 | الصهيونية | Le sionisme | 21 216 | 424 | 🟡 **Partiel local** (voir §11) | — |
+| 8 | الموسوعة: تاريخها | L'Encyclopédie : son histoire | 9 741 | 201 | ✅ Pushé | `947e319` |
 | 9 | الموسوعة: الموضوعات الأساسية | L'Encyclopédie : les thèmes essentiels | 45 491 | 984 | ⏳ À faire | — |
 | 10 | في عالم الأدب والفن | Dans le monde de la littérature et de l'art | 29 622 | 797 | ⏳ À faire | — |
 
-**Ordre d'attaque recommandé (taille croissante)** : 8 → 3 → 7 → 6 → 10 → 4 → 9.
+**Avancement** : 5/10 pushés (~57k mots arabes traduits / 197k = 29%).
+**Ordre d'attaque restant (taille croissante)** : finir ch07 → ch06 → ch10 → ch04 → ch09.
 
 **Vérifié** : Les .txt OCR contiennent ~99,5 % du décompte JSON (cf. `ocr/book_structured.json`). Souvent la dernière phrase est coupée — flagger avec `[NdT: OCR tronqué...]`.
 
@@ -221,3 +222,27 @@ Workflow : traduire intégralement et fidèlement → générer PDF → commit �
 Mode autonome jusqu'à terminer tous les chapitres restants.
 Ne demande pas de confirmation entre chapitres.
 ```
+
+---
+
+## 11. État de pause sur ch07 (2026-04-25)
+
+**Fichier local non commité** : `chapters/ch07_fr.html`
+- Couvre approximativement les **lignes source 1-95** sur 424 (≈ 22% du chapitre).
+- Contient : skeleton HTML complet + sous-section `<h2>` « Le sionisme : déconstruire et recomposer » + sous-section `<h3>` « L'objectivité réceptive et l'université ».
+- Thèmes traduits : critique de l'objectivité photographique/informationnelle, pragmatisme superficiel, exemples (Bloomingdale's, Camp David, ONU, etc.), influence Marx/Weber/Bauman, problèmes académiques (dictée, polycopiés, examens, recherches sans pensée, soutenance, critères de promotion).
+- **Reste à traduire** : lignes ~96-424 source, soit environ 78% du chapitre.
+
+**Sections restantes à injecter avant le `<footer>`** (ordre dans la source) :
+1. Inscription au doctorat / questionnaires / méthode des recherches (lignes ~96-115)
+2. Critique de la dictée et des polycopiés (déjà partiellement couvert — vérifier le chevauchement)
+3. **`<h2>` La carte cognitive (الخريطة الادراكية)** — exemple Marie-Antoinette, sionisme, Bosnie/Bin Laden, Iran/Shah, Irak (lignes ~191-241)
+4. **`<h2>` Tchomsky au Caire (تشومسكي في القاهرة)** — analyse de sa pensée, dialogue (lignes ~242-287)
+5. **`<h2>` Les modèles comme outil analytique (النماذج كأداة تحليلية)** — modèles d'images, allégorie de la fontaine, hadiths sur le chat et le chien, formation des modèles, exemples (lignes ~288-380)
+6. **`<h3>` La séquence modélique (المتتالية النماذجية)** — application aux États-Unis, retour Égypte (lignes ~414-fin)
+
+**Pour reprendre** :
+- Soit continuer le `ch07_fr.html` existant (lire les lignes source restantes en plusieurs `Read offset/limit` puisque le fichier est gros, traduire et `Edit` injection avant `<footer>`).
+- Soit recommencer à zéro si jugé plus simple.
+
+**Avertissement OCR** : ch07 contient de nombreux artefacts OCR (lignes courtes comme « نرف », « خض », « إخرضا » etc. — ce sont des numéros de page corrompus, à ignorer). Le texte arabe lui-même contient parfois des mots scramblés ; reconstituer le sens et flagger avec `<span class="ndt">[NdT: OCR endommagé]</span>` au besoin.
