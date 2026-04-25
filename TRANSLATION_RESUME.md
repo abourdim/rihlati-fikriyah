@@ -1,7 +1,7 @@
 # Rihlati al-Fikriyah — Statut traduction française
 
 > Document de reprise pour démarrer une nouvelle conversation Claude.
-> Mis à jour : 2026-04-25 (après pause sur ch07).
+> Mis à jour : 2026-04-25 (ch06 poussé · ch10 source lue, traduction non commencée — reste ch10, ch04, ch09).
 
 ---
 
@@ -26,14 +26,14 @@
 | 3 | في الولايات المتحدة | Aux États-Unis | 19 666 | 380 | ✅ Pushé | `32d929b` |
 | 4 | من بساطة المادية إلى رحابة الإنسانية والإيمان | Du matérialisme simple à l'humanisme et à la foi | 42 953 | 896 | ⏳ À faire | — |
 | 5 | النماذج الإدراكية والتحليلية | Modèles cognitifs et analytiques | 1 815 | 36 | ✅ Pushé | `bf8c0cf` |
-| 6 | بعض الثمرات الأولى | Quelques premiers fruits | 24 442 | 538 | ⏳ À faire | — |
-| 7 | الصهيونية | Le sionisme | 21 216 | 424 | 🟡 **Partiel local** (voir §11) | — |
+| 6 | بعض الثمرات الأولى | Quelques premiers fruits | 24 442 | 538 | ✅ Pushé | `569efc7` |
+| 7 | الصهيونية | Le sionisme | 21 216 | 424 | ✅ Pushé | `6d7a327` |
 | 8 | الموسوعة: تاريخها | L'Encyclopédie : son histoire | 9 741 | 201 | ✅ Pushé | `947e319` |
 | 9 | الموسوعة: الموضوعات الأساسية | L'Encyclopédie : les thèmes essentiels | 45 491 | 984 | ⏳ À faire | — |
 | 10 | في عالم الأدب والفن | Dans le monde de la littérature et de l'art | 29 622 | 797 | ⏳ À faire | — |
 
-**Avancement** : 5/10 pushés (~57k mots arabes traduits / 197k = 29%).
-**Ordre d'attaque restant (taille croissante)** : finir ch07 → ch06 → ch10 → ch04 → ch09.
+**Avancement** : 7/10 pushés (~105k mots arabes traduits / 197k = 53%).
+**Ordre d'attaque restant (taille croissante)** : ch10 → ch04 → ch09.
 
 **Vérifié** : Les .txt OCR contiennent ~99,5 % du décompte JSON (cf. `ocr/book_structured.json`). Souvent la dernière phrase est coupée — flagger avec `[NdT: OCR tronqué...]`.
 
@@ -225,24 +225,113 @@ Ne demande pas de confirmation entre chapitres.
 
 ---
 
-## 11. État de pause sur ch07 (2026-04-25)
+## 11. État de pause sur ch10 (2026-04-25, shutdown)
 
-**Fichier local non commité** : `chapters/ch07_fr.html`
-- Couvre approximativement les **lignes source 1-95** sur 424 (≈ 22% du chapitre).
-- Contient : skeleton HTML complet + sous-section `<h2>` « Le sionisme : déconstruire et recomposer » + sous-section `<h3>` « L'objectivité réceptive et l'université ».
-- Thèmes traduits : critique de l'objectivité photographique/informationnelle, pragmatisme superficiel, exemples (Bloomingdale's, Camp David, ONU, etc.), influence Marx/Weber/Bauman, problèmes académiques (dictée, polycopiés, examens, recherches sans pensée, soutenance, critères de promotion).
-- **Reste à traduire** : lignes ~96-424 source, soit environ 78% du chapitre.
+**Aucun fichier `chapters/ch10_fr.html` créé pour l'instant.** ch06 est entièrement poussé (commit `569efc7`).
 
-**Sections restantes à injecter avant le `<footer>`** (ordre dans la source) :
-1. Inscription au doctorat / questionnaires / méthode des recherches (lignes ~96-115)
-2. Critique de la dictée et des polycopiés (déjà partiellement couvert — vérifier le chevauchement)
-3. **`<h2>` La carte cognitive (الخريطة الادراكية)** — exemple Marie-Antoinette, sionisme, Bosnie/Bin Laden, Iran/Shah, Irak (lignes ~191-241)
-4. **`<h2>` Tchomsky au Caire (تشومسكي في القاهرة)** — analyse de sa pensée, dialogue (lignes ~242-287)
-5. **`<h2>` Les modèles comme outil analytique (النماذج كأداة تحليلية)** — modèles d'images, allégorie de la fontaine, hadiths sur le chat et le chien, formation des modèles, exemples (lignes ~288-380)
-6. **`<h3>` La séquence modélique (المتتالية النماذجية)** — application aux États-Unis, retour Égypte (lignes ~414-fin)
+**Chapitre 10 — « Dans le monde de la littérature et de l'art » / في عالم الأدب والفن**
+- Source : `chapters/ch10.txt` — 797 lignes / ~29,6k mots arabes
+- **Contenu réel à traduire : lignes 1-585** (au-delà = bibliographie + légendes de photos + colophon, voir ci-dessous)
+- Les 3 sous-sections JSON officielles + sous-sections additionnelles que l'OCR révèle :
 
-**Pour reprendre** :
-- Soit continuer le `ch07_fr.html` existant (lire les lignes source restantes en plusieurs `Read offset/limit` puisque le fichier est gros, traduire et `Edit` injection avant `<footer>`).
-- Soit recommencer à zéro si jugé plus simple.
+| # | `<h2>` Titre FR proposé | `<h2>` Titre AR | Lignes source |
+|---|---|---|---|
+| 1 | Ma vie à l'université | حياتي في الجامعة | 2-62 |
+| 2 | La littérature : mon premier et ancien amour | الأدب: حبي الأول والقديم | 63-151 |
+| 3 | Écrits académiques littéraires | كتابات أكاديمية أدبية | 152-209 |
+| 4 | Études en linguistique | دراسات في اللغة | 210-235 |
+| 5 | Amis et connaissances parmi les littéraires | أصدقاء ومعارف من الأدباء | 236-269 |
+| 6 | Histoires pour enfants | قصص الأطفال | 270-360 |
+| 7 | L'architecture intérieure | المعمار الداخلي | 361-456 |
+| 8 | Les autres arts | الفنون الأخرى | 457-534 |
+| 9 | Réflexions finales sur le sujet/objet | تأملات أخيرة في الذات/الموضوع | 535-585 |
 
-**Avertissement OCR** : ch07 contient de nombreux artefacts OCR (lignes courtes comme « نرف », « خض », « إخرضا » etc. — ce sont des numéros de page corrompus, à ignorer). Le texte arabe lui-même contient parfois des mots scramblés ; reconstituer le sens et flagger avec `<span class="ndt">[NdT: OCR endommagé]</span>` au besoin.
+**Lignes 586-797 = à NE PAS traduire dans ch10_fr.html** :
+- 587-654 : Liste des œuvres publiées de l'auteur (AR + EN), traductions, études sur lui — typiquement traitée en annexe séparée du livre, pas dans le chapitre.
+- 657-785 : Légendes des photos (« Rihlati en images »).
+- 786-796 : 4ᵉ de couverture / colophon.
+
+**Décision suggérée pour la reprise** : ne traduire que les lignes 1-585 (les 9 sections du chapitre), et terminer le chapitre par un `<footer>` standard. Si l'utilisateur souhaite ensuite une bibliographie globale ou un index séparé, ce sera un livrable dédié (pas du périmètre ch10).
+
+**Notes accumulées en lisant la source ch10** :
+- Dr Latifa Achour / Dr Latifa al-Zayyat (présidentes successives du département) : préserver les noms tels quels.
+- Anecdote disciplinaire après mort de Nasser (1970) — sujet sensible, traduire fidèlement, sans euphémisme.
+- Thèse de doctorat Jihan Farouq Fouad (sous direction al-Massiri, jury Fadila Fattouh + Mohamed Anani + Ayman Bekhit) : section pédagogique importante.
+- Anecdote Faber & Faber / Susan Zaslow / Fiona Macrae sur le rejet du recueil de nouvelles palestiniennes : à traduire intégralement, charge politique.
+- Étude « Sermons narratifs sur la nécessité et la liberté » (Franklin's Tale de Chaucer vs Brecht *Die Ausnahme und die Regel*) : longue analyse comparative — préserver les citations en bloc-quotes.
+- Dialogues avec Hillis Miller, Charles Jencks, Jacques Derrida (Le Caire, sur la déconstruction) : restituer les échanges au discours direct.
+- Section enfance : Khala Sittita, contes du « Shater Hassan », SCUM-like critiques de Barbie/Teddy bear, création du personnage du chameau Zarif.
+- Section architecture intérieure : longue série d'anecdotes pratiques (granolite, mhandis Mohieb, Dr Abdel Halim Ibrahim Abdel Halim, dalle « Diwan al-Mudiriyya » 1882/1300H, etc.) — préserver le concept de « ma'mar tahwili » (architecture transformatrice).
+- Section arts : longue galerie (Guggenheim, Metropolitan, MET Cloisters, Kandinsky, Chagall, Bonnard, Pissarro, Mark Rothko jamais cité mais Pollock × 2, Boulez, Béjart converti à l'islam, Garaudy, Gonzalo Endara Crow, Mostafa al-Razzaz « al-Mukhalliṣ ») — beaucoup de noms propres occidentaux à transcrire fidèlement.
+- Section musique : Telemann, Mozart, Tchaïkovski, Brahms, Vivaldi, Beatles, Abdel Halim Hafez, Magda al-Roumi, Kazem el-Saher, Latifa, Ghada Ragab, Salah Jahin, Sayed Hegab, anecdote Abdel Halim Nuwaira/dur "Kādanī al-hawā" de Mohamed Othman.
+- Section finale : longue allégorie de Thoreau (Walden) sur l'artiste de Kuru — à traduire en bloc-quote intégrale, c'est la conclusion symbolique du livre tout entier.
+
+**Pour reprendre dans une nouvelle conversation** :
+1. Lire ce §11.
+2. Lire `chapters/ch10.txt` par tranches (≤ 100 lignes par lecture).
+3. Créer `chapters/ch10_fr.html` avec le squelette CSS standard (cf. §5) : `Chapitre X — Dans le monde de la littérature et de l'art / الفصل العاشر — في عالم الأدب والفن`.
+4. Injecter chacune des 9 sections via `Edit` avant le `<footer>` (ou écrire d'un seul `Write` initial si la première section est petite, puis `Edit` pour les suivantes).
+5. Workflow standard : PDF Chrome headless → `git add` + `git commit` + `git push` → `/usr/bin/afplay /System/Library/Sounds/Glass.aiff`.
+6. Mettre à jour §2 et §11 du présent document.
+
+Une fois ch10 poussé : reste ch04 (43k mots) puis ch09 (45,5k mots) — les deux plus gros, bien aborder en plusieurs phases.
+
+---
+
+## 11.b Archive de l'ancien §11 (ch06, résolu le 2026-04-25)
+
+**Fichier local non commité** : `chapters/ch06_fr.html` (188 lignes, taille = Phase 1 uniquement)
+
+**Couverture actuelle = lignes source 1-145 sur 538 (≈ 27 % du chapitre)**
+
+Sections déjà traduites et présentes dans le HTML, dans cet ordre :
+- Header complet : « Chapitre VI — Quelques premiers fruits / بعض الثمرات الأولى »
+- Préambule (lignes 1-15) : séquence modélique, instant modélique, définition par termes voisins
+- `<h2>` **L'immanentisme / الحلولية** (lignes 16-76) : sonnet de Wordsworth, deux types d'unité de l'Être (spirituelle / matérielle), séquence en 4 étapes de l'immanentisme matérialiste, anecdote de la nuit de Sayyed al-Badawi
+- `<h2>` **La sécularisation totale / العلمانية الشاملة** (lignes 77-145) : laïcité partielle vs totale, anecdote John Keane « post-secularism », exemple du photographe Araki, exemple du sport, séquence de sécularisation, Bauman, Spinoza-Hegel, plan de l'Encyclopédie en 4 volumes, livres de dialogue avec al-Azmeh et al-Triki
+
+Le fichier se termine actuellement par `<footer>...</footer>` (lignes 180-184). **Phase 2+ doit injecter le contenu AVANT le `<footer>` via `Edit`.**
+
+**Reste à traduire et injecter — lignes source 146-538 (≈ 73 %), 7 sections** :
+
+| # | `<h2>` Titre FR | `<h2>` Titre AR | Lignes source |
+|---|---|---|---|
+| 1 | Le capitalisme et l'idée du retour à la nature | الرأسمالية وفكرة العودة للطبيعة | 146-170 |
+| 2 | Thèse de doctorat : préambule | رسالة الدكتوراه: تمهيد | 171-204 |
+| 3 | La conscience historique et la conscience anti-historique | الوجدان التاريخي والوجدان المعادي للتاريخ | 205-251 |
+| 4 | Le Paradis terrestre : le progrès et le darwinisme | الفردوس الأرضي: التقدم والداروينية | 252-294 |
+| 5 | Le Paradis terrestre : la nouvelle Sion en Israël et aux États-Unis | الفردوس الأرضي: صهيون الجديدة في إسرائيل والولايات المتحدة | 295-330 |
+| 6 | Le Paradis terrestre : le contrat de mariage exhaustif | الفردوس الأرضي: عقد الزواج الشامل | 331-389 |
+| 7 | La problématique du biais : mes expériences personnelles | إشكالية التحيز: تجاربي الخاصة | 390-463 |
+| 8 | La problématique du biais : la reconstruction civilisationnelle | إشكالية التحيز: التعمير الحضاري | 464-498 |
+| 9 | La problématique du biais : la conférence et le livre | إشكالية التحيز: المؤتمر والكتاب | 499-535 |
+
+(Lignes 536-538 = début du Chapitre 7 — **NE PAS** inclure dans ch06.)
+
+**Pour reprendre — étapes** :
+1. Lire le source en plusieurs `Read offset/limit` (≤ 100 lignes par lecture pour rester sous la limite de tokens).
+2. Pour chaque section, traduire intégralement (aucun résumé) et `Edit`-injecter le bloc `<h2>...</h2>` + paragraphes **juste avant** la balise `<footer>` du fichier `ch06_fr.html`.
+3. Une fois TOUTES les 9 sections injectées :
+   ```bash
+   cd /Users/besma/Desktop/02_choughl/koutoub/55-rihlati-fikriyah
+   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=chapters/ch06_fr.pdf "file://$PWD/chapters/ch06_fr.html"
+   git add chapters/ch06_fr.html chapters/ch06_fr.pdf
+   git commit -m "Add chapter 6 French translation — Quelques premiers fruits"
+   git push origin main
+   /usr/bin/afplay /System/Library/Sounds/Glass.aiff
+   ```
+4. Mettre à jour ce document (§2 et §11), passer à ch10.
+
+**Notes utiles déjà accumulées en lisant la source** :
+- Ligne 148 : titre original anglais du premier essai = *Competitive Capitalism and Natural Man*, paru en arabe dans *Al-Tali'a* (févr. 1976) sous le titre « La capitalisme et l'idée du retour à la nature ».
+- Concept-clé inventé : *« regulating myth »* / `الأسطورة الحاكمة` ou `المعتقدات الشائعة` — distinguer d'idéologie ; garder en italique + glose.
+- Thèse de doctorat = *Les œuvres critiques de William Wordsworth et Walt Whitman : étude de la conscience historique et anti-historique* (Rutgers, dir. Pr. David Weimer ; jurés : Paul Fussell, Marius Bewley, William Phillips).
+- Anecdote Fussell (homosexualité, divorce, etc.) — traduire sans euphémisme, l'auteur l'expose explicitement.
+- Sections « Paradis terrestre » = renvois au livre *Al-Firdaws al-Ardi* (1979) ; nombreuses citations longues du livre — traduire en bloc, pas de résumé.
+- Section SCUM Manifesto + New York Radical Women : citations longues à conserver intégralement.
+- Lignée P. Godwin / Mary Wollstonecraft : préserver toute l'anecdote du contrat de mariage et la satire d'al-Massiri.
+- Comité de reconstruction civilisationnelle al-Ahram (post-1973) : noms à transcrire — Mahmoud Fawzi, Zaki Naguib Mahmoud, Hussein Fawzi, Louis Awad, Tawfiq al-Hakim, Ahmed Bahaa al-Din, Jamil Matar, Mohamed Hassanein Heikal.
+- Section finale (livre *Ishkaliyyat al-Tahayyuz*, 1995) : noms du cercle Adel Hussein — Galal Amin, Abdel Halim Ibrahim, Gouda Abdel Khaleq, Karima Karam, Tareq al-Bishri, Hoda Hegazi (épouse de l'auteur), Hamed al-Mosly, Mamdouh Fahmi, Mohamed Imara ; cercle Riyad — Saad al-Bazei, Ezzat Khattab, Mansour al-Hazimi, Aziz al-Azmeh, Mahmoud al-Zoubidi, Saad al-Suwayan ; cercle jeunes Caire — Heba Raouf, Ahmed Abdallah, Hisham Jaafar, Osama al-Qaffash, Fouad al-Saïd, Ibrahim al-Bayoumi Ghanem, Hossam al-Sayed, Hazem Salem.
+- Avertissement OCR ch06 : nombreux mots scramblés (ex. `الغمصحى` pour `الفصحى`, `العنصى` pour `العصى`, et chiffres déformés). Reconstituer silencieusement quand le sens est évident ; flagger avec `<span class="ndt">[NdT: OCR endommagé]</span>` seulement si reconstitution incertaine.
+
+**Phase 1 du ch06 (déjà dans le fichier) — ne pas retraduire** : lignes 1-145 source = de l'introduction « Avant d'aborder mes œuvres principales… » jusqu'à la phrase finissant par « *Modernité et postmodernité* » (livre dialogué avec Fathi al-Triki).
