@@ -1,7 +1,7 @@
 # Rihlati al-Fikriyah — Statut traduction française
 
 > Document de reprise pour démarrer une nouvelle conversation Claude.
-> Mis à jour : 2026-04-25 (ch06 poussé · ch10 source lue, traduction non commencée — reste ch10, ch04, ch09).
+> Mis à jour : 2026-04-26 (**TOUS les 10 chapitres poussés — projet 100 % terminé**).
 
 ---
 
@@ -24,16 +24,15 @@
 | 1 | البذور الأولى | Les Premières Graines | 25 781 | 538 | ✅ Pushé | `545d871` |
 | 2 | بدايات الهوية | Débuts de l'identité | 2 369 | 49 | ✅ Pushé | `f1fa90d` |
 | 3 | في الولايات المتحدة | Aux États-Unis | 19 666 | 380 | ✅ Pushé | `32d929b` |
-| 4 | من بساطة المادية إلى رحابة الإنسانية والإيمان | Du matérialisme simple à l'humanisme et à la foi | 42 953 | 896 | ⏳ À faire | — |
+| 4 | من بساطة المادية إلى رحابة الإنسانية والإيمان | Du matérialisme simple à l'humanisme et à la foi | 42 953 | 896 | ✅ Pushé | `c77c0ba` |
 | 5 | النماذج الإدراكية والتحليلية | Modèles cognitifs et analytiques | 1 815 | 36 | ✅ Pushé | `bf8c0cf` |
 | 6 | بعض الثمرات الأولى | Quelques premiers fruits | 24 442 | 538 | ✅ Pushé | `569efc7` |
 | 7 | الصهيونية | Le sionisme | 21 216 | 424 | ✅ Pushé | `6d7a327` |
 | 8 | الموسوعة: تاريخها | L'Encyclopédie : son histoire | 9 741 | 201 | ✅ Pushé | `947e319` |
-| 9 | الموسوعة: الموضوعات الأساسية | L'Encyclopédie : les thèmes essentiels | 45 491 | 984 | ⏳ À faire | — |
-| 10 | في عالم الأدب والفن | Dans le monde de la littérature et de l'art | 29 622 | 797 | ⏳ À faire | — |
+| 9 | الموسوعة: الموضوعات الأساسية | L'Encyclopédie : les thèmes essentiels | 45 491 | 984 | ✅ Pushé | `554d5b0` |
+| 10 | في عالم الأدب والفن | Dans le monde de la littérature et de l'art | 29 622 | 797 | ✅ Pushé | `3c2a497` |
 
-**Avancement** : 7/10 pushés (~105k mots arabes traduits / 197k = 53%).
-**Ordre d'attaque restant (taille croissante)** : ch10 → ch04 → ch09.
+**Avancement** : **10/10 pushés (100 %)** — l'autobiographie intellectuelle d'al-Massiri est intégralement traduite en français et publiée sur le repo.
 
 **Vérifié** : Les .txt OCR contiennent ~99,5 % du décompte JSON (cf. `ocr/book_structured.json`). Souvent la dernière phrase est coupée — flagger avec `[NdT: OCR tronqué...]`.
 
