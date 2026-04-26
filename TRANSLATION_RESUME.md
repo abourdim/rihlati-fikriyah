@@ -1,7 +1,13 @@
 # Rihlati al-Fikriyah — Statut traduction française
 
 > Document de reprise pour démarrer une nouvelle conversation Claude.
-> Mis à jour : 2026-04-26 (**TOUS les 10 chapitres poussés — projet 100 % terminé**).
+> Mis à jour : 2026-04-26 — **v4.0 « French Complete »** publiée.
+>
+> Voir aussi : [README.md](README.md) (vue d'ensemble) · [CHANGELOG.md](CHANGELOG.md) (historique)
+>
+> **État** : 10/10 chapitres traduits + PDF complet 723 p. paginé + lecteur
+> autonome `lecture_fr.html` + lien depuis l'app trilingue (mode sombre +
+> onglet « Le Livre » par défaut).
 
 ---
 
