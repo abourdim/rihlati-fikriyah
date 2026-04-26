@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture intégrale en français — Rihlati al-Fikriyah · Abdelwahhab al-Massiri</title>
+<meta name="description" content="Traduction française intégrale et fidèle des dix chapitres de l'autobiographie intellectuelle d'Abdelwahhab al-Massiri (Rihlati al-Fikriyah).">
+<meta name="theme-color" content="#fbfaf7">
+<style>
+  :root{
+    --bg:#fbfaf7; --ink:#1a1a1a; --muted:#6b6b6b; --rule:#c9c2b4;
+    --accent:#7a3a1f; --gold:#9a7a2f; --side:#f3eee2; --hl:#ece2c8;
+    --shadow:0 2px 12px rgba(44,36,23,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Iowan Old Style","Cardo","Cormorant Garamond","Hoefler Text","Times New Roman",Georgia,serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column;
+  }
+  /* ─── TOP BAR ─── */
+  header.bar{
+    flex:0 0 auto;
+    display:flex; align-items:center; gap:18px;
+    padding:14px 22px;
+    background:#fff; border-bottom:1px solid var(--rule);
+    box-shadow:var(--shadow);
+  }
+  header.bar .title{
+    font-size:1.05rem; font-weight:600; color:var(--accent);
+    letter-spacing:.01em;
+    flex:1; min-width:0;
+  }
+  header.bar .title small{
+    display:block; font-size:.72rem; font-weight:400; color:var(--muted);
+    font-style:italic; margin-top:1px;
+  }
+  header.bar .toolbar{display:flex; gap:8px; flex-wrap:wrap}
+  header.bar a.btn,
+  header.bar button.btn{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:7px 13px; border-radius:18px;
+    border:1px solid var(--rule); background:#fff;
+    font-family:inherit; font-size:.83rem; color:var(--ink);
+    cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:.2s;
+  }
+  header.bar a.btn:hover,
+  header.bar button.btn:hover{
+    background:var(--hl); border-color:var(--gold); transform:translateY(-1px);
+  }
+  header.bar a.btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent) }
+  header.bar a.btn.primary:hover{ background:#5e2c17; color:#fff }
+  header.bar .menu-btn{ display:none }
+  /* ─── LAYOUT ─── */
+  .wrap{flex:1; display:flex; min-height:0}
+  /* ─── SIDEBAR ─── */
+  aside.toc{
+    flex:0 0 280px;
+    background:var(--side);
+    border-right:1px solid var(--rule);
+    overflow-y:auto;
+    padding:18px 0;
+  }
+  aside.toc .group{
+    font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--muted); padding:14px 22px 6px;
+  }
+  aside.toc .group:first-child{padding-top:0}
+  aside.toc a.ch{
+    display:block; padding:11px 22px;
+    text-decoration:none; color:var(--ink);
+    border-left:3px solid transparent;
+    transition:.2s;
+  }
+  aside.toc a.ch:hover{ background:var(--hl); }
+  aside.toc a.ch.active{
+    background:#fff; border-left-color:var(--accent);
+    box-shadow:inset -1px 0 0 var(--rule);
+  }
+  aside.toc a.ch .num{
+    font-size:.72rem; color:var(--gold); font-weight:600; letter-spacing:.06em;
+  }
+  aside.toc a.ch .fr{
+    font-size:.95rem; line-height:1.35; margin-top:2px; font-weight:500;
+  }
+  aside.toc a.ch .ar{
+    display:block; font-family:"Amiri","Scheherazade New","Geeza Pro",serif;
+    font-size:.92rem; color:var(--accent); direction:rtl; margin-top:3px;
+    opacity:.85;
+  }
+  aside.toc .ext{
+    margin:18px 22px 6px; padding-top:16px; border-top:1px solid var(--rule);
+    font-size:.78rem;
+  }
+  aside.toc .ext a{
+    display:block; color:var(--muted); text-decoration:none;
+    padding:6px 0; transition:.2s;
+  }
+  aside.toc .ext a:hover{ color:var(--accent) }
+  aside.toc .ext .lab{ font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:4px; color:var(--gold) }
+  /* ─── VIEWER ─── */
+  main.view{
+    flex:1; display:flex; flex-direction:column; min-width:0;
+    background:#e8e3d6;
+  }
+  main.view .nav-strip{
+    flex:0 0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:8px 14px; background:#fff;
+    border-bottom:1px solid var(--rule);
+    font-size:.82rem;
+  }
+  main.view .nav-strip .pos{ color:var(--muted); font-style:italic }
+  main.view .nav-strip .ctrl{ display:flex; gap:6px }
+  main.view .nav-strip button{
+    border:1px solid var(--rule); background:#fff; padding:5px 11px;
+    border-radius:14px; font-family:inherit; font-size:.78rem;
+    cursor:pointer; color:var(--ink); transition:.2s;
+  }
+  main.view .nav-strip button:hover:not(:disabled){
+    background:var(--hl); border-color:var(--gold);
+  }
+  main.view .nav-strip button:disabled{ opacity:.35; cursor:not-allowed }
+  main.view .nav-strip a.pdf-this{
+    color:var(--accent); text-decoration:none; font-weight:600;
+    padding:5px 11px; border-radius:14px;
+  }
+  main.view .nav-strip a.pdf-this:hover{ background:var(--hl) }
+  iframe{ flex:1; border:0; width:100%; background:#fff }
+  /* ─── WELCOME ─── */
+  .welcome{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:40px 30px; background:#fbfaf7; text-align:center; overflow-y:auto;
+  }
+  .welcome .orn{ font-size:2.2rem; color:var(--gold); opacity:.6; margin-bottom:14px }
+  .welcome h2{
+    font-size:clamp(1.5rem,3.2vw,2.1rem); font-weight:600;
+    color:var(--accent); margin-bottom:6px; line-height:1.2;
+  }
+  .welcome .ar{
+    font-family:"Amiri",serif; font-size:1.4rem; color:var(--gold); direction:rtl; margin-bottom:18px;
+  }
+  .welcome p{ max-width:62ch; margin:8px auto; color:var(--muted); font-size:.97rem; line-height:1.7 }
+  .welcome .stats{
+    display:flex; gap:30px; margin:26px 0 18px; flex-wrap:wrap; justify-content:center;
+  }
+  .welcome .stat{ text-align:center }
+  .welcome .stat .n{ font-size:1.8rem; color:var(--accent); font-weight:600; line-height:1 }
+  .welcome .stat .l{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px }
+  .welcome .start{
+    display:inline-block; margin-top:18px; padding:10px 22px;
+    background:var(--accent); color:#fff; border-radius:24px;
+    text-decoration:none; font-size:.92rem;
+    box-shadow:0 4px 14px rgba(122,58,31,.25); transition:.2s;
+  }
+  .welcome .start:hover{ background:#5e2c17; transform:translateY(-2px) }
+  .welcome .note{
+    margin-top:22px; padding:10px 16px; max-width:54ch;
+    background:rgba(154,122,47,.08); border-left:3px solid var(--gold);
+    font-size:.78rem; color:var(--muted); font-style:italic; text-align:left;
+  }
+  /* ─── MOBILE ─── */
+  @media (max-width:760px){
+    header.bar{ padding:10px 14px; gap:10px }
+    header.bar .title{ font-size:.95rem }
+    header.bar .title small{ display:none }
+    header.bar .toolbar a.btn,
+    header.bar .toolbar button.btn{ padding:6px 9px; font-size:.76rem }
+    header.bar .menu-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:50%; border:1px solid var(--rule); background:#fff;
+      font-size:1.1rem; cursor:pointer;
+    }
+    aside.toc{
+      position:fixed; left:0; top:0; bottom:0; width:84%; max-width:320px;
+      z-index:50; transform:translateX(-100%); transition:transform .25s;
+      box-shadow:4px 0 20px rgba(0,0,0,.2);
+      padding-top:60px;
+    }
+    aside.toc.open{ transform:translateX(0) }
+    .scrim{
+      position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:40;
+      opacity:0; pointer-events:none; transition:opacity .25s;
+    }
+    .scrim.show{ opacity:1; pointer-events:auto }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <div class="title">
+    Mon Itinéraire Intellectuel — Lecture en français
+    <small>Rihlati al-Fikriyah · Abdelwahhab al-Massiri (1938–2008)</small>
+  </div>
+  <div class="toolbar">
+    <a class="btn primary" href="rihlati-fikriyah_fr_complet.pdf" download
+       title="Télécharger le livre complet en français (PDF, 5,9 Mo, 723 pages, sommaire cliquable)">
+      ⬇ PDF complet (FR)
+    </a>
+    <a class="btn" href="references/source-original.pdf" target="_blank" rel="noopener"
+       title="Texte arabe original (~20 Mo)">
+      📕 Original arabe
+    </a>
+    <a class="btn" href="https://github.com/abourdim/rihlati-fikriyah" target="_blank" rel="noopener"
+       title="Code source sur GitHub">
+      ⌥ GitHub
+    </a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="scrim" id="scrim"></div>
+  <aside class="toc" id="toc">
+    <div class="group">Partie I — Formation (Graines & Racines)</div>
+    <a class="ch" data-n="1" data-fr="Les Premières Graines" data-ar="البذور الأولى">
+      <span class="num">CHAPITRE I</span>
+      <span class="fr">Les Premières Graines</span>
+      <span class="ar">البذور الأولى</span>
+    </a>
+    <a class="ch" data-n="2" data-fr="Débuts de l'identité" data-ar="بدايات الهوية">
+      <span class="num">CHAPITRE II</span>
+      <span class="fr">Débuts de l'identité</span>
+      <span class="ar">بدايات الهوية</span>
+    </a>
+    <a class="ch" data-n="3" data-fr="Aux États-Unis" data-ar="في الولايات المتحدة">
+      <span class="num">CHAPITRE III</span>
+      <span class="fr">Aux États-Unis</span>
+      <span class="ar">في الولايات المتحدة</span>
+    </a>
+    <a class="ch" data-n="4" data-fr="Du matérialisme à l'humanisme et à la foi" data-ar="من بساطة المادية إلى رحابة الإنسانية والإيمان">
+      <span class="num">CHAPITRE IV</span>
+      <span class="fr">Du matérialisme simple à l'humanisme et à la foi</span>
+      <span class="ar">من بساطة المادية إلى رحابة الإنسانية والإيمان</span>
+    </a>
+
+    <div class="group">Partie II — Le monde de la pensée (Fruits)</div>
+    <a class="ch" data-n="5" data-fr="Modèles cognitifs et analytiques" data-ar="النماذج الإدراكية والتحليلية">
+      <span class="num">CHAPITRE V</span>
+      <span class="fr">Modèles cognitifs et analytiques</span>
+      <span class="ar">النماذج الإدراكية والتحليلية</span>
+    </a>
+    <a class="ch" data-n="6" data-fr="Quelques premiers fruits" data-ar="بعض الثمرات الأولى">
+      <span class="num">CHAPITRE VI</span>
+      <span class="fr">Quelques premiers fruits</span>
+      <span class="ar">بعض الثمرات الأولى</span>
+    </a>
+    <a class="ch" data-n="7" data-fr="Le sionisme" data-ar="الصهيونية">
+      <span class="num">CHAPITRE VII</span>
+      <span class="fr">Le sionisme</span>
+      <span class="ar">الصهيونية</span>
+    </a>
+    <a class="ch" data-n="8" data-fr="L'Encyclopédie : son histoire" data-ar="الموسوعة: تاريخها">
+      <span class="num">CHAPITRE VIII</span>
+      <span class="fr">L'Encyclopédie : son histoire</span>
+      <span class="ar">الموسوعة: تاريخها</span>
+    </a>
+    <a class="ch" data-n="9" data-fr="L'Encyclopédie : les thèmes essentiels" data-ar="الموسوعة: الموضوعات الأساسية">
+      <span class="num">CHAPITRE IX</span>
+      <span class="fr">L'Encyclopédie : les thèmes essentiels</span>
+      <span class="ar">الموسوعة: الموضوعات الأساسية</span>
+    </a>
+    <a class="ch" data-n="10" data-fr="Dans le monde de la littérature et de l'art" data-ar="في عالم الأدب والفن">
+      <span class="num">CHAPITRE X</span>
+      <span class="fr">Dans le monde de la littérature et de l'art</span>
+      <span class="ar">في عالم الأدب والفن</span>
+    </a>
+
+    <div class="ext">
+      <div class="lab">Ressources</div>
+      <a href="rihlati-fikriyah_fr_complet.pdf" download>⬇ Livre complet en français (PDF)</a>
+      <a href="references/source-original.pdf" target="_blank" rel="noopener">📕 Texte arabe original (PDF)</a>
+      <a href="https://archive.org/details/Almissiri_Abdel_wahab" target="_blank" rel="noopener">🔗 archive.org — œuvres complètes</a>
+      <a href="https://github.com/abourdim/rihlati-fikriyah" target="_blank" rel="noopener">⌥ Code source (GitHub)</a>
+    </div>
+  </aside>
+
+  <main class="view" id="view">
+    <div class="welcome" id="welcome">
+      <div class="orn">❦</div>
+      <h2>Mon Itinéraire Intellectuel</h2>
+      <div class="ar">رحلتي الفكرية في البذور والجذور والثمر</div>
+      <p>
+        Autobiographie intellectuelle de <strong>Dr Abdelwahhab al-Massiri</strong> (1938–2008),
+        penseur égyptien, professeur de littérature anglaise et auteur de l'<em>Encyclopédie des Juifs,
+        du Judaïsme et du Sionisme</em> en huit volumes.
+      </p>
+      <p>
+        Traduction française <strong>intégrale et fidèle</strong> des dix chapitres,
+        depuis le texte arabe original publié par Dar al-Shorouk.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">10</div><div class="l">Chapitres</div></div>
+        <div class="stat"><div class="n">~197 k</div><div class="l">Mots arabes</div></div>
+        <div class="stat"><div class="n">~276 k</div><div class="l">Mots français</div></div>
+        <div class="stat"><div class="n">723</div><div class="l">Pages PDF</div></div>
+      </div>
+      <a href="#ch01" class="start">Commencer la lecture →</a>
+      <p class="note">
+        ⓘ Sélectionnez un chapitre dans la barre latérale, ou utilisez les flèches
+        <kbd>←</kbd> <kbd>→</kbd> pour naviguer entre les chapitres une fois la lecture commencée.
+        Chaque chapitre dispose aussi de son propre PDF imprimable.
+        Pour usage personnel — al-Massiri ﷭.
+      </p>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  const view  = document.getElementById('view');
+  const welc  = document.getElementById('welcome');
+  const links = Array.from(document.querySelectorAll('aside.toc a.ch'));
+  const toc   = document.getElementById('toc');
+  const scrim = document.getElementById('scrim');
+  const menuBtn = document.getElementById('menuBtn');
+  let current = 0;
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function render(n){
+    const link = links.find(a => +a.dataset.n === n);
+    if (!link) return;
+    current = n;
+
+    // Build viewer (replace welcome on first call)
+    view.innerHTML = `
+      <div class="nav-strip">
+        <div class="pos">Chapitre ${n} / 10 · ${link.dataset.fr}</div>
+        <a class="pdf-this" href="chapters/ch${pad(n)}_fr.pdf" target="_blank" rel="noopener">
+          ⬇ PDF de ce chapitre
+        </a>
+        <div class="ctrl">
+          <button id="prev" ${n===1?'disabled':''}>← Précédent</button>
+          <button id="next" ${n===10?'disabled':''}>Suivant →</button>
+        </div>
+      </div>
+      <iframe src="chapters/ch${pad(n)}_fr.html" title="Chapitre ${n}"></iframe>
+    `;
+    document.getElementById('prev')?.addEventListener('click', () => go(n-1));
+    document.getElementById('next')?.addEventListener('click', () => go(n+1));
+
+    // sidebar highlight
+    links.forEach(a => a.classList.toggle('active', +a.dataset.n === n));
+
+    // hash for shareable URL
+    history.replaceState(null, '', `#ch${pad(n)}`);
+
+    // close mobile menu
+    toc.classList.remove('open'); scrim.classList.remove('show');
+
+    // scroll active link into view
+    const active = document.querySelector('aside.toc a.ch.active');
+    if (active) active.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  function go(n){
+    if (n < 1 || n > 10) return;
+    render(n);
+  }
+
+  // init from #chNN or default to welcome
+  function fromHash(){
+    const m = location.hash.match(/ch(\d{1,2})/i);
+    if (m){
+      const n = +m[1];
+      if (n >= 1 && n <= 10) render(n);
+    }
+  }
+
+  // bind sidebar links
+  links.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    go(+a.dataset.n);
+  }));
+
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (current === 0) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(current-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current+1); }
+  });
+
+  // mobile menu toggle
+  menuBtn.addEventListener('click', () => {
+    toc.classList.add('open'); scrim.classList.add('show');
+  });
+  scrim.addEventListener('click', () => {
+    toc.classList.remove('open'); scrim.classList.remove('show');
+  });
+
+  // hash navigation
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>
