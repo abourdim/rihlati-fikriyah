@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -917,8 +917,8 @@ function detectInitialLang(){
   return 'en';
 }
 let currentLang = detectInitialLang();
-let currentTheme = localStorage.getItem('rihlati-theme') || 'light';
-let currentTab = 'home';
+let currentTheme = localStorage.getItem('rihlati-theme') || 'dark';
+let currentTab = 'about';
 let quizState = {idx:0, score:0, answered:false};
 let splashTimer = null;
 
