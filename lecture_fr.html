@@ -6,205 +6,365 @@
 <title>Lecture intégrale en français — Rihlati al-Fikriyah · Abdelwahhab al-Massiri</title>
 <meta name="description" content="Traduction française intégrale et fidèle des dix chapitres de l'autobiographie intellectuelle d'Abdelwahhab al-Massiri (Rihlati al-Fikriyah).">
 <meta name="theme-color" content="#fbfaf7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fbfaf7; --ink:#1a1a1a; --muted:#6b6b6b; --rule:#c9c2b4;
-    --accent:#7a3a1f; --gold:#9a7a2f; --side:#f3eee2; --hl:#ece2c8;
-    --shadow:0 2px 12px rgba(44,36,23,.08);
+    --bg:#fbfaf7;
+    --paper:#fff;
+    --side:#f4efe3;
+    --side-2:#ebe4d2;
+    --hl:#e6dcc1;
+    --ink:#1a1612;
+    --ink-2:#534839;
+    --muted:#8b7d68;
+    --rule:#d4cab4;
+    --accent:#7a3a1f;
+    --accent-2:#a04a26;
+    --gold:#a87f2a;
+    --gold-2:#c8a84e;
+    --shadow:0 2px 14px rgba(44,36,23,.07);
+    --shadow-lg:0 8px 28px rgba(44,36,23,.12);
+
+    --serif:"Cormorant Garamond","Iowan Old Style","Cardo",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --arab:"Amiri","Scheherazade New","Geeza Pro",serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{
-    font-family:"Iowan Old Style","Cardo","Cormorant Garamond","Hoefler Text","Times New Roman",Georgia,serif;
+    font-family:var(--sans);
     background:var(--bg); color:var(--ink); line-height:1.55;
     -webkit-font-smoothing:antialiased;
     display:flex; flex-direction:column;
   }
+
   /* ─── TOP BAR ─── */
   header.bar{
     flex:0 0 auto;
     display:flex; align-items:center; gap:18px;
-    padding:14px 22px;
-    background:#fff; border-bottom:1px solid var(--rule);
+    padding:14px 24px;
+    background:var(--paper);
+    border-bottom:1px solid var(--rule);
     box-shadow:var(--shadow);
   }
-  header.bar .title{
-    font-size:1.05rem; font-weight:600; color:var(--accent);
-    letter-spacing:.01em;
+  header.bar .brand{
     flex:1; min-width:0;
   }
-  header.bar .title small{
-    display:block; font-size:.72rem; font-weight:400; color:var(--muted);
-    font-style:italic; margin-top:1px;
+  header.bar .brand .t{
+    font-family:var(--serif); font-size:1.35rem; font-weight:600;
+    color:var(--accent); letter-spacing:.005em; line-height:1.1;
+  }
+  header.bar .brand .s{
+    display:block; margin-top:3px;
+    font-size:.72rem; font-style:italic; color:var(--muted);
+    letter-spacing:.01em;
   }
   header.bar .toolbar{display:flex; gap:8px; flex-wrap:wrap}
   header.bar a.btn,
   header.bar button.btn{
     display:inline-flex; align-items:center; gap:6px;
-    padding:7px 13px; border-radius:18px;
-    border:1px solid var(--rule); background:#fff;
-    font-family:inherit; font-size:.83rem; color:var(--ink);
+    padding:8px 14px; border-radius:20px;
+    border:1px solid var(--rule); background:var(--paper);
+    font-family:var(--sans); font-size:.78rem; font-weight:500;
+    color:var(--ink-2);
     cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:.2s;
+    transition:all .2s ease;
   }
   header.bar a.btn:hover,
   header.bar button.btn:hover{
-    background:var(--hl); border-color:var(--gold); transform:translateY(-1px);
+    background:var(--hl); border-color:var(--gold); color:var(--accent);
+    transform:translateY(-1px); box-shadow:var(--shadow);
   }
-  header.bar a.btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent) }
-  header.bar a.btn.primary:hover{ background:#5e2c17; color:#fff }
+  header.bar a.btn.primary{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+  header.bar a.btn.primary:hover{
+    background:var(--accent-2); color:#fff; border-color:var(--accent-2);
+  }
   header.bar .menu-btn{ display:none }
+
   /* ─── LAYOUT ─── */
   .wrap{flex:1; display:flex; min-height:0}
+
   /* ─── SIDEBAR ─── */
   aside.toc{
-    flex:0 0 280px;
-    background:var(--side);
+    flex:0 0 320px;
+    background:linear-gradient(to bottom, var(--side) 0%, var(--side-2) 100%);
     border-right:1px solid var(--rule);
     overflow-y:auto;
-    padding:18px 0;
+    padding:8px 0 24px;
   }
+  aside.toc::-webkit-scrollbar{width:10px}
+  aside.toc::-webkit-scrollbar-track{background:transparent}
+  aside.toc::-webkit-scrollbar-thumb{background:rgba(168,127,42,.25); border-radius:5px}
+  aside.toc::-webkit-scrollbar-thumb:hover{background:rgba(168,127,42,.45)}
+
   aside.toc .group{
-    font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--muted); padding:14px 22px 6px;
+    font-family:var(--sans); font-size:.62rem; font-weight:600;
+    letter-spacing:.22em; text-transform:uppercase;
+    color:var(--gold); padding:22px 24px 8px;
+    display:flex; align-items:center; gap:10px;
   }
-  aside.toc .group:first-child{padding-top:0}
+  aside.toc .group::before{
+    content:''; flex:0 0 18px; height:1px; background:var(--gold); opacity:.5;
+  }
+  aside.toc .group::after{
+    content:''; flex:1; height:1px; background:var(--gold); opacity:.25;
+  }
+  aside.toc .group:first-child{padding-top:14px}
+
   aside.toc a.ch{
-    display:block; padding:11px 22px;
+    display:flex; align-items:flex-start; gap:14px;
+    padding:13px 22px 13px 16px;
     text-decoration:none; color:var(--ink);
     border-left:3px solid transparent;
-    transition:.2s;
+    transition:all .2s ease;
+    cursor:pointer;
+    position:relative;
   }
-  aside.toc a.ch:hover{ background:var(--hl); }
+  aside.toc a.ch:hover{
+    background:rgba(255,255,255,.5);
+  }
   aside.toc a.ch.active{
-    background:#fff; border-left-color:var(--accent);
-    box-shadow:inset -1px 0 0 var(--rule);
+    background:var(--paper);
+    border-left-color:var(--accent);
+    box-shadow:inset -1px 0 0 var(--rule), 0 1px 0 var(--rule), 0 -1px 0 var(--rule);
   }
+  aside.toc a.ch.active .num{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+
   aside.toc a.ch .num{
-    font-size:.72rem; color:var(--gold); font-weight:600; letter-spacing:.06em;
+    flex:0 0 32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    font-family:var(--serif); font-size:.92rem; font-weight:600;
+    color:var(--accent);
+    transition:all .2s ease;
+    line-height:1;
+    margin-top:1px;
   }
+  aside.toc a.ch:hover .num{
+    border-color:var(--gold);
+  }
+
+  aside.toc a.ch .body{ flex:1; min-width:0 }
+
   aside.toc a.ch .fr{
-    font-size:.95rem; line-height:1.35; margin-top:2px; font-weight:500;
+    display:block;
+    font-family:var(--serif); font-size:1.05rem; font-weight:500;
+    color:var(--ink); line-height:1.25;
+    letter-spacing:.005em;
   }
+  aside.toc a.ch.active .fr{ color:var(--accent); font-weight:600 }
+
   aside.toc a.ch .ar{
-    display:block; font-family:"Amiri","Scheherazade New","Geeza Pro",serif;
-    font-size:.92rem; color:var(--accent); direction:rtl; margin-top:3px;
+    display:block;
+    font-family:var(--arab); font-size:.92rem;
+    color:var(--gold); direction:rtl;
+    margin-top:4px; line-height:1.45;
     opacity:.85;
   }
+  aside.toc a.ch.active .ar{ color:var(--accent); opacity:1 }
+
   aside.toc .ext{
-    margin:18px 22px 6px; padding-top:16px; border-top:1px solid var(--rule);
-    font-size:.78rem;
+    margin:24px 22px 0; padding-top:18px;
+    border-top:1px dashed var(--rule);
+  }
+  aside.toc .ext .lab{
+    font-size:.6rem; letter-spacing:.22em; text-transform:uppercase;
+    margin-bottom:10px; color:var(--gold); font-weight:600;
   }
   aside.toc .ext a{
-    display:block; color:var(--muted); text-decoration:none;
-    padding:6px 0; transition:.2s;
+    display:flex; align-items:center; gap:8px;
+    color:var(--ink-2); text-decoration:none;
+    padding:7px 8px; margin:0 -8px;
+    border-radius:6px;
+    font-size:.8rem;
+    transition:all .15s ease;
   }
-  aside.toc .ext a:hover{ color:var(--accent) }
-  aside.toc .ext .lab{ font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:4px; color:var(--gold) }
+  aside.toc .ext a:hover{
+    background:rgba(255,255,255,.6); color:var(--accent);
+  }
+  aside.toc .ext a .ico{ font-size:.95rem; opacity:.8 }
+
   /* ─── VIEWER ─── */
   main.view{
     flex:1; display:flex; flex-direction:column; min-width:0;
-    background:#e8e3d6;
+    background:#dcd5c2;
   }
   main.view .nav-strip{
     flex:0 0 auto;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:8px 14px; background:#fff;
+    display:flex; align-items:center; gap:14px;
+    padding:10px 18px;
+    background:var(--paper);
     border-bottom:1px solid var(--rule);
-    font-size:.82rem;
+    font-family:var(--sans);
   }
-  main.view .nav-strip .pos{ color:var(--muted); font-style:italic }
-  main.view .nav-strip .ctrl{ display:flex; gap:6px }
-  main.view .nav-strip button{
-    border:1px solid var(--rule); background:#fff; padding:5px 11px;
-    border-radius:14px; font-family:inherit; font-size:.78rem;
-    cursor:pointer; color:var(--ink); transition:.2s;
+  main.view .nav-strip .pos{
+    flex:1; min-width:0;
+    color:var(--muted); font-size:.78rem; font-style:italic;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
   }
-  main.view .nav-strip button:hover:not(:disabled){
+  main.view .nav-strip .pos b{
+    color:var(--accent); font-weight:600; font-style:normal;
+    font-family:var(--serif); font-size:.95rem; margin-right:8px;
+  }
+  main.view .nav-strip a.pdf-this{
+    display:inline-flex; align-items:center; gap:5px;
+    color:var(--accent); text-decoration:none; font-size:.77rem; font-weight:500;
+    padding:6px 12px; border-radius:14px;
+    border:1px solid var(--rule); background:var(--paper);
+    transition:all .15s ease;
+  }
+  main.view .nav-strip a.pdf-this:hover{
     background:var(--hl); border-color:var(--gold);
   }
-  main.view .nav-strip button:disabled{ opacity:.35; cursor:not-allowed }
-  main.view .nav-strip a.pdf-this{
-    color:var(--accent); text-decoration:none; font-weight:600;
-    padding:5px 11px; border-radius:14px;
+  main.view .nav-strip .ctrl{ display:flex; gap:6px }
+  main.view .nav-strip button{
+    border:1px solid var(--rule); background:var(--paper);
+    padding:6px 12px; border-radius:14px;
+    font-family:var(--sans); font-size:.76rem; font-weight:500;
+    cursor:pointer; color:var(--ink-2);
+    transition:all .15s ease;
   }
-  main.view .nav-strip a.pdf-this:hover{ background:var(--hl) }
+  main.view .nav-strip button:hover:not(:disabled){
+    background:var(--hl); border-color:var(--gold); color:var(--accent);
+  }
+  main.view .nav-strip button:disabled{ opacity:.3; cursor:not-allowed }
   iframe{ flex:1; border:0; width:100%; background:#fff }
+
   /* ─── WELCOME ─── */
   .welcome{
-    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    padding:40px 30px; background:#fbfaf7; text-align:center; overflow-y:auto;
+    flex:1; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:50px 30px; background:var(--bg);
+    text-align:center; overflow-y:auto;
   }
-  .welcome .orn{ font-size:2.2rem; color:var(--gold); opacity:.6; margin-bottom:14px }
+  .welcome .orn{
+    font-size:1.6rem; color:var(--gold); opacity:.55; margin-bottom:18px;
+    letter-spacing:.5em;
+  }
   .welcome h2{
-    font-size:clamp(1.5rem,3.2vw,2.1rem); font-weight:600;
-    color:var(--accent); margin-bottom:6px; line-height:1.2;
+    font-family:var(--serif); font-size:clamp(1.8rem,3.6vw,2.6rem);
+    font-weight:600; color:var(--accent); margin-bottom:8px; line-height:1.15;
+    letter-spacing:.005em;
   }
   .welcome .ar{
-    font-family:"Amiri",serif; font-size:1.4rem; color:var(--gold); direction:rtl; margin-bottom:18px;
+    font-family:var(--arab); font-size:1.55rem;
+    color:var(--gold); direction:rtl; margin-bottom:24px; font-weight:400;
   }
-  .welcome p{ max-width:62ch; margin:8px auto; color:var(--muted); font-size:.97rem; line-height:1.7 }
+  .welcome p{
+    max-width:62ch; margin:10px auto;
+    color:var(--ink-2); font-size:.96rem; line-height:1.7;
+  }
   .welcome .stats{
-    display:flex; gap:30px; margin:26px 0 18px; flex-wrap:wrap; justify-content:center;
+    display:flex; gap:0; margin:32px 0 22px; flex-wrap:wrap;
+    justify-content:center;
+    background:var(--paper); border-radius:14px;
+    padding:6px; box-shadow:var(--shadow);
+    border:1px solid var(--rule);
   }
-  .welcome .stat{ text-align:center }
-  .welcome .stat .n{ font-size:1.8rem; color:var(--accent); font-weight:600; line-height:1 }
-  .welcome .stat .l{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px }
+  .welcome .stat{
+    text-align:center; padding:14px 24px;
+    border-right:1px solid var(--rule);
+  }
+  .welcome .stat:last-child{ border-right:0 }
+  .welcome .stat .n{
+    font-family:var(--serif); font-size:1.9rem; color:var(--accent);
+    font-weight:600; line-height:1;
+  }
+  .welcome .stat .l{
+    font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--muted); margin-top:6px; font-weight:600;
+  }
   .welcome .start{
-    display:inline-block; margin-top:18px; padding:10px 22px;
-    background:var(--accent); color:#fff; border-radius:24px;
-    text-decoration:none; font-size:.92rem;
-    box-shadow:0 4px 14px rgba(122,58,31,.25); transition:.2s;
+    display:inline-flex; align-items:center; gap:8px;
+    margin-top:18px; padding:13px 28px;
+    background:var(--accent); color:#fff;
+    border-radius:30px; text-decoration:none;
+    font-family:var(--sans); font-size:.92rem; font-weight:600;
+    box-shadow:0 6px 20px rgba(122,58,31,.28);
+    transition:all .2s ease;
   }
-  .welcome .start:hover{ background:#5e2c17; transform:translateY(-2px) }
+  .welcome .start:hover{
+    background:var(--accent-2);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(122,58,31,.36);
+  }
   .welcome .note{
-    margin-top:22px; padding:10px 16px; max-width:54ch;
-    background:rgba(154,122,47,.08); border-left:3px solid var(--gold);
-    font-size:.78rem; color:var(--muted); font-style:italic; text-align:left;
+    margin-top:30px; padding:14px 22px; max-width:56ch;
+    background:rgba(168,127,42,.08);
+    border-left:3px solid var(--gold);
+    border-radius:0 8px 8px 0;
+    font-size:.82rem; color:var(--ink-2); line-height:1.6;
+    font-style:italic; text-align:left;
   }
+  .welcome kbd{
+    display:inline-block; padding:1px 6px;
+    background:var(--paper); border:1px solid var(--rule);
+    border-radius:4px; font-family:var(--sans); font-size:.72rem;
+    box-shadow:0 1px 0 var(--rule);
+    font-style:normal;
+  }
+
   /* ─── MOBILE ─── */
-  @media (max-width:760px){
+  @media (max-width:780px){
     header.bar{ padding:10px 14px; gap:10px }
-    header.bar .title{ font-size:.95rem }
-    header.bar .title small{ display:none }
+    header.bar .brand .t{ font-size:1.1rem }
+    header.bar .brand .s{ display:none }
     header.bar .toolbar a.btn,
-    header.bar .toolbar button.btn{ padding:6px 9px; font-size:.76rem }
+    header.bar .toolbar button.btn{
+      padding:6px 10px; font-size:.72rem;
+    }
     header.bar .menu-btn{
       display:inline-flex; align-items:center; justify-content:center;
-      width:36px; height:36px; border-radius:50%; border:1px solid var(--rule); background:#fff;
-      font-size:1.1rem; cursor:pointer;
+      width:38px; height:38px; border-radius:50%;
+      border:1px solid var(--rule); background:var(--paper);
+      font-size:1.2rem; cursor:pointer;
+      flex:0 0 38px;
     }
     aside.toc{
-      position:fixed; left:0; top:0; bottom:0; width:84%; max-width:320px;
-      z-index:50; transform:translateX(-100%); transition:transform .25s;
-      box-shadow:4px 0 20px rgba(0,0,0,.2);
+      position:fixed; left:0; top:0; bottom:0;
+      width:88%; max-width:340px;
+      z-index:50; transform:translateX(-100%);
+      transition:transform .25s ease;
+      box-shadow:6px 0 24px rgba(0,0,0,.25);
       padding-top:60px;
     }
     aside.toc.open{ transform:translateX(0) }
     .scrim{
-      position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:40;
-      opacity:0; pointer-events:none; transition:opacity .25s;
+      position:fixed; inset:0; background:rgba(20,16,10,.55);
+      backdrop-filter:blur(2px);
+      z-index:40; opacity:0; pointer-events:none;
+      transition:opacity .25s ease;
     }
     .scrim.show{ opacity:1; pointer-events:auto }
+    .welcome .stats .stat{ padding:10px 18px }
+    .welcome .stats .stat .n{ font-size:1.5rem }
   }
 </style>
 </head>
 <body>
 
 <header class="bar">
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-  <div class="title">
-    Mon Itinéraire Intellectuel — Lecture en français
-    <small>Rihlati al-Fikriyah · Abdelwahhab al-Massiri (1938–2008)</small>
+  <button class="menu-btn" id="menuBtn" aria-label="Sommaire">☰</button>
+  <div class="brand">
+    <div class="t">Mon Itinéraire Intellectuel</div>
+    <span class="s">Rihlati al-Fikriyah · Abdelwahhab al-Massiri (1938–2008)</span>
   </div>
   <div class="toolbar">
     <a class="btn primary" href="rihlati-fikriyah_fr_complet.pdf" download
        title="Télécharger le livre complet en français (PDF, 5,9 Mo, 723 pages, sommaire cliquable)">
-      ⬇ PDF complet (FR)
+      ⬇ PDF complet
     </a>
     <a class="btn" href="references/source-original.pdf" target="_blank" rel="noopener"
        title="Texte arabe original (~20 Mo)">
-      📕 Original arabe
+      📕 Arabe
     </a>
     <a class="btn" href="https://github.com/abourdim/rihlati-fikriyah" target="_blank" rel="noopener"
        title="Code source sur GitHub">
@@ -216,72 +376,101 @@
 <div class="wrap">
   <div class="scrim" id="scrim"></div>
   <aside class="toc" id="toc">
-    <div class="group">Partie I — Formation (Graines & Racines)</div>
+
+    <div class="group">Partie I · Formation</div>
     <a class="ch" data-n="1" data-fr="Les Premières Graines" data-ar="البذور الأولى">
-      <span class="num">CHAPITRE I</span>
-      <span class="fr">Les Premières Graines</span>
-      <span class="ar">البذور الأولى</span>
+      <span class="num">I</span>
+      <div class="body">
+        <span class="fr">Les Premières Graines</span>
+        <span class="ar">البذور الأولى</span>
+      </div>
     </a>
     <a class="ch" data-n="2" data-fr="Débuts de l'identité" data-ar="بدايات الهوية">
-      <span class="num">CHAPITRE II</span>
-      <span class="fr">Débuts de l'identité</span>
-      <span class="ar">بدايات الهوية</span>
+      <span class="num">II</span>
+      <div class="body">
+        <span class="fr">Débuts de l'identité</span>
+        <span class="ar">بدايات الهوية</span>
+      </div>
     </a>
     <a class="ch" data-n="3" data-fr="Aux États-Unis" data-ar="في الولايات المتحدة">
-      <span class="num">CHAPITRE III</span>
-      <span class="fr">Aux États-Unis</span>
-      <span class="ar">في الولايات المتحدة</span>
+      <span class="num">III</span>
+      <div class="body">
+        <span class="fr">Aux États-Unis</span>
+        <span class="ar">في الولايات المتحدة</span>
+      </div>
     </a>
     <a class="ch" data-n="4" data-fr="Du matérialisme à l'humanisme et à la foi" data-ar="من بساطة المادية إلى رحابة الإنسانية والإيمان">
-      <span class="num">CHAPITRE IV</span>
-      <span class="fr">Du matérialisme simple à l'humanisme et à la foi</span>
-      <span class="ar">من بساطة المادية إلى رحابة الإنسانية والإيمان</span>
+      <span class="num">IV</span>
+      <div class="body">
+        <span class="fr">Du matérialisme à l'humanisme et à la foi</span>
+        <span class="ar">من بساطة المادية إلى رحابة الإنسانية والإيمان</span>
+      </div>
     </a>
 
-    <div class="group">Partie II — Le monde de la pensée (Fruits)</div>
+    <div class="group">Partie II · Le monde de la pensée</div>
     <a class="ch" data-n="5" data-fr="Modèles cognitifs et analytiques" data-ar="النماذج الإدراكية والتحليلية">
-      <span class="num">CHAPITRE V</span>
-      <span class="fr">Modèles cognitifs et analytiques</span>
-      <span class="ar">النماذج الإدراكية والتحليلية</span>
+      <span class="num">V</span>
+      <div class="body">
+        <span class="fr">Modèles cognitifs et analytiques</span>
+        <span class="ar">النماذج الإدراكية والتحليلية</span>
+      </div>
     </a>
     <a class="ch" data-n="6" data-fr="Quelques premiers fruits" data-ar="بعض الثمرات الأولى">
-      <span class="num">CHAPITRE VI</span>
-      <span class="fr">Quelques premiers fruits</span>
-      <span class="ar">بعض الثمرات الأولى</span>
+      <span class="num">VI</span>
+      <div class="body">
+        <span class="fr">Quelques premiers fruits</span>
+        <span class="ar">بعض الثمرات الأولى</span>
+      </div>
     </a>
     <a class="ch" data-n="7" data-fr="Le sionisme" data-ar="الصهيونية">
-      <span class="num">CHAPITRE VII</span>
-      <span class="fr">Le sionisme</span>
-      <span class="ar">الصهيونية</span>
+      <span class="num">VII</span>
+      <div class="body">
+        <span class="fr">Le sionisme</span>
+        <span class="ar">الصهيونية</span>
+      </div>
     </a>
     <a class="ch" data-n="8" data-fr="L'Encyclopédie : son histoire" data-ar="الموسوعة: تاريخها">
-      <span class="num">CHAPITRE VIII</span>
-      <span class="fr">L'Encyclopédie : son histoire</span>
-      <span class="ar">الموسوعة: تاريخها</span>
+      <span class="num">VIII</span>
+      <div class="body">
+        <span class="fr">L'Encyclopédie : son histoire</span>
+        <span class="ar">الموسوعة: تاريخها</span>
+      </div>
     </a>
     <a class="ch" data-n="9" data-fr="L'Encyclopédie : les thèmes essentiels" data-ar="الموسوعة: الموضوعات الأساسية">
-      <span class="num">CHAPITRE IX</span>
-      <span class="fr">L'Encyclopédie : les thèmes essentiels</span>
-      <span class="ar">الموسوعة: الموضوعات الأساسية</span>
+      <span class="num">IX</span>
+      <div class="body">
+        <span class="fr">L'Encyclopédie : les thèmes essentiels</span>
+        <span class="ar">الموسوعة: الموضوعات الأساسية</span>
+      </div>
     </a>
     <a class="ch" data-n="10" data-fr="Dans le monde de la littérature et de l'art" data-ar="في عالم الأدب والفن">
-      <span class="num">CHAPITRE X</span>
-      <span class="fr">Dans le monde de la littérature et de l'art</span>
-      <span class="ar">في عالم الأدب والفن</span>
+      <span class="num">X</span>
+      <div class="body">
+        <span class="fr">Dans le monde de la littérature et de l'art</span>
+        <span class="ar">في عالم الأدب والفن</span>
+      </div>
     </a>
 
     <div class="ext">
       <div class="lab">Ressources</div>
-      <a href="rihlati-fikriyah_fr_complet.pdf" download>⬇ Livre complet en français (PDF)</a>
-      <a href="references/source-original.pdf" target="_blank" rel="noopener">📕 Texte arabe original (PDF)</a>
-      <a href="https://archive.org/details/Almissiri_Abdel_wahab" target="_blank" rel="noopener">🔗 archive.org — œuvres complètes</a>
-      <a href="https://github.com/abourdim/rihlati-fikriyah" target="_blank" rel="noopener">⌥ Code source (GitHub)</a>
+      <a href="rihlati-fikriyah_fr_complet.pdf" download>
+        <span class="ico">⬇</span> Livre complet en français
+      </a>
+      <a href="references/source-original.pdf" target="_blank" rel="noopener">
+        <span class="ico">📕</span> Texte arabe original
+      </a>
+      <a href="https://archive.org/details/Almissiri_Abdel_wahab" target="_blank" rel="noopener">
+        <span class="ico">🔗</span> archive.org — œuvres complètes
+      </a>
+      <a href="https://github.com/abourdim/rihlati-fikriyah" target="_blank" rel="noopener">
+        <span class="ico">⌥</span> Code source (GitHub)
+      </a>
     </div>
   </aside>
 
   <main class="view" id="view">
     <div class="welcome" id="welcome">
-      <div class="orn">❦</div>
+      <div class="orn">❦ ❦ ❦</div>
       <h2>Mon Itinéraire Intellectuel</h2>
       <div class="ar">رحلتي الفكرية في البذور والجذور والثمر</div>
       <p>
@@ -301,7 +490,7 @@
       </div>
       <a href="#ch01" class="start">Commencer la lecture →</a>
       <p class="note">
-        ⓘ Sélectionnez un chapitre dans la barre latérale, ou utilisez les flèches
+        Sélectionnez un chapitre dans la barre latérale, ou utilisez les flèches
         <kbd>←</kbd> <kbd>→</kbd> pour naviguer entre les chapitres une fois la lecture commencée.
         Chaque chapitre dispose aussi de son propre PDF imprimable.
         Pour usage personnel — al-Massiri ﷭.
@@ -313,7 +502,6 @@
 <script>
 (function(){
   const view  = document.getElementById('view');
-  const welc  = document.getElementById('welcome');
   const links = Array.from(document.querySelectorAll('aside.toc a.ch'));
   const toc   = document.getElementById('toc');
   const scrim = document.getElementById('scrim');
@@ -321,39 +509,34 @@
   let current = 0;
 
   function pad(n){ return String(n).padStart(2,'0'); }
+  const ROMAN = ['','I','II','III','IV','V','VI','VII','VIII','IX','X'];
 
   function render(n){
     const link = links.find(a => +a.dataset.n === n);
     if (!link) return;
     current = n;
 
-    // Build viewer (replace welcome on first call)
     view.innerHTML = `
       <div class="nav-strip">
-        <div class="pos">Chapitre ${n} / 10 · ${link.dataset.fr}</div>
+        <div class="pos"><b>Chapitre ${ROMAN[n]}</b>${link.dataset.fr}</div>
         <a class="pdf-this" href="chapters/ch${pad(n)}_fr.pdf" target="_blank" rel="noopener">
-          ⬇ PDF de ce chapitre
+          ⬇ PDF
         </a>
         <div class="ctrl">
-          <button id="prev" ${n===1?'disabled':''}>← Précédent</button>
-          <button id="next" ${n===10?'disabled':''}>Suivant →</button>
+          <button id="prev" ${n===1?'disabled':''}>← Préc.</button>
+          <button id="next" ${n===10?'disabled':''}>Suiv. →</button>
         </div>
       </div>
-      <iframe src="chapters/ch${pad(n)}_fr.html" title="Chapitre ${n}"></iframe>
+      <iframe src="chapters/ch${pad(n)}_fr.html" title="Chapitre ${n} — ${link.dataset.fr}"></iframe>
     `;
     document.getElementById('prev')?.addEventListener('click', () => go(n-1));
     document.getElementById('next')?.addEventListener('click', () => go(n+1));
 
-    // sidebar highlight
     links.forEach(a => a.classList.toggle('active', +a.dataset.n === n));
-
-    // hash for shareable URL
     history.replaceState(null, '', `#ch${pad(n)}`);
 
-    // close mobile menu
     toc.classList.remove('open'); scrim.classList.remove('show');
 
-    // scroll active link into view
     const active = document.querySelector('aside.toc a.ch.active');
     if (active) active.scrollIntoView({block:'nearest', behavior:'smooth'});
   }
@@ -363,7 +546,6 @@
     render(n);
   }
 
-  // init from #chNN or default to welcome
   function fromHash(){
     const m = location.hash.match(/ch(\d{1,2})/i);
     if (m){
@@ -372,13 +554,11 @@
     }
   }
 
-  // bind sidebar links
   links.forEach(a => a.addEventListener('click', e => {
     e.preventDefault();
     go(+a.dataset.n);
   }));
 
-  // keyboard
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if (current === 0) return;
@@ -386,7 +566,6 @@
     if (e.key === 'ArrowRight') { e.preventDefault(); go(current+1); }
   });
 
-  // mobile menu toggle
   menuBtn.addEventListener('click', () => {
     toc.classList.add('open'); scrim.classList.add('show');
   });
@@ -394,7 +573,6 @@
     toc.classList.remove('open'); scrim.classList.remove('show');
   });
 
-  // hash navigation
   window.addEventListener('hashchange', fromHash);
   fromHash();
 })();
