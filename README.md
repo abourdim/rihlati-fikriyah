@@ -47,6 +47,13 @@ Pour chaque chapitre, deux livrables :
 ### 📕 PDF arabe original — `references/source-original.pdf`
 Le scan complet de l'édition Dar al-Shorouk (~20 Mo, avec couche OCR).
 
+### 📚 Bibliographie complète — `sources.html`
+Inventaire des ~30 œuvres d'al-Massiri disponibles sur
+[archive.org/details/Almissiri_Abdel_wahab](https://archive.org/details/Almissiri_Abdel_wahab),
+classées par catégorie : Encyclopédies, Sionisme & conflit, Épistémologie & biais,
+Modernité & sécularisme, Autobiographie & divers. Titres en arabe avec
+traduction française indicative.
+
 ### 🛠️ Sources & matières premières
 - `chapters/chNN.txt` — texte arabe brut OCR (ce qui a servi à la traduction)
 - `ocr/book_structured.json` — métadonnées (titres, sous-sections, nombre de mots)
@@ -95,9 +102,11 @@ Le PDF combiné est généré avec :
 
 Voir [CHANGELOG.md](CHANGELOG.md).
 
-**Version actuelle : v4.0 — French Complete**
-- 10/10 chapitres traduits, PDFs paginés, lecteur français autonome
-- Mode sombre par défaut, onglet « Le Livre » par défaut sur l'app trilingue
+**Version actuelle : v4.1 — Bibliography**
+- v4.0 : 10/10 chapitres traduits, PDFs paginés, lecteur français autonome,
+  mode sombre par défaut, onglet « Le Livre » par défaut sur l'app trilingue
+- v4.1 : ajout de `sources.html` (inventaire des ~30 œuvres d'al-Massiri sur
+  archive.org), liens depuis l'app trilingue (3 langues) et le lecteur FR
 
 ---
 

@@ -1,7 +1,23 @@
 # Changelog
 
 Toutes les versions notables du projet *Rihlati al-Fikriyah*, depuis la
-référence v1.0 jusqu'à la version actuelle v4.0.
+référence v1.0 jusqu'à la version actuelle v4.1.
+
+---
+
+## v4.1 — Bibliography · 2026-04-26
+
+### Ajouts
+- **`sources.html`** — page inventaire des ~30 œuvres d'al-Massiri disponibles
+  sur [archive.org/details/Almissiri_Abdel_wahab](https://archive.org/details/Almissiri_Abdel_wahab),
+  classées par catégorie (Encyclopédies, Sionisme & conflit, Épistémologie & biais,
+  Modernité & sécularisme, Autobiographie & divers). Titres en arabe avec
+  traduction française.
+- Lien **« 📚 Bibliographie complète »** ajouté dans la section *Sources* de
+  l'app trilingue (AR / EN / FR).
+- Lien **« 📚 Bibliographie d'al-Massiri »** ajouté dans la zone *Ressources*
+  de la sidebar du lecteur français.
+- README et CHANGELOG mis à jour.
 
 ---
 
